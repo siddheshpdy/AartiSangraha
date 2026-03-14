@@ -1,3 +1,4 @@
+
 ---
 title: "Jai Dev Jai Dev Jai Shri Gurudatta"
 deity: "Datta"
