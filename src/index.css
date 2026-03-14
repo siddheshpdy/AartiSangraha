@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --color-saffron: #FF9933;
+  --color-maroon: #800000;
+  --color-cream: #FFF8E1;
+  --color-cream-transparent: rgba(255, 248, 225, 0.85);
+  --color-dark-grey: #2D2D2D;
+  --color-white: #FFFFFF;
+  --color-border: #fde68a; /* amber-100 equivalent */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-cream);
+  color: var(--color-dark-grey);
+  font-family: 'Mukta', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Mukta', sans-serif;
+  font-weight: 700;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px 20px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-cream-transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 16px 0;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  text-align: center;
+}
+
+.sticky-header h1 {
+  margin: 0 0 12px 0;
+  color: var(--color-maroon);
+  font-size: 28px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--color-saffron);
+  box-shadow: 0 0 0 2px rgba(255, 153, 51, 0.2);
+}
+
+/* Prepared for Phase 1.2: Category Filter Chips */
+.filter-chips {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-top: 16px;
+  scrollbar-width: none; /* Firefox */
+}
+.filter-chips::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.filter-chip {
+  padding: 6px 16px;
+  border: 1px solid var(--color-saffron);
+  border-radius: 9999px;
+  background-color: transparent;
+  color: var(--color-saffron);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.filter-chip.active {
+  background-color: var(--color-saffron);
+  color: var(--color-white);
+}
+
+.aarti-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aarti-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  white-space: pre-wrap;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.aarti-card:hover {
+  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.15);
+  border-color: var(--color-saffron);
+}
+
+.aarti-title {
+  margin: 0 0 4px 0;
+  color: var(--color-maroon);
+  font-size: 22px;
+}
+
+.aarti-deity {
+  margin: 0 0 16px 0;
+  color: var(--color-saffron);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.aarti-lyrics {
+  font-size: 16px;
+}
