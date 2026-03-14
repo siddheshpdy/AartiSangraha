@@ -58,7 +58,7 @@ const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
   return weightA - weightB;
 });
 
-const categories = ["All", ...Array.from(new Set(sortedAartiData.map(a => a.deity).filter(Boolean)))];
+const categories = ["All", "Favorites", ...Array.from(new Set(sortedAartiData.map(a => a.deity).filter(Boolean)))];
 
 function App() {
   const [query, setQuery] = useState("");
@@ -67,6 +67,13 @@ function App() {
   const [fontSize, setFontSize] = useState(18); // Default 18px (1.125rem)
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "system";
+  });
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("favorites") || "[]");
+    } catch {
+      return [];
+    }
   });
 
   const isScrolledRef = useRef(isScrolled);
@@ -84,9 +91,19 @@ function App() {
       (a.deity && searchRegex.test(a.deity)) ||
       (a.lyrics && searchRegex.test(a.lyrics))
     );
-    const matchesCategory = selectedCategory === "All" || a.deity === selectedCategory;
+    const matchesCategory = selectedCategory === "All" 
+      || (selectedCategory === "Favorites" && favorites.includes(a.id))
+      || a.deity === selectedCategory;
     return matchesQuery && matchesCategory;
   });
+
+  const toggleFavorite = (id) => {
+    setFavorites(prev => {
+      const newFavs = prev.includes(id) ? prev.filter(fId => fId !== id) : [...prev, id];
+      localStorage.setItem("favorites", JSON.stringify(newFavs));
+      return newFavs;
+    });
+  };
 
   useEffect(() => {
     const applyTheme = () => {
@@ -226,6 +243,9 @@ function App() {
         {filtered.map(aarti => (
           <article key={aarti.id} className="aarti-card">
             <div className="font-resizer">
+              <button className="favorite-btn" onClick={() => toggleFavorite(aarti.id)} aria-label="Toggle favorite">
+                {favorites.includes(aarti.id) ? '❤️' : '🤍'}
+              </button>
               <button className="font-btn" onClick={() => setFontSize(f => Math.max(14, f - 2))} aria-label="Decrease font size">A-</button>
               <button className="font-btn" onClick={() => setFontSize(f => Math.min(32, f + 2))} aria-label="Increase font size">A+</button>
             </div>
