@@ -34,25 +34,25 @@ function highlightText(text, highlight) {
 }
 
 const deityOrder = [
-  "Ganpati",
+  "ganpati",
   "shankar",
-  "Devi",
-  "Vitthal",
-  "Datta",
-  "Vishnu",
-  "Krishna",
-  "Ram",
-  "Maruti",
-  "Panchayatan",
-  "Dnyaneshwar",
-  "Others",
-  "Gajanan Maharaj",
-  "Mahalasa Narayani"
+  "devi",
+  "vitthal",
+  "datta",
+  "vishnu",
+  "krishna",
+  "ram",
+  "maruti",
+  "panchayatan",
+  "dnyaneshwar",
+  "others",
+  "gajanan maharaj",
+  "mahalasa Narayani"
 ];
 
 const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
-  const indexA = deityOrder.indexOf(a.deity);
-  const indexB = deityOrder.indexOf(b.deity);
+  const indexA = deityOrder.indexOf(a.deity.toLowerCase());
+  const indexB = deityOrder.indexOf(b.deity.toLowerCase());
   const weightA = indexA === -1 ? 999 : indexA;
   const weightB = indexB === -1 ? 999 : indexB;
   return weightA - weightB;
@@ -64,6 +64,10 @@ function App() {
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [fontSize, setFontSize] = useState(18); // Default 18px (1.125rem)
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "system";
+  });
 
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
@@ -83,6 +87,25 @@ function App() {
     const matchesCategory = selectedCategory === "All" || a.deity === selectedCategory;
     return matchesQuery && matchesCategory;
   });
+
+  useEffect(() => {
+    const applyTheme = () => {
+      const isDark = 
+        theme === "dark" || 
+        (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.body.classList.toggle("dark", isDark);
+    };
+
+    applyTheme();
+    localStorage.setItem("theme", theme);
+
+    // Listen for OS-level theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => applyTheme();
+    
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [theme]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -143,7 +166,21 @@ function App() {
   return (
     <div className="app-container">
       <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
-        <h1>Aarti Sangraha</h1>
+        <div className="header-title-container">
+          <h1>Aarti Sangraha</h1>
+          <button 
+            className="theme-toggle" 
+            onClick={() => setTheme(prev => {
+              if (prev === 'light') return 'dark';
+              if (prev === 'dark') return 'system';
+              return 'light';
+            })}
+            aria-label="Toggle Theme"
+            title={`Theme: ${theme}`}
+          >
+            {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
+          </button>
+        </div>
         <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
           <input 
             type="text" 
@@ -188,9 +225,13 @@ function App() {
       <div className="aarti-list">
         {filtered.map(aarti => (
           <article key={aarti.id} className="aarti-card">
+            <div className="font-resizer">
+              <button className="font-btn" onClick={() => setFontSize(f => Math.max(14, f - 2))} aria-label="Decrease font size">A-</button>
+              <button className="font-btn" onClick={() => setFontSize(f => Math.min(32, f + 2))} aria-label="Increase font size">A+</button>
+            </div>
             <h2 className="aarti-title">{highlightText(aarti.title, searchQuery)}</h2>
             {aarti.deity && <h3 className="aarti-deity">{highlightText(aarti.deity, searchQuery)}</h3>}
-            <div className="aarti-lyrics">{highlightText(aarti.lyrics, searchQuery)}</div>
+            <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(aarti.lyrics, searchQuery)}</div>
           </article>
         ))}
         {filtered.length === 0 && <p style={{ textAlign: 'center', color: '#888' }}>No aartis found matching "{query}"</p>}
