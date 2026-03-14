@@ -88,7 +88,7 @@ function App() {
     <div className="app-container">
       <header className="sticky-header">
         <h1>Aarti Sangraha</h1>
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
           <input 
             type="text" 
             placeholder="Search deity, title, or lyrics..." 
