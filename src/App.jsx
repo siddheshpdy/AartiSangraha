@@ -82,6 +82,9 @@ function App() {
     }
   });
   const [installPrompt, setInstallPrompt] = useState(null);
+  const [isWakeLockActive, setIsWakeLockActive] = useState(false);
+  const wakeLockRef = useRef(null);
+  const userWantsWakeLock = useRef(false);
 
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
@@ -156,6 +159,40 @@ function App() {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, [theme]);
 
+  const requestWakeLock = async () => {
+    try {
+      if ('wakeLock' in navigator) {
+        wakeLockRef.current = await navigator.wakeLock.request('screen');
+        setIsWakeLockActive(true);
+        wakeLockRef.current.addEventListener('release', () => {
+          setIsWakeLockActive(false);
+        });
+      }
+    } catch (err) {
+      console.error(`${err.name}, ${err.message}`);
+    }
+  };
+
+  const toggleWakeLock = async () => {
+    if (isWakeLockActive) {
+      userWantsWakeLock.current = false;
+      if (wakeLockRef.current) await wakeLockRef.current.release();
+    } else {
+      userWantsWakeLock.current = true;
+      await requestWakeLock();
+    }
+  };
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && userWantsWakeLock.current) {
+        requestWakeLock();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, []);
+
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let isTransitioning = false;
@@ -217,51 +254,51 @@ function App() {
       <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="header-title-container">
           <h1>Aarti Sangraha</h1>
-          <button 
-            className="theme-toggle" 
-            onClick={() => setTheme(prev => {
-              if (prev === 'light') return 'dark';
-              if (prev === 'dark') return 'system';
-              return 'light';
-            })}
-            aria-label="Toggle Theme"
-            title={`Theme: ${theme}`}
-          >
-            {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
-          </button>
-          {installPrompt && (
+          <div className="header-actions">
             <button
-              onClick={handleInstallClick}
-              className="install-btn"
-              aria-label="Install App"
+              className="theme-toggle"
+              onClick={() => setTheme(prev => {
+                if (prev === 'light') return 'dark';
+                if (prev === 'dark') return 'system';
+                return 'light';
+              })}
+              aria-label="Toggle Theme"
+              title={`Theme: ${theme}`}
             >
-              📥 Install
+              {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
             </button>
-          )}
+            <button
+              className="theme-toggle"
+              onClick={toggleWakeLock}
+              aria-label="Toggle Wake Lock"
+              title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"}
+              style={{ opacity: isWakeLockActive ? 1 : 0.6 }}
+            >
+              {isWakeLockActive ? '💡' : '💤'}
+            </button>
+            {installPrompt && (
+              <button
+                onClick={handleInstallClick}
+                className="install-btn"
+                aria-label="Install App"
+              >
+                📥 Install
+              </button>
+            )}
+          </div>
         </div>
-        <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
+        <div className={`search-container ${query ? 'has-query' : ''}`}>
           <input 
             type="text" 
             placeholder="Search deity, title, or lyrics..." 
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="search-input"
-            style={query ? { paddingRight: '40px' } : {}}
           />
           {query && (
             <button 
               onClick={() => setQuery("")}
-              style={{
-                position: 'absolute',
-                right: '12px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'transparent',
-                border: 'none',
-                fontSize: '20px',
-                cursor: 'pointer',
-                color: '#888'
-              }}
+              className="clear-search-btn"
               aria-label="Clear search"
             >
               &times;
