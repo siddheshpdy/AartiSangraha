@@ -10,8 +10,14 @@ function highlightText(text, highlight) {
   
   // Escape special regex characters to prevent errors
   const escapedHighlight = highlight.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  // Match start of string or any non-letter/number/mark character, followed by the search query
-  const regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])(${escapedHighlight})`, 'giu');
+  let regex;
+  try {
+    // Match start of string or any non-letter/number/mark character, followed by the search query
+    regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])(${escapedHighlight})`, 'giu');
+  } catch (e) {
+    // Fallback for older mobile browsers that do not support unicode property escapes
+    regex = new RegExp(`(^|\\W)(${escapedHighlight})`, 'gi');
+  }
   
   const parts = text.split(regex);
   
@@ -82,8 +88,15 @@ function App() {
 
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  // Word boundary for Unicode: Start of string or any non-word character (not letter, mark, or number)
-  const searchRegex = searchQuery ? new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])` + escapedQuery, 'iu') : null;
+  let searchRegex = null;
+  if (searchQuery) {
+    try {
+      // Word boundary for Unicode: Start of string or any non-word character (not letter, mark, or number)
+      searchRegex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])` + escapedQuery, 'iu');
+    } catch (e) {
+      searchRegex = new RegExp(`(^|\\W)` + escapedQuery, 'i');
+    }
+  }
 
   // Filter against the pre-sorted data
   const filtered = sortedAartiData.filter(a => {

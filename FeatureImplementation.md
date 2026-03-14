@@ -51,6 +51,15 @@ Implement the screen.keepAwake (Wake Lock API) toggle.
 
 Success Metric: The phone screen does not dim or lock while an Aarti is expanded.
 
+
+🔴 Phase 4: Update Favorites behavior
+⏳ Feature 34.1: Favorites list sequencing based on user preference - PENDING
+
+Add a favorite item moving up and down functionality.
+Success Metric: User can move their favorites up and down in the list.
+
+
+
 🚀 Implementation Protocol (Instruction for Gemini)
 "Please implement Feature [X.X] from the Feature Implementation File.
 
