@@ -34,25 +34,25 @@ function highlightText(text, highlight) {
 }
 
 const deityOrder = [
-  "Ganpati",
+  "ganpati",
   "shankar",
-  "Devi",
-  "Vitthal",
-  "Datta",
-  "Vishnu",
-  "Krishna",
-  "Ram",
-  "Maruti",
-  "Panchayatan",
-  "Dnyaneshwar",
-  "Others",
-  "Gajanan Maharaj",
-  "Mahalasa Narayani"
+  "devi",
+  "vitthal",
+  "datta",
+  "vishnu",
+  "krishna",
+  "ram",
+  "maruti",
+  "panchayatan",
+  "dnyaneshwar",
+  "others",
+  "gajanan maharaj",
+  "mahalasa Narayani"
 ];
 
 const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
-  const indexA = deityOrder.indexOf(a.deity);
-  const indexB = deityOrder.indexOf(b.deity);
+  const indexA = deityOrder.indexOf(a.deity.toLowerCase());
+  const indexB = deityOrder.indexOf(b.deity.toLowerCase());
   const weightA = indexA === -1 ? 999 : indexA;
   const weightB = indexB === -1 ? 999 : indexB;
   return weightA - weightB;
