@@ -60,14 +60,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-title-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  width: 100%;
   padding-top: 1rem;
   margin: 0 0 12px 0;
   transition: all 0.3s ease;
   max-height: 50px;
   overflow: hidden;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0; /* Prevents this container from shrinking */
 }
 
 .sticky-header h1 {
@@ -99,6 +106,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
+  white-space: nowrap; /* Prevents text and icon from wrapping */
   transition: transform 0.2s, background-color 0.2s;
 }
 
@@ -135,6 +143,28 @@ h1, h2, h3, h4, h5, h6 {
 .search-input:focus {
   border-color: var(--color-saffron);
   box-shadow: 0 0 0 2px rgba(255, 153, 51, 0.2);
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-container.has-query .search-input {
+  padding-right: 40px;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
 }
 
 /* Prepared for Phase 1.2: Category Filter Chips */
@@ -271,6 +301,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: row;
     align-items: flex-start;
     padding-top: 32px;
+    padding-right: 24px;
     gap: 32px;
   }
 
@@ -288,11 +319,24 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     max-height: calc(100vh - 64px);
+    gap: 24px;
   }
 
   .header-title-container {
     padding-top: 0;
     justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    max-height: none;
+    overflow: visible;
+    margin: 0;
+  }
+
+  .search-container {
+    max-width: none;
+    margin: 0;
+    width: 100%;
   }
 
   .filter-chips {
@@ -303,6 +347,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-grow: 1;
     overflow-y: auto;
     padding-bottom: 32px;
+    margin-top: 0;
   }
 
   .filter-chip {
