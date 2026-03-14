@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import aartiData from './data/aartis.json'; // Direct import
 
 function highlightText(text, highlight) {
@@ -63,6 +63,10 @@ const categories = ["All", ...Array.from(new Set(sortedAartiData.map(a => a.deit
 function App() {
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const isScrolledRef = useRef(isScrolled);
+  isScrolledRef.current = isScrolled;
 
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -80,13 +84,65 @@ function App() {
     return matchesQuery && matchesCategory;
   });
 
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let isTransitioning = false;
+    let transitionTimeout;
+
+    const handleScroll = () => {
+      if (isTransitioning) return;
+
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY <= 0) {
+        if (isScrolledRef.current) {
+          setIsScrolled(false);
+          startTransition(currentScrollY);
+        } else {
+          lastScrollY = currentScrollY;
+        }
+      } else if (currentScrollY > lastScrollY + 10 && currentScrollY > 50) {
+        if (!isScrolledRef.current) {
+          setIsScrolled(true);
+          startTransition(currentScrollY);
+        } else {
+          lastScrollY = currentScrollY;
+        }
+      } else if (currentScrollY < lastScrollY - 10) {
+        if (isScrolledRef.current) {
+          setIsScrolled(false);
+          startTransition(currentScrollY);
+        } else {
+          lastScrollY = currentScrollY;
+        }
+      }
+    };
+
+    const startTransition = (scrollY) => {
+      isTransitioning = true;
+      lastScrollY = scrollY;
+      clearTimeout(transitionTimeout);
+      // Pause scroll tracking during the 0.3s CSS transition to avoid layout-shift bouncing
+      transitionTimeout = setTimeout(() => {
+        isTransitioning = false;
+        lastScrollY = window.scrollY; 
+      }, 350);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(transitionTimeout);
+    };
+  }, []);
+
   if (sortedAartiData.length === 0) {
     return <div>Loading aartis or no aartis found... Check src/content/ folder.</div>;
   }
 
   return (
     <div className="app-container">
-      <header className="sticky-header">
+      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
         <h1>Aarti Sangraha</h1>
         <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
           <input 
