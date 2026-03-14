@@ -16,7 +16,7 @@ body {
   background-color: var(--color-cream);
   color: var(--color-dark-grey);
   font-family: 'Mukta', sans-serif;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app-container {
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 0 16px 20px;
 }
@@ -39,11 +39,12 @@ h1, h2, h3, h4, h5, h6 {
   padding: 16px 0;
   margin-bottom: 24px;
   box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 50;
   text-align: center;
 }
 
 .sticky-header h1 {
+  padding-top: 1rem;
   margin: 0 0 12px 0;
   color: var(--color-maroon);
   font-size: 28px;
@@ -69,22 +70,24 @@ h1, h2, h3, h4, h5, h6 {
 /* Prepared for Phase 1.2: Category Filter Chips */
 .filter-chips {
   display: flex;
-  gap: 10px;
+  flex-direction: row;
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  gap: 10px;
   padding-bottom: 10px;
   margin-top: 16px;
-  scrollbar-width: none; /* Firefox */
 }
+
 .filter-chips::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
 
 .filter-chip {
-  padding: 6px 16px;
-  border: 1px solid var(--color-saffron);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-border);
   border-radius: 9999px;
-  background-color: transparent;
-  color: var(--color-saffron);
+  background-color: var(--color-white);
+  color: var(--color-dark-grey);
   cursor: pointer;
   white-space: nowrap;
   font-family: 'Inter', sans-serif;
@@ -95,20 +98,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .filter-chip.active {
   background-color: var(--color-saffron);
+  border-color: var(--color-saffron);
   color: var(--color-white);
 }
 
 .aarti-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.5rem;
 }
 
 .aarti-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   white-space: pre-wrap;
   transition: box-shadow 0.2s, border-color 0.2s;
 }
@@ -134,5 +139,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .aarti-lyrics {
-  font-size: 16px;
+  font-size: 1.125rem;
+  color: #374151;
 }
