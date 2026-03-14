@@ -75,6 +75,7 @@ function App() {
       return [];
     }
   });
+  const [installPrompt, setInstallPrompt] = useState(null);
 
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
@@ -103,6 +104,24 @@ function App() {
       localStorage.setItem("favorites", JSON.stringify(newFavs));
       return newFavs;
     });
+  };
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      // Prevent the browser from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so we can trigger it later when the user clicks our button
+      setInstallPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!installPrompt) return;
+    await installPrompt.prompt();
+    setInstallPrompt(null);
   };
 
   useEffect(() => {
@@ -197,6 +216,15 @@ function App() {
           >
             {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
           </button>
+          {installPrompt && (
+            <button
+              onClick={handleInstallClick}
+              className="install-btn"
+              aria-label="Install App"
+            >
+              📥 Install
+            </button>
+          )}
         </div>
         <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
           <input 

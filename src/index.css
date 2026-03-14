@@ -89,6 +89,23 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(0.9);
 }
 
+.install-btn {
+  background-color: var(--color-saffron);
+  color: var(--color-white);
+  border: none;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.install-btn:active {
+  transform: scale(0.95);
+}
+
 @media (max-width: 1023px) {
   .sticky-header.scrolled .header-title-container {
     max-height: 0;
