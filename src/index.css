@@ -8,6 +8,18 @@
   --color-dark-grey: #2D2D2D;
   --color-white: #FFFFFF;
   --color-border: #fde68a; /* amber-100 equivalent */
+  --color-text-muted: #374151;
+}
+
+body.dark {
+  --color-saffron: #D4AF37; /* Spiritual Night Gold */
+  --color-maroon: #D4AF37; /* Spiritual Night Gold */
+  --color-cream: #1A1A1A;
+  --color-cream-transparent: rgba(26, 26, 26, 0.85);
+  --color-dark-grey: #E5E7EB;
+  --color-white: #262626;
+  --color-border: #404040;
+  --color-text-muted: #D1D5DB;
 }
 
 body {
@@ -46,18 +58,39 @@ h1, h2, h3, h4, h5, h6 {
   transition: padding 0.3s ease;
 }
 
-.sticky-header h1 {
+.header-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   padding-top: 1rem;
   margin: 0 0 12px 0;
-  color: var(--color-maroon);
-  font-size: 28px;
   transition: all 0.3s ease;
   max-height: 50px;
   overflow: hidden;
 }
 
+.sticky-header h1 {
+  margin: 0;
+  color: var(--color-maroon);
+  font-size: 28px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s;
+}
+
+.theme-toggle:active {
+  transform: scale(0.9);
+}
+
 @media (max-width: 1023px) {
-  .sticky-header.scrolled h1 {
+  .sticky-header.scrolled .header-title-container {
     max-height: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -72,7 +105,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   padding: 12px 20px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  background-color: var(--color-white);
+  color: var(--color-dark-grey);
+  border: 1px solid var(--color-border);
   border-radius: 9999px;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
@@ -135,6 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .aarti-card {
+  position: relative;
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
@@ -153,6 +189,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 4px 0;
   color: var(--color-maroon);
   font-size: 22px;
+  padding-right: 90px; /* Prevents text overlap with font resizer buttons */
 }
 
 .aarti-deity {
@@ -166,7 +203,32 @@ h1, h2, h3, h4, h5, h6 {
 
 .aarti-lyrics {
   font-size: 1.125rem;
-  color: #374151;
+  color: var(--color-text-muted);
+}
+
+/* Font Resizer Controls */
+.font-resizer {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.font-btn {
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-border);
+  color: var(--color-maroon);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.font-btn:active {
+  transform: scale(0.95);
 }
 
 /* Desktop Sidebar Layout */
@@ -194,8 +256,9 @@ h1, h2, h3, h4, h5, h6 {
     max-height: calc(100vh - 64px);
   }
 
-  .sticky-header h1 {
+  .header-title-container {
     padding-top: 0;
+    justify-content: flex-start;
   }
 
   .filter-chips {

@@ -31,7 +31,7 @@ deity: "Vishnu"
 ऐशापरी दास, रमावल्लभा पायी ‖५‖ आरती... 
 
 ---
-title: "Aarti Saprem Jai Jai Vitthal"
+title: "Dashavtar"
 deity: "Vishnu"
 ---
 आरती सप्रेम जय जय विठ्ठल परब्रह्म l 
