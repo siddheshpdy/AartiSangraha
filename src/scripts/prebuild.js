@@ -36,8 +36,10 @@ export function generateAartis() {
             aartis.push({ id: `${file.replace('.md', '')}-${index}`, ...data, lyrics: content.trim() });
             index++;
         }
+        console.log(`Processed ${file} with ${index - 1} aartis.`);
     });
 
+    console.log(`Generated ${aartis.length} aartis.`);
     fs.writeFileSync(outputFile, JSON.stringify(aartis, null, 2));
     console.log("✅ JSON generated!");
 }
