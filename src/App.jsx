@@ -1,6 +1,7 @@
 // src/App.jsx
-import React, { useState, useEffect, useRef } from 'react';
-import aartiData from './data/aartis.json'; // Direct import
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { flushSync } from 'react-dom';
+import aartiData from './data/Aartya.json'; // Direct import
 
 function highlightText(text, highlight) {
   if (!text) return null;
@@ -64,10 +65,9 @@ const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
   return weightA - weightB;
 });
 
-const categories = ["All", "Favorites", ...Array.from(new Set(sortedAartiData.map(a => a.deity).filter(Boolean)))];
-
 function App() {
   const [query, setQuery] = useState("");
+  const [contentType, setContentType] = useState("Aartya");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isScrolled, setIsScrolled] = useState(false);
   const [fontSize, setFontSize] = useState(18); // Default 18px (1.125rem)
@@ -89,6 +89,20 @@ function App() {
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
 
+  useEffect(() => {
+    setSelectedCategory("All");
+  }, [contentType]);
+
+  const categories = useMemo(() => {
+    const availableDeities = Array.from(new Set(
+      sortedAartiData
+        .filter(a => (a.type || "Aartya") === contentType)
+        .map(a => a.deity)
+        .filter(Boolean)
+    ));
+    return ["All", "Favorites", ...availableDeities];
+  }, [contentType]);
+
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   let searchRegex = null;
@@ -102,7 +116,10 @@ function App() {
   }
 
   // Filter against the pre-sorted data
-  const filtered = sortedAartiData.filter(a => {
+  let filtered = sortedAartiData.filter(a => {
+    const itemType = a.type || "Aartya";
+    if (itemType !== contentType) return false;
+
     const matchesQuery = !searchRegex || (
       (a.title && searchRegex.test(a.title)) || 
       (a.deity && searchRegex.test(a.deity)) ||
@@ -114,12 +131,61 @@ function App() {
     return matchesQuery && matchesCategory;
   });
 
+  if (selectedCategory === "Favorites" && !searchQuery) {
+    filtered.sort((a, b) => {
+      return favorites.indexOf(a.id) - favorites.indexOf(b.id);
+    });
+  }
+
   const toggleFavorite = (id) => {
     setFavorites(prev => {
       const newFavs = prev.includes(id) ? prev.filter(fId => fId !== id) : [...prev, id];
       localStorage.setItem("favorites", JSON.stringify(newFavs));
       return newFavs;
     });
+  };
+
+  const moveFavorite = (id, direction) => {
+    const performMove = () => {
+      setFavorites(prev => {
+        // Filter the global favorites to only those visible in the current tab
+        const currentTabFavorites = prev.filter(favId => {
+          const aarti = sortedAartiData.find(a => a.id === favId);
+          if (!aarti) return false;
+          const itemType = aarti.type || "Aartya";
+          return itemType === contentType;
+        });
+
+        const currentIdx = currentTabFavorites.indexOf(id);
+        if (currentIdx < 0) return prev;
+
+        const swapIdx = direction === 'up' ? currentIdx - 1 : currentIdx + 1;
+        if (swapIdx < 0 || swapIdx >= currentTabFavorites.length) return prev;
+
+        const swapId = currentTabFavorites[swapIdx];
+
+        const newFavs = [...prev];
+        const i1 = newFavs.indexOf(id);
+        const i2 = newFavs.indexOf(swapId);
+
+        if (i1 >= 0 && i2 >= 0) {
+          [newFavs[i1], newFavs[i2]] = [newFavs[i2], newFavs[i1]];
+          localStorage.setItem("favorites", JSON.stringify(newFavs));
+        }
+        return newFavs;
+      });
+    };
+
+    // Use the native View Transitions API if supported
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          performMove();
+        });
+      });
+    } else {
+      performMove(); // Fallback for older browsers
+    }
   };
 
   useEffect(() => {
@@ -245,15 +311,20 @@ function App() {
     };
   }, []);
 
+  const titleMap = {
+    "Aartya": "Aarti Sangraha",
+    "Bhovtya": "Bhovti Sangraha",
+    "Pradakshina": "Pradakshina Sangraha"
+  };
+
   if (sortedAartiData.length === 0) {
-    return <div>Loading aartis or no aartis found... Check src/content/ folder.</div>;
+    return <div>Loading Aartya or no Aartya found... Check src/content/ folder.</div>;
   }
 
   return (
     <div className="app-container">
       <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="header-title-container">
-          <h1>Aarti Sangraha</h1>
+        <div className="sidebar-left-pane">
           <div className="header-actions">
             <button
               className="theme-toggle"
@@ -286,6 +357,22 @@ function App() {
               </button>
             )}
           </div>
+          <div className="content-type-tabs">
+            {["Aartya", "Bhovtya", "Pradakshina"].map(type => (
+              <button
+                key={type}
+                className={`tab-btn ${contentType === type ? 'active' : ''}`}
+                onClick={() => setContentType(type)}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+        </div>
+      </header>
+      <div className="sidebar-right-pane">
+        <div className="header-title-container">
+          {titleMap[contentType] || "Aarti Sangraha"}
         </div>
         <div className={`search-container ${query ? 'has-query' : ''}`}>
           <input 
@@ -316,11 +403,31 @@ function App() {
             </button>
           ))}
         </div>
-      </header>
+      </div>
       <div className="aarti-list">
-        {filtered.map(aarti => (
-          <article key={aarti.id} className="aarti-card">
+        {filtered.map((aarti, index) => (
+          <article 
+            key={aarti.id} 
+            className="aarti-card" 
+            style={selectedCategory === "Favorites" && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
+          >
             <div className="font-resizer">
+              {selectedCategory === "Favorites" && !searchQuery && (
+                <>
+                  <button 
+                    className="font-btn" 
+                    onClick={() => moveFavorite(aarti.id, 'up')} 
+                    disabled={index === 0}
+                    aria-label="Move Favorite Up"
+                  >▲</button>
+                  <button 
+                    className="font-btn" 
+                    onClick={() => moveFavorite(aarti.id, 'down')} 
+                    disabled={index === filtered.length - 1}
+                    aria-label="Move Favorite Down"
+                  >▼</button>
+                </>
+              )}
               <button className="favorite-btn" onClick={() => toggleFavorite(aarti.id)} aria-label="Toggle favorite">
                 {favorites.includes(aarti.id) ? '❤️' : '🤍'}
               </button>
@@ -332,7 +439,7 @@ function App() {
             <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(aarti.lyrics, searchQuery)}</div>
           </article>
         ))}
-        {filtered.length === 0 && <p style={{ textAlign: 'center', color: '#888' }}>No aartis found matching "{query}"</p>}
+        {filtered.length === 0 && <p style={{ textAlign: 'center', color: '#888' }}>No Aartya found matching "{query}"</p>}
       </div>
     </div>
   );
