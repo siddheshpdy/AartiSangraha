@@ -18,34 +18,34 @@ Add horizontal scrolling chips at the top (e.g., "All", "Ganpati", "Devi", "Shan
 Success Metric: Clicking "Ganpati" filters the list instantly without typing.
 
 🟡 Phase 2: User Experience (The "Puja" Mode)
-⏳ Feature 2.1: Font Resizer & Line Height - PENDING
+✅ Feature 2.1: Font Resizer & Line Height - COMPLETED
 
 Add [ A- ] and [ A+ ] buttons inside the Aarti detail view.
 
 Success Metric: Text size increases/decreases without breaking the layout.
 
-⏳ Feature 2.2: Dark/Devotional Theme - PENDING
+✅ Feature 2.2: Dark/Devotional Theme - COMPLETED
 
 Create a theme toggle (Light/Dark). Use "Saffron/Deep Maroon" accents for light and "Dark Grey/Gold" for dark.
 
 🔴 Phase 3: Personalization & Offline (The "App" Experience)
-⏳ Feature 3.1: Favorites System (LocalStorage) - PENDING
+✅ Feature 3.1: Favorites System (LocalStorage) - COMPLETED
 
 Add a heart icon to each Aarti.
 
 Create a "My Favorites" category that persists even after closing the browser.
 
-Success Metric: User can see their 5 most-used Aartis at the top.
+Success Metric: User can see their 5 most-used Aartya at the top.
 
-⏳ Feature 3.2: PWA Implementation - PENDING
+✅ Feature 3.2: PWA Implementation - COMPLETED
 
 Configure vite-plugin-pwa.
 
 Add a manifest file and service worker for offline caching.
 
-Success Metric: Website works and displays Aartis when Airplane Mode is on.
+Success Metric: Website works and displays Aartya when Airplane Mode is on.
 
-⏳ Feature 3.3: Wake Lock API - PENDING
+✅ Feature 3.3: Wake Lock API - COMPLETED
 
 Implement the screen.keepAwake (Wake Lock API) toggle.
 
@@ -53,7 +53,7 @@ Success Metric: The phone screen does not dim or lock while an Aarti is expanded
 
 
 🔴 Phase 4: Update Favorites behavior
-⏳ Feature 34.1: Favorites list sequencing based on user preference - PENDING
+✅ Feature 4.1: Favorites list sequencing based on user preference - COMPLETED
 
 Add a favorite item moving up and down functionality.
 Success Metric: User can move their favorites up and down in the list.

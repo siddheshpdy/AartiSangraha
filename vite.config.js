@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { generateAartis } from './src/scripts/prebuild.js'
+import { generateAartya } from './src/scripts/prebuild.js'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
@@ -11,12 +11,12 @@ export default defineConfig({
       name: 'watch-markdown-content',
       buildStart() {
         // Runs once when you start the dev server or run a build
-        generateAartis();
+        generateAartya();
       },
       handleHotUpdate({ file }) {
         // Runs whenever any file is saved during dev
         if (file.endsWith('.md')) {
-          generateAartis();
+          generateAartya();
         }
       }
     },
@@ -26,6 +26,7 @@ export default defineConfig({
         enabled: true
       },
       workbox: {
+        cleanupOutdatedCaches: true,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
         runtimeCaching: [
           {
@@ -61,11 +62,11 @@ export default defineConfig({
       manifest: {
         name: 'Aarti Sangraha',
         short_name: 'AartiApp',
-        description: 'Marathi Aartis for daily offline reading.',
+        description: 'Marathi Aartya for daily offline reading.',
         theme_color: '#FFF8E1',
         background_color: '#FFF8E1',
         display: 'standalone',
-      start_url: '/',
+        start_url: '.',
         icons: [
           {
             src: 'pwa-192x192.png',
