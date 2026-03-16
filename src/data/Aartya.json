@@ -4,6 +4,9 @@
     "type": "Aartya",
     "title": "Jai Dev Jai Dev Jai Shri Gurudatta",
     "deity": "Datta",
+    "titleEng": "Jai Dev Jai Dev Jai Shri Gurudatta",
+    "deityEng": "Datta",
+    "lyricsEng": "Jay dev jay dev jay shri gurudatta ।\r\nArati ovalita harali bhavachinta ‖ dhru ‖\r\n\r\nTrigunatmak traimurti datt ha jana।\r\nTriguni avatar trailokyarana ।\r\nNeti neti shabd n ye anumana ‖\r\nSuravar munijan yogi samadhi n ye dhyana ‖ १ ‖\r\n\r\nSabahy abhyntari tu ek datt ।\r\nAbhagyasi kaichi kalel hi mat ‖\r\nParahi paratali tethe kaicha ha het ।\r\nJanmamaranachahi puralase ant ‖ २ ‖\r\n\r\nDatt yeuniya ubha thakala ।\r\nBhave sashtange pranipat kela ‖\r\nPrasann houni ashirvad didhala ।\r\nJanmamaranacha phera chukavila ‖ ३ ‖\r\n\r\nDatt datt aisen lagale dhyan ।\r\nHarapale man jhale unman ‖\r\nMi tu panachi jhali bolavan ।\r\nEka janardani shridattadhyan ‖ ४ ‖",
     "lyrics": "जय देव जय देव जय श्री गुरुदत्ता ।\r\nआरती ओवाळिता हरली भवचिंता ‖ धृ ‖\r\n\r\nत्रिगुणात्मक त्रैमूर्ती दत्त हा जाणा।\r\nत्रिगुणी अवतार त्रैलोक्यराणा ।\r\nनेती नेती शब्द न ये अनुमाना ‖\r\nसुरवर मुनिजन योगी समाधी न ये ध्याना ‖ १ ‖\r\n\r\nसबाह्य अभ्यंतरी तू एक दत्त ।\r\nअभाग्यासी कैची कळेल ही मात ‖\r\nपराही परतली तेथे कैचा हा हेत ।\r\nजन्ममरणाचाही पुरलासे अंत ‖ २ ‖\r\n\r\nदत्त येऊनिया ऊभा ठाकला ।\r\nभावे साष्टांगे प्रणिपात केला ‖\r\nप्रसन्न होऊनि आशीर्वाद दिधला ।\r\nजन्ममरणाचा फेरा चुकवीला ‖ ३ ‖\r\n\r\nदत्त दत्त ऐसें लागले ध्यान ।\r\nहरपले मन झाले उन्मन ‖\r\nमी तू पणाची झाली बोळवण ।\r\nएका जनार्दनी श्रीदत्तध्यान ‖ ४ ‖"
   },
   {
@@ -11,13 +14,29 @@
     "type": "Aartya",
     "title": "Karito Preme Tuj Niranjan",
     "deity": "Datta",
+    "titleEng": "Karito Preme Tuj Niranjan",
+    "deityEng": "Datta",
+    "lyricsEng": "Karito preme tuj niranjan sthiravuniya man\r\nDattatreya sadguruvarya bhavarthekarun ‖dhru ‖\r\n\r\nDharanivar nar pidit jhale bhavarogen sarv\r\nKamakrodhadik ripuvarge vyapuni sagarv \r\nYog yag tap dan nenati asatanhi apurv\r\nSulabhapanen nijabhajanen tyasi, uddhari jo sharv ‖१‖\r\n\r\nAtrimuninchya sadanin tinhi dev bhuke yeti\r\nBhikshuk houni anasuyeprati bolati trayamurti\r\nNagn houni amhanprati dya ann asen vadati\r\nParisuni houni nagn ann de, tnv te shishu hoti ‖२‖\r\n\r\nDurvasabhidh mauni jahala shnbhu prathamendr ।\r\nBramhadev jo jahala chndr jahala to upendr ।\r\nDattatrey jo vitanidr to tarak﻿ yogindr ।\r\nVasudev yachcharan chintuni, ho nity atndr ‖३‖",
     "lyrics": "करितो प्रेमे तुज निरांजन स्थिरवुनिया मन\r\nदत्तात्रेया सद्गुरूवर्या भावार्थेकरून ‖धृ ‖\r\n\r\nधरणीवर नर पीडित झाले भवरोगें सर्व\r\nकामक्रोधादिक रिपुवर्गे व्यापूनि सगर्व \r\nयोग याग तप दान नेणति असतांहि अपूर्व\r\nसुलभपणें निजभजनें त्यासी, उद्धरी जो शर्व ‖१‖\r\n\r\nअत्रिमुनींच्या सदनीं तिन्ही देव भुके येती\r\nभिक्षुक होऊनी अनसूयेप्रति बोलती त्रयमूर्ती\r\nनग्न होऊनि आम्हांप्रती द्या अन्न असें वदती\r\nपरिसुनि होऊनि नग्न अन्न दे, तंव ते शिशु होती ‖२‖\r\n\r\nदुर्वासाभिध मौनी जाहला शंभू प्रथमेंद्र ।\r\nब्रम्हदेव जो जाहला चंद्र जाहला तो उपेंद्र ।\r\nदत्तात्रेय जो वितनिद्र तो तारक﻿ योगींद्र ।\r\nवासुदेव यच्चरण चिंतुनी, हो नित्य अतंद्र ‖३‖"
+  },
+  {
+    "id": "Aartya-datta-3",
+    "type": "Aartya",
+    "title": "shree guru dattaraj murti",
+    "deity": "Datta",
+    "titleEng": "Shree guru dattaraj murti",
+    "deityEng": "Datta",
+    "lyricsEng": "Shri gurudattaraj murti ovalito preme arati ‖ dhru ‖\r\n\r\nBrahma-vishnu-shnkaracha ase avatar shrigurucha ।\r\nKaraya uddhar jagacha jahala bal atri-rushicha ।\r\nDharila vesh ase yaticha mastaki mukut shobhe jaticha ॥ १ ॥\r\n\r\nKnthi rudraksh mal dharuni hatamadhye ayudh bahadh bharuni ।\r\nTene bhaktanche klesh haruni tyasi karuni naman aghashaman ।\r\nHoil ripudaman gaman ase trailokyavarati ॥ २ ॥\r\n\r\nGanagapuri vasati jyachi priti audunbar chhayechi ।\r\nBhima amarasngamachi bhakti ase bahut sushishyanchi ।\r\nVat davuniya yogachi thev detase nijamuktichi ॥ ३ ॥\r\n\r\nKashikshetri snan karito karavir bhikshela jato ।\r\nMahuri nidrela varito taratarit chhati jharajharit netr ।\r\nGaragarit shobhato trishul jaya hati ॥ ४ ॥\r\n\r\nAvadhut svami sukhannda ovalito saukhyaknda ।\r\nTari ha das hrudayaknda sodavi vishay moha-chhnda ।\r\nAlo sharan atrinnda davi sadguru brahmannda ॥ ५ ॥\r\n\r\nChukavi chauyaenshicha phera ghaliti shadripu maj ghera ।\r\nGanjiti putra-pautr dara vadavi bhajan mukhi tav pujan ।\r\nKaritase sujan jayanche balavntavarati ॥ ६ ॥",
+    "lyrics": "श्री गुरुदत्तराज मूर्ती ओवाळितो प्रेमे आरती ‖ धृ ‖\r\n\r\nब्रह्मा-विष्णु-शंकराचा असे अवतार श्रीगुरुचा ।\r\nकराया उद्धार जगाचा जाहला बाळ अत्रि-ऋषीचा ।\r\nधरिला वेष असे यतिचा मस्तकी मुकुट शोभे जटीचा ॥ १ ॥\r\n\r\nकंठी रुद्राक्ष माळ धरुनी हातामध्ये आयुध बहध भरुनी ।\r\nतेणे भक्तांचे क्लेश हरुनी त्यासी करुनी नमन अघशमन ।\r\nहोईल रिपुदमन गमन असे त्रैलोक्यावरती ॥ २ ॥\r\n\r\nगाणगापुरी वसति ज्याची प्रीति औदुंबर छायेची ।\r\nभीमा अमरसंगमाची भक्ति असे बहुत सुशिष्यांची ।\r\nवाट दावुनिया योगाची ठेव देतसे निजमुक्तीची ॥ ३ ॥\r\n\r\nकाशीक्षेत्री स्नान करितो करवीर भिक्षेला जातो ।\r\nमाहुरि निद्रेला वरितो तरतरित छाटि झरझरित नेत्र ।\r\nगरगरित शोभतो त्रिशुळ जया हाती ॥ ४ ॥\r\n\r\nअवधूत स्वामी सुखानंदा ओवाळितो सौख्यकंदा ।\r\nतारि हा दास हृदयकंदा सोडवी विषय मोह-छंदा ।\r\nआलो शरण अत्रिनंदा दावि सद्गुरु ब्रह्मानंदा ॥ ५ ॥\r\n\r\nचुकवी चौयाएंशीचा फेरा घालिती षड्रिपु मज घेरा ।\r\nगांजिती पुत्र-पौत्र दारा वदवी भजन मुखी तव पूजन ।\r\nकरितसे सुजन जयांचे बलवंतावरती ॥ ६ ॥"
   },
   {
     "id": "Aartya-devi-1",
     "type": "Aartya",
     "title": "Durge Durghat Bhari",
     "deity": "Devi",
+    "titleEng": "Durge Durghat Bhari",
+    "deityEng": "Devi",
+    "lyricsEng": "Durge durghat bhari tujavin snsari ।\r\nAnathanathe anbe karuna vistari ‖\r\nVari vari janmamarananten vari ।\r\nHari padalo ata snkat nivari ‖ 1 ‖\r\n\r\nJay devi jay devi mahishasuramardini ।\r\nSuravaraishvaravarade tarak snjivani ‖ dhru ‖\r\n\r\nTribhuvanabhuvani pahata tujaaisi nahi ।\r\nChari shramale parntu n bolave kanhi ‖\r\nSahi vivad karita padile pravahi ।\r\nTe tun bhaktanlagi pavasi lavalahi ‖ २ ‖ jay devi…\r\nPrasannavadane prasann hosi nijadasa ।\r\nKleshanpasuni sodavi todi bhavapasha ‖\r\nAnbe tujavanchun kon puravil asha ।\r\nNarahari tallin jhala padapnkajalesha ‖ ३ ‖ jay devi...",
     "lyrics": "दुर्गे दुर्घट भारी तुजविण संसारी ।\r\nअनाथनाथे अंबे करुणा विस्तारी ‖\r\nवारी वारी जन्ममरणांतें वारी ।\r\nहारी पडलो आता संकट निवारी ‖ 1 ‖\r\n\r\nजय देवी जय देवी महिषासुरमर्दिनी ।\r\nसुरवरईश्वरवरदे तारक संजीवनी ‖ धृ ‖\r\n\r\nत्रिभुवनभुवनी पाहता तुजऐसी नाही ।\r\nचारी श्रमले परंतु न बोलवे कांही ‖\r\nसाही विवाद करिता पडिले प्रवाही ।\r\nते तूं भक्तांलागी पावसि लवलाही ‖ २ ‖ जय देवी…\r\nप्रसन्नवदने प्रसन्न होसी निजदासा ।\r\nक्लेशांपासुनि सोडवी तोडी भवपाशा ‖\r\nअंबे तुजवांचून कोण पुरविल आशा ।\r\nनरहरि तल्लीन झाला पदपंकजलेशा ‖ ३ ‖ जय देवी..."
   },
   {
@@ -25,6 +44,9 @@
     "type": "Aartya",
     "title": "Jai Devi Jai Devi Jai Adishakti",
     "deity": "Devi",
+    "titleEng": "Jai Devi Jai Devi Jai Adishakti",
+    "deityEng": "Devi",
+    "lyricsEng": "Jay devi jay devi jay adishakti ।\r\nOvalu arati tuj ho bhagavati ‖ dhru ‖\r\n\r\nMulamaya rup tujhe n kale kavanasi ।\r\nBrahmadik suravar nar dhyati manasi ‖\r\nVyapuniya jag sarv khela khelasi ।\r\nVadhuni shunbhanishunbha deva var desi ‖jaya‖१‖\r\n\r\nDrushti vynkat pahatan kanpe tribhuvan ।\r\nMukh pasaruniya grasisi daityalagun ‖\r\nDashabhujaayudhe lakhalakhati jan ‖\r\nMardiyela mahishasur charani ghalun ‖jaya‖२‖\r\n\r\nPavade varnita khuntali mam vani ।\r\nVishv tvan mohiyale lavile dhyanin ‖\r\nMaya tu mauli jagatachi janani ।\r\nVinavuniyan govind dhyan ase manin ‖jaya‖3‖",
     "lyrics": "जय देवी जय देवी जय आदिशक्ती ।\r\nओवाळू आरती तुज हो भगवती ‖ धृ ‖\r\n\r\nमूळमाया रुप तुझे न कळे कवणासी ।\r\nब्रह्मादीक सुरवर नर ध्याती मानसी ‖\r\nव्यापुनिया जग सर्व खेळा खेळसी ।\r\nवधुनी शुंभनिशुंभा देवा वर देसी ‖जय‖१‖\r\n\r\nदृष्टी व्यंकट पाहतां कांपे त्रिभुवन ।\r\nमुख पसरूनिया ग्रासिसी दैत्यालागून ‖\r\nदशभुजाआयुधे लखलखती जाण ‖\r\nमर्दियेला महिषासुर चरणी घालून ‖जय‖२‖\r\n\r\nपवाडे वर्णिता खुंटली मम वाणी ।\r\nविश्व त्वां मोहियले लाविले ध्यानीं ‖\r\nमाया तू माऊली जगताची जननी ।\r\nविनवुनियां गोविंद ध्यान असे मनीं ‖जय‖3‖"
   },
   {
@@ -32,6 +54,9 @@
     "type": "Aartya",
     "title": "Ovalin Voja",
     "deity": "Devi",
+    "titleEng": "Ovalin Voja",
+    "deityEng": "Devi",
+    "lyricsEng": "Ovalin voja ‖ shivasahaja, adibhavani girija , kallolastaraja ‖\r\nCharubhuja, ai tukai tulaja, shaknbharibharga ।\r\nNavadurga hingulagirihingulaja, nivasapur lakshmi ‖\r\nMahalakshmi, kolhapurapattanaja ‖ ova. ‖ १ ‖\r\n\r\nMuka minakshi । Kamakshi, sarvahi karnatakaja, vyadhralayapuraja ।\r\nGuggulaja, bhillirnjitapunja, paththanapurachndi ।\r\nShrichndi nirahastej:punja, kotimukhajvala ‖\r\nShribala, vimala mngalagirija ‖ ova. ‖ २ ‖\r\n\r\nDei ya bhakti shrilalita, pujin mi sukhasarita, anba dnbaraja ।\r\nTalavataja, yuvaha mndapamahaja vindhyachalasadan ‖\r\nDadisadan, devi yashodatanuja, tara bhuvaneshi ।\r\nPnchadashi, brahma nndo darija ‖ ova. ‖ ३ ‖\r\n\r\nDaryaindrakshi । Pingakshi, lnkankit rushivatija tailnkonkanaja ‖\r\nPnkajaja, lavana sur mardane, anek puravanaja ।\r\nAbhitabhuja karanarupa viraja, kaleshrighishan ‖\r\nTrividhagun, satyadrumaja dramaja yogai: shrividya।\r\nShrividya khiradamanik girija ‖ onvalin ‖ ४ ‖",
     "lyrics": "ओवाळीन वोजा ‖ शिवसहजा, आदिभवानी गिरीजा , कल्लोलस्तरजा ‖\r\nचारुभुजा, आई तुकाई तुळजा, शाकंभरिभर्गा ।\r\nनवदुर्गा हिंगुळागिरिहिंगुळजा, निवासपुर लक्ष्मी ‖\r\nमहालक्ष्मी, कोल्हापुरपट्टणजा ‖ ओवा. ‖ १ ‖\r\n\r\nमुका मीनाक्षी । कामाक्षी, सर्वही कर्नाटकजा, व्याध्रालयपुरजा ।\r\nगुग्गुलजा, भिल्लीरंजितपूंजा, पठ्ठणपुरचंडी ।\r\nश्रीचंडी निरहस्तेज:पुंजा, कोटीमुखज्वाला ‖\r\nश्रीबाला, विमला मंगलागिरिजा ‖ ओवा. ‖ २ ‖\r\n\r\nदेई या भक्ती श्रीललिता, पुजिन मी सुखसरिता, अंबा डंबरजा ।\r\nतळवटजा, युवहा मंडपमहजा विंध्याचलसदन ‖\r\nददिसदन, देवी यशोदातनुजा, तारा भुवनेशी ।\r\nपंचदशी, ब्रह्मा नंदो दरिजा ‖ ओवा. ‖ ३ ‖\r\n\r\nदर्याइंद्राक्षी । पिंगाक्षी, लंकांकित ऋषिवटिजा तैलंकोंकणजा ‖\r\nपंकजजा, लवणा सुर मर्दने, अनेक पुरवणजा ।\r\nअभितभुजा कारणरूपा विरजा, कालेश्रीघीषण ‖\r\nत्रिविधगुण, सत्यद्रुमजा द्रमजा योगै: श्रीविद्या।\r\nश्रीविद्या खिरडामाणिक गिरिजा ‖ ओंवाळीन ‖ ४ ‖"
   },
   {
@@ -39,13 +64,29 @@
     "type": "Aartya",
     "title": "Mahishasuramardini Devi Tripurasundari",
     "deity": "Devi",
+    "titleEng": "Mahishasuramardini Devi Tripurasundari",
+    "deityEng": "Devi",
+    "lyricsEng": "(chal - jay jay ji madanantak gaurishnkara )\r\nMahishasuramardini devi tripurasundari ।  \r\nOvalin pncharati gheuni kari ‖ dhru ‖\r\n\r\n Ratnajadit sinhasani nity baisasi ।  \r\nDiptine lajavile bhaskar shashi ‖\r\nAshtabhuja devi tuj puju bhaktisi ।  \r\nDei । Yei । Pahi । Sukhasadane, mruganayane, shashivadane pav jhadakari ‖ १ ‖\r\n\r\nMaruniya chndamund dev rakshisi ।\r\nAvataruni bhumivari bhakt tarisi‖\r\nOvalit vasudev prarthito tamin ‖\r\nShakte।Mate।Lalite।Bhayaharane, sukhakaranen, shivaramane mukt maj karin ‖ २ ‖",
     "lyrics": "(चाल - जय जय जी मदानांतक गौरीशंकरा )\r\nमहिषासुरमर्दिनी देवि त्रिपुरसुंदरी ।  \r\nओवाळीन पंचारती घेऊनी करी ‖ धृ ‖\r\n\r\n रत्नजडीत सिंहासनी नित्य बैससी ।  \r\nदीप्तीने लाजविले भास्कर शशी ‖\r\nअष्टभुजा देवी तुज पूजु भक्तीसी ।  \r\nदेई । येई । पाही । सुखसदने, मृगनयने, शशिवदने पाव झडकरी ‖ १ ‖\r\n\r\nमारुनिया चंडमुंड देव रक्षिसी ।\r\nअवतरुनि भूमिवरी भक्त तारिसी‖\r\nओवाळीत वासुदेव प्रार्थीतो तमीं ‖\r\nशक्ते।माते।ललिते।भयहरणे, सुखकरणें, शिवरमणे मुक्त मज करीं ‖ २ ‖"
+  },
+  {
+    "id": "Aartya-devi-5",
+    "type": "Aartya",
+    "title": "Jay Jay Jagadambe",
+    "deity": "Devi",
+    "titleEng": "Jay Jay Jagadambe",
+    "deityEng": "Devi",
+    "lyricsEng": "Jay jay jagadnbe | shri anbe | renuke kalpakadnbe | jay jay || dhru ||\r\n \r\nAnupam svarupachi tujhi dhati | any nase ya srushti |\r\nTuj sam rup dusare, parameshti | karita jhala kashti |\r\nShashiras rasarasala ,vadanaputi | divy sulochan drushti |\r\nSuvarn ratnanchya, shiri mukuti | lopati ravishashi koti |\r\nGajamukhi tuj stavile hernbe | mngal sakalarnbhe || jay jay || १ ||\r\n\r\nKumakum chiri shobhe malavati | kasturi tilak lallati |\r\nNasik ati saral, hanuvati | ruchiramrut ras othi |\r\nSaman janu lavalya, dhanukoti | akarn lochan bhrukuti |\r\nShiri nit bhangavali, upharati | karnatakachi ghati |\r\nBhujng nilarnga, pari shobhe | veni pathivar lonbe || jay jay || २ ||\r\n \r\nKnkane kanakachi managati | divy mudya dash boti |\r\nBajubnd jade bahubati | charchuni keshar uti | sugndhi pushpanche har knthi |\r\nBahu motyanchi dati | angi navi choli, jarikathi | pit pitanbar tagati |\r\nPainjan padakamali, ati shobhe | bhramar dhavati lobhe || jay jay ||३ ||\r\n \r\nSakshap tu kshitichya talavati | tuchi svaye jagajethi |\r\nOvalit arati, dipatati | gheuni kar snpushti |\r\nKarunamrut hrudaye, snkati | dhavasi bhaktansathi |\r\nVishnudas sada, bahukashti | deshil jari nijabheti |\r\nTari mag kay une, ya labhe | dhav pav avilnbe || jay jay || ४ |",
+    "lyrics": "जय जय जगदंबे | श्री अंबे | रेणुके कल्पकदंबे | जय जय || धृ ||\r\n \r\nअनुपम स्वरुपाची तुझी धाटी | अन्य नसे या सृष्टी |\r\nतुज सम रूप दुसरे, परमेष्टी | करिता झाला कष्टी |\r\nशशीरस रसरसला ,वदनपुटी | दिव्य सुलोचन दृष्टी |\r\nसुवर्ण रत्नांच्या, शिरी मुकुटी | लोपती रविशशी कोटी |\r\nगजमुखी तुज स्तविले हेरंबे | मंगल सकळारंभे || जय जय || १ ||\r\n\r\nकुमकुम चिरी शोभे मळवटी | कस्तुरी टिळक लल्लाटी |\r\nनासिक अति सरळ, हनुवटी | रुचिरामृत रस ओठी |\r\nसमान जणू लवल्या, धनुकोटी | आकर्ण लोचन भ्रुकुटी |\r\nशिरी नीट भांगवळी, उफराटी | कर्नाटकची घाटी |\r\nभुजंग नीळरंगा, परी शोभे | वेणी पाठीवर लोंबे || जय जय || २ ||\r\n \r\nकंकणे कनकाची मनगटी | दिव्य मुद्या दश बोटी |\r\nबाजूबंद जडे बाहुबटी | चर्चुनी केशर उटी | सुगंधी पुष्पांचे हार कंठी |\r\nबहु मोत्यांची दाटी | अंगी नवी चोळी, जरीकाठी | पीत पितांबर तगटी |\r\nपैंजण पदकमळी, अति शोभे | भ्रमर धावती लोभे || जय जय ||३ ||\r\n \r\nसाक्षप तू क्षितिच्या तळवटी | तूचि स्वये जगजेठी |\r\nओवाळीत आरती, दिपताटी | घेऊनी कर संपुष्टी |\r\nकरुणामृत हृदये, संकटी | धावसी भक्तांसाठी |\r\nविष्णूदास सदा, बहुकष्टी | देशील जरी नीजभेटी |\r\nतरी मग काय उणे, या लाभे | धाव पाव अविलंबे || जय जय || ४ |"
   },
   {
     "id": "Aartya-ganpati-1",
     "type": "Aartya",
     "title": "Sukhakarta Dukhaharta",
     "deity": "Ganpati",
+    "titleEng": "Sukhakarta Dukhaharta",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Jay dev, jay dev jay mngalamurti । \r\nDarshanamatre man kamana purati ‖dhru‖\r\n\r\nSukhakarta dukhaharta, varta vighnanchi । \r\n Nuravi; puravi prem, krupa jayachi ।\r\nSarvangi sundar, uti shendurachi । \r\nKnthi jhalake mal, muktaphalanchi ‖१‖ jay dev..\r\n\r\nRatnakhachit phara, tuj gaurikumara ।\r\nChndanachi uti , kumakum keshara ।\r\nHirejadit mukut, shobhato bara ।\r\nRunajhunati nupure, charani ghagariya।\r\nJay dev jay dev jay mngalamurti ‖२‖ jay dev..\r\n\r\nLnbodar pitanbar, phanivarabndhana ।\r\nSaral sond, vakratund trinayana।\r\nDas ramacha, vat pahe sadana।\r\nSnkati pavave, nirvani rakshave, suravaravndana ‖३‖ jay dev..",
     "lyrics": "जय देव, जय देव जय मंगलमूर्ती । \r\nदर्शनमात्रे मन कामना पुरती ‖धृ‖\r\n\r\nसुखकर्ता दुखहर्ता, वार्ता विघ्नांची । \r\n नुरवी; पुरवी प्रेम, कृपा जयाची ।\r\nसर्वांगी सुंदर, उटी शेंदुराची । \r\nकंठी झळके माळ, मुक्ताफळांची ‖१‖ जय देव..\r\n\r\nरत्नखचित फरा, तुज गौरीकुमरा ।\r\nचंदनाची उटी , कुमकुम केशरा ।\r\nहिरेजडित मुकुट, शोभतो बरा ।\r\nरुणझुणती नूपुरे, चरणी घागरिया।\r\nजय देव जय देव जय मंगलमूर्ती ‖२‖ जय देव..\r\n\r\nलंबोदर पीतांबर, फणिवरबंधना ।\r\nसरळ सोंड, वक्रतुंड त्रिनयना।\r\nदास रामाचा, वाट पाहे सदना।\r\nसंकटी पावावे, निर्वाणी रक्षावे, सुरवरवंदना ‖३‖ जय देव.."
   },
   {
@@ -53,6 +94,9 @@
     "type": "Aartya",
     "title": "Aarti Karu Tuj Moraya",
     "deity": "Ganpati",
+    "titleEng": "Aarti Karu Tuj Moraya",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Arati karu tuj moraya ।\r\n Mngalagunanidhi rajaya ‖dhru. ‖ arati ..\r\n\r\nSiddhibuddhipati snkatanasha । \r\nVighnanivaran tun jagadisha ‖ १ ‖ arati ..\r\n\r\nDhundivinayak tu gajatunda ।\r\n Sinduracharchit vilasit shunda ‖ २ ‖ arati ..\r\n\r\nGosavinndan tanmay jhala । \r\nDeva dekhoniya tujh sharan ala ‖३‖ arati ..",
     "lyrics": "आरती करु तुज मोरया ।\r\n मंगळगुणानिधी राजया ‖धृ. ‖ आरती ..\r\n\r\nसिद्धीबुद्धीपती संकटनाशा । \r\nविघ्ननिवारण तूं जगदीशा ‖ १ ‖ आरती ..\r\n\r\nधुंडीविनायक तू गजतुंडा ।\r\n सिंदूरचर्चित विलसित शुंडा ‖ २ ‖ आरती ..\r\n\r\nगोसावीनंदन तन्मय झाला । \r\nदेवा देखोनिया तुझ शरण आला ‖३‖ आरती .."
   },
   {
@@ -60,6 +104,9 @@
     "type": "Aartya",
     "title": "Nana Parimal Durva",
     "deity": "Ganpati",
+    "titleEng": "Nana Parimal Durva",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Nanaparimal durva shendur shamipatren । \r\nLadu modak anne paripurit patren ‖\r\nAise pujan kelya bijaksharamntre । \r\nAshtahi siddhi navanidhi desi kshanamatren ‖\r\n\r\nJay dev jay dev jay mngalamurti । \r\nTujhe gun varnaya maj kaichi sphurti ‖ dhru ‌‍‌‖\r\n\r\nTujhe dhyan nirntar je koni kariti ।\r\n Tyanchi sakalahi pape vighrenhi harati ‖\r\nVaji varan shibika sevak sut yuvati । \r\nSarvahi pavati anti bhavasagar tarati ‖२‖ jay dev..‖\r\n\r\nSharanangat sarvasven bhajati tav charani ।\r\nKirti tayanchi rahe jovar shashitarani ‖\r\nTrailokyi te vijayi adabhut he karani । \r\nGosavinndan rat namasmarani‖३‖ jay dev ..‖",
     "lyrics": "नानापरिमळ दुर्वा शेंदूर शमिपत्रें । \r\nलाडू मोदक अन्ने परिपूरित पात्रें ‖\r\nऐसे पूजन केल्या बीजाक्षरमंत्रे । \r\nअष्टहि सिद्धी नवनिधी देसी क्षणमात्रें ‖\r\n\r\nजय देव जय देव जय मंगलमूर्ती । \r\nतुझे गुण वर्णाया मज कैची स्फूर्ती ‖ धृ ‌‍‌‖\r\n\r\nतुझे ध्यान निरंतर जे कोणी करिती ।\r\n त्यांची सकलही पापे विघ्रेंही हरती ‖\r\nवाजी वारण शिबिका सेवक सुत युवती । \r\nसर्वहि पावती अंती भवसागर तरती ‖२‖ जय देव..‖\r\n\r\nशरणांगत सर्वस्वें भजती तव चरणी ।\r\nकीर्ती तयांची राहे जोवर शशितरणि ‖\r\nत्रैलोक्यी ते विजयी अदभूत हे करणी । \r\nगोसावीनंदन रत नामस्मरणी‖३‖ जय देव ..‖"
   },
   {
@@ -67,13 +114,19 @@
     "type": "Aartya",
     "title": "Herambh Shivkul Dipaka",
     "deity": "Ganpati",
-    "lyrics": "हेरंभ शिवकुल दिपका | \r\nतुज आरती गणनायका ( ३ ) |\r\nआरती ओवाळीतो ‖ धृ ‖ हेरंभ..\r\n\r\nसिंदुरासुर मर्दुनि | सुरा सोडिले पाशातुन ‖\r\nदेवगण तुज वंदुनि । स्वस्थानी गेले हषुर्नी ‖ १ ‖ हेरंभ.. \r\n\r\nदर्शने तव श्रीपती । मनः कामना संपूर्ण होती \r\nस्वयं प्रकाशित तु गजवदना । निरांजन दिप काय तुला ‖ २ ‖ हेरंभ.. \r\n\r\nमंगलार्ती गुंफुनी | हि आरती द्वारकासुत गातो \r\nआरती ओवाळीतो | आरती ओवाळीतो ‖ ३ ‖ हेरंभ.."
+    "titleEng": "Herambh Shivkul Dipaka",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Hernbh shivakul dipaka | \r\nTuj arati gananayaka ( ३ ) |\r\nArati ovalito ‖ dhru ‖ hernbh..\r\n\r\nSindurasur marduni | sura sodile pashatun ‖\r\nDevagan tuj vnduni । Svasthani gele hashurni ‖ १ ‖ hernbh.. \r\n\r\nDarshane tav shripati । Manh kamana snpurn hoti \r\nSvayn prakashit tu gajavadana । Niranjan ovalito ‖ २ ‖ hernbh.. \r\n\r\nMngalarati gunphuni | hi arati dvarakasut gato (he) | \r\nArati ovalito | (tuja) arati ovalito ‖ ३ ‖ hernbh..",
+    "lyrics": "हेरंभ शिवकुल दिपका | \r\nतुज आरती गणनायका ( ३ ) |\r\nआरती ओवाळीतो ‖ धृ ‖ हेरंभ..\r\n\r\nसिंदुरासुर मर्दुनि | सुरा सोडिले पाशातुन ‖\r\nदेवगण तुज वंदुनि । स्वस्थानी गेले हषुर्नी ‖ १ ‖ हेरंभ.. \r\n\r\nदर्शने तव श्रीपती । मनः कामना संपूर्ण होती \r\nस्वयं प्रकाशित तु गजवदना । निरांजन ओवाळीतो ‖ २ ‖ हेरंभ.. \r\n\r\nमंगलारती गुंफुनी | हि आरती द्वारकासुत गातो (हे) | \r\nआरती ओवाळीतो | (तुज) आरती ओवाळीतो ‖ ३ ‖ हेरंभ.."
   },
   {
     "id": "Aartya-ganpati-5",
     "type": "Aartya",
     "title": "Shendur Lal Chadhayo",
     "deity": "Ganpati",
+    "titleEng": "Shendur Lal Chadhayo",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Shendur lal chadhayo achchha gajamukhako । \r\nDondil lal biraje sut gauriharako।\r\nHath liye gudalatdu sani suravarako ।\r\n Mahima kahe n jay lagat hun padako ‖ १ ‖\r\n\r\nJay jay ji ganaraj vidya sukhadata । \r\nDhany tumhar darshan mera man ramata ‖ dhru ‖\r\n\r\nAshtau siddhi dasi snkatako bairi ।\r\n Vighnavinashan mngal murat adhikari।\r\nKotisurajaprakash aisi chhabi teri ।\r\n Gndasthalamadamastak jhule shashibihari ‖२‖\r\n\r\nBhavabhagatase koi sharanagat ave ।\r\n Sntat snpat sabahi bharapur pave।\r\nAise tum maharaj moko ati bhave ।\r\n Gosavinndan nishidin gun gave ‖ ३ ‖",
     "lyrics": "शेंदुर लाल् चढायो अच्छा गजमुखको । \r\nदोंदिल लाल् बिराजे सुत गौरिहरको।\r\nहाथ लिये गुडलट्दु सांई सुरवरको ।\r\n महिमा कहे न जाय लागत हूं पदको ‖ १ ‖\r\n\r\nजय जय जी गणराज विद्या सुखदाता । \r\nधन्य तुम्हार दर्शन् मेरा मन रमता ‖ धृ ‖\r\n\r\nअष्टौ सिद्धी दासी संकटको बैरि ।\r\n विघ्नविनाशन मंगल मूरत अधिकारी।\r\nकोटीसूरजप्रकाश ऐसी छबि तेरी ।\r\n गंडस्थलमदमस्तक झूले शशिबिहारि ‖२‖\r\n\r\nभावभगतसे कोई शरणागत आवे ।\r\n संतत संपत सबही भरपूर पावे।\r\nऐसे तुम महाराज मोको अति भावे ।\r\n गोसावीनंदन निशिदिन गुन गावे ‖ ३ ‖"
   },
   {
@@ -81,6 +134,9 @@
     "type": "Aartya",
     "title": "Tu Sukhakarta Tu Dukhaharta",
     "deity": "Ganpati",
+    "titleEng": "Tu Sukhakarta Tu Dukhaharta",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Tu sukhakarta tu duhkhaharta । Vighnavinashak moraya ‖\r\nSnkati rakshi sharan tula mi । Ganapati bappa moraya ‖ dhru ‖\r\n\r\nTu sakalancha bhagy vidhata । Tun vidyecha svamidata। \r\nJnjanadip ujaluni amuchya nivavi nairashyala ‖ १ ‖\r\n\r\nTu mata tu pita jagi ya । Jnjata tu sarvasv jagi ya ‖\r\nPamar mi svar une bhasati । Tujhi arati gaya ‖ २ ‖\r\n\r\nMngalamurti tun gananayak । Vakratund tun siddhi vinayak।\r\n Tujhiya dvare aj patalo । Ye ichchhit maj dyaya ‖ ३ ‖",
     "lyrics": "तू सुखकर्ता तु दुःखहर्ता । विघ्नविनाशक मोरया ‖\r\nसंकटी रक्षी शरण तुला मी । गणपती बाप्पा मोरया ‖ धृ ‖\r\n\r\nतू सकलांचा भाग्य विधाता । तूं विद्येचा स्वामीदाता। \r\nज्ञानदीप उजळुनी आमुच्या निववी नैराश्याला ‖ १ ‖\r\n\r\nतू माता तू पिता जगी या । ज्ञाता तू सर्वस्व जगी या ‖\r\nपामर मी स्वर उणे भासती । तुझी आरती गाया ‖ २ ‖\r\n\r\nमंगलमूर्ति तूं गणनायक । वक्रतुंड तूं सिद्धि विनायक।\r\n तूझीया द्वारे आज पातलो । ये इच्छित मज द्याया ‖ ३ ‖"
   },
   {
@@ -88,6 +144,9 @@
     "type": "Aartya",
     "title": "Deendayala Ganapati Swami",
     "deity": "Ganpati",
+    "titleEng": "Deendayala Ganapati Swami",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Dinadayala ganapati svami dyavi maj bheti। \r\nTav charananchi sakhaya majala avadi mothi ‖dhru.।\r\n\r\nKavan aparadh mhanavuni deva kela rusava। \r\nAharnishi mi hrudayi tujha, karitase dhanva ‖ dinadayala.‖ १‖\r\n\r\nChintakupi padalon kon kadhil baheri। \r\nDhanven paven sakhaya karuna, karuni uddhari ‖dinadayala. ‖२‖\r\nAise hote chitti tari ka prathamachi deva। \r\nAngikar karuni kela, krupecha theva ‖dinadayala.‖३‖\r\n\r\nAtan karanen tyag tarihi svami aghatit।\r\nSharan alon majha ata, chukavi anarth ‖dinadayala. ‖४‖\r\n\r\nYadavasut ha vinavi donhi joduniyan kar।\r\nTav charanacha sakhaya majala, ahe adhar ‖dinadayala. ‖५‖",
     "lyrics": "दीनदयाळा गणपति स्वामी द्यावी मज भेटी। \r\nतव चरणांची सखया मजला आवडी मोठी ‖धृ.।\r\n\r\nकवण अपराध म्हणवुनि देवा केला रुसवा। \r\nअहर्निशी मी हृदयी तुझा, करितसे धांवा ‖ दीनदयाळा.‖ १‖\r\n\r\nचिंताकूपी पडलों कोण काढील बाहेरी। \r\nधांवें पावें सखया करुणा, करुनि उद्धरी ‖दीनदयाळा. ‖२‖\r\nऐसे होते चित्ती तरि का प्रथमचि देवा। \r\nअंगीकार करुनि केला, कृपेचा ठेवा ‖दीनदयाळा.‖३‖\r\n\r\nआतां करणें त्याग तरिही स्वामी अघटित।\r\nशरण आलों माझा आता, चुकवी अनर्थ ‖दीनदयाळा. ‖४‖\r\n\r\nयादवसुत हा विनवी दोन्ही जोडूनियां कर।\r\nतव चरणाचा सखया मजला, आहे आधार ‖दीनदयाळा. ‖५‖"
   },
   {
@@ -95,6 +154,9 @@
     "type": "Aartya",
     "title": "Vighnantaka Vighnesha",
     "deity": "Ganpati",
+    "titleEng": "Vighnantaka Vighnesha",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Vighnantak vighnesha he gajanana । \r\nArati mi kariton tuj puravi kamana ‖dhru.‖\r\n\r\nBhadrapadi shuddh chaturthis tav bari । \r\nMurti karuni sarv lok pujiti ghari । \r\nMahima tav varnave n papagiri hari ‖ \r\nYei, ghai, pahin, karuni tvara, \r\nVighnahara, de sugira, he krupadhana 2 ‖ १ ‖ vighnantak.. \r\n\r\nSnkati je paduni prabho smarati tujala ।\r\nMukt karisi jagati ya khachit tyanjala ‖ \r\nJanuni he tav bhajanin dhyas lagala ‖ \r\nGato, dhyato, namito, tari atan \r\nYa bhakta, dayavnta, gaurinndana 2 ‖ २ ‖ vighnantak..",
     "lyrics": "विघ्नांतक विघ्नेशा हे गजानना । \r\nआरती मी करितों तुज पुरवि कामना ‖धृ.‖\r\n\r\nभाद्रपदी शुद्ध चतुर्थीस तव बरी । \r\nमूर्ति करुनि सर्व लोक पूजिती घरी । \r\nमहिमा तव वर्णवे न पापगिरि हरी ‖ \r\nयेई, घाई, पाहीं, करुनि त्वरा, \r\nविघ्नहरा, दे सुगिरा, हे कृपाधना 2 ‖ १ ‖ विघ्नांतक.. \r\n\r\nसंकटि जे पडुनि प्रभो स्मरती तुजला ।\r\nमुक्त करिसी जगती या खचित त्यांजला ‖ \r\nजाणुनि हे तव भजनीं ध्यास लागला ‖ \r\nगातो, ध्यातो, नमितो, तारि आतां \r\nया भक्ता, दयावंता, गौरिनंदना 2 ‖ २ ‖ विघ्नांतक.."
   },
   {
@@ -102,6 +164,9 @@
     "type": "Aartya",
     "title": "Jai Ganesh Deva",
     "deity": "Ganpati",
+    "titleEng": "Jai Ganesh Deva",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Jay ganesh jay ganesh, jay ganesh deva । \r\nMata jisaki parvati, pita mahadeva‖ dhru ‖\r\nEk dnt dayavnt, char bhuja dhari । \r\nMathe sindur sohe, mushak ki savari ‖ १ ‖\r\n\r\nPan chadha़e, phal chadha़e, aur chadha़e meva ।\r\nLadduan ka bhog lage, snt karen seva ‖ २ ‖\r\n\r\nAndhan ko ankh det, kodha़in ko kaya ।\r\nBanjhan ko putr det, nirdhan ko maya ‖ ३ ‖\r\n\r\n'sura' shyam sharan ae, saphal kije seva ।\r\nMata jaki parvati, pita mahadeva ‖ ४ ‖\r\n\r\nDinan ki laj rakho, shnbhu sutakari ।\r\nKamana ko purn karo, jaun balihari ‖ ५ ‖",
     "lyrics": "जय गणेश जय गणेश, जय गणेश देवा । \r\nमाता जिसकी पार्वती, पिता महादेवा‖ धृ ‖\r\nएक दंत दयावंत, चार भुजा धारी । \r\nमाथे सिंदूर सोहे, मूषक की सवारी ‖ १ ‖\r\n\r\nपान चढ़े, फल चढ़े, और चढ़े मेवा ।\r\nलड्डुअन का भोग लगे, संत करें सेवा ‖ २ ‖\r\n\r\nअंधन को आंख देत, कोढ़िन को काया ।\r\nबांझन को पुत्र देत, निर्धन को माया ‖ ३ ‖\r\n\r\n'सूर' श्याम शरण आए, सफल कीजे सेवा ।\r\nमाता जाकी पार्वती, पिता महादेवा ‖ ४ ‖\r\n\r\nदीनन की लाज रखो, शंभु सुतकारी ।\r\nकामना को पूर्ण करो, जाऊं बलिहारी ‖ ५ ‖"
   },
   {
@@ -109,6 +174,9 @@
     "type": "Aartya",
     "title": "Aarti Sundar Vadanachi",
     "deity": "Ganpati",
+    "titleEng": "Aarti Sundar Vadanachi",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Arati sundar vadanachi । Girija shashighar tanayachi । Dhru l\r\n\r\nSvaynbhu pashchim digvisi ।\r\nPrakatala bhakt rakshanasi ।\r\nSanmukh sagar samadrushti ।\r\nShobhato harit giriprushti ।\r\nViraje sindur sarvanga ।\r\nVahate savy nabhignga ।\r\nVarnu kay tirth mahima ऽऽऽ ।\r\nSthan he pulin, ase jari vijan, nivase param krupene pavan te janile ।\r\nTribhuvani kshetr dhany jhale ।Dekhata murti ganeshachi । \r\nHoina trupti nayananchi । Arati …‖ १ ‖\r\nJay jay sumukh ekadnta ।\r\nVarada ruddhisiddhikanta ।\r\nJapata dvadash namansi ।\r\nKamana siddhi pada nesi।\r\nShobhavi pranav rup vadana ।\r\nKshalito tirtharaj charanan।\r\nAha ti astasamay shobhaऽऽऽ ।\r\nPujito tarani। Svarnamay kirani । Ninade gagani । Garjana mnd anbudhichi ।\r\n Chalate divy dundubhichi । Arati …‖2‖\r\n\r\nBhadrapad shuddh chaturthila ।\r\nBhaktagan yet darshanala ।\r\nUgavata dhany maghamas ।\r\nLagate righ yatrikans ।\r\nSakalajan nari-nar yeti ।\r\nDarshane pap mukt hoti ।\r\nKay to yatrecha divas ऽऽऽ ।\r\nMilena vat, usalali lat, svaricha that, datate gardi bhavikanchi ।\r\nPalakhi nighe morayachi ।\r\nArati gauni sadabhave ।\r\n Trivikram shantisukha pave ।\r\nAs hi puravi dasachi ।\r\nBhakti de akhnd charanachi । Arati …‖ ३ ‖",
     "lyrics": "आरती सुंदर वदनाची । गिरिजा शशिघर तनयाची । धृ l\r\n\r\nस्वयंभू पश्चिम दिग्विसी ।\r\nप्रकटला भक्त रक्षणासी ।\r\nसन्मुख सागर समदृष्टी ।\r\nशोभतो हरित गिरिपृष्टी ।\r\nविराजे सिंदुर सर्वांगा ।\r\nवाहते सव्य नाभीगंगा ।\r\nवर्णु काय तीर्थ महिमा ऽऽऽ ।\r\nस्थान हे पुलिन, असे जरी विजन, निवासे परम कृपेने पावन ते जाणिले ।\r\nत्रिभूवनी क्षेत्र धन्य झाले ।देखता मूर्ती गणेशाची । \r\nहोईना तृप्ती नयनांची । आरती …‖ १ ‖\r\nजय जय सुमुख एकदंता ।\r\nवरदा ऋद्धिसिद्धीकांता ।\r\nजपता द्वादश नामांसी ।\r\nकामना सिद्धी पदा नेसी।\r\nशोभवी प्रणव रुप वदना ।\r\nक्षाळितो तीर्थराज चरणां।\r\nअहा ती अस्तसमय शोभाऽऽऽ ।\r\nपूजितो तरणी। स्वर्णमय किरणी । निनदे गगनी । गर्जना मंद अंबुधीची ।\r\n चालते दिव्य दुंदुभीची । आरती …‖2‖\r\n\r\nभाद्रपद शुद्ध चतुर्थीला ।\r\nभक्तगण येत दर्शनाला ।\r\nउगवता धन्य माघमास ।\r\nलागते रीघ यात्रिकांस ।\r\nसकलजन नारी-नर येती ।\r\nदर्शने पाप मुक्त होती ।\r\nकाय तो यात्रेचा दिवस ऽऽऽ ।\r\nमिळेना वाट, उसळली लाट, स्वारीचा थाट, दाटते गर्दी भाविकांची ।\r\nपालखी निघे मोरयाची ।\r\nआरती गाऊनी सदभावे ।\r\n त्रिविक्रम शांतिसुखा पावे ।\r\nआस ही पुरवी दासाची ।\r\nभक्ती दे अखंड चरणाची । आरती …‖ ३ ‖"
   },
   {
@@ -116,6 +184,9 @@
     "type": "Aartya",
     "title": "Shyamalvarna Shadripudamana",
     "deity": "Krishna",
+    "titleEng": "Shyamalvarna Shadripudamana",
+    "deityEng": "Krishna",
+    "lyricsEng": "Shyamalavarna shadripudamana radharamana tuch hari।\r\nArati karito bahupremane bhavabhayasnkat dur kari‖  dhru ‖\r\n\r\nDanavadamana bhubhayaharana bhaktarakshana avaratasi।\r\nBhaktakajakalpadrum mhanuni nishidini dhyati bhakt tushi\r\nAtivishadhar jo kala phanivar kaliya yamunajalavasi\r\nTatphanivar tu nruty karuni pochavile tya muktisi‖ १‖\r\n\r\nKaitabh chanur knsadik he shaurye vadhile amit ari।\r\nNarad tunbar gati susvar varniti lila bahut pari‖\r\nApar mahima shravan karoni bhajali tyate mukt kari।\r\nDas tujha dattatray namuni prarthit ajnjanas hari। २ ।",
     "lyrics": "श्यामलवर्णा षड्रिपुदमना राधारमणा तूच हरी।\r\nआरति करितो बहुप्रेमाने भवभयसंकट दूर करी‖  धृ ‖\r\n\r\nदानवदमना भूभयहरणा भक्तरक्षणा अवरतसी।\r\nभक्तकाजकल्पद्रुम म्हणुनी निशिदिनी ध्याती भक्त तुशी\r\nअतिविषधर जो काळा फणिवर कालिया यमुनाजलवासी\r\nतत्फणिवर तू नृत्य करूनी पोचविले त्या मुक्तीसी‖ १‖\r\n\r\nकैटभ चाणुर कंसादिक हे शौर्ये वधिले अमित अरी।\r\nनारद तुंबर गाती सुस्वर वर्णिति लीला बहुत परी‖\r\nअपार महिमा श्रवण करोनी भजली त्याते मुक्त करी।\r\nदास तुझा दत्तात्रय नमुनी प्रार्थित अज्ञानास हरी। २ ।"
   },
   {
@@ -123,6 +194,9 @@
     "type": "Aartya",
     "title": "Ovalu Aarti Madangopala",
     "deity": "Krishna",
+    "titleEng": "Ovalu Aarti Madangopala",
+    "deityEng": "Krishna",
+    "lyricsEng": "Ovalu arati madanagopala ।\r\n Shyamasundar gala vaijayntimala ‖  dhru ‖\r\n\r\n-> charanakamal jyachen ati sukumar।\r\nDhvajavajrankush bridacha todar ‖ १ ‖\r\n\r\nNabhikamal jyachen brahmayachen sthan।\r\nHrudayin padak shobhe shrivatsalanchhan ‖ २‖\r\n\r\nMukhakamal pahatan sukhachiya koti।\r\nMohiyale manas harapali drushti ‖ ३ ‖\r\n\r\nJaditamugut jyacha daidipyaman  ।\r\nTenen tejen kondalen avaghen tribhuvan ‖४‖\r\n\r\nEka janardanin dekhiyelen rup ।\r\nPahatan avaghen jhale tadrup ‖५‖",
     "lyrics": "ओवाळू आरती मदनगोपाळा ।\r\n श्यामसुंदर गळा वैजयंतीमाळा ‖  धृ ‖\r\n\r\n-> चरणकमल ज्याचें अति सुकुमार।\r\nध्वजवज्रांकुश ब्रीदाचा तोडर ‖ १ ‖\r\n\r\nनाभिकमळ ज्याचें ब्रह्मयाचें स्थान।\r\nहृदयीं पदक शोभे श्रीवत्सलांछन ‖ २‖\r\n\r\nमुखकमल पाहतां सुखाचिया कोटी।\r\nमोहीयले मानस हारपली दृष्टी ‖ ३ ‖\r\n\r\nजडितमुगुट ज्याचा दैदीप्यमान  ।\r\nतेणें तेजें कोंदलें अवघें त्रिभुवन ‖४‖\r\n\r\nएका जनार्दनीं देखियेलें रूप ।\r\nपाहतां अवघें झाले तद्रूप ‖५‖"
   },
   {
@@ -130,6 +204,9 @@
     "type": "Aartya",
     "title": "Aarti Bhuvan Sundarachi",
     "deity": "Krishna",
+    "titleEng": "Aarti Bhuvan Sundarachi",
+    "deityEng": "Krishna",
+    "lyricsEng": "Arati bhuvanasundarachi । Indiravara mukundachi ‖dhru‖\r\n\r\nPadmasam padayugmarnga ।Ovalani hoti bhrunga ‖\r\nNakhamani shravatahe gnga । Je kan trividhatapabhnga ‖chala‖\r\n\r\nVartul gulph bhrajamane ।\r\nKinkinikvanit, nad ghanaghanit, vakivar jhunit, nupure jhan mnjirachi ।\r\nJhanan dhvani mnjirachi ‖ arati bhuvan ‖१‖\r\n\r\nPitapat hatakataptavarni । Kanchi nitnb susthanin ‖\r\nNabhichi agadh ho karani । Vishvajanakachi je janani ‖chala‖\r\n\r\nTrivalilalit udarashobha ।\r\nKabugala mal vilnbit jhalal kaustubh, saral bahu,\r\nShrivatsataralamani maral kakanachi ।\r\nPriti bahu jadit knkanachi ‖ arati bhuvana० ‖ ‖२‖\r\n\r\nIndusam asy kundaradana । Adhararunark binbavadana ‖\r\nPahatan bhranti pade madana । Sajalameyabdhi daityadamana ‖chala‖\r\n\r\nJhalakat maharakundalabha ।\r\nKutilakuntali, mayurapatravali veshtili, tilak bhalin keshari jhalalit, krushnakasturichi । Akshata kali kasturichi ‖३‖ arati bhuvan\r\n\r\nKalpadramatali murti । Saudamini kotidipti ‖\r\nGopigopavalay bhavati । Trivishtap pushpavrushti kariti ‖chala‖\r\n\r\nMnjul madhur muralinaden ।\r\nChakit gndharv, chakit apsara, suragirivara, karpuradhara,\r\nRatine premayukt sachi । Arati ovalit sachi ‖४‖ arati bhuvan\r\n\r\nVrundavaninche viharani । Sakhe ge krushn may bahini ‖\r\nShramalon bhavabhdhiche phiranin । Atan maj thav dei charanin ‖chala‖\r\n\r\n\r\nAha he purn punyashloka ।\r\nNamiton charan sharan mi, karuna yeun de vishalapanim, krushn nenaten bal apule, rakhi laj yachi ।\r\nDayanidhe rakhi laj yachi arati bhuvana‖५‖",
     "lyrics": "आरती भुवनसुंदराची । इंदिरावरा मुकुंदाची ‖धृ‖\r\n\r\nपद्मसम पादयुग्मरंगा ।ओवाळणी होति भृंगा ‖\r\nनखमणि श्रवताहे गंगा । जे कां त्रिविधतापभंगा ‖चाल‖\r\n\r\nवर्तुळ गुल्फ भ्राजमाने ।\r\nकिंकिणीक्वणित, नाद घणघणित, वाकिवर झुणित, नूपुरे झन मंजिराची ।\r\nझनन ध्वनी मंजिराची ‖ आरती भुवन ‖१‖\r\n\r\nपीतपट हाटकतप्तवर्णी । कांची नितंब सुस्थानीं ‖\r\nनाभिची अगाध हो करणी । विश्वजनकाची जे जननी ‖चाल‖\r\n\r\nत्रिवलीललित उदरशोभा ।\r\nकबुगळा माळ विलंबित झळाळ कौस्तुभ, सरळ बाहू,\r\nश्रीवत्सतरलमणि मरळ ककणाची ।\r\nप्रीति बहु जडित कंकणाची ‖ आरती भुवन० ‖ ‖२‖\r\n\r\nइंदुसम आस्य कुंदरदना । अधरारुणार्क बिंबवदना ‖\r\nपाहतां भ्रांति पडे मदना । सजलमेयब्धि दैत्यदमना ‖चाल‖\r\n\r\nझळकत महरकुंडलाभा ।\r\nकुटिलकुंतली, मयुरपत्रावली वेष्टिली, तिलक भालिं केशरी झळाळित, कृष्णकस्तुरीची । अक्षता काळि कस्तुरीची ‖३‖ आरती भुवन\r\n\r\nकल्पद्रमातळी मूर्ती । सौदामिनी कोटिदिप्ती ‖\r\nगोपीगोपवलय भवती । त्रिविष्टप पुष्पवृष्टि करिती ‖चाल‖\r\n\r\nमंजुळ मधुर मुरलिनदें ।\r\nचकित गंधर्व, चकित अप्सरा, सुरागिरिवरा, कर्पुराधरा,\r\nरतीने प्रेमयुक्त साची । आरती ओवाळित साची ‖४‖ आरती भुवन\r\n\r\nवृंदावनिंचे विहरणि । सखे गे कृष्ण माय बहिणी ‖\r\nश्रमलों भवाभ्धिचे फिरणीं । आतां मज ठाव देई चरणीं ‖चाल‖\r\n\r\n\r\nअहा हे पूर्ण पुण्यश्लोका ।\r\nनमितों चरण शरण मी, करुणा येऊं दे विशालपाणीम, कृष्ण नेणतें बाळ आपुले, राखि लाज याची ।\r\nदयानिधे राखि लाज याची आरती भुवन‖५‖"
   },
   {
@@ -137,6 +214,9 @@
     "type": "Aartya",
     "title": "Koti Kurvandiya",
     "deity": "Krishna",
+    "titleEng": "Koti Kurvandiya",
+    "deityEng": "Krishna",
+    "lyricsEng": "Koti kurvndiya madhavapayan ‖ \r\nUjalaॊn yeti yadavaraya ‖\r\nMngal snanen ghaluni lavalahya ‖\r\nAratya kariti arpuniya kaya ‖ १ ‖\r\n\r\nJay jay krushna keshava pnkajanabha ।\r\nTanmay pahatan lavanyatejagabha ‖ dhru. ‖\r\n\r\nSajana vyajana variti gopin bala ।\r\nEki ubhya gheuni chnpakamala ‖\r\nEki sumanen rngalya gopin bala ।\r\nEki pahati hariti ghanasavala ‖ jay. ‖ २ ‖\r\nDati kotisur sngit gayan kariti ।\r\nNarad premen tunbar susvar gati ‖\r\nSamadhibodhen tallin tadrup hoti ।\r\nAisa saje gopalakuladaivatin ‖ jay. ‖ ३ ‖",
     "lyrics": "कोटि कुर्वंडिया माधवपायां ‖ \r\nउजळॊं येती यादवराया ‖\r\nमंगल स्नानें घालुनि लवलाह्या ‖\r\nआरत्या करिती अर्पुनिया काया ‖ १ ‖\r\n\r\nजय जय कृष्णा केशवा पंकजनाभा ।\r\nतन्मय पाहतां लावण्यतेजगाभा ‖ धृ. ‖\r\n\r\nसजणा व्यजना वारिती गोपीं बाळा ।\r\nएकी उभ्या घेउनी चंपकमाळा ‖\r\nएकी सुमनें रंगल्या गोपीं बाळा ।\r\nएकी पाहती हरीती घनसावळा ‖ जय. ‖ २ ‖\r\nदाटी कोटिसुर संगित गायन करिती ।\r\nनारद प्रेमें तुंबर सुस्वर गाती ‖\r\nसमाधिबोधें तल्लिन तद्रूप होती ।\r\nऐसा साजे गोपाळकुळदैवतीं ‖ जय. ‖ ३ ‖"
   },
   {
@@ -144,6 +224,9 @@
     "type": "Aartya",
     "title": "Vida Ghya Ho Narayana",
     "deity": "Krishna",
+    "titleEng": "Vida Ghya Ho Narayana",
+    "deityEng": "Krishna",
+    "lyricsEng": "Vida ghya ho narayana krushna jagajjivana,\r\nVinavite rakhumai ‖ dasi hoin mi kanha\r\nVida ghya ho narayana ‖\r\n\r\nShanti he nagaveli l pane ghevoniya kari ‖\r\nMi pana jaluniya l chuna lavila vari ‖ vida ghya ho\r\n\r\nVasana phoduniya l churn keli supari l\r\nBhavarth kapurane l gholiyeli nirdhari ‖ vida\r\n\r\nVivek ha kat rng l rngi rngala surng ‖\r\nVairagy jayaphal l melavile sakal ‖ vida\r\n\r\nDaya he jayapatri l kshama lavng anilya ‖\r\nSubuddhi veladode l shivarami arpiyele ‖vida",
     "lyrics": "विडा घ्या हो नारायणा कृष्णा जगज्जीवना,\r\nविनविते रखुमाई ‖ दासी होईन मी कान्हा\r\nविडा घ्या हो नारायणा ‖\r\n\r\nशांती हे नागवेली l पाने घेवोनीया करी ‖\r\nमी पणा जाळूनीया l चुना लावीला वरी ‖ विडा घ्या हो\r\n\r\nवासना फोडूनीया l चूर्ण केली सुपारी l\r\nभावार्थ कापूराने l घोळीयेली निर्धारी ‖ विडा\r\n\r\nविवेक हा कात रंग l रंगी रंगला सुरंग ‖\r\nवैराग्य जायफळ l मेळविले सकळ ‖ विडा\r\n\r\nदया हे जायपत्री l क्षमा लवंग आणील्या ‖\r\nसुबुद्धी वेलदोडे l शिवरामी अर्पियेले ‖विडा"
   },
   {
@@ -151,6 +234,9 @@
     "type": "Aartya",
     "title": "Jai Jai Anjanibala",
     "deity": "Maruti",
+    "titleEng": "Jai Jai Anjanibala",
+    "deityEng": "Maruti",
+    "lyricsEng": "Jay jay anjanibala । \r\nPncharati hi kariton tujala ‖\r\n\r\nSita shodhe tav javoni ।\r\nJalili lnka dusht vadhoni ‖\r\nJanakisah ramala ।\r\nNesi ayoddhe sukhadhamala ‖ jay. ‖ १ ‖\r\n\r\nCharani sharan mi bhaven alo (high) ।\r\nBrahm sadodit hrudayi khelo \r\nAisha de jnjanala ।\r\nDhany kari ya balavatkavila ‖ jay. ‖ २ ‖",
     "lyrics": "जय जय अंजनिबाला । \r\nपंचारति ही करितों तुजला ‖\r\n\r\nसीता शोधे तव जावोनी ।\r\nजाळीली लंका दुष्ट वधोनी ‖\r\nजानकिसह रामाला ।\r\nनेसी अयोद्धे सुखधामाला ‖ जय. ‖ १ ‖\r\n\r\nचरणी शरण मी भावें आलो (high) ।\r\nब्रह्म सदोदित हृदयी खेळो \r\nऐशा दे ज्ञानाला ।\r\nधन्य करी या बलवत्कविला ‖ जय. ‖ २ ‖"
   },
   {
@@ -158,6 +244,9 @@
     "type": "Aartya",
     "title": "Satrane Uddane Hunkar Vadani",
     "deity": "Maruti",
+    "titleEng": "Satrane Uddane Hunkar Vadani",
+    "deityEng": "Maruti",
+    "lyricsEng": "Satrane uddane hunkar vadani। \r\nKari dalamal bhumndal sindhujal gaganin ।\r\nKadadilen brahmand dhake tribhuvanin ।\r\nSuravar nar nishachar tyan jhalya palani ‖ १ ‖\r\n\r\nJay dev jay dev jay jay hanumnta ।\r\nTumacheni pratape n bhiye krutanta ‖ dhru० ‖\r\n\r\nDumadumile patal uthala pratishabd ।\r\nDhagadhagila dharanidhar manila khed ।\r\nKadadile parvat udugan uchchhed ।\r\nRamin ramadasa shakticha shodh ‖ २ ‖",
     "lyrics": "सत्राणे उड्डाणे हुंकार वदनी। \r\nकरि डळमळ भूमंडळ सिंधूजळ गगनीं ।\r\nकडाडिलें ब्रह्मांड धाके त्रिभुवनीं ।\r\nसुरवर नर निशाचर त्यां झाल्या पळणी ‖ १ ‖\r\n\r\nजय देव जय देव जय जय हनुमंता ।\r\nतुमचेनि प्रतापे न भिये कृतान्ता ‖ धृ० ‖\r\n\r\nदुमदुमिले पाताळ उठला प्रतिशब्द ।\r\nधगधगिला धरणीधर मानिला खेद ।\r\nकडाडिले पर्वत उडुगण उच्छेद ।\r\nरामीं रामदासा शक्तीचा शोध ‖ २ ‖"
   },
   {
@@ -165,6 +254,9 @@
     "type": "Aartya",
     "title": "Aarti Dnyanraja",
     "deity": "Dnyaneshwar",
+    "titleEng": "Aarti Dnyanraja",
+    "deityEng": "Dnyaneshwar",
+    "lyricsEng": "Arati jnjanaraja | mahakaivalyateja |\r\n Seviti sadhusnt | manu vedhala majha |arati jnjanaraja ||dhru०||\r\n\r\nLopalen jnjan jagin | hit nenati koni |\r\nAvatar pandurng | nam thevilen jnjani || १ ||\r\n\r\nKanakache tat karin | ubhya gopika nari |\r\nNarad tunbarahi | sam gayan kari || २ ||\r\n\r\nPragat guhy bole | vishv brahyache kelen |\r\nRama janardani | payin mastak thevilen || ३ ||",
     "lyrics": "आरती ज्ञानराजा | महाकैवल्यतेजा |\r\n सेविती साधुसंत | मनु वेधला माझा |आरती ज्ञानराजा ||धृ०||\r\n\r\nलोपलें ज्ञान जगीं | हित नेणती कोणी |\r\nअवतार पांडुरंग | नाम ठेविलें ज्ञानी || १ ||\r\n\r\nकनकाचे ताट करीं | उभ्या गोपिका नारी |\r\nनारद तुंबरही | साम गायन करी || २ ||\r\n\r\nप्रगट गुह्य बोले | विश्व ब्रह्याचे केलें |\r\nरामा जनार्दनी | पायीं मस्तक ठेविलें || ३ ||"
   },
   {
@@ -172,6 +264,9 @@
     "type": "Aartya",
     "title": "aghasankta bhaynashan sukhada vighnesha",
     "deity": "Panchayatan",
+    "titleEng": "Aghasankta bhaynashan sukhada vighnesha",
+    "deityEng": "Panchayatan",
+    "lyricsEng": "Aghasnkatabhayanashan sukhada vigdhesha । \r\nAdya suravaravndya naravaran vesha ‖\r\nPashankushadhar sundar puravisi asha । \r\nNijavar deuni harisi bhrantichya pasha ‖ ‖ १ ‖\r\n\r\nJay dev jay dev jay sukhakar murti । \r\nGanapati shiv haribhaskar anba sukhamurti ‖ dhru ‖\r\n\r\nPayasagarajakanta dharanidharashayana । \r\nKarunalay varisi bhav varijadalanayana ‖\r\nGarudadhvaj bhajan priy pitaprabhavasana । \r\nAnudinn tav kirtanaras chakho he rasana ‖ jay ‖ २‖ jay dev ..\r\n\r\nNndivahana gahana parvatichya ramana । \r\nManmathadahana shnbho vatatamajanayana ‖\r\nSarvopay vivarjit tapatrayashamana । \r\nKailasachalavasa karisi suranamana ‖ jay ‖ ३ ‖ jay dev ..\r\n\r\nPadmaprabodhakarana netrabhramaharana । \r\nGodhan bndhanaharata dyotak acharana ‖\r\nKiran sparshe varisi ya tam avarana । \r\nSharanagat bhayanashan sukhavardhanakarana ‖ jay ‖ ४ ‖ jay dev ..\r\n\r\n(chal badalali)\r\nTribhuvanautpati palan karisi । Karisi tun maya । \r\nNahin tujhiya rupa dusari । Dusari upama ya ‖\r\nTujha gunaganamahima n kale । N kale nigama ya l\r\nKaruna karisi anbe ss maya man vishra maya ‖ jay ‖ ५‖ jay dev ..",
     "lyrics": "अघसंकटभयनाशन सुखदा विग्धेशा । \r\nआद्या सुरवरवंद्या नरवारण वेशा ‖\r\nपाशांकुशधर सुंदर पुरवीसी आशा । \r\nनिजवर देऊनि हरिसी भ्रांतीच्या पाशा ‖ ‖ १ ‖\r\n\r\nजय देव जय देव जय सुखकर मूर्ती । \r\nगणपति शिव हरीभास्कर अंबा सुखमूर्ती ‖ धृ ‖\r\n\r\nपयसागरजाकांता धरणीधरशयना । \r\nकरुणालय वारिसि भव वारिजदलनयना ‖\r\nगरुडध्वज भजन प्रिय पीतप्रभवसना । \r\nअनुदिनं तव कीर्तनरस चाखो हे रसना ‖ जय ‖ २‖ जय देव ..\r\n\r\nनंदीवहना गहना पार्वतिच्या रमणा । \r\nमन्मथदहना शंभो वातातमजनयना ‖\r\nसर्वोपाय विवर्जित तापत्रयशमना । \r\nकैलासाचलवासा करिसी सुरनमना ‖ जय ‖ ३ ‖ जय देव ..\r\n\r\nपद्मप्रबोधकरणा नेत्रभ्रमहरणा । \r\nगोधन बंधनहरता द्योतक आचरणा ‖\r\nकिरण स्पर्शे वारिसि या तम आवरणा । \r\nशरणागत भयनाशन सुखवर्धनकरणा ‖ जय ‖ ४ ‖ जय देव ..\r\n\r\n(चाल बदलली)\r\nत्रिभुवनउत्पति पालन करिसी । करिसी तूं माया । \r\nनाहीं तुझिया रूपा दुसरी । दुसरी उपमा या ‖\r\nतुझा गुणगणमहिमा न कळे । न कळे निगमा या l\r\nकरुणा करिसी अंबे ss माया मन विश्रा माया ‖ जय ‖ ५‖ जय देव .."
   },
   {
@@ -179,6 +274,9 @@
     "type": "Aartya",
     "title": "Sagun He Aarti",
     "deity": "Others",
+    "titleEng": "Sagun He Aarti",
+    "deityEng": "Others",
+    "lyricsEng": "Sagun he arati nirgun ovalu l\r\nKalpaneche ghrut ghalu dip pajalu ‖१‖\r\nOvalu arati sadgurunatha, deva pndharinatha l\r\nBhave charanakamalavari thevila matha ‖dhru॰‖\r\nAvidyecha moh padala upadoni sandu l\r\nAsha manisha trushna kam krodh kuravndu ‖२‖\r\nSadguruche pujan kele shodashopachari l\r\nRamannd jivan mukt jhala snsari ‖३‖ ovalu arati..",
     "lyrics": "सगुण हे आरती निर्गुण ओवाळू l\r\nकल्पनेचे घृत घालू दीप पाजळू ‖१‖\r\nओवाळू आरती सद्गुरुनाथा, देवा पंढरीनाथा l\r\nभावे चरणकमळावरी ठेविला माथा ‖ध्रु॰‖\r\nअविद्येचा मोह पडला उपडोनी सांडू l\r\nआशा मनिषा तृष्णा काम क्रोध कुरवंडू ‖२‖\r\nसद्गुरूचे पूजन केले षोडशोपचारी l\r\nरामानंद जीवन मुक्त झाला संसारी ‖३‖ ओवाळू आरती.."
   },
   {
@@ -186,6 +284,9 @@
     "type": "Aartya",
     "title": "Jai Jai Satchitsvarupa",
     "deity": "Gajanan Maharaj",
+    "titleEng": "Jai Jai Satchitsvarupa",
+    "deityEng": "Gajanan Maharaj",
+    "lyricsEng": "‖ gajanan maharaj arati ‖\r\n\r\nJay jay satchitsvarupa svami ganaraya।\r\nAvataralasi var jada-mudh taraya ‖ dhru.‖\r\n\r\nNirgun brahm sanatan avyav avinashi।\r\nSthirachar vyapun uralen jen ya jagatasi।\r\nTe tu tattv kharokhar nihsnshay asasi।\r\nLilamatrn dharile manavadehasi ‖ १ ‖ \r\n\r\nHou n desi tyachi janiv tu kavana ।\r\nKaruni 'gan gan ganant bote' ya bhajana।\r\nDhata harihar guruvar tuch sukhasadana।\r\nJikade pahaven tikaden tu disasi nayana ‖ २‖\r\n\r\nLila annt kelya bnkatasadanas।\r\nPetavilen tya agrivachuni chilames।\r\nKela brahmagirichya garvacha nash ‖\r\nKshanat anile jivan nirjal vapis ‖ ३ ‖ \r\n\r\nVyadhi varun kele kaikan snpann ।\r\nKaravile bhaktalangi viththal darshan ।\r\nBhavasindhu ha taranya nauka tav charan।\r\nSvami dasaganuche many kara kavan ‖ ४‖",
     "lyrics": "‖ गजानन महाराज आरती ‖\r\n\r\nजय जय सत्चित्स्वरूपा स्वामी गणराया।\r\nअवतरलसी वर जड-मूढ ताराया ‖ धृ.‖\r\n\r\nनिर्गुण ब्रह्म सनातन अव्यव अविनाशी।\r\nस्थिरचर व्यापून उरलें जें या जगतासी।\r\nते तू तत्त्व खरोखर निःसंशय अससी।\r\nलीलामात्रं धरिले मानवदेहासी ‖ १ ‖ \r\n\r\nहोऊ न देसी त्याची जाणिव तू कवणा ।\r\nकरूनी 'गण गण गणांत बोते' या भजना।\r\nधाता हरिहर गुरुवर तूच सुखसदना।\r\nजिकडे पहावें तिकडें तू दिससी नयना ‖ २‖\r\n\r\nलीला अनंत केल्या बंकटसदनास।\r\nपेटविलें त्या अग्रीवाचुनि चिलमेस।\r\nकेला ब्रह्मगिरीच्या गर्वाचा नाश ‖\r\nक्षणात आणिले जीवन निर्जल वापीस ‖ ३ ‖ \r\n\r\nव्याधी वारून केले कैकां संपन्न ।\r\nकरविले भक्तालांगी विठ्ठल दर्शन ।\r\nभवसिंधु हा तरण्या नौका तव चरण।\r\nस्वामी दासगणुचे मान्य करा कवन ‖ ४‖"
   },
   {
@@ -193,6 +294,9 @@
     "type": "Aartya",
     "title": "Pahi Pahi Mahalase",
     "deity": "Mahalasa Narayani",
+    "titleEng": "Pahi Pahi Mahalase",
+    "deityEng": "Mahalasa Narayani",
+    "lyricsEng": "‖ mahalasa narayani ( gova )‖\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖\r\n\r\nKshiraniradhi sannidhau dhrutalok mohak vigrahe\r\nVardhitatma-surupajata-parnspara suravigrahe।\r\nMohini harirupini suravar tap vidarini\r\nTvn vidarayameऽshubhn shubhamashu dehi ch bhahi ch ‖१‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate।\r\n\r\nTvamavekshy sulajjita muditantara:shritamanmatha \r\nIndirambujachandira hayamrutandhaso ditinandanah ।\r\nTvn jayasuramohini suramohini naramohini\r\nTvamahn sharanagatossmi natoऽsmi taray mamaghat ‖२‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kaladevate ‖\r\n\r\nHema-bhushana-bhushite navayauvanen vikasite\r\nPurnimanava-chandramh-pratimanane mrugalochane।\r\nKundakungamaladantapangiktavirajitorvarunadhare\r\nSantat karunastu te mayi kamade karunakare ॥३॥\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖\r\n\r\nNilanirajamechake phaniveniveshitamallike\r\nSukshmapitadukulabhaksadakhandachitsakhasattano ।\r\nRgandadarpanadipadipakakarnakandalamandite\r\nDevi mamav mandahasavikashitorudigantare ‖४‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖\r\n\r\nPinatungagasamanamanamanoharorupayadhare\r\nBramhasutravirajite kuchabharanamasumadhyame ।\r\nHavabhavamitekshanaih parivachitasurasachchaye\r\nVashchayashi madiyapapakadambakn jagadambike ‖५‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖\r\n\r\nBrahmavayuphanindravindrashivendrachandramukhaihsuraih\r\nRarchitaih surasundaribhiramandachandanacharchachite।\r\nLajjitabjanivasini prachalatkatakshanirikshite\r\nTvan namami namami mamav naumi naumi ch kaumich ।६‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖\r\n\r\nShulakhadag.sudhantapatrashir:karabjayugadvaye\r\nMayirahashirovidarini nirjaramrutadayini ।\r\nKshirasagarasarabhutasudhavitarakrutamare\r\nParvatiramanatmabhogakumohaharini mamav ‖७‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖\r\n\r\nShrunvidn stavanashtakn tav bhaktithpathitn maya\r\nSharm dehi mamaghamash vinashayamarasharmade।\r\nPretabhutapishachakagraharogabadhavidarike\r\nViprasntkumathapurijaninadirayanavandite ‖८‖\r\n\r\nPahi pahi mahalase gatalalase sukhanalase ।\r\nMan sada karunanvite surasevite kuladevate ‖",
     "lyrics": "‖ महालसा नारायणी ( गोवा )‖\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖\r\n\r\nक्षीरनीरधि सन्निधौ धृतलोक मोहक विग्रहे\r\nवर्धितात्म-सुरूपजात-परंस्परा सुरविग्रहे।\r\nमोहिनी हरिरूपिणी सुरवार ताप विदारिणी\r\nत्वं विदारयमेऽशुभं शुभमाशु देहि च भाहि च ‖१‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते।\r\n\r\nत्वामवेक्ष्य सुलज्जिता मुदितान्तरा:श्रितमन्मथा \r\nइन्दिराम्बुजचन्दिरा हयमृतान्धसो दितिनन्दनाः ।\r\nत्वं जयासुरमोहिनी सुरमोहिनी नरमोहिनी\r\nत्वामहं शरणागतोsस्मि नतोऽस्मि तारय मामघात् ‖२‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कलदेवते ‖\r\n\r\nहेम-भूषण-भूषिते नवयौवनेन विकासिते\r\nपूर्णिमानव-चन्द्रमः-प्रतिमानने मृगलोचने।\r\nकुन्दकुङमलदन्तपङिक्तविराजितोर्वरुणाधरे\r\nसन्तत करुणास्तु ते मयि कामदे करुणाकरे ॥३॥\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖\r\n\r\nनीलनीरजमेचके फणिवेणिवेशितमल्लिके\r\nसूक्ष्मपीतदुकूलभाक्सदखण्डचित्सखसत्तनो ।\r\nर्गण्डदर्पणदीपदीपककर्णकण्डलमण्डिते\r\nदेवि मामव मन्दहासविकाशितोरुदिगन्तरे ‖४‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖\r\n\r\nपीनतुङगसमानमानमनोहरोरुपयाधरे\r\nब्रम्हसूत्रविराजिते कुचभारनमसुमध्यमे ।\r\nहावभावमितेक्षणैः परिवचितासुरसच्चये\r\nवश्चयाशी मदीयपापकदम्बकं जगदम्बिके ‖५‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖\r\n\r\nब्रह्मवायुफणीन्द्रवीन्द्रशिवेन्द्रचन्द्रमुखैःसुरैः\r\nरर्चितैः सुरसुन्दरीभिरमन्दचन्दनचर्चचिते।\r\nलज्जिताब्जनिवासिनी प्रचलत्कटाक्षनिरीक्षिते\r\nत्वां नमामि नमामि मामव नौमि नौमि च कौमिच ।६‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖\r\n\r\nशूलखडग.सुधान्तपात्रशिर:कराब्जयुगद्वये\r\nमायिराहशिरोविदारिणि निर्जरामृतदायिनी ।\r\nक्षीरसागरसारभूतसुधावितारकृतामरे\r\nपार्वतीरमणात्मभोगकुमोहहारिणी मामव ‖७‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖\r\n\r\nशृण्विदं स्तवनाष्टकं तव भक्तितःपठितं मया\r\nशर्म देहि ममाघमाश विनाशयामरशर्मदे।\r\nप्रेतभूतपिशाचकग्रहरोगबाधविदारिके\r\nविप्रसंत्कुमठापुरीजनिनादिरायणवन्दिते ‖८‖\r\n\r\nपाहि पाहि महालसे गतलालसे सुखनालसे ।\r\nमां सदा करुणान्विते सुरसेविते कुलदेवते ‖"
   },
   {
@@ -200,6 +304,9 @@
     "type": "Aartya",
     "title": "Avatarla Raghupati",
     "deity": "Ram",
+    "titleEng": "Avatarla Raghupati",
+    "deityEng": "Ram",
+    "lyricsEng": "Avatarala raghupati je । (ha ha ha ha… )\r\nAnndali vasudha ti‖\r\nGndharv vanita madhyanh samayi । Mngal ghoshe nachati thai thai ‖ dhru‖।\r\n\r\nAmrut kalyavalya । Chaphekalya tya phulalya ‖ (ha ha ha ha… ) \r\nPrasut jhali shri kausalya । Sarita vahe amrutatulya ‖ avatarala ..‖\r\n\r\nVajntrache jod vajati dvarapudhe ‖ (ha ha ha ha… ) \r\nAngani kunkum keshari sade । Gudhiya makhar chahukade ‖ avatarala .. ‖\r\n\r\nKshirabdhi sam vade । Surataruchi phulajhade‖ (ha ha ha ha… ) \r\nArundhati balntinikade । Vatitase ho bolavide ‖ avatarala .. ‖\r\n\r\nDevadharmasathi । Kiti sosu atati‖ (ha ha ha ha… ) \r\nMuktiche mastaki deuni pati । Madhvamunishvar sakhar vati ‖avatarala ..‖",
     "lyrics": "अवतरला रघुपती जे । (हा हा हा हा… )\r\nआनंदली वसुधा ती‖\r\nगंधर्व वनिता माध्यान्ह समयी । मंगल घोषे नाचती थै थै ‖ धृ‖।\r\n\r\nअमृत कल्यावल्या । चाफेकळ्या त्या फुलल्या ‖ (हा हा हा हा… ) \r\nप्रसूत झाली श्री कौसल्या । सरिता वाहे अमृततुल्या ‖ अवतरला ..‖\r\n\r\nवाजंत्राचे जोड वाजती द्वारापुढे ‖ (हा हा हा हा… ) \r\nअंगणि कुंकुम केशरी सडे । गुढिया मखर चहुकडे ‖ अवतरला .. ‖\r\n\r\nक्षीराब्धी सम वाडे । सुरतरुची फुलझाडे‖ (हा हा हा हा… ) \r\nअरुंधती बाळंतिणीकडे । वाटीतसे हो बोळवीडे ‖ अवतरला .. ‖\r\n\r\nदेवाधर्मासाठी । किती सोसू आटाटी‖ (हा हा हा हा… ) \r\nमुक्तीचे मस्तकी देऊनी पाटी । मध्वमुनीश्वर साखर वाटी ‖अवतरला ..‖"
   },
   {
@@ -207,6 +314,9 @@
     "type": "Aartya",
     "title": "shyamsundar ramache charankamale",
     "deity": "Ram",
+    "titleEng": "Shyamsundar ramache charankamale",
+    "deityEng": "Ram",
+    "lyricsEng": "Shyamasundar ramache charanakamale । \r\nOvalu arati kanakapariyali ‖ dhru‖\r\n\r\nBala mugdha yauvan praudha sundari ।\r\nAratya gheuni aliya nari ‖१‖ \r\n\r\nChaughe hmanati nijagati chala mndira ।\r\nNav tyahi ichchhiti seva sundara ‖२‖\r\n\r\nDas hmane suman sheje chala shrihari ।\r\nKshan ek vishranti kara antari ‖३‖",
     "lyrics": "श्यामसुंदर रामाचे चरणकमळे । \r\nओवाळू आरती कनकपरियळी ‖ धृ‖\r\n\r\nबाळा मुग्धा यौवन प्रौढा सुंदरी ।\r\nआरत्या घेऊनी आलिया नारी ‖१‖ \r\n\r\nचौघे ह्मणती निजगती चला मंदिरा ।\r\nनव त्याही इच्छिती सेवा सुंदरा ‖२‖\r\n\r\nदास ह्मणे सुमन शेजे चला श्रीहरी ।\r\nक्षण एक विश्रांति करा अंतरी ‖३‖"
   },
   {
@@ -214,6 +324,9 @@
     "type": "Aartya",
     "title": "Tribhuvan Mandit Mala",
     "deity": "Ram",
+    "titleEng": "Tribhuvan Mandit Mala",
+    "deityEng": "Ram",
+    "lyricsEng": "Tribhuvan mndit mal gala । \r\nArati ovalu pahu brahmaputala ‖ १ ‖\r\n\r\nShriram jay ram jay jay ram ।\r\nArati ovalu pahu sundar meghashyam ‖  dhru ‖\r\n\r\nThakarache than kari dhanushyaban ।\r\nMaruti sanmukh ubha kar jodun ‖ shrirama० ‖२ ‖\r\n\r\nBharat shatrughn doghe chamar dhaliti ।\r\nSvargihuni dev pushpavrushti kariti। Shrirama० ‖ ३ ‖\r\n\r\nRatnakhachit manik varnu kay muguti ।\r\nArati ovalu chavada bhuvananche poti ‖ shrirama० ‖४ ‖\r\n\r\nVishnudas nama mhane magato tute ।\r\nArati ovalu pahu sitapatite‖ ‖ ५‖",
     "lyrics": "त्रिभुवन मंडित माळ गळा । \r\nआरती ओवाळू पाहू ब्रह्मपुतळा ‖ १ ‖\r\n\r\nश्रीराम जय राम जय जय राम ।\r\nआरती ओवाळू पाहू सुंदर मेघश्याम ‖  धृ ‖\r\n\r\nठकाराचे ठाण करी धनुष्यबाण ।\r\nमारुती सन्मुख उभा कर जोडून ‖ श्रीराम० ‖२ ‖\r\n\r\nभरत शत्रुघ्न दोघे चामर ढाळिती ।\r\nस्वर्गीहूनी देव पुष्पवृष्टि करिती। श्रीराम० ‖ ३ ‖\r\n\r\nरत्नखचित माणिक वर्णू काय मुगुटी ।\r\nआरती ओवाळू चवदा भुवनांचे पोटी ‖ श्रीराम० ‖४ ‖\r\n\r\nविष्णुदास नामा म्हणे मागतो तूते ।\r\nआरती ओवाळू पाहू सीतापतीते‖ ‖ ५‖"
   },
   {
@@ -221,6 +334,9 @@
     "type": "Aartya",
     "title": "Jai Dasharathi Prabhu Ram",
     "deity": "Ram",
+    "titleEng": "Jai Dasharathi Prabhu Ram",
+    "deityEng": "Ram",
+    "lyricsEng": "Jay dasharathi prabhu ram ।  Karu arati premane ‖ dhru ‖\r\n\r\nKati ase vasan pivale ।\r\nGojire nayan kamale ‖\r\nSavale dhyan sagale ।\r\nHrudayi dhari hanumane ‖ १ ।\r\n\r\nVananivas ha dharila ।\r\nUddharile vruksh shila ‖\r\nVibhishanasi tariyala ।\r\nChirnjiv karisi dane ‖२‖\r\n\r\nJagi dhara suta padali ।\r\nPari tvarichi sodavali ‖\r\nAni kay upeksha asali ।\r\nUdi ghali ba abhimane ‖ ३ ‖\r\n\r\nAvanata dashahi ali ।\r\nPrachalita asahy jhali ‖\r\nVad kon tujhyavin vali ।\r\nKathu kunasi muktaravane ‖ ४ ‖",
     "lyrics": "जय दाशरथी प्रभू राम ।  करू आरती प्रेमाने ‖ धृ ‖\r\n\r\nकटी असे वसन पिवळे ।\r\nगोजिरे नयन कमळे ‖\r\nसावळे ध्यान सगळे ।\r\nहृदयी धरी हनुमाने ‖ १ ।\r\n\r\nवननिवास हा धरिला ।\r\nउद्धरिले वृक्ष शिला ‖\r\nविभीषणासी तारीयला ।\r\nचिरंजीव करिसी दाने ‖२‖\r\n\r\nजगी धरा सुता पडली ।\r\nपरी त्वरीची सोडवली ‖\r\nआणि काय उपेक्षा असली ।\r\nउडी घाली बा अभिमाने ‖ ३ ‖\r\n\r\nअवनता दशही आली ।\r\nप्रचलिता असह्य झाली ‖\r\nवद कोण तुझ्याविण वाली ।\r\nकथु कुणासी मुक्तरवाने ‖ ४ ‖"
   },
   {
@@ -228,6 +344,9 @@
     "type": "Aartya",
     "title": "Lavathavati Vikrala",
     "deity": "Shankar",
+    "titleEng": "Lavathavati Vikrala",
+    "deityEng": "Shankar",
+    "lyricsEng": "Lavathavati vikrala brahmandi mala ।\r\nVishen knth kala trinetrin jvala ‖\r\nLavanyasundar mastakin bala ।\r\nTethuniyan jal nirmal vahe jhulajhulan ‖ १ ‖\r\n\r\n\r\nJay dev jay dev jay shri shnkara । \r\nArati ovalun tuj karpuragaura ‖  dhru ‖\r\n\r\nKarpuragaura bhola nayanin vishala ।\r\nArdhangin parvati sumananchya mala ‖\r\nVibhutichen udhalan shitiknth nila ।\r\nAisa shnkar shobhe umavelhala ‖ jay deva० ‖ २ ‖\r\n\r\nDevin daity sagaramnthan pai kelen ।\r\nTyamajin jen avachit halahal uthilen ‖\r\nTen tvan asurapanen prashan kelen ।\r\nNilaknth nam prasiddh jhalen ‖ jay deva० ‖ ३ ‖\r\n\r\nVyaghranbar phanivaradhar sundar madanari ।\r\nPnchanan manamohan munijanasukhakari ‖\r\nShatakotichen bij vache uchchari ।\r\nRaghukulatilak ramadasa antarin ‖ jay dev ० ‖ ४ ‖",
     "lyrics": "लवथवती विक्राळा ब्रह्मांडी माळा ।\r\nवीषें कंठ काळा त्रिनेत्रीं ज्वाळा ‖\r\nलावण्यसुंदर मस्तकीं बाळा ।\r\nतेथुनियां जल निर्मळ वाहे झुळझूळां ‖ १ ‖\r\n\r\n\r\nजय देव जय देव जय श्री शंकरा । \r\nआरती ओवाळूं तुज कर्पूरगौरा ‖  धृ ‖\r\n\r\nकर्पूरगौरा भोळा नयनीं विशाळा ।\r\nअर्धांगीं पार्वती सुमनांच्या माळा ‖\r\nविभुतीचें उधळण शितिकंठ नीळा ।\r\nऐसा शंकर शोभे उमावेल्हाळा ‖ जय देव० ‖ २ ‖\r\n\r\nदेवीं दैत्य सागरमंथन पै केलें ।\r\nत्यामाजीं जें अवचित हळाहळ उठिलें ‖\r\nतें त्वां असुरपणें प्राशन केलें ।\r\nनीळकंठ नाम प्रसिद्ध झालें ‖ जय देव० ‖ ३ ‖\r\n\r\nव्याघ्रांबर फणिवरधर सुंदर मदनारी ।\r\nपंचानन मनमोहन मुनिजनसुखकारी ‖\r\nशतकोटीचें बीज वाचे उच्चारी ।\r\nरघुकुळटिळक रामदासा अंतरीं ‖ जय देव ० ‖ ४ ‖"
   },
   {
@@ -235,6 +354,9 @@
     "type": "Aartya",
     "title": "Padale Gohatyeche Patak",
     "deity": "Shankar",
+    "titleEng": "Padale Gohatyeche Patak",
+    "deityEng": "Shankar",
+    "lyricsEng": "Padalen gohatyechen patak gautamarushichya shiri ho।\r\nTyane tap mandile dhyana anuni tuj antari ho‖\r\nPrasann houni tyaten snana didhali godavari ho।\r\nAudunbaramuli pragate pavan trailokyaten kari ho ‖ jay ‖।१‖\r\n\r\nJay jay trynbakaraj girijanatha gngadhara ho।\r\nTrishul pani shnbho nilagriva shashishekhara ho ‖\r\nVrushabharudh phanibhushan dashabhuj pnchanan shnkara ho।\r\nVibhutimalajata sundar gajacharmanbaradhara ho ‖ dhru ‖\r\n\r\nDhany kushavartacha mahima vache varnu kiti ho।\r\nAnikahi bahutiten gngadvaradik parvati ho ‖\r\nVndan marjan kariti tyache mahadosh nasati ho।\r\nTujhiya darshanamatre prani muktiten pavati ho ‖। Jay ‖२‖\r\n\r\nBrahmagirinchi bhaven jyala pradakshina jari ghade ho।\r\nTain te kaya kashten jnv jnv charani rupati khade ho ‖\r\nTnv tnv puny vishesh kilmish avaghen tyachen jhade ho।\r\nKeval to shivarupi kal tyachya paya pade ho ‖ jay ‖।३‖\r\n\r\n( chal badal )\r\nLavuniya nijabhajani sakalahi puravisi manakamana ho।\r\nSntati snpatti desi anti chukavisi yamayatana ho‖\r\nShiv shiv nam japata vate annd majhya mana ho।\r\nGosavinndan visare snsarayatana ho ‖ jay ‖४‖",
     "lyrics": "पडलें गोहत्येचें पातक गौतमऋषिच्या शिरी हो।\r\nत्याने तप मांडिले ध्याना आणुनि तुज अंतरी हो‖\r\nप्रसन्न होऊनि त्यातें स्नाना दिधली गोदावरी हो।\r\nऔदुंबरमुळी प्रगटे पावन त्रैलोक्यातें करी हो ‖ जय ‖।१‖\r\n\r\nजय जय त्र्यंबकराज गिरिजानाथा गंगाधरा हो।\r\nत्रिशूल पाणी शंभो नीलग्रीवा शशिशेखरा हो ‖\r\nवृषभारुढ फणिभूषण दशभुज पंचानन शंकरा हो।\r\nविभूतिमाळाजटा सुंदर गजचर्मांबरधरा हो ‖ धृ ‖\r\n\r\nधन्य कुशावर्ताचा महिमा वाचे वर्णू किती हो।\r\nआणिकही बहुतीतें गंगाद्वारादिक पर्वती हो ‖\r\nवंदन मार्जन करिती त्याचे महादोष नासती हो।\r\nतुझिया दर्शनमात्रे प्राणी मुक्तीतें पावती हो ‖। जय ‖२‖\r\n\r\nब्रह्मगिरींची भावें ज्याला प्रदक्षिणा जरी घडे हो।\r\nतैं ते काया कष्टें जंव जंव चरणी रुपती खडे हो ‖\r\nतंव तंव पुण्य विशेष किल्मिष अवघें त्याचें झडे हो।\r\nकेवळ तो शिवरुपी काळ त्याच्या पाया पडे हो ‖ जय ‖।३‖\r\n\r\n( चाल बदल )\r\nलावुनिया निजभजनी सकळही पुरविसी मनकामना हो।\r\nसंतति संपत्ति देसी अंती चुकविसी यमयातना हो‖\r\nशिव शिव नाम जपता वाटे आनंद माझ्या मना हो।\r\nगोसावीनंदन विसरे संसारयातना हो ‖ जय ‖४‖"
   },
   {
@@ -242,6 +364,9 @@
     "type": "Aartya",
     "title": "Jai Jai Ji Madanantak",
     "deity": "Shankar",
+    "titleEng": "Jai Jai Ji Madanantak",
+    "deityEng": "Shankar",
+    "lyricsEng": "Jayajayaji madanantak gaurishnkara ‖\r\nPncharati kariton tuj he maheshvara ‖ dhru. ‖\r\n \r\nVyaghranbar angi tun nity sevisi ‖\r\nRundamal knthin ase mastaki shashi ‖\r\nGirija tav vamankin shobhate tashi ‖\r\nBhasmapriya bhutapate indushekhara ‖ jay. ‖ १ ‖\r\n\r\nBahu durjan tripur daity prabal jahala ‖\r\nHarividhisah vibudh piduni tras didhala ‖\r\nTevhan te ati bhaven staviti mag tula ‖\r\nTripurasur vadhuni sukhi karisi suravaran ‖ jay. ‖२ ‖\r\n\r\nEkavis svargahuni unchi tav ati ‖\r\nSarvesha data tun sad‌gatiprati ‖\r\nTav lilavarnanasi alp mam mati ।\r\nViththalasut vinavitase rakshi kinkara ‖ jay. ‖ ३ ‖",
     "lyrics": "जयजयजी मदनांतक गौरीशंकरा ‖\r\nपंचारति करितों तुज हे महेश्वरा ‖ धृ. ‖\r\n \r\nव्याघ्रांबर अंगी तूं नित्य सेविसी ‖\r\nरुंडमाळ कंठिं असे मस्तकी शशी ‖\r\nगिरिजा तव वामांकीं शोभते तशी ‖\r\nभस्मप्रिया भूतपते इंदुशेखरा ‖ जय. ‖ १ ‖\r\n\r\nबहु दुर्जन त्रिपुर दैत्य प्रबल जाहला ‖\r\nहरिविधीसह विबुध पिडुनि त्रास दीधला ‖\r\nतेव्हां ते अति भावें स्तविति मग तुला ‖\r\nत्रिपुरासुर वधुनि सुखी करिसी सुरवरां ‖ जय. ‖२ ‖\r\n\r\nएकवीस स्वर्गाहुनि उंची तव अति ‖\r\nसर्वेशा दाता तूं सद्‌गतीप्रती ‖\r\nतव लीलावर्णनासि अल्प मम मती ।\r\nविठ्ठलसुत विनवितसे रक्षि किंकरा ‖ जय. ‖ ३ ‖"
   },
   {
@@ -249,6 +374,9 @@
     "type": "Aartya",
     "title": "Aarti Karu Tuzi Shiv Shankara",
     "deity": "Shankar",
+    "titleEng": "Aarti Karu Tuzi Shiv Shankara",
+    "deityEng": "Shankar",
+    "lyricsEng": "Arati karu tujhi shivashnkara ‖ \r\nBhaktibhave ovalito parvativara ‖ dhru०‖\r\n\r\nDakshakanya parvatichi prit jadali hi \r\nTujhya darshanachi tijala odh lagali hi\r\nDarshan he desi tijala shivashnkara ‖१‖\r\nJe bhakt bhajati tyanna hosi tu prasann\r\nVar deuniya dasa karisi pavan\r\nToch var amha desi shivashnkara ‖२‖\r\n\r\nSamudrache mnthan kele devadanavani\r\nHalahal baher ale sagaratuni he\r\nPrashuniya pachavile vish shnkara ‖३‖\r\n\r\nChangunechya ghari satv pahavaya jashi\r\nTiche satv pahuniya annde dolasi\r\nSitaram das tujha ase shnkara ‖४‖",
     "lyrics": "आरती करू तूझी शिवशंकरा ‖ \r\nभक्तीभावे ओवाळीतो पार्वतीवरा ‖ धृ०‖\r\n\r\nदक्षकन्या पार्वतीची प्रीत जडली ही \r\nतुझ्या दर्शनाची तीजला ओढ लागली ही\r\nदर्शन हे देसी तिजला शिवशंकरा ‖१‖\r\nजे भक्त भजती त्यांना होसी तू प्रसन्न\r\nवर देऊनीया दासा करीसी पावन\r\nतोच वर आम्हा देसी शिवशंकरा ‖२‖\r\n\r\nसमुद्राचे मंथन केले देवदानवानी\r\nहलाहल बाहेर आले सागरातूनी हे\r\nप्राशूनीया पचवीले विष शंकरा ‖३‖\r\n\r\nचांगुणेच्या घरी सत्व पहावया जाशी\r\nतीचे सत्व पाहूनीया आनंदे डोलसी\r\nसीताराम दास तूझा असे शंकरा ‖४‖"
   },
   {
@@ -256,6 +384,9 @@
     "type": "Aartya",
     "title": "Umavara Shankara",
     "deity": "Shankar",
+    "titleEng": "Umavara Shankara",
+    "deityEng": "Shankar",
+    "lyricsEng": "Umavara shnkara, pamar ha nar sadar shnkara, \r\nPamar ha nar sadar sharan tumha tara ‖ dhru‖ \r\n\r\nMi pan vaya tanu shin vaya।  Te nasaya pnth dhara ‖\r\nMudhadava bhram nirasava। Bodh thasava mani bara‖\r\nJoss chukavis jananas maranacha phera।\r\nUmavara shnkara। Pamar ha nar sadar sharan tumha tara ‖१ ‖\r\n\r\nMithya ha bhav maya snbhav। Aisa anubhav gheuniya ‖\r\nNity nirnjani man lavoni। Avamaniti muni snsara ‖\r\nJoss anubhav majasi yava snsara‖।\r\nTamohara, shnkar pamar ha nar sadar sharan tumha tara ‖२।\r\n\r\nKavita sumane hi shudhd mane। Nirahamatine vahiyali ‖\r\nBallalatmaj govindane। Supremane many kara।\r\nBhoss shital kar shashi shekhar shul dhara ‖\r\nPritagara, shnkara, pamar ha nar sadar sharan tumha tara ‖३ ‖",
     "lyrics": "उमावरा शंकरा, पामर हा नर सादर शंकरा, \r\nपामर हा नर सादर शरण तुम्हा तारा ‖ धृ‖ \r\n\r\nमी पण वाया तनु शिण वाया।  ते नासाया पंथ धरा ‖\r\nमूढादावा भ्रम निरसावा। बोध ठसावा मनी बरा‖\r\nजोss चुकवीs जननs मरणाचा फेरा।\r\nउमावरा शंकरा। पामर हा नर सादर शरण तुम्हा तारा ‖१ ‖\r\n\r\nमिथ्या हा भव माया संभव। ऐसा अनुभव घेऊनिया ‖\r\nनित्य निरंजनी मन लावोनी। अवमानिती मुनी संसारा ‖\r\nजोss अनुभव मजसी यावा संसारा‖।\r\nतमोहरा, शंकर पामर हा नर सादर शरण तुम्हा तारा ‖२।\r\n\r\nकविता सुमने ही शुध्द मने। निरहमतीने वाहियली ‖\r\nबल्लाळात्मज गोविंदाने। सुप्रेमाने मान्य करा।\r\nभोss शीतल कर शशी शेखर शूल धरा ‖\r\nप्रीतगरा, शंकरा, पामर हा नर सादर शरण तुम्हा तारा ‖३ ‖"
   },
   {
@@ -263,6 +394,9 @@
     "type": "Aartya",
     "title": "Karpura Gaura Gauri Shankara",
     "deity": "Shankar",
+    "titleEng": "Karpura Gaura Gauri Shankara",
+    "deityEng": "Shankar",
+    "lyricsEng": "Karpuragaura gaurishnkara arati karu tujala।\r\nNam smaratan prasann houni pavasi bhaktala ‖ dhru ‖\r\n\r\nTrishul damaru shobhat hasti knthi rundamala।\r\nUgravishate piuni rakshisi devan dikpala ‖\r\nTrutiy netri nighati krodhe pralayagnijvala ।\r\nNamiti suramuni tujala, aisa tu shnkar bhola ‖१‖\r\n\r\nDhavala nndi vahanashobhe ardhangi gauri।\r\nJata mukuti vasakaritase gngasundari ‖\r\nSadaya saguna gauriramana mam snkat vari।\r\nMoreshvarasut vasudev, tuj smarato antari ‖ २‖",
     "lyrics": "कर्पूरगौरा गौरीशंकरा आरती करू तुजला।\r\nनाम स्मरतां प्रसन्न होउनि पावसि भक्ताला ‖ धृ ‖\r\n\r\nत्रिशूळ डमरू शोभत हस्ती कंठि रुंडमाळा।\r\nउग्रविषाते पिऊनी रक्षिसी देवां दिक्पाळा ‖\r\nतृतीय नेत्री निघती क्रोधे प्रळयाग्नीज्वाळा ।\r\nनमिती सुरमुनि तुजला, ऐसा तू शंकर भोळा ‖१‖\r\n\r\nढवळा नंदी वाहनशोभे अर्धांगी गौरी।\r\nजटा मुकुटी वासकरितसे गंगासुंदरी ‖\r\nसदया सगुणा गौरीरमणा मम संकट वारी।\r\nमोरेश्वरसुत वासुदेव, तुज स्मरतो अंतरी ‖ २‖"
   },
   {
@@ -270,6 +404,9 @@
     "type": "Aartya",
     "title": "Jai Dev Jai Dev Jai Harihara",
     "deity": "Shankar",
+    "titleEng": "Jai Dev Jai Dev Jai Harihara",
+    "deityEng": "Shankar",
+    "lyricsEng": "Jayadev jayadev jay harihara ।\r\nTrigunatmak traimurti tu vishvnbharah ॥Dhru.॥\r\n\r\nAparant kshetracha mahima apar । \r\nTyamaji harihar kshetr sundar ।\r\nPruthvivarati jhala daityancha bhar ।\r\nNirdalan karavayasi gheshi avatar ॥१॥\r\n\r\nSavitri shapane prakat jhalishi ।\r\nSindhutiravari nivas karashi ।\r\nAgasti sevene prasann hoshi ।\r\nHarihar name mhnuni pragat hoshi ॥२॥\r\n\r\nDarshanasi yeti bhavik jan ।\r\nSadbhave sadhange kariti naman ।\r\nPrasann houni deshi varadan ।\r\nBhakt jan gati tav gunagan ॥३॥",
     "lyrics": "जयदेव जयदेव जय हरिहरा ।\r\nत्रिगुणात्मक त्रैमूर्ती तू विश्वंभराः ॥धृ.॥\r\n\r\nअपरांत क्षेत्राचा महिमा अपार । \r\nत्यामाजी हरिहर क्षेत्र सुंदर ।\r\nपृथ्वीवरती झाला दैत्यांचा भार ।\r\nनिर्दालन करावयासी घेशी अवतार ॥१॥\r\n\r\nसावित्री शापाने प्रकट झालीशी ।\r\nसिंधूतीरावरी निवास करशी ।\r\nअगस्ती सेवेने प्रसन्न होशी ।\r\nहरिहर नामे म्ह्णूनी प्रगट होशी ॥२॥\r\n\r\nदर्शनासी येति भाविक जन ।\r\nसद्भावे साधांगे करिति नमन ।\r\nप्रसन्न होऊनी देशी वरदान ।\r\nभक्त जन गाति तव गुणगान ॥३॥"
   },
   {
@@ -277,6 +414,9 @@
     "type": "Aartya",
     "title": "Avadi Gangajale",
     "deity": "Vishnu",
+    "titleEng": "Avadi Gangajale",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Avadi gngajale, deva nhanile l \r\nBhaktiche bhushan premasugndh arpile l\r\nAhn ha dhup jalu shriharipudhe ( 2 ) ‖ \r\nJnv jnv dhup jale l tnv tnv deva avade ‖१‖\r\n\r\nArati arati karu gopala l \r\nMi tu pan sandoni velovela ‖dhru‖\r\n\r\nRamavallabhadase ahn dhup jalila l\r\nEka araticha mag prarnbh kela l\r\nSohn ha dip jalu, ovalu govinda ( 2 ) ‖\r\nSamadhi lagali pahata mukharavinda ‖२‖ arati...\r\n\r\nHarikhe harikh hoto mukh pahata l\r\nPrakatalya hya nari sarvahi avastha l\r\nSadbhavalagi bahu ha dev bhukela ( 2 ) ‖\r\nRamavallabhadase ahn naivedy arpila ‖३‖ arati...\r\n\r\nPhal tanbul dakshina arpili l\r\nTaya upari niranjane mandali l\r\nPnchapran pnchajyoti arati ujalali ( 2 ) ‖\r\nVishv he lopale taya prakashatali ‖४‖ arati...\r\n\r\nArati prakashe chndrasury lopale ऽऽऽ ( 2 ) ‖\r\nSuravar nabhi tethe tatasth thele l\r\nDevabhaktapan avaghe n dise kahi l\r\nAishapari das, ramavallabha payi ‖५‖ arati...",
     "lyrics": "आवडी गंगाजळे, देवा न्हाणिले l \r\nभक्तीचे भूषण प्रेमसुगंध अर्पीले l\r\nअहं हा धूप जाळू श्रीहरिपुढे ( 2 ) ‖ \r\nजंव जंव धूप जळे l तंव तंव देवा आवडे ‖१‖\r\n\r\nआरती आरती करू गोपाला l \r\nमी तू पण सांडोनी वेळोवेळा ‖ध्रु‖\r\n\r\nरमावल्लभदासे अहं धूप जाळीला l\r\nएका आरतीचा मग प्रारंभ केला l\r\nसोहं हा दीप जाळू, ओवाळू गोविंदा ( 2 ) ‖\r\nसमाधी लागली पाहता मुखारविंदा ‖२‖ आरती...\r\n\r\nहरीखे हरीख होतो मूख पाहता l\r\nप्रकटल्या ह्या नारी सर्वही अवस्था l\r\nसद्भावालागी बहु हा देव भूकेला ( 2 ) ‖\r\nरमावल्लभदासे अहं नैवेद्य अर्पिला ‖३‖ आरती...\r\n\r\nफल तांबूल दक्षिणा अर्पिली l\r\nतया उपरी निरांजने मांडली l\r\nपंचप्राण पंचज्योती आरती उजळली ( 2 ) ‖\r\nविश्व हे लोपले तया प्रकाशातळी ‖४‖ आरती...\r\n\r\nआरती प्रकाशे चंद्रसूर्य लोपले ऽऽऽ ( 2 ) ‖\r\nसुरवर नभी तेथे तटस्थ ठेले l\r\nदेवभक्तपण अवघे न दिसे काही l\r\nऐशापरी दास, रमावल्लभा पायी ‖५‖ आरती..."
   },
   {
@@ -284,13 +424,39 @@
     "type": "Aartya",
     "title": "Dashavtar",
     "deity": "Vishnu",
+    "titleEng": "Dashavtar",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Arati saprem jay jay viththal parabrahm l \r\nBhaktasnkati nana svarupi sthapisi svadharm ‖dhru॰‖\r\n\r\nAnbarushikarane garbhavas soshisi l\r\nVed nele choruni brahya anuniya desi l\r\nMatsyarupi narayan saptahi sagar dhundisil\r\nHast lagatan tujha shnkhasura var desi ‖१‖ arati...\r\n\r\nRasatalasi jata pruthvi pathivar ghesi l\r\nParopakarasathi deva kasav jhalasi l\r\nDadhe dharuni pruthvi neta varaharupi hosi l\r\nPralhadakarane stnbhi narahari guragurasi ‖२‖ arati…\r\n\r\nPachave avatari balichya dvarala jashi l\r\nBhikshe sthal maguni balila patali nesi l\r\nSarv samarpan kele hmanuni prasann tya hosi l\r\nVamanarup dharuni balichya dvari tishthasi ‖३‖ arati...\r\n\r\nSahasrarjun matala jamadagnicha vadh kela l\r\nKashti te renuka hmanuni sahasrarjun vadhila l\r\nNi:kshatri pruthvi dan didhali viprala l\r\nSahava avatar parashuram pragatala ‖४‖ arati...\r\n\r\nMatala ravan sarva upadrav kela l\r\nTehatis koti dev bndi harale sitela l\r\nPitruvachanalagi rame vanavas kela l\r\nMiloni vanarasena raja ram pragatala ‖५‖ arati...\r\n\r\nDevaki vasudev bndi mochan tvan kele l\r\nNnda ghari jaun nijasukh gokula didhale l\r\nGoras chori karita navalaksh gopal milavile l\r\nGopikanche prem dekhuni shrikrushn bhulale ‖६‖ arati...\r\n\r\nBauddh kalnki kaliyugi jhala adharm ha avagha l\r\nSanduni didhala dharm hmanoni n disasi seva l\r\nMlenchchhamardan karisi hmanuni kalnki keshava l\r\nBahiravi janhavi dyavi nijasukh nndachi seva ‖७‖ arati…",
     "lyrics": "आरती सप्रेम जय जय विठ्ठल परब्रह्म l \r\nभक्तसंकटी नाना स्वरूपी स्थापिसी स्वधर्म ‖ध्रु॰‖\r\n\r\nअंबऋषीकारणे गर्भवास सोशिसी l\r\nवेद नेले चोरुनि ब्रह्या आणुनिया देसी l\r\nमत्स्यरूपी नारायण सप्तही सागर धुंडिसीl\r\nहस्त लागतां तुझा शंखासुरा वर देसी ‖१‖ आरती...\r\n\r\nरसातळासी जाता पृथ्वी पाठीवर घेसी l\r\nपरोपकारासाठी देवा कासव झालासी l\r\nदाढे धरुनी पृथ्वी नेता वराहरूपी होसी l\r\nप्रल्हादाकारणे स्तंभी नरहरी गुरगुरसी ‖२‖ आरती…\r\n\r\nपाचवे अवतारी बळीच्या द्वाराला जाशी l\r\nभिक्षे स्थळ मागूनि बळीला पाताळी नेसी l\r\nसर्व समर्पण केले ह्मणुनि प्रसन्न त्या होसी l\r\nवामनरूप धरूनि बळीच्या द्वारी तिष्ठसी ‖३‖ आरती...\r\n\r\nसहस्रार्जुन मातला जमदग्नीचा वध केला l\r\nकष्टी ते रेणुका ह्मणुनि सहस्रार्जुन वधिला l\r\nनि:क्षत्री पृथ्वी दान दिधली विप्राला l\r\nसहावा अवतार परशुराम प्रगटला ‖४‖ आरती...\r\n\r\nमातला रावण सर्वा उपद्रव केला l\r\nतेहतीस कोटी देव बंदी हरले सीतेला l\r\nपितृवचनालागी रामे वनवास केला l\r\nमिळोनी वानरसेना राजा राम प्रगटला ‖५‖ आरती...\r\n\r\nदेवकी वसुदेव बंदी मोचन त्वां केले l\r\nनंदा घरी जाऊन निजसुख गोकुळा दिधले l\r\nगोरस चोरी करीता नवलक्ष गोपाळ मिळविले l\r\nगोपिकांचे प्रेम देखुनि श्रीकृष्ण भुलले ‖६‖ आरती...\r\n\r\nबौद्ध कलंकी कलियुगी झाला अधर्म हा अवघा l\r\nसांडूनि दिधला धर्म ह्मणोनी न दिससी सेवा l\r\nम्लेंच्छमर्दन करिसी ह्मणुनि कलंकी केशवा l\r\nबहिरवी जान्हवी द्यावी निजसुख नंदाची सेवा ‖७‖ आरती…"
+  },
+  {
+    "id": "Aartya-vishnu-3",
+    "type": "Aartya",
+    "title": "satyanarayan",
+    "deity": "Vishnu",
+    "titleEng": "Satyanarayan",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Jay jay din dayala satyanarayan deva ।\r\nPncharati ovalu shripati tuj bhakti bhava ॥ Dhru. ॥\r\nVidhiyukt pujani kariti puran shravan ।\r\nParimal dravyansahit pushpamala arpun ।\r\nGhrutayukt sharkaramishrit godhumachurn ।\r\nPrasad bhakshan karitan prasann tu narayan ॥ १ ॥\r\n\r\nShatannde vipre purvi vrat he acharile ।\r\nDaridr davaduni anti tyante mokshapada nele ।\r\nTyapahuni he vrat ya kaliyugi sakalan shrut jhale ।\r\nBhavarthe pujitan sarva ichchhit ladhale ॥ २ ॥\r\n\r\nSadhuvaishye sntatisathi tujala prarthiyale ।\r\nIchchhit puratan madandh houni vrat n acharile ।\r\nTya papane snkati paduni duhkhahi bhogile ।\r\nSmruti houni acharitan vrat tya tuvanchi uddharile ॥ ३ ॥\r\n\r\nPrasad visaruni patibhetila kalavati geli ।\r\nKshobh tujha hotanchi tayachi nauka budali ।\r\nAngadhvajarayasi yapari duhkhasthiti ali ।\r\nMrutavarta shataputranchi satvar karni parisali ॥ ४ ॥\r\n\r\nPunarapi pujuni prasad grahan karitan tatkshani ।\r\nPatichi nauka tarali dekhe kalavati nayani ।\r\nAngadhvajarayasi putr bhetati yeuni ।\r\nAisa bhaktan snkatin pavasi tu chakrapani ॥ ५ ॥\r\n\r\nAisa tav vrat mahima apar varnu mi kaisa ।\r\nBhaktipurassar acharati tyan pavasi jagadisha ।\r\nBhaktancha kanavalu kalpadrum tu sarvesha ।\r\nMoreshvarasut vasudev tuj vinavi bhavapasha ॥ ६ ॥",
+    "lyrics": "जय जय दीन दयाळा सत्यनारायण देवा ।\r\nपंचारती ओवाळू श्रीपती तुज भक्ती भावा ॥ धृ. ॥\r\nविधीयुक्त पूजनी करिती पुराण श्रवण ।\r\nपरिमळ द्रव्यांसहित पुष्पमाळा अर्पून ।\r\nघृतयुक्त शर्करामिश्रित गोधूमचूर्ण ।\r\nप्रसाद भक्षण करितां प्रसन्न तू नारायण ॥ १ ॥\r\n\r\nशतानंदे विप्रे पूर्वी व्रत हे आचरिले ।\r\nदरिद्र दवडुनी अंती त्यांते मोक्षपदा नेले ।\r\nत्यापाहुनी हे व्रत या कलियुगी सकळां श्रुत झाले ।\r\nभावार्थे पूजितां सर्वा इच्छित लाधले ॥ २ ॥\r\n\r\nसाधुवैश्ये संततीसाठी तुजला प्रार्थियले ।\r\nइच्छित पुरतां मदांध होऊनि व्रत न आचरिले ।\r\nत्या पापाने संकटी पडुनी दुःखहि भोगीले ।\r\nस्मृति होऊनि आचरितां व्रत त्या तुवांची उद्धरिले ॥ ३ ॥\r\n\r\nप्रसाद विसरुनि पतिभेटीला कलावती गेली ।\r\nक्षोभ तुझा होतांची तयाची नौका बुडाली ।\r\nअंगध्वजरायासी यापरि दुःखस्थिती आली ।\r\nमृतवार्ता शतपुत्रांची सत्वर कर्णी परिसली ॥ ४ ॥\r\n\r\nपुनरपि पूजुनि प्रसाद ग्रहण करितां तत्क्षणी ।\r\nपतीची नौका तरली देखे कलावती नयनी ।\r\nअंगध्वजरायासी पुत्र भेटति येऊनि ।\r\nऐसा भक्तां संकटीं पावसी तू चक्रपाणी ॥ ५ ॥\r\n\r\nऐसा तव व्रत महिमा अपार वर्णू मी कैसा ।\r\nभक्तिपुरस्सर आचरती त्यां पावसि जगदीशा ।\r\nभक्तांचा कनवाळू कल्पद्रुम तू सर्वेशा ।\r\nमोरेश्वरसुत वासुदेव तुज विनवी भवपाशा ॥ ६ ॥"
+  },
+  {
+    "id": "Aartya-vishnu-4",
+    "type": "Aartya",
+    "title": "Laxmi ramana bhav bhay harana",
+    "deity": "Vishnu",
+    "titleEng": "Laxmi ramana bhav bhay harana",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Lakshmiramana bhavabhayaharana chitsukhasadana hatkamala ।\r\nBahu premane pncharati hi karit aso ba tuj vimala ॥ Dhru० ॥\r\n\r\nDrudh bhakti pahuniyan didhalen dhruvapad jaise dhruvabala ।\r\nArjunarathin sarathy hi karuni avagahilen ashvanla ॥\r\n\r\nAikuni aisha tav audarya athavito tav padakamala ।\r\nDrudh bhaktinen rukminisut ha, dei darshana tav vimala ॥ १ ॥",
+    "lyrics": "लक्ष्मीरमणा भवभयहरणा चित्सुखसदना हत्कमला ।\r\nबहु प्रेमाने पंचारति ही करित असो बा तुज विमला ॥ ध्रु० ॥\r\n\r\nदृढ भक्ती पाहुनियां दिधलें ध्रुवपद जैसे ध्रुवबाला ।\r\nअर्जुनरथिं सारथ्य हि करुनि अवगाहीलें अश्वांला ॥\r\n\r\nऐकूनी ऐशा तव औदार्या आठवितो तव पदकमला ।\r\nदृढ भक्तीनें रुक्मिणिसुत हा, देई दर्शना तव विमला ॥ १ ॥"
   },
   {
     "id": "Aartya-vitthal-1",
     "type": "Aartya",
     "title": "Yuge Atthavis Vitevari Ubha",
     "deity": "Vitthal",
+    "titleEng": "Yuge Atthavis Vitevari Ubha",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Yuge aththavis vitevari ubha ।\r\nVamangi rakhumai dise divy shobha ‖\r\nPundalikache bheti parabraham alen ga ।\r\nCharani vahe bhima uddhari jaga ‖1‖\r\nJay dev jay dev jay pandurnga ।\r\n Rakhumaivallabha raichya vallabha pave jivalaga ‖dhru. ‖\r\n\r\nTulasi mala gala kar thevuni kati ।\r\nKanse pitanbar kasturi lallati । ।\r\nDev suravar nity yeti bheti ।\r\nGarud hanumnt pudhe ubhe rahati ‖ jay dev। 2‖\r\n\r\nDhany venunad anukshetrapala ।\r\nSuvarnachi kamale vanamala gala ‖\r\nRain rakhumabai raniya sakala ।\r\nOvaliti raja vithoba savala ‖ jay dev ‖3‖\r\n\r\nOvalu aratya kurvadya yeti ।\r\nChndrabhagemaji soduniya deti ‖\r\nDindya pataka vaishnav nachati ।\r\nPndharicha mahima varnava kiti ‖ jay dev ‖4‖\r\n\r\nAshadhi kartiki bhaktajan yeti ।\r\nChndrabhagemadhyen snane je kariti ‖\r\nDarshanahelamatren taya hoy mukti ।\r\nKeshavasi namadev bhave onvaliti ‖। Jay dev jay deva‖5‖",
     "lyrics": "युगे अठ्ठावीस विटेवरी ऊभा ।\r\nवामांगी रखुमाई दिसे दिव्य शोभा ‖\r\nपुंडलिकाचे भेटी परब्रहम आलें गा ।\r\nचरणी वाहे भीमा उद्धारी जगा ‖1‖\r\nजय देव जय देव जय पांडुरंगा ।\r\n रखुमाईवल्लभा राईच्या वल्लभा पावे जिवलगा ‖धृ. ‖\r\n\r\nतुळसी माळा गळा कर ठेवुनी कटी ।\r\nकांसे पीतांबर कस्तुरी लल्लाटी । ।\r\nदेव सुरवर नित्य येती भेटी ।\r\nगरुड हनुमंत पुढे उभे राहती ‖ जय देव। 2‖\r\n\r\nधन्य वेणुनाद अनुक्षेत्रपाळा ।\r\nसुवर्णाची कमळे वनमाळा गळा ‖\r\nराईं रखुमाबाई राणीया सकळा ।\r\nओवळिती राजा विठोबा सावळा ‖ जय देव ‖3‖\r\n\r\nओवाळू आरत्या कुर्वड्या येती ।\r\nचंद्रभागेमाजी सोडुनिया देती ‖\r\nदिंड्या पताका वैष्णव नाचती ।\r\nपंढरीचा महिमा वर्णावा किती ‖ जय देव ‖4‖\r\n\r\nआषाढी कार्तिकी भक्तजन येती ।\r\nचंद्रभागेमध्यें स्नाने जे करिती ‖\r\nदर्शनहेळामात्रें तया होय मुक्ती ।\r\nकेशवासी नामदेव भावे ओंवळिती ‖। जय देव जय देव‖5‖"
   },
   {
@@ -298,6 +464,9 @@
     "type": "Aartya",
     "title": "Yei Ho Vitthale Maze Mauli",
     "deity": "Vitthal",
+    "titleEng": "Yei Ho Vitthale Maze Mauli",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Yei ho viththale majhe mauli ye l\r\nNidhalavari kar thevuni vat mi pahe ‖dhru॰‖\r\n\r\nAliya geliyahati dhadi nirop l\r\nPndharapuri ahe, pndharapuri ahe majha mayabap ‖ १  ‖\r\n\r\n\r\nPivala pitanbar kaisa gagani jhalakala l\r\nGarudavari baisuni majha kaivari ala ‖ २ ‖\r\n\r\nVithobache rajy amha nity dipavali l\r\nVishnudas nama, vishnudas nama, jivebhave ovali ‖ ३  ‖",
     "lyrics": "येई हो विठ्ठले माझे माउली ये l\r\nनिढळावरि कर ठेवूनि वाट मी पाहे ‖ध्रु॰‖\r\n\r\nआलिया गेलियाहाती धाडी निरोप l\r\nपंढरपुरी आहे, पंढरपुरी आहे माझा मायबाप ‖ १  ‖\r\n\r\n\r\nपिवळा पीतांबर कैसा गगनी झळकला l\r\nगरुडावरी बैसूनि माझा कैवारी आला ‖ २ ‖\r\n\r\nविठोबाचे राज्य आम्हा नित्य दिपवाळी l\r\nविष्णूदास नामा, विष्णूदास नामा, जीवेभावे ओवाळी ‖ ३  ‖"
   },
   {
@@ -305,6 +474,9 @@
     "type": "Bhovtya",
     "title": "Satvar Pav Ga Mala Bhavani Aai",
     "deity": "Devi",
+    "titleEng": "Satvar Pav Ga Mala Bhavani Aai",
+    "deityEng": "Devi",
+    "lyricsEng": "Satvar pav g mala bhavani ai । Rodaga vahin tula ‖ dhru ‖\r\n\r\nSasara majha gavi gela । Tikadech khapavi tyala ।\r\nBhavani ai, rodaga vahin tula ‖\r\n\r\nSasu majhi jach karite । Lavakar nyei g tila ।\r\nBhavani ai, rodaga vahin tula ।\r\n\r\nJau majhi phadaphada bolate । Bodaki kar g tila l\r\nBhavani ai, rodaga vahin tula ‖\r\n\r\nNanndechn kartn kirakir karatn । Kharuj yeu de tyala l\r\nBhavani ai, rodaga vahin tula ‖\r\n\r\nDadala marun ahuti dein l mokali kar g mala ‖\r\nBhavani ai, rodaga vahin tula\r\n\r\nEka janardani sagalech jau de l ekatich rahu de mala ‖\r\nBhavani ai, rodaga vahin tula",
     "lyrics": "सत्वर पाव ग मला भवानी आई । रोडगा वाहीन तुला ‖ धृ ‖\r\n\r\nसासरा माझा गावी गेला । तिकडेच खपवी त्याला ।\r\nभवानी आई, रोडगा वाहीन तुला ‖\r\n\r\nसासू माझी जाच करिते । लवकर न्येई ग तिला ।\r\nभवानी आई, रोडगा वाहीन तुला ।\r\n\r\nजाऊ माझी फडाफडा बोलते । बोडकी कर ग तिला l\r\nभवानी आई, रोडगा वाहीन तुला ‖\r\n\r\nनणंदेचं कार्टं किरकिर करतं । खरूज येऊ दे त्याला l\r\nभवानी आई, रोडगा वाहीन तुला ‖\r\n\r\nदादला मारून आहुति देईन l मोकळी कर ग मला ‖\r\nभवानी आई, रोडगा वाहीन तुला\r\n\r\nएका जनार्दनी सगळेच जाऊ दे l एकटीच राहू दे मला ‖\r\nभवानी आई, रोडगा वाहीन तुला"
   },
   {
@@ -312,6 +484,9 @@
     "type": "Bhovtya",
     "title": "Mitha Pithacha Jogava",
     "deity": "Devi",
+    "titleEng": "Mitha Pithacha Jogava",
+    "deityEng": "Devi",
+    "lyricsEng": "Mitha pithacha jogava, ana bayanno satvari \r\nMala jayachny duravari gn, tulajapurachya bajari ‖ dhru ‖\r\n\r\nTulajapurala jain hiravi sadi ghein,\r\nAnbabaila nesavun mi parat lavakar yeil ‖ १ ‖ mitha … ‖\r\n\r\nTulajapurala jain hirava chuda ghein,\r\nAnbechya hatat ghalun mi parat lavakar yein ‖ २ ‖ mitha … ‖\r\n\r\nTulajapurala jain haladi kunku ghein,\r\nAnbechya kapali lavun mi lavakar parat yein ‖ ३ ‖ mitha … ‖\r\n\r\nTulajapurala jain sundar jodavi ghein,\r\nAnbechya payat ghalun mi parat lavakar yein ‖ ४ ‖ mitha … ‖\r\n\r\nTulajapurala jain khana-naral ghein,\r\nAnbechi oti bharun mi lavakar parat yein ‖ ५ ‖ mitha … ‖\r\n\r\nTulajapurala jain puranapoli karin,\r\nAnbela jevu ghalun mi lavakar parat yein ‖ ६ ‖ mitha … ‖",
     "lyrics": "मिठा पीठाचा जोगवा, आणा बायांनो सत्वरी \r\nमला जायचंय दूरवरी गं, तुळजापूरच्या बाजारी ‖ धृ ‖\r\n\r\nतुळजापूरला जाईन हिरवी साडी घेईन,\r\nअंबाबाईला नेसवून मी परत लवकर येईल ‖ १ ‖ मिठा … ‖\r\n\r\nतुळजापूरला जाईन हिरवा चुडा घेईन,\r\nअंबेच्या हातात घालून मी परत लवकर येईन ‖ २ ‖ मिठा … ‖\r\n\r\nतुळजापूरला जाईन हळदी कुंकू घेईन,\r\nअंबेच्या कापली लावून मी लवकर परत येईन ‖ ३ ‖ मिठा … ‖\r\n\r\nतुळजापूरला जाईन सुंदर जोडवी घेईन,\r\nअंबेच्या पायात घालून मी परत लवकर येईन ‖ ४ ‖ मिठा … ‖\r\n\r\nतुळजापूरला जाईन खन-नारळ घेईन,\r\nअंबेची ओटी भरून मी लवकर परत येईन ‖ ५ ‖ मिठा … ‖\r\n\r\nतुळजापूरला जाईन पुरणपोळी करीन,\r\nअंबेला जेवू घालून मी लवकर परत येईन ‖ ६ ‖ मिठा … ‖"
   },
   {
@@ -319,6 +494,9 @@
     "type": "Bhovtya",
     "title": "Chala Jau Pahu Tya Ganpatila",
     "deity": "Ganpati",
+    "titleEng": "Chala Jau Pahu Tya Ganpatila",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Chala jau pahu tya ganapatila \r\nPreme vndu tayache charanala ‖\r\nMata tyachi girijadevi \r\nShnbhu tayacha bap ‖\r\nJap karal jar tumhi shnbhucha \r\nLay hoil tumachya papancha \r\nLay hoil tumachya duhkhacha ‖\r\nDevi bhavani anun chitti \r\nMahatmy jana thor ‖",
     "lyrics": "चला जाऊ पाहू त्या गणपतीला \r\nप्रेमे वंदू तयाचे चरणाला ‖\r\nमाता त्याची गिरीजादेवी \r\nशंभू तयाचा बाप ‖\r\nजप कराल जर तुम्ही शंभूचा \r\nलय होईल तुमच्या पापांचा \r\nलय होईल तुमच्या दुःखाचा ‖\r\nदेवी भवानी आणून चित्ती \r\nमहात्म्य जाणा थोर ‖"
   },
   {
@@ -326,6 +504,9 @@
     "type": "Bhovtya",
     "title": "Vitthalala Tulshi Ganpatila Durva",
     "deity": "Others",
+    "titleEng": "Vitthalala Tulshi Ganpatila Durva",
+    "deityEng": "Others",
+    "lyricsEng": "Viththalala tulashi, ganapatila durva |\r\nShnkarachya pindivar, bel shobhe hirava ‖",
     "lyrics": "विठ्ठलाला तुळशी, गणपतीला दुर्वा |\r\nशंकराच्या पिंडीवर, बेल शोभे हिरवा ‖"
   },
   {
@@ -333,6 +514,9 @@
     "type": "Bhovtya",
     "title": "Dnyanoba Mauli Tukaram",
     "deity": "Others",
+    "titleEng": "Dnyanoba Mauli Tukaram",
+    "deityEng": "Others",
+    "lyricsEng": "Jnjanoba mauli tukaram!! ( ४ ) \r\nHe jnjanoba mauli tukaram!! ( ७ )",
     "lyrics": "ज्ञानोबा माऊली तुकाराम!! ( ४ ) \r\nहे ज्ञानोबा माऊली तुकाराम!! ( ७ )"
   },
   {
@@ -340,6 +524,9 @@
     "type": "Bhovtya",
     "title": "Sangad Bandha Re Bhaktichi",
     "deity": "Ram",
+    "titleEng": "Sangad Bandha Re Bhaktichi",
+    "deityEng": "Ram",
+    "lyricsEng": "Sangad bandha re bhaktichi l \r\nRaghunath namachi ‖ dhru॰ ‖\r\n\r\nSnsar sagar sagar l\r\nBharala jato pur ‖ १ ‖\r\n\r\nLata usalati vishayanchya ।\r\nBahut prapnchachya ‖ २ ‖\r\n\r\nSnsruti bhonvara bhonvara ।\r\n Phiratase garagara ‖ ३ ‖\r\n\r\nNarahari sonar bodhala bodhala ।\r\nHarinami rngala ‖ ४ ‖",
     "lyrics": "सांगड बांधा रे भक्तीची l \r\nरघुनाथ नामाची ‖ धृ॰ ‖\r\n\r\nसंसार सागर सागर l\r\nभरला जातो पुर ‖ १ ‖\r\n\r\nलाटा उसळती विषयांच्या ।\r\nबहुत प्रपंचाच्या ‖ २ ‖\r\n\r\nसंसृति भोंवरा भोंवरा ।\r\n फिरतसे गरगरा ‖ ३ ‖\r\n\r\nनरहरी सोनार बोधला बोधला ।\r\nहरिनामी रंगला ‖ ४ ‖"
   },
   {
@@ -347,6 +534,9 @@
     "type": "Bhovtya",
     "title": "Chinchechya Panavar",
     "deity": "Ram",
+    "titleEng": "Chinchechya Panavar",
+    "deityEng": "Ram",
+    "lyricsEng": "Chinchechya panavar deul rachiyale । \r\nAdhi kalas mag paya re ‖ १ ‖\r\n\r\nDev pujita deul budale । \r\nAshi harichi maya re ‖ dhru. ‖\r\n\r\nDutondi harini paniyasi ali ।\r\nMukhavin pani pyali re ‖ २  ‖\r\n\r\nAndhalyane dekhile bahiऱyane aikile ।\r\nPangalyane pathalag kela re ‖ ३  ‖\r\n\r\nEkajanardani ekapane vinavi ।\r\nHarichya name tarale re ‖ ४ ‖",
     "lyrics": "चिंचेच्या पानावर देऊळ रचियले । \r\nआधी कळस मग पाया रे ‖ १ ‖\r\n\r\nदेव पुजिता देऊळ बुडाले । \r\nअशी हरीची माया रे ‖ धृ. ‖\r\n\r\nदुतोंडी हरीणी पाणियासी आली ।\r\nमुखाविण पाणी प्याली रे ‖ २  ‖\r\n\r\nआंधळ्याने देखिले बहिऱ्याने ऐकिले ।\r\nपांगळ्याने पाठलाग केला रे ‖ ३  ‖\r\n\r\nएकाजनार्दनी एकपणे विनवी ।\r\nहरीच्या नामे तरले रे ‖ ४ ‖"
   },
   {
@@ -354,6 +544,9 @@
     "type": "Bhovtya",
     "title": "Jya Mantrane Valya Koli Tarala Re",
     "deity": "Ram",
+    "titleEng": "Jya Mantrane Valya Koli Tarala Re",
+    "deityEng": "Ram",
+    "lyricsEng": "Jya mntrane valya koli tarala re |\r\nTo mntr mukhane bola re |\r\nRam shri ram , jay ram jay jay rama|",
     "lyrics": "ज्या मंत्राने वाल्या कोली तरला रे |\r\nतो मंत्र मुखाने बोला रे |\r\nराम श्री राम , जय राम जय जय राम|"
   },
   {
@@ -361,6 +554,9 @@
     "type": "Bhovtya",
     "title": "Agadam Bam Bagadam Baje Damaru",
     "deity": "Shankar",
+    "titleEng": "Agadam Bam Bagadam Baje Damaru",
+    "deityEng": "Shankar",
+    "lyricsEng": "Agada़m bam bagada़m baje damaru l \r\nNache sada shiv jagat guru ‖",
     "lyrics": "अगड़म बम बगड़म बाजे डमरू l \r\nनाचे सदा शिव जगत गुरु ‖"
   },
   {
@@ -368,6 +564,9 @@
     "type": "Bhovtya",
     "title": "Taal Vaje Veena Vaje",
     "deity": "Vishnu",
+    "titleEng": "Taal Vaje Veena Vaje",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Tal vaje vina vaje vaje tali |\r\nHari namacha gajar hoto basa snt mndali ‖",
     "lyrics": "टाळ वाजे वीणा वाजे वाजे टाळी |\r\nहरी नामचा गजर होतो बसा संत मंडळी ‖"
   },
   {
@@ -375,6 +574,9 @@
     "type": "Bhovtya",
     "title": "Namachi Gheta Namachi Gata",
     "deity": "Vitthal",
+    "titleEng": "Namachi Gheta Namachi Gata",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Namachi gheta namachi gata, hoto kulacha uddhar\r\nPndhari namacha bajar ‖ dhru ‖\r\n\r\nAshadhi kartiki ekadashila l\r\nHoto jayajayakar ‖ १ ‖\r\n\r\nGopalapur madhye snt miloni l\r\nKarati jayajayakar ‖ २ ‖\r\n\r\nNama mhane viththal charani l\r\nVahu ha snsar ‖ ३ ‖",
     "lyrics": "नामाची घेता नामची गाता, होतो कुळाचा उद्धार\r\nपंढरी नामाचा बाजार ‖ धृ ‖\r\n\r\nआषाढी कार्तिकी एकादशीला l\r\nहोतो जयजयकार ‖ १ ‖\r\n\r\nगोपाळपूर मध्ये संत मिळोनी l\r\nकरती जयजयकार ‖ २ ‖\r\n\r\nनामा म्हणे विठ्ठल चरणी l\r\nवाहू हा संसार ‖ ३ ‖"
   },
   {
@@ -382,6 +584,9 @@
     "type": "Bhovtya",
     "title": "Aamhi Gondhali Gondhali",
     "deity": "Vitthal",
+    "titleEng": "Aamhi Gondhali Gondhali",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Amhi gondhali gondhali । Govind gopalanchya meli ‖१‖\r\nAmucha ghalava gondhal । Vajavun harinamin snbhal ‖२‖\r\nDaha pancha ghala jevun । Amhi gondhalala yeun ‖३‖\r\nKamakrodh bakare mara । Puja rakhumadevivara ‖४‖\r\nJethen vithobachen deul । Tethen tukayacha gondhal ‖५‖",
     "lyrics": "आम्ही गोंधळी गोंधळी । गोविंद गोपाळांच्या मेळी ‖१‖\r\nआमुचा घालावा गोंधळ । वाजवूं हरिनामीं संभळ ‖२‖\r\nदहा पांचा घाला जेवूं । आम्ही गोंधळाला येऊं ‖३‖\r\nकामक्रोध बकरे मारा । पुजा रखुमादेवीवरा ‖४‖\r\nजेथें विठोबाचें देऊळ । तेथें तुकयाचा गोंधळ ‖५‖"
   },
   {
@@ -389,6 +594,9 @@
     "type": "Bhovtya",
     "title": "Savlya Hari Aiku Ya Tari",
     "deity": "Vitthal",
+    "titleEng": "Savlya Hari Aiku Ya Tari",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Savalya hari,  aiku ya tari, \r\nKay jhala rusayala \r\nRakhumai rusali, kopaऱyat basali, chala javu pusayala ‖ dhru ‖ \r\n\r\nRakhumai mhanate phugavun gal\r\nBhaktanchya chalivar tumacha tal \r\nYa bhaktaghari kay thevalay ho, uthasut ghusayala....? ‖ १ ‖\r\n\r\nKoni ti tumachi jani ka bani\r\nTichi kashi keli veniphani \r\nDalanakandan karun gela, lugadi dhuvayala.... ‖ २ ‖\r\n\r\nTo ek veda tukoba vani\r\nTyane kuthe lihili chara-don gani\r\nAta tevadhyasathi kay viman dhadayachn, phukatache basayala.... ‖ ३ ‖\r\n\r\n\r\nUgalaln chndan harakat nahi\r\nEkanath tasa kuni paraka nahi\r\nPanakya banun tithnch rahilat , pani bharayala.... ‖ ४ ‖\r\n\r\nAnakhin to ek sena nhavi\r\nTyachi ti dhopati tumhi ka ghyavi\r\nRajachi keli svath hajamat, ani basala tasayala.... ‖ ५ ‖\r\n\r\nBhale damajine dhany vatale\r\nTyasathi tumhi kahi karave mhatale\r\nPitanbar sodun lngotishivay, kahi navhatn nesayala.... ‖ ६ ‖\r\n\r\nNamyache gela kirtan aikayala\r\nAngat alyavani lagalat nachayala\r\nTari barn tithn kabir hota, savadh karayala.... ‖ ७ ‖",
     "lyrics": "सावळ्या हरी,  ऐकू या तरी, \r\nकाय झाला रुसायला \r\nरखुमाई रुसली, कोपऱ्यात बसली, चला जावू पुसायला ‖ धृ ‖ \r\n\r\nरखुमाई म्हणते फुगवून गाल\r\nभक्तांच्या चालीवर तुमचा ताल \r\nया भक्ताघरी काय ठेवलाय हो, उठसूट घुसायला....? ‖ १ ‖\r\n\r\nकोणी ती तुमची जनी का बनी\r\nतिची कशी केली वेणीफणी \r\nदळणकांडण करून गेला, लुगडी धुवायला.... ‖ २ ‖\r\n\r\nतो एक वेडा तुकोबा वाणी\r\nत्याने कुठे लिहिली चार-दोन गाणी\r\nआता तेवढ्यासाठी काय विमान धाडायचं, फुकटचे बसायला.... ‖ ३ ‖\r\n\r\n\r\nउगाळलं चंदन हरकत नाही\r\nएकनाथ तसा कुणी परका नाही\r\nपाणक्या बनून तिथंच राहिलात , पाणी भरायला.... ‖ ४ ‖\r\n\r\nआणखीन तो एक सेना न्हावी\r\nत्याची ती धोपटी तुम्ही का घ्यावी\r\nराजाची केली स्वतः हजामत, आणि बसला तासायला.... ‖ ५ ‖\r\n\r\nभले दामाजीने धान्य वाटले\r\nत्यासाठी तुम्ही काही करावे म्हटले\r\nपितांबर सोडून लंगोटीशिवाय, काही नव्हतं नेसायला.... ‖ ६ ‖\r\n\r\nनाम्याचे गेला कीर्तन ऐकायला\r\nअंगात आल्यावानी लागलात नाचायला\r\nतरी बरं तिथं कबीर होता, सावध करायला.... ‖ ७ ‖"
   },
   {
@@ -396,6 +604,9 @@
     "type": "Bhovtya",
     "title": "Chala Pandharisi Jau",
     "deity": "Vitthal",
+    "titleEng": "Chala Pandharisi Jau",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Chala pndharisi jau, rakhumadevivara pahu  ‖ १ ‖\r\nDole nivatil kan, mana tethe samadhan ‖ २ ‖ \r\nSnta mahntachya bheti, nachu annde valavnti ‖ ३ ‖\r\nTechi tirthanche maher,  sarv sukhache bhandar ‖ ४ ‖\r\nJanm nahi re anik, tuka mhane majhi bhak ‖ ५ ‖",
     "lyrics": "चला पंढरीसी जाऊ, रखुमादेवीवरा पाहू  ‖ १ ‖\r\nडोळे निवतील कान, मना तेथे समाधान ‖ २ ‖ \r\nसंता महंताच्या भेटी, नाचू आनंदे वाळवंटी ‖ ३ ‖\r\nतेची तीर्थांचे माहेर,  सर्व सुखाचे भांडार ‖ ४ ‖\r\nजन्म नाही रे आणिक, तुका म्हणे माझी भाक ‖ ५ ‖"
   },
   {
@@ -403,6 +614,9 @@
     "type": "Bhovtya",
     "title": "Savlya Hari Mala Pandhari Jaude",
     "deity": "Vitthal",
+    "titleEng": "Savlya Hari Mala Pandhari Jaude",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Savalya hari mala pndhari jaude\r\nDole bharuni devala pahude ‖ dhru ‖\r\n \r\nVithobala vahila buka\r\nBhajan karina to ek muka ‖ १ ‖\r\n \r\nVithobala vahilya lahya\r\nBhajan kariti aya baya ‖ २ ‖\r\n \r\nVithobala vahila pedha\r\nBhajan karina to ek veda ‖ ३ ‖\r\n \r\nVithobala vahilya tulashi\r\nBhajan karina to ek alashi ‖ ४ ‖",
     "lyrics": "सावळ्या हरी मला पंढरी जाऊदे\r\nडोळे भरुनी देवाला पाहूदे ‖ धृ ‖\r\n \r\nविठोबाला वाहिला बुका\r\nभजन करीना तो एक मुका ‖ १ ‖\r\n \r\nविठोबाला वाहिल्या लाह्या\r\nभजन करिती आया बाया ‖ २ ‖\r\n \r\nविठोबाला वाहिला पेढा\r\nभजन करीना तो एक वेडा ‖ ३ ‖\r\n \r\nविठोबाला वाहिल्या तुळशी\r\nभजन करीना तो एक आळशी ‖ ४ ‖"
   },
   {
@@ -410,6 +624,9 @@
     "type": "Bhovtya",
     "title": "Man Ramale Ho",
     "deity": "Vitthal",
+    "titleEng": "Man Ramale Ho",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Man ramale ho २  \r\nShri narayan jay narayan\r\nJay jay narayan narayan २  ‖ १ ‖\r\n\r\nMan ramale ho २ \r\nMan ramale tujhya thayi\r\nSavale viththal rakhumabai  ‖ dhru ‖\r\n \r\n Vitevarati viththal ubha javali rakhumabai २ \r\nHo javali rakhumabai ‖ २ ‖",
     "lyrics": "मन रमले हो २  \r\nश्री नारायण जय नारायण\r\nजय जय नारायण नारायण २  ‖ १ ‖\r\n\r\nमन रमले हो २ \r\nमन रमले तुझ्या ठायी\r\nसावळे विठ्ठल रखुमाबाई  ‖ धृ ‖\r\n \r\n विटेवरती विठ्ठल उभा जवळी रखुमाबाई २ \r\nहो जवळी रखुमाबाई ‖ २ ‖"
   },
   {
@@ -417,6 +634,9 @@
     "type": "Bhovtya",
     "title": "Shankhachakra Dhar Vaijayanti Dhar",
     "deity": "Vitthal",
+    "titleEng": "Shankhachakra Dhar Vaijayanti Dhar",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Shnkhachakr dhar vaijaynti dhar\r\nPitanbar dhar govardhanadhar\r\nTulasi mala shobhit galala\r\nGarudagaman hari pnkaj nabha ‖ १ ‖\r\n\r\nHosss, viththala ye resssss \r\nPndhari raya ss viththal raya re ssss\r\nViththal pandurng ‖ dhru ‖\r\n \r\nMastak linga svarup linga\r\nRupabhnga sajjan snga\r\nYadukulatilaka manmath janaka\r\nPatitapavana dinadayala ‖ २ ‖hosss\r\n \r\nTribhuvan rupa vishvasvarupa\r\nBhav bhay tapa hariti papa\r\nRukmini kanta rupa annta\r\nJanani janaka tujha bhav kalena ‖ ३ ‖ hosss\r\n\r\nChndrabhagetiri ubha vitevari\r\nKarakatavari rng shilevari\r\nJagadoddhara vedodhara\r\nBhaktasagara pndharapura ‖ ४ ‖ ho sss",
     "lyrics": "शंखचक्र धर वैजयंती धर\r\nपितांबर धर गोवर्धनधर\r\nतुलसी माला शोभीत गळला\r\nगरुडगमन हरी पंकज नाभा ‖ १ ‖\r\n\r\nहोsss, विठ्ठला ये रेsssss \r\nपंढरी राया ss विठ्ठल राया रे ssss\r\nविठ्ठल पांडुरंग ‖ धृ ‖\r\n \r\nमस्तक लिंगा स्वरूप लिंगा\r\nरूपाभंगा सज्जन संगा\r\nयदुकुलतिलका मन्मथ जनका\r\nपतितपावना दीनदयाळा ‖ २ ‖होsss\r\n \r\nत्रिभुवन रूपा विश्वस्वरूपा\r\nभव भय तापा हरीती पापा\r\nरुक्मिणी कांता रूपा अनंता\r\nजननी जनका तुझा भाव कळेना ‖ ३ ‖ होsss\r\n\r\nचंद्रभागेतिरी उभा विटेवरी\r\nकरकटावरी रंग शीळेवरी\r\nजगदोद्धरा वेदोधरा\r\nभक्तसागरा पंढरपुरा ‖ ४ ‖ हो sss"
   },
   {
@@ -424,6 +644,9 @@
     "type": "Bhovtya",
     "title": "Bholi Bhakti Keli Tukya Ne",
     "deity": "Vitthal",
+    "titleEng": "Bholi Bhakti Keli Tukya Ne",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Bholi bhakti keli tukya ne |\r\nNachavila vitevari dev | \r\nKhelavila vitevari dev |",
     "lyrics": "भोळी भक्ति केली तुक्या ने |\r\nनाचविला विटेवरि देव | \r\nखेळविला विटेवरी देव |"
   },
   {
@@ -431,6 +654,9 @@
     "type": "Bhovtya",
     "title": "Chala Chala Pandharila",
     "deity": "Vitthal",
+    "titleEng": "Chala Chala Pandharila",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Chala chala pndharila |\r\nPahu pandurng dola ‖\r\nJayaghosh namacha |\r\nVari gajar talancha ‖\r\n\r\nVitevari ubhahari ‖ dhru ‖",
     "lyrics": "चला चला पंढरीला |\r\nपाहू पांडुरंग डोळा ‖\r\nजयघोष नामाचा |\r\nवरी गजर टाळांचा ‖\r\n\r\nविटेवरी उभाहरी ‖ धृ ‖"
   },
   {
@@ -438,6 +664,9 @@
     "type": "Pradakshina",
     "title": "Paay Tujhe Gururaya Deva",
     "deity": "Datta",
+    "titleEng": "Paay Tujhe Gururaya Deva",
+    "deityEng": "Datta",
+    "lyricsEng": "Pay tujhe gururaya deva, devapuja majhi devapuja‖१‖\r\nGuru charanachi mati mati, techi majhi bhagirathi ‖२‖\r\nGurucharanacha bindu bindu, tochi majha kshirasindhu ‖३‖\r\nGurucharananche dhyan dhyan, techi majhe sndhyasnan ‖४‖\r\nShivadin kesari pahi pahi, sadguruvina daivat nahi ‖५‖",
     "lyrics": "पाय तुझे गुरुराया देवा, देवपूजा माझी देवपूजा‖१‖\r\nगुरु चरणाची माति माति, तेचि माझी भागीरथी ‖२‖\r\nगुरुचरणाचा बिंदु बिंदु, तोचि माझा क्षीरसिंधू ‖३‖\r\nगुरुचरणांचे ध्यान ध्यान, तेचि माझे संध्यास्नान ‖४‖\r\nशिवदिन केसरी पाही पाही, सद्गुरुविना दैवत नाही ‖५‖"
   },
   {
@@ -445,6 +674,9 @@
     "type": "Pradakshina",
     "title": "Sagun Murti Manohar",
     "deity": "Datta",
+    "titleEng": "Sagun Murti Manohar",
+    "deityEng": "Datta",
+    "lyricsEng": "Sagun murti manohar\r\nSvami majha dignbar\r\nMukhi narayan uchchar\r\nDattatray majha (repeat)\r\n \r\nBhagavi chhati angavari\r\nSada yeti dndadhari\r\nDin bhaktancha kaivari\r\nDattatray majha ....\r\n \r\nPayi paduka sundar\r\nShnkh chakr gadadhar\r\nBhasmodhulit sharir\r\nDattatray majha ....",
     "lyrics": "सगुण मूर्ती मनोहर\r\nस्वामी माझा दिगंबर\r\nमुखी नारायण उच्चार\r\nदत्तात्रय माझा (repeat)\r\n \r\nभगवी छाटी अंगावरी\r\nसदा येती दंडधारी\r\nदीन भक्तांचा कैवारी\r\nदत्तात्रय माझा ....\r\n \r\nपायी पादुका सुंदर\r\nशंख चक्र गदाधर\r\nभस्मोधुलित शरीर\r\nदत्तात्रय माझा ...."
   },
   {
@@ -452,6 +684,9 @@
     "type": "Pradakshina",
     "title": "Dhanya Dhanya Ho Pradakshina",
     "deity": "Datta",
+    "titleEng": "Dhanya Dhanya Ho Pradakshina",
+    "deityEng": "Datta",
+    "lyricsEng": "Dhany dhany ho pradakshina sadgururayachi ‖\r\n Jhali tvara suravara viman utarayachi ‖dhru.‖\r\n \r\nPadopadi jhalya apar punyachya rashi ‖\r\nSarvahi tirthe ghadali amhan adikaruni kashi ‖dhany ho..‖१‖\r\n \r\nMrudng, tal, dhol bhakt bhavarthe gati ‖\r\nNamasnkirtane nityannden nachati ‖ dhany ho..‖२‖\r\n \r\nKoti brahmahatya harati karitan dndavat ‖\r\nLotangan ghalita moksh lage ho payans ‖ dhany ho..‖३‖\r\n \r\nGurubhajanacha mahima n kale agamanigamasi ‖\r\nAnubhav te janati amhi gurupadinche abhilashi ‖ dhany ho..‖४‖\r\n \r\nPradakshina karuni dehabhav haravila ‖\r\nShrirngatmaj viththal pudhe ubha rahila ‖ dhany ho..‖५‖",
     "lyrics": "धन्य धन्य हो प्रदक्षिणा सद्गुरुरायाची ‖\r\n झाली त्वरा सुरवरा विमान उतरायाची ‖धृ.‖\r\n \r\nपदोपदी झाल्या अपार पुण्याच्या राशी ‖\r\nसर्वहि तीर्थे घडली आम्हां आदिकरुनि काशी ‖धन्य हो..‖१‖\r\n \r\nमृदंग, टाळ, ढोल भक्त भावार्थे गाती ‖\r\nनामसंकीर्तने नित्यानंदें नाचती ‖ धन्य हो..‖२‖\r\n \r\nकोटी ब्रह्महत्या हरती करितां दंडवत ‖\r\nलोटांगण घालिता मोक्ष लागे हो पायांस ‖ धन्य हो..‖३‖\r\n \r\nगुरुभजनाचा महिमा न कळे आगमानिगमासी ‖\r\nअनुभव ते जाणति आम्ही गुरुपदिंचे अभिलाषी ‖ धन्य हो..‖४‖\r\n \r\nप्रदक्षिणा करुनी देहभाव हरविला ‖\r\nश्रीरंगात्मज विठ्ठल पुढे उभा राहिला ‖ धन्य हो..‖५‖"
   },
   {
@@ -459,6 +694,9 @@
     "type": "Pradakshina",
     "title": "Teen Shire Saha Haat",
     "deity": "Datta",
+    "titleEng": "Teen Shire Saha Haat",
+    "deityEng": "Datta",
+    "lyricsEng": "Tin shiren saha hat । Taya majhe dndavat ॥१॥\r\nKakhe jholi pudhen shvan । Nity janhavichen snan ॥२॥\r\nMathan shobhe jatabhar । Angin vibhuti sundar ॥३॥\r\nShnkh chakr gada hatin । Payin khadava garjati ॥४॥\r\nTuka mhane dignbar । Taya majha namaskar ॥५॥",
     "lyrics": "तीन शिरें सहा हात । तया माझे दंडवत ॥१॥\r\nकाखे झोळी पुढें श्वान । नित्य जान्हवीचें स्नान ॥२॥\r\nमाथां शोभे जटाभार । अंगीं विभूति सुंदर ॥३॥\r\nशंख चक्र गदा हातीं । पायीं खडावा गर्जती ॥४॥\r\nतुका म्हणे दिगंबर । तया माझा नमस्कार ॥५॥"
   },
   {
@@ -466,6 +704,9 @@
     "type": "Pradakshina",
     "title": "Ganraja Ghya Pahile Vandan",
     "deity": "Ganpati",
+    "titleEng": "Ganraja Ghya Pahile Vandan",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Ganaraja ghya pahile vndan | \r\nPrasann vhave ho shivanndan\r\n \r\nKanchanamay ha mukut shobhato | \r\nRatnahar ha knthi rulato ‖\r\nRund kativar sarp khelato | \r\nVilepile jya bhali chndan ‖\r\n\r\nVighn haraya bhaktansathi |\r\nSada asave amuchyapathi ‖\r\nRasik jananchi vhavi dati | \r\nHich prarthana ho shivanndan ‖",
     "lyrics": "गणराजा घ्या पहिले वंदन | \r\nप्रसन्न व्हावे हो शिवनंदन\r\n \r\nकांचनमय हा मुकुट शोभतो | \r\nरत्नहार हा कंठी रुळतो ‖\r\nरुंद कटीवर सर्प खेळतो | \r\nविलेपिले ज्या भाली चंदन ‖\r\n\r\nविघ्न हराया भक्तांसाठी |\r\nसदा असावे अमुच्यापाठी ‖\r\nरसिक जनांची व्हावी दाटी | \r\nहीच प्रार्थना हो शिवनंदन ‖"
   },
   {
@@ -473,6 +714,9 @@
     "type": "Pradakshina",
     "title": "Karu Pratham Naman",
     "deity": "Ganpati",
+    "titleEng": "Karu Pratham Naman",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Karu pratham naman | vndu dev gajanan ‖\r\nGauriharacha kumar | nav tyache lnbodar ‖\r\nRuddhi siddhicha jo data | adi vighne nivarita ‖\r\nTuka mhane aho kahi |  viththal ganapati duja nahi‖",
     "lyrics": "करू प्रथम नमन | वंदू देव गजानन ‖\r\nगौरीहराचा कुमार | नाव त्याचे लंबोदर ‖\r\nऋद्धी सिद्धीचा जो दाता | आदी विघ्ने निवारीता ‖\r\nतुका म्हणे अहो काही |  विठ्ठल गणपती दुजा नाही‖"
   },
   {
@@ -480,6 +724,9 @@
     "type": "Pradakshina",
     "title": "Ganraj Gajanan Gava Ho",
     "deity": "Ganpati",
+    "titleEng": "Ganraj Gajanan Gava Ho",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Ganaraj gajanan gava ho ।\r\nRaj gajanan (3) gava ho ‖dhru‖\r\n\r\nSindur charchit shund virajit |\r\n Modak hasti pahava ho‖\r\n\r\nVighnavinashak, buddhiprakashak |\r\nTo varadayak dhyava ho ‖\r\n\r\nAnndatmaj prarthitase tuj | \r\nHa bhavasindhu tarava ho ‖",
     "lyrics": "गणराज गजानन गावा हो ।\r\nराज गजानन (3) गावा हो ‖धृ‖\r\n\r\nसिंदुर चर्चित शुंड विराजित |\r\n मोदक हस्ती पहावा हो‖\r\n\r\nविघ्नविनाशक, बुद्धिप्रकाशक |\r\nतो वरदायक ध्यावा हो ‖\r\n\r\nआनंदात्मज प्रार्थितसे तुज | \r\nहा भवसिंधु तरावा हो ‖"
   },
   {
@@ -487,6 +734,9 @@
     "type": "Pradakshina",
     "title": "Ganraya Lavkar Yei",
     "deity": "Ganpati",
+    "titleEng": "Ganraya Lavkar Yei",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Ganaraya lavakar yei। Bheti sakalasi dei ‖\r\nAngi shendurachi uti। Keshar kasturi lallati ‖\r\nPayi ghagu-ya vajati। Nachat ale ganapati ‖\r\nAvaghya ganancha ganapati। Hati modakachi vati ‖\r\nTuka mhane shodhun pahe । Viththal ganapati duja nohe ‖",
     "lyrics": "गणराया लवकर येई। भेटी सकलासी देई ‖\r\nअंगी शेंदुराची उटी। केशर कस्तुरी लल्लाटी ‖\r\nपायी घागु-या वाजती। नाचत आले गणपती ‖\r\nअवघ्या गणांचा गणपती। हाती मोदकाची वाटी ‖\r\nतुका म्हणे शोधून पाहे । विठ्ठल गणपती दुजा नोहे ‖"
   },
   {
@@ -494,6 +744,9 @@
     "type": "Pradakshina",
     "title": "Jauni Sanga Majhi Vinanti",
     "deity": "Ganpati",
+    "titleEng": "Jauni Sanga Majhi Vinanti",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Jauni sanga majhi vinnti\r\nMayurapuri ganarayala l \r\nMaghamasachi shuddh chaturthi\r\nYeti tav pad gayala l \r\nBrahma vishnu shnkar tinhi\r\nYeti tav gun gayala l \r\nChintamani sut gheun yeto\r\nShami durvankur vahayala l",
     "lyrics": "जाऊनी सांगा माझी विनंती\r\nमयुरपुरी गणरायाला l \r\nमाघमासाची शुद्ध चतुर्थी\r\nयेती तव पद गायला l \r\nब्रह्मा विष्णू शंकर तिन्ही\r\nयेती तव गुण गायला l \r\nचिंतामणी सुत घेऊन येतो\r\nशमी दुर्वांकुर वहायला l"
   },
   {
@@ -501,6 +754,9 @@
     "type": "Pradakshina",
     "title": "Gaiye Ganpati Jagvandan",
     "deity": "Ganpati",
+    "titleEng": "Gaiye Ganpati Jagvandan",
+    "deityEng": "Ganpati",
+    "lyricsEng": "Gaiye ganapati jagavndan ।\r\nShnkar suvan bhavani ke nndan ‖\r\nSiddhi sadan gajavadan vinayak ।\r\nKrupa sindhu sundar sab layak ‖\r\nGaiye ganapati jagavndan ।\r\nShnkar suvan bhavani ke nndan ‖\r\nModak priy mud mngal data ।\r\nVidya baridhi buddhi vidhata ‖\r\nGaiye ganapati jagavndan ।\r\nShnkar suvan bhavani ke nndan ‖\r\nMangat tulasidas kar jore ।\r\nBasahin ramasiy manas more ‖\r\nGaiye ganapati jagavndan ।\r\nShnkar suvan bhavani ke nndan ‖",
     "lyrics": "गाइये गणपति जगवंदन ।\r\nशंकर सुवन भवानी के नंदन ‖\r\nसिद्धि सदन गजवदन विनायक ।\r\nकृपा सिंधु सुंदर सब लायक ‖\r\nगाइये गणपति जगवंदन ।\r\nशंकर सुवन भवानी के नंदन ‖\r\nमोदक प्रिय मुद मंगल दाता ।\r\nविद्या बारिधि बुद्धि विधाता ‖\r\nगाइये गणपति जगवंदन ।\r\nशंकर सुवन भवानी के नंदन ‖\r\nमांगत तुलसीदास कर जोरे ।\r\nबसहिं रामसिय मानस मोरे ‖\r\nगाइये गणपति जगवंदन ।\r\nशंकर सुवन भवानी के नंदन ‖"
   },
   {
@@ -508,6 +764,9 @@
     "type": "Pradakshina",
     "title": "Asa Kasa Devacha Dev",
     "deity": "Krishna",
+    "titleEng": "Asa Kasa Devacha Dev",
+    "deityEng": "Krishna",
+    "lyricsEng": "Asa kasa devacha dev bai thakada । \r\nDev eka payane lngada ‖ dhru ‖\r\n\r\nGavalya ghari jato । Dahi dudh khato\r\nKari dahaya dudhacha rabada ‖१‖\r\n\r\nValavnti jato । Kirtan karito । \r\nLavi sadhusntancha jhagada ‖३‖\r\n\r\nShinkechi todito । Madakechi phodito ।\r\nPadi navanitacha sada ‖२‖\r\n\r\nEka janardani । Bhiksha vadh mayi\r\nDev ekanathacha bachhada ‖४‖",
     "lyrics": "असा कसा देवाचा देव बाई ठकडा । \r\nदेव एका पायाने लंगडा ‖ धृ ‖\r\n\r\nगवळ्या घरी जातो । दही दुध खातो\r\nकरी दहया दुधाचा रबडा ‖१‖\r\n\r\nवाळवंटी जातो । कीर्तन करितो । \r\nलावी साधुसंतांचा झगडा ‖३‖\r\n\r\nशिंकेचि तोडीतो । मडकेची फोडीतो ।\r\nपाडी नवनिताचा सडा ‖२‖\r\n\r\nएका जनार्दनी । भिक्षा वाढ मायी\r\nदेव एकनाथाचा बछडा ‖४‖"
   },
   {
@@ -515,6 +774,9 @@
     "type": "Pradakshina",
     "title": "Nesale Ga Bai Chandrakala",
     "deity": "Krishna",
+    "titleEng": "Nesale Ga Bai Chandrakala",
+    "deityEng": "Krishna",
+    "lyricsEng": "Nesale g bai, chndrakala thipakyanchi.\r\nBai thipakyachi,\r\nTirapi najar majhyavar hya savalya harichi,\r\n\r\nShil ghalun karato gola gopalancha mela.\r\nRadhikela adavun dharato mithi marato gala.\r\nShart jhali bai yachi nirlajapanachi,\r\nYa kanhachi, ya krushnachi.\r\nTirapi najar majhyavar hya savalya harichi.\r\n\r\nPaniyashi jat bai, vatevari ubha kanha.\r\nSod deva padar majha, nar ahe parakyachi.\r\nYa kanha chi, ya krushnachi.\r\nTirapi najar majhyavar hya savalya harichi.\r\n\r\nAjun yala nahi kale kari tase bhalate chale.\r\nSod deva padar majha choli ahe burakhyachi.\r\nYa kanhachi, ya krushnachi.\r\nTirapi najar majhyavar hya savalya harichi.\r\n\r\nEka janardani gavalan hasuni,\r\nHari charanashi mithi maruni.\r\nPhitali g bai majya, haus ya manachi.\r\nYa kanhachi, ya krushnachi.\r\nTirapi najar majhyavar hya savalya harichi.\r\n\r\nNesali g bai mi, chndrakala thipakyanchi.\r\nBai thipakyachi.\r\nTirapi najar majhyavar hya savalya harichi.",
     "lyrics": "नेसले ग बाई, चंद्रकला ठिपक्यांची.\r\nबाई ठिपक्याची,\r\nतिरपी नजर माझ्यावर ह्या सावळ्या हरीची,\r\n\r\nशिळ घालून करतो गोळा गोपाळांचा मेळा.\r\nराधिकेला अडवून धरतो मिठी मारतो गळा.\r\nशर्त झाली बाई याची निर्लजपणाची,\r\nया कान्हाची, या कृष्णाची.\r\nतिरपी नजर माझ्यावर ह्या सावळ्या हरीची.\r\n\r\nपाणीयाशी जात बाई, वाटेवरी उभा कान्हा.\r\nसोड देवा पदर माझा, नार आहे परक्याची.\r\nया कान्हा ची, या कृष्णाची.\r\nतिरपी नजर माझ्यावर ह्या सावळ्या हरीची.\r\n\r\nअजून याला नाही कळे करी तसे भलते चाळे.\r\nसोड देवा पदर माझा चोळी आहे बुरख्याची.\r\nया कान्हाची, या कृष्णाची.\r\nतिरपी नजर माझ्यावर ह्या सावळ्या हरीची.\r\n\r\nएका जनार्दनी गवळण हासुनी,\r\nहरी चरणाशी मिठी मारूनी.\r\nफिटली ग बाई माज्या, हौस या मनाची.\r\nया कान्हाची, या कृष्णाची.\r\nतिरपी नजर माझ्यावर ह्या सावळ्या हरीची.\r\n\r\nनेसली ग बाई मी, चंद्रकला ठिपक्यांची.\r\nबाई ठिपक्याची.\r\nतिरपी नजर माझ्यावर ह्या सावळ्या हरीची."
   },
   {
@@ -522,6 +784,9 @@
     "type": "Pradakshina",
     "title": "Kadhi Yeshil Manmohana",
     "deity": "Krishna",
+    "titleEng": "Kadhi Yeshil Manmohana",
+    "deityEng": "Krishna",
+    "lyricsEng": "Kadhi yeshil manamohana , pahanya bharat apula punha ‖ dhru‖\r\n \r\nTi madhur tujhi bansari, aiku de ekada tari ।\r\nKari prasann amuchya mana, pahanya bharat apula punha ‖१‖\r\n \r\nBharata grahan lagale, ati gulam jan jahale ।\r\nTodanya yei bndhana, pahanya bharat apula punha ‖२‖\r\n \r\nAishvary tujhya veliche, gopal - gopi - meliche ।\r\nNach svapni dise tya khuna, pahanya bharat apula punha ‖३‖\r\n \r\nTukadyachi as kar puri, tu garud savari hari ।\r\nGhe dhav nnd - nndana, pahanya bharat apula punha ‖४‖",
     "lyrics": "कधि येशिल मनमोहना , पाहण्या भारत अपुला पुन्हा ‖ ध्रु‖\r\n \r\nती मधुर तुझी बांसरी, ऐकु दे एकदा तरी ।\r\nकरी प्रसन्न अमूच्या मना, पाहण्या भारत अपुला पुन्हा ‖१‖\r\n \r\nभारता ग्रहण लागले, अति गुलाम जन जाहले ।\r\nतोडण्या येई बंधना, पाहण्या भारत अपुला पुन्हा ‖२‖\r\n \r\nऐश्वर्य तुझ्या वेळिचे, गोपाळ - गोपी - मेळिचे ।\r\nनच स्वप्नि दिसे त्या खुणा, पाहण्या भारत अपुला पुन्हा ‖३‖\r\n \r\nतुकड्याचि आस कर पुरी, तू गरुड सावरी हरी ।\r\nघे धाव नंद - नंदना, पाहण्या भारत अपुला पुन्हा ‖४‖"
   },
   {
@@ -529,6 +794,9 @@
     "type": "Pradakshina",
     "title": "Dhanya Anjanicha Sut",
     "deity": "Maruti",
+    "titleEng": "Dhanya Anjanicha Sut",
+    "deityEng": "Maruti",
+    "lyricsEng": "Dhany anjanicha sut ।\r\nNav tyache hanumnt ‖१‖\r\n\r\nJyane sita shodh keli ।\r\nRame sita bhetavili ‖२‖\r\nDronagiri to aniyela ।\r\nLakshuman vachavila ‖३‖\r\n\r\nAisa maruti upakari ।\r\nTuka lole charanavari ‖४‖",
     "lyrics": "धन्य अंजनीचा सूत ।\r\nनाव त्याचे हनुमंत ‖१‖\r\n\r\nज्याने सीता शोध केली ।\r\nरामे सीता भेटविली ‖२‖\r\nद्रोणागिरी तो आणियेला ।\r\nलक्षुमण वाचविला ‖३‖\r\n\r\nऐसा मारुती उपकारी ।\r\nतुका लोळे चरणावरी ‖४‖"
   },
   {
@@ -536,6 +804,9 @@
     "type": "Pradakshina",
     "title": "Trishulavari Kashipuri",
     "deity": "Others",
+    "titleEng": "Trishulavari Kashipuri",
+    "deityEng": "Others",
+    "lyricsEng": "Trishulavari kashipuri ।\r\nChakravari pndhari ॥\r\nDonhi sarakhe sarakhe ।\r\nVishvanath viththal sakhe ॥१॥\r\n\r\nEka vibhuticha gola ।\r\nEka kasturicha tila ॥\r\nEk gajacharm vyaghranbar ।\r\nEk bharajari pitanbar ॥२॥\r\n\r\nEk tulashicha har ।\r\nEka vasukicha bhar ॥\r\nEk garudavarati ase ।\r\nEk nndi varati baise ॥३॥\r\n\r\nEka ardhangi parvati ।\r\nEka rukminicha pati ॥\r\nEka janardani hari hara । Eka velanticha phera ॥४॥",
     "lyrics": "त्रिशुळावरी काशीपुरी ।\r\nचक्रावरी पंढरी ॥\r\nदोन्ही सारखे सारखे ।\r\nविश्वनाथ विठ्ठल सखे ॥१॥\r\n\r\nएका विभूतीचा गोळा ।\r\nएका कस्तुरीचा टिळा ॥\r\nएक गजचर्म व्याघ्रांबर ।\r\nएक भरजरी पितांबर ॥२॥\r\n\r\nएक तुळशीचा हार ।\r\nएका वासुकीचा भार ॥\r\nएक गरुडावरती असे ।\r\nएक नंदी वरती बैसे ॥३॥\r\n\r\nएका अर्धांगी पार्वती ।\r\nएका रुक्मिणीचा पती ॥\r\nएका जनार्दनी हरी हरा । एका वेलांटीचा फेरा ॥४॥"
   },
   {
@@ -543,6 +814,9 @@
     "type": "Pradakshina",
     "title": "Rajas Ji Mahali",
     "deity": "Others",
+    "titleEng": "Rajas Ji Mahali",
+    "deityEng": "Others",
+    "lyricsEng": "Rajas ji mahali, saukhye kadhi milali\r\nTi sarv prapt jhali, ya jhopadit majhya॥\r\nBhumivari padave, taऱyankade pahave\r\nPrabhunam nity gave, ya jhopadit majhya॥\r\nPahare ani tijoऱya, tyatuni hoti choऱya\r\nDaras nahi doऱya, ya jhopadit majhya॥\r\nJata taya mahala, ‘majjava’ shabd ala\r\nBhitinn yavayala, ya jhopadit majhya॥\r\nMahali mau bichhane, kndil shamadane\r\nAmha jamin mane, ya jhopadit majhya॥\r\nYeta tari sukhe ya, jata tari sukhe ja\r\nKonavari n boja, ya jhopadit majhya॥\r\nPahun saukhyn majhe, devendr tohi laje\r\nShanti sada viraje, ya jhopadit majhya॥",
     "lyrics": "राजास जी महाली, सौख्ये कधी मिळाली\r\nती सर्व प्राप्त झाली, या झोपडीत माझ्या॥\r\nभूमीवरी पडावे, ताऱ्यांकडे पहावे\r\nप्रभुनाम नित्य गावे, या झोपडीत माझ्या॥\r\nपहारे आणि तिजोऱ्या, त्यातूनी होती चोऱ्या\r\nदारास नाही दोऱ्या, या झोपडीत माझ्या॥\r\nजाता तया महाला, ‘मज्जाव’ शब्द आला\r\nभितीनं यावयाला, या झोपडीत माझ्या॥\r\nमहाली माऊ बिछाने, कंदील शामदाने\r\nआम्हा जमीन माने, या झोपडीत माझ्या॥\r\nयेता तरी सुखे या, जाता तरी सुखे जा\r\nकोणावरी न बोजा, या झोपडीत माझ्या॥\r\nपाहून सौख्यं माझे, देवेंद्र तोही लाजे\r\nशांती सदा विराजे, या झोपडीत माझ्या॥"
   },
   {
@@ -550,6 +824,9 @@
     "type": "Pradakshina",
     "title": "Ghatka Geli Pale Geli",
     "deity": "Ram",
+    "titleEng": "Ghatka Geli Pale Geli",
+    "deityEng": "Ram",
+    "lyricsEng": "Ghataka geli pale geli tas vaje jhanana ।\r\nAyushyacha nash hoto ram kan re mhanana ‖ dhru ‖\r\n \r\nEk prahar don prahar tin prahar gele ।\r\nVishayachya snchamule chari prahar gele ‖ १ ‖\r\n \r\nRatr sari jhop nahi priyesnge geli ।\r\nAisi ath praharanchi vasalat jali ‖ २ ‖ \r\n \r\nDas mhane tas bara sakalan smaran deto ।\r\nVeloveli ram mhana mhanuni khunavato ‖ ३ ‖\r\n \r\nPahata pahata vel vipat javal ali ।\r\nAise janoniya pranya tuj kan bhul padali ‖ ४ ‖",
     "lyrics": "घटका गेली पळे गेली तास वाजे झणाणा ।\r\nआयुष्याचा नाश होतो राम कां रे म्हणाना ‖ धृ ‖\r\n \r\nएक प्रहर दोन प्रहर तीन प्रहर गेले ।\r\nविषयाच्या संचामुळे चारी प्रहार गेले ‖ १ ‖\r\n \r\nरात्र सारी झोप नाही प्रियेसंगे गेली ।\r\nऐसी आठ प्रहरांची वासलात जाली ‖ २ ‖ \r\n \r\nदास म्हणे तास बरा सकळां स्मरण देतो ।\r\nवेलोवेळी राम म्हणा म्हणुनी खुणावतो ‖ ३ ‖\r\n \r\nपाहता पाहता वेळ विपट जवळ आली ।\r\nऐसे जाणोनिया प्राण्या तुज कां भूल पडली ‖ ४ ‖"
   },
   {
@@ -557,6 +834,9 @@
     "type": "Pradakshina",
     "title": "Sundar Te Dhyan Shobhe Sinhasani",
     "deity": "Ram",
+    "titleEng": "Sundar Te Dhyan Shobhe Sinhasani",
+    "deityEng": "Ram",
+    "lyricsEng": "Sundar te dhyan shobhe sinhasani । Vamangi nndini janakachi ‖१‖\r\nDakshinesi ubha bndhu lakshman । Bharat, shatrughn kaikayi sut ‖dhru‖\r\nSanmukh to ubha maruti balabhim । Jape ramanam sarvakal ‖२‖\r\nTuka mhane majhya shri ramache dhyan । Jive nibalon utarin ‖३‖",
     "lyrics": "सुंदर ते ध्यान शोभे सिंहासनी । वामांगी नंदिनी जनकाची ‖१‖\r\nदक्षिणेसी उभा बंधू लक्ष्मण । भरत, शत्रुघ्न कैकयी सुत ‖धृ‖\r\nसन्मुख तो उभा मारुती बलभीम । जपे रामनाम सर्वकाळ ‖२‖\r\nतुका म्हणे माझ्या श्री रामाचे ध्यान । जीवे निबलोन उतरीन ‖३‖"
   },
   {
@@ -564,6 +844,9 @@
     "type": "Pradakshina",
     "title": "Naam Tujhe Re Narayana",
     "deity": "Vishnu",
+    "titleEng": "Naam Tujhe Re Narayana",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Nam tujhe re narayana\r\nPashanasi phodi panha ‖\r\n\r\nNam japile valmikine\r\nOndakyala phutali pane ‖\r\n\r\nAjamela paparasi\r\nName gela vaikunthasi ‖\r\n\r\nAisa namacha mahima\r\nTuka mhane jhali sima ‖",
     "lyrics": "नाम तुझे रे नारायणा\r\nपाषाणासी फोडी पान्हा ‖\r\n\r\nनाम जपिले वाल्मिकीने\r\nओंडक्याला फुटली पाने ‖\r\n\r\nअजामेळा पापरासी\r\nनामे गेला वैकुंठासी ‖\r\n\r\nऐसा नामाचा महिमा\r\nतुका म्हणे झाली सीमा ‖"
   },
   {
@@ -571,6 +854,9 @@
     "type": "Pradakshina",
     "title": "Aavadine Bhave Harinaam Ghesi",
     "deity": "Vishnu",
+    "titleEng": "Aavadine Bhave Harinaam Ghesi",
+    "deityEng": "Vishnu",
+    "lyricsEng": "Avadinen bhaven harinam ghesi।\r\nTujhi chinta tyasi sarv ahe ॥१॥\r\n\r\nNako khed dharun konatya goshticha।\r\nPati to lakshmicha janatase ॥२॥\r\n\r\nSakal jivancha karito sanbhal।\r\nTuj mokalil aisen nahin ॥३॥\r\n\r\nJaisi sthiti ahe taishapari rahen।\r\nKautuk tun pahen snchitachen ‖४‖\r\n\r\nEka janardanin bhog prarabdhacha।\r\nHarikrupe tyacha nash ahe ॥ ५॥",
     "lyrics": "आवडीनें भावें हरिनाम घेसी।\r\nतुझी चिंता त्यासी सर्व आहे ॥१॥\r\n\r\nनको खेद धरूं कोणत्या गोष्टीचा।\r\nपति तो लक्ष्मीचा जाणतसे ॥२॥\r\n\r\nसकळ जीवांचा करितो सांभाळ।\r\nतुज मोकलील ऐसें नाहीं ॥३॥\r\n\r\nजैसी स्थिति आहे तैशापरी राहें।\r\nकौतुक तूं पाहें संचिताचें ‖४‖\r\n\r\nएका जनार्दनीं भोग प्रारब्धाचा।\r\nहरिकृपे त्याचा नाश आहे ॥ ५॥"
   },
   {
@@ -578,6 +864,9 @@
     "type": "Pradakshina",
     "title": "Roop Pahata Lochani",
     "deity": "Vitthal",
+    "titleEng": "Roop Pahata Lochani",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Rup pahata lochani | \r\nSukh jhale ho sajani ‖\r\n\r\nTo ha viththal barava |\r\nTo ha madhav barava ‖\r\n\r\nBahut sukrutachi jodi |\r\nMhanuni viththal avadi ‖\r\n\r\nSarv sukhache agar |\r\nBap rakhumadevivar ‖",
     "lyrics": "रूप पाहता लोचनी | \r\nसुख झाले हो साजणी ‖\r\n\r\nतो हा विठ्ठल बरवा |\r\nतो हा माधव बरवा ‖\r\n\r\nबहुत सुकृताची जोडी |\r\nम्हणुनी विठ्ठल आवडी ‖\r\n\r\nसर्व सुखाचे आगर |\r\nबाप रखुमादेवीवर ‖"
   },
   {
@@ -585,6 +874,9 @@
     "type": "Pradakshina",
     "title": "Yeg Yeg Vithabai",
     "deity": "Vitthal",
+    "titleEng": "Yeg Yeg Vithabai",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Yeg yeg vithabai ।\r\nMajhe pndhariche ai ‖१‖\r\n\r\nBhima ani chndrabhaga ।\r\nTujhe charaninchya gnga ‖२‖\r\n\r\nItukyasahit tvan ba yaven ।\r\nMajhe rnganin nachaven ‖३‖\r\n\r\nMajha rng tujhiya gunin ।\r\nHmane namayachi jani ‖४‖",
     "lyrics": "येग येग विठाबाई ।\r\nमाझे पंढरीचे आई ‖१‖\r\n\r\nभीमा आणि चंद्रभागा ।\r\nतुझे चरणींच्या गंगा ‖२‖\r\n\r\nइतुक्यासहित त्वां बा यावें ।\r\nमाझे रंगणीं नाचावें ‖३‖\r\n\r\nमाझा रंग तुझिया गुणीं ।\r\nह्मणे नामयाची जनी ‖४‖"
   },
   {
@@ -592,6 +884,9 @@
     "type": "Pradakshina",
     "title": "Dharila Pandharicha Chor",
     "deity": "Vitthal",
+    "titleEng": "Dharila Pandharicha Chor",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Dharila pndharicha chor\r\nPremen bandhuniyan dor ‖१‖ \r\n\r\nHrudayi bndivan kela\r\nAnt viththal kondala ‖२‖ \r\n\r\nShabden keli jadajadi\r\nPayin viththalache bedi ‖३‖ \r\n\r\nSohn shabd nad kela\r\nViththal kakulati ala ‖४‖\r\n\r\nJani hmane ba viththala\r\nJiven sodin n mi tula ‖५‖",
     "lyrics": "धरिला पंढरीचा चोर\r\nप्रेमें बांधुनियां दोर ‖१‖ \r\n\r\nहृदयी बंदिवान केला\r\nआंत विठ्ठल कोंडला ‖२‖ \r\n\r\nशब्दें केली जडाजडी\r\nपायीं विठ्ठलाचे बेडी ‖३‖ \r\n\r\nसोहं शब्द नाद केला\r\nविठ्ठल काकुळती आला ‖४‖\r\n\r\nजनी ह्मणे बा विठ्ठला\r\nजीवें सोडीं न मी तुला ‖५‖"
   },
   {
@@ -599,6 +894,9 @@
     "type": "Pradakshina",
     "title": "Jai Jai Dattaraj Yogi",
     "deity": "Vitthal",
+    "titleEng": "Jai Jai Dattaraj Yogi",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Jay jay dattaraj yogi\r\nJay jay maharaj yogi - 3\r\n \r\nShaili shrungi kndha jholi\r\nVibhut lagaya tan mo - 2\r\nKoti chndraka tej julat hai - 3\r\nChale apane gati mo\r\nJay jay ... 2\r\nShnkh chakr aur trishul viraje\r\nGale padi vanamala -2\r\nJogadnd avadhut dignbar - 3\r\nBanaras rehane vala\r\nJay jay ... 2\r\n \r\nKrupa karo ham dinarnk hai\r\nLe jao apani maya - 2\r\nMahadev sut dhyan dharat jab - 3\r\nTab hi darshan paya\r\nJay jay ... 2",
     "lyrics": "जय जय दत्तराज योगी\r\nजय जय महाराज योगी - 3\r\n \r\nशैली शृंगी कंधा झोली\r\nविभुत लगाया तन मो - 2\r\nकोटी चंद्रका तेज जुलत है - 3\r\nचले अपने गती मो\r\nजय जय ... 2\r\nशंख चक्र और त्रिशूल विराजे\r\nगले पडी वनमाला -2\r\nजोगदंड अवधूत दिगंबर - 3\r\nबनारस रेहने वाला\r\nजय जय ... 2\r\n \r\nकृपा करो हम दीनरंक है\r\nले जाओ अपनी माया - 2\r\nमहादेव सुत ध्यान धरत जब - 3\r\nतब ही दर्शन पाया\r\nजय जय ... 2"
   },
   {
@@ -606,6 +904,9 @@
     "type": "Pradakshina",
     "title": "Kanda Mula Bhaji",
     "deity": "Vitthal",
+    "titleEng": "Kanda Mula Bhaji",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Kanda mula bhaji\r\nAvaghi vithai majhi\r\n \r\nLasun mirachi kothinbiri\r\nAvagha jhala majha hari\r\n \r\nUs gajar ratalu\r\nAvagha jhalase gopalu\r\n \r\nMot nada vihir dori\r\nAvaghi vyapili pndhari\r\n \r\nSavata mhane kela mala\r\nViththal payi govila gala",
     "lyrics": "कांदा मुळा भाजी\r\nअवघी विठाई माझी\r\n \r\nलसूण मिरची कोथिंबीरी\r\nअवघा झाला माझा हरी\r\n \r\nऊस गाजर रताळू\r\nअवघा झालासे गोपाळू\r\n \r\nमोट नाडा विहीर दोरी\r\nअवघी व्यापिली पंढरी\r\n \r\nसावता म्हणे केला मळा\r\nविठ्ठल पायी गोविला गळा"
   },
   {
@@ -613,6 +914,9 @@
     "type": "Pradakshina",
     "title": "Aamhi Jato Aapulya Gava",
     "deity": "Vitthal",
+    "titleEng": "Aamhi Jato Aapulya Gava",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Amhi jato apulya gava\r\nAmacha ram ram ghyava\r\n \r\nTumachi amachi hechi bheti\r\nYethuniya janm tuti\r\n \r\nAta aso dyavi daya\r\nTumachya lagatase paya\r\n \r\nYat nijadhami koni\r\nViththal viththal bola vani\r\n \r\nRamakrushn mukhi bola\r\nTuka jato vaikuthala",
     "lyrics": "आम्ही जातो आपुल्या गावा\r\nआमचा राम राम घ्यावा\r\n \r\nतुमची आमची हेची भेटी\r\nयेथूनिया जन्म तुटी\r\n \r\nआता असो द्यावी दया\r\nतुमच्या लागतसे पाया\r\n \r\nयात निजधामी कोणी\r\nविठ्ठल विठ्ठल बोला वाणी\r\n \r\nरामकृष्ण मुखी बोला\r\nतुका जातो वैकुठाला"
   },
   {
@@ -620,6 +924,9 @@
     "type": "Pradakshina",
     "title": "Pandharicha Rana Yeto",
     "deity": "Vitthal",
+    "titleEng": "Pandharicha Rana Yeto",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Pndharicha rana yeto janaichya dariss\r\nShriharisss cut\r\nJodhalyachya bhakarichi chav lai nyari ‖dhru‖\r\n \r\nBhaktasathi raboniya pndharicha rana\r\nShivarat pikavito motiyacha dana\r\nMotiyache pani bhare kanasachya vari ‖१‖\r\nShriharisss cut\r\n \r\nJanaichya jatyavari gavuniya gani\r\nPandurng gela rani vechayala sheni\r\nJani mhane kay devu viththala nyahari ‖२‖\r\nShriharisss cut\r\n \r\nDev mage janipasi jondhala bhakari\r\nAmrutachi chav tyala kay pan godi\r\nBhaktachiya premasathi karito chakari ‖३‖\r\nShriharisss",
     "lyrics": "पंढरीचा राणा येतो जानाईच्या दारीss\r\nश्रीहरीsss cut\r\nजोधळ्याच्या भाकरीची चव लई न्यारी ‖धृ‖\r\n \r\nभक्तासाठी राबोनिया पंढरीचा राणा\r\nशिवारात पिकवितो मोतीयाचा दाणा\r\nमोतीयाचे पाणी भरे कणसाच्या वरी ‖१‖\r\nश्रीहरीsss cut\r\n \r\nजनाईच्या जात्यावरी गावूनीया गाणी\r\nपांडुरंग गेला रानी वेचायाला शेणी\r\nजनी म्हणे काय देवू विठ्ठला न्याहारी ‖२‖\r\nश्रीहरीsss cut\r\n \r\nदेव मागे जनीपासी जोंधळा भाकरी\r\nअमृताची चव त्याला काय पण गोडी\r\nभक्ताचिया प्रेमासाठी करीतो चाकरी ‖३‖\r\nश्रीहरीsss"
   },
   {
@@ -627,6 +934,9 @@
     "type": "Pradakshina",
     "title": "Taal Bole Chipalila",
     "deity": "Vitthal",
+    "titleEng": "Taal Bole Chipalila",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Tal bole chipalila, nach majhyasng\r\nDevajichya dari aj rngala abhng\r\n\r\nDarabari ale rnk ani rav\r\nSare ekarup nahi bhedabhav\r\nGau nachu sare houni nihsng\r\n\r\n\r\nJanasevepayi kaya jhijavavi\r\nGhav sosuniya mane rijhavavi\r\nTal deuni ha bolato mrudng\r\n\r\nBrahmanndi deh buduniya jai\r\nEk ek khanb varakari hoi\r\nKailasacha nath jhala pandurng",
     "lyrics": "टाळ बोले चिपळीला, नाच माझ्यासंग\r\nदेवाजीच्या दारी आज रंगला अभंग\r\n\r\nदरबारी आले रंक आणि राव\r\nसारे एकरूप नाही भेदभाव\r\nगाऊ नाचू सारे होउनी निःसंग\r\n\r\n\r\nजनसेवेपायी काया झिजवावी\r\nघाव सोसुनिया मने रिझवावी\r\nताल देउनी हा बोलतो मृदंग\r\n\r\nब्रह्मानंदी देह बुडूनिया जाई\r\nएक एक खांब वारकरी होई\r\nकैलासाचा नाथ झाला पांडुरंग"
   },
   {
@@ -634,6 +944,9 @@
     "type": "Pradakshina",
     "title": "Atma Sakalancha Shrihari",
     "deity": "Vitthal",
+    "titleEng": "Atma Sakalancha Shrihari",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Atma sakalancha shrihari ।\r\nTo ha ubha pndharapurin ‖१‖\r\nMhaneniyan dev yeti ।\r\nDarshani rushinchya pngati ‖२‖\r\nPrativarshi upasak ।\r\nYeti yatre sanakadik ‖३‖\r\nNila mhane trailokyadata ।\r\nVitho lakshmicha bharta ‖४‖",
     "lyrics": "आत्मा सकळांचा श्रीहरी ।\r\nतो हा उभा पंढरपुरीं ‖१‖\r\nम्हणेनियां देव येती ।\r\nदर्शनी ऋषींच्या पंगती ‖२‖\r\nप्रतिवर्षी उपासक ।\r\nयेती यात्रे सनकादिक ‖३‖\r\nनिळा म्हणे त्रैलोक्यदाता ।\r\nविठो लक्ष्मीचा भर्ता ‖४‖"
   },
   {
@@ -641,6 +954,9 @@
     "type": "Pradakshina",
     "title": "Kanada Raja Pandharicha",
     "deity": "Vitthal",
+    "titleEng": "Kanada Raja Pandharicha",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Kanada raja pndharicha\r\nVedannahi nahi kalala antapar yacha\r\n\r\nNirakar to nirgun ishvar\r\nAsa prakatala asa vitevar\r\nUbhay thevile hat kativar\r\nPutala chaitanyacha\r\n\r\nParabramh he bhaktasathi\r\nMuke thakale bhimekathi\r\nUbha rahila bhav savayav\r\nJanu ki pundalikacha\r\n\r\nHa namyachi khir chakhato\r\nChokhobanchi gure rakhato\r\nPurndaracha ha paramatma\r\nVali damajicha",
     "lyrics": "कानडा राजा पंढरीचा\r\nवेदांनाही नाही कळला अंतपार याचा\r\n\r\nनिराकार तो निर्गुण ईश्वर\r\nअसा प्रकटला असा विटेवर\r\nउभय ठेविले हात कटीवर\r\nपुतळा चैतन्याचा\r\n\r\nपरब्रम्ह हे भक्तासाठी\r\nमुके ठाकले भीमेकाठी\r\nउभा राहिला भाव सावयव\r\nजणु कि पुंडलिकाचा\r\n\r\nहा नाम्याची खीर चाखतो\r\nचोखोबांची गुरे राखतो\r\nपुरंदराचा हा परमात्मा\r\nवाली दामाजीचा"
   },
   {
@@ -648,6 +964,9 @@
     "type": "Pradakshina",
     "title": "Ubha Vitevarti",
     "deity": "Vitthal",
+    "titleEng": "Ubha Vitevarti",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Ubha vitevari donhi hat katevari  savala ubha ‖\r\nUbha chala pahu tulashi har bukka vahu savala ubha ‖\r\nUbha jagajethi charani ghalu tyachya mithi savala ubha ‖\r\nPndharapur vala bhajanamadhye dng jhala savala ubha ‖",
     "lyrics": "उभा विटेवरी दोन्ही हात कटेवरी  सावळा उभा ‖\r\nउभा चला पाहू तुळशी हार बुक्का वाहू सावळा उभा ‖\r\nउभा जगजेठी चरणी घालू त्याच्या मीठी सावळा उभा ‖\r\nपंढरपूर वाला भजनामध्ये दंग झाला सावळा उभा ‖"
   },
   {
@@ -655,6 +974,9 @@
     "type": "Pradakshina",
     "title": "Sundar Te Dhyan",
     "deity": "Vitthal",
+    "titleEng": "Sundar Te Dhyan",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Sundar ten dhyan ubhe vitevari । Kar katavari thevuniyan ॥१॥\r\nTulasi har galan kase pitanbar ।  Avade nirntar ten chi rup ॥Dhru.॥\r\nMakarakundalen talapati shravanin । Knthin kaustubhamani virajit ॥२॥\r\nTuka mhane majhen hen chi sarv sukh । Pahin shrimukh avadinen ॥३॥",
     "lyrics": "सुंदर तें ध्यान उभे विटेवरी । कर कटावरी ठेवूनियां ॥१॥\r\nतुळसी हार गळां कासे पीतांबर ।  आवडे निरंतर तें चि रूप ॥ध्रु.॥\r\nमकरकुंडलें तळपती श्रवणीं । कंठीं कौस्तुभमणि विराजित ॥२॥\r\nतुका म्हणे माझें हें चि सर्व सुख । पाहीन श्रीमुख आवडीनें ॥३॥"
   },
   {
@@ -662,6 +984,9 @@
     "type": "Pradakshina",
     "title": "Ya Vithucha Gajar",
     "deity": "Vitthal",
+    "titleEng": "Ya Vithucha Gajar",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Ya vithucha gajar hari namacha jhenda rovila |\r\nYa sntancha mela gopalancha, jhenda rovila ‖ dhru ‖\r\n\r\nKaul ghetala lihun shnbhar varshe jan |\r\nNangar dharila satvacha bail man pavanacha ‖ १ ‖\r\n\r\nUkhalan premachi kadhili svasth basuni sadagurujavali |\r\nPyala ghetala jnjanacha toch amrutacha ‖ २ ‖\r\n\r\nPnchatatvanchi gophan, krodh pakharen jan |\r\nDhonda ghetala jnjanacha, karitase jagaran |\r\nKeshavadas mhane sntancha mela gopalancha, dav mandala  ‖ ३ ‖",
     "lyrics": "या विठूचा गजर हरी नामाचा झेंडा रोविला |\r\nया संतांचा मेळा गोपाळांचा, झेंडा रोविला ‖ धृ ‖\r\n\r\nकौल घेतला लिहून शंभर वर्षे जाण |\r\nनांगर धरिला सत्वाचा बैल मन पवनाचा ‖ १ ‖\r\n\r\nउखळण प्रेमाची काढिली स्वस्थ बसूनी सदगुरूजवळी |\r\nप्याला घेतला ज्ञानाचा तोच अमृताचा ‖ २ ‖\r\n\r\nपंचतत्वांची गोफण, क्रोध पाखरें जाण |\r\nधोंडा घेतला ज्ञानाचा, करीतसे जागरण |\r\nकेशवदास म्हणे संतांचा मेळा गोपाळांचा, डाव मांडला  ‖ ३ ‖"
   },
   {
@@ -669,6 +994,9 @@
     "type": "Pradakshina",
     "title": "Alikade Ye Mala Palikade Ne",
     "deity": "Vitthal",
+    "titleEng": "Alikade Ye Mala Palikade Ne",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Alikade ye mala palikade ne pandurnga\r\nNadi bharali chndrabhaga || dhru ||\r\n\r\nNahi keli tujhi seva\r\nDuhkh vate majhya jiva\r\nHa ha pandurnga\r\nNadi bharali chndrabhaga\r\nAlikade ye mala palikade ne pandurnga\r\nNadi bharali chndrabhaga || १ ||\r\n\r\nNahi kele tujhe dhyan\r\nDukhi jhale majhe man\r\nHa ha pandurnga\r\nNadi bharali chndrabhaga\r\nAlikade ye mala palikade ne pandurnga\r\nNadi bharali chndrabhaga || २ ||\r\n\r\nViththal mhane rukminila\r\nJani dasi payapasi\r\nHa ha pandurnga\r\nNadi bharali chndrabhaga\r\nAlikade ye mala palikade ne pandurnga\r\nNadi bharali chndrabhaga || ३ ||",
     "lyrics": "अलीकडे ये मला पलीकडे ने पांडुरंगा\r\nनदी भरली चंद्रभागा || धृ ||\r\n\r\nनाही केली तुझी सेवा\r\nदुःख वाटे माझ्या जीवा\r\nहा हा पांडुरंगा\r\nनदी भरली चंद्रभागा\r\nअलीकडे ये मला पलीकडे ने पांडुरंगा\r\nनदी भरली चंद्रभागा || १ ||\r\n\r\nनाही केले तुझे ध्यान\r\nदुखी झाले माझे मन\r\nहा हा पांडुरंगा\r\nनदी भरली चंद्रभागा\r\nअलीकडे ये मला पलीकडे ने पांडुरंगा\r\nनदी भरली चंद्रभागा || २ ||\r\n\r\nविठ्ठल म्हणे रुक्मिणीला\r\nजनी दासी पायापासी\r\nहा हा पांडुरंगा\r\nनदी भरली चंद्रभागा\r\nअलीकडे ये मला पलीकडे ने पांडुरंगा\r\nनदी भरली चंद्रभागा || ३ ||"
   },
   {
@@ -676,6 +1004,9 @@
     "type": "Pradakshina",
     "title": "Dhavoniya Aalo Pahavaya Mukh",
     "deity": "Vitthal",
+    "titleEng": "Dhavoniya Aalo Pahavaya Mukh",
+    "deityEng": "Vitthal",
+    "lyricsEng": "Dhavoniya alo pahavaya mukh |\r\nGele majhe duhkh janmantariche || १ ||\r\n\r\nAikile hote taisechi pahile |\r\nMan sthiravale tujhya payi || २ ||\r\n\r\nTuka mhane majhi ichchha purn jhali |\r\nKanhi n rahili vasana he || ३ ||",
     "lyrics": "धावोनिया आलो पहावया मुख |\r\nगेले माझे दुःख जन्मांतरीचे || १ ||\r\n\r\nऐकिले होते तैसेची पाहीले |\r\nमन स्थिरावले तुझ्या पायी || २ ||\r\n\r\nतुका म्हणे माझी इच्छा पूर्ण झाली |\r\nकांही न राहिली वासना हे || ३ ||"
   }
 ]

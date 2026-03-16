@@ -11,6 +11,51 @@ const contentDir = path.join(__dirname, '../content');
 const outputDir = path.join(__dirname, '../data');
 const outputFile = path.join(outputDir, 'Aartya.json');
 
+const transliterateMap = {
+  consonants: {
+    'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'ङ': 'ng',
+    'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh', 'ञ': 'nj',
+    'ट': 't', 'ठ': 'th', 'ड': 'd', 'ढ': 'dh', 'ण': 'n',
+    'त': 't', 'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n',
+    'प': 'p', 'फ': 'ph', 'ब': 'b', 'भ': 'bh', 'म': 'm',
+    'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's', 'ह': 'h', 'ळ': 'l',
+    'क्ष': 'ksh', 'ज्ञ': 'dny'
+  },
+  vowels: {
+    'अ': 'a', 'आ': 'a', 'इ': 'i', 'ई': 'i', 'उ': 'u', 'ऊ': 'u', 'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au', 'ऋ': 'ru'
+  },
+  matras: {
+    'ा': 'a', 'ि': 'i', 'ी': 'i', 'ु': 'u', 'ू': 'u', 'ृ': 'ru', 'े': 'e', 'ै': 'ai', 'ो': 'o', 'ौ': 'au', 'ं': 'n', 'ँ': 'n', 'ः': 'h'
+  }
+};
+
+function transliterate(text) {
+  if (!text) return "";
+  let result = "";
+  for (let i = 0; i < text.length; i++) {
+    let char = text[i];
+    let nextChar = text[i + 1];
+
+    if (transliterateMap.consonants[char]) {
+      result += transliterateMap.consonants[char];
+      // Add 'a' (schwa) if the next character isn't a matra, halant, or end of a word
+      if (nextChar !== '्' && !transliterateMap.matras[nextChar]) {
+         if (nextChar !== undefined && !/[\s।॥,.;:!?\n\r]/.test(nextChar)) {
+           result += 'a';
+         }
+      }
+    } else if (transliterateMap.vowels[char]) {
+      result += transliterateMap.vowels[char];
+    } else if (transliterateMap.matras[char]) {
+      result += transliterateMap.matras[char];
+    } else if (char !== '्') {
+      result += char; // Pass through English letters & punctuation natively
+    }
+  }
+  // Capitalize the first letter of each line for readability
+  return result.replace(/(^\s*|[\n\r।॥]\s*)([a-z])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+}
+
 export function generateAartya() {
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
@@ -37,11 +82,15 @@ export function generateAartya() {
             for (const match of fileContent.matchAll(regex)) {
                 const rawBlock = `---\n${match[1]}\n---\n${match[2]}`;
                 const { data, content } = matter(rawBlock);
+                const lyrics = content.trim();
                 allContent.push({ 
                     id: `${category}-${file.replace('.md', '')}-${index}`, 
                     type: category, 
                     ...data, 
-                    lyrics: content.trim() 
+                    titleEng: transliterate(data.title || ""),
+                    deityEng: transliterate(data.deity || ""),
+                    lyricsEng: transliterate(lyrics),
+                    lyrics: lyrics 
                 });
                 index++;
             }

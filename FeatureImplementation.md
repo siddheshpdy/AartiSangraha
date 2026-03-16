@@ -59,6 +59,54 @@ Add a favorite item moving up and down functionality.
 Success Metric: User can move their favorites up and down in the list.
 
 
+🟣 Phase 5: Hands-Free & Immersive Experience
+⏳ Feature 5.1: Focus / Zen Mode - PENDING
+
+When a user taps on an Aarti card, expand it to take up the full screen (hiding the search bar, filter chips, and other Aartya).
+
+Success Metric: User is presented with a distraction-free view containing only the title, deity, and lyrics.
+
+🟠 Phase 6: Advanced Personalization
+⏳ Feature 6.1: Custom "Puja Playlists" - PENDING
+
+Instead of just one "Favorites" list, allow users to create specific sequences (e.g., "Daily Evening Puja", "Ganesh Chaturthi Sequence"). Add a "Start Puja" button that shows them one Aarti at a time with a "Next Aarti" button at the bottom.
+
+Success Metric: User can navigate sequentially through their selected list of Aartya without going back to the main menu.
+
+⏳ Feature 6.2: Backup & Restore Settings - PENDING
+
+Since `localStorage` can be cleared by the browser or lost when switching phones, add an option to "Export" and "Import" their favorites and settings as a small JSON file.
+
+Success Metric: User can download their configuration, clear their browser data, and fully restore their favorites by uploading the file.
+
+🔵 Phase 7: Content Enhancements
+✅ Feature 7.1: English Transliteration Toggle - COMPLETED
+
+Add a toggle (A/अ) that converts the Devanagari text into English transliteration (Latin script).
+
+Success Metric: User can click a button and instantly read "जय देव जय देव" as "Jai Dev Jai Dev".
+
+⏳ Feature 7.2: YouTube Video Playback - PENDING
+
+Add an optional frontmatter field `youtubeUrl` in the markdown files. Display an embedded mini YouTube player or a "Watch Video" button on the card if the URL exists.
+
+Success Metric: User can play and listen to the tune of the Aarti via YouTube while reading the lyrics.
+
+⏳ Feature 7.3: Share Button - PENDING
+
+Add a share icon to each Aarti that uses the native Web Share API (`navigator.share`). It can share a deep-link to the app or copy the lyrics/title as text.
+
+Success Metric: User can click share and send the Aarti lyrics directly to a family WhatsApp group.
+
+Success Metric: User can click share and send the Aarti lyrics directly to a family WhatsApp group.
+
+✅ Feature 7.4: Cross-Script Search (English/Devanagari) - COMPLETED
+
+Allow users to type search queries in English (Latin script) and match against actual Devanagari contents (lyrics, title, deity). This can be achieved by pre-building romanized search fields during the build step.
+
+Success Metric: Typing "sukha" or "सुख" both correctly return the "Sukhakarta Dukhaharta" Aarti by searching the lyrics.
+
+
 
 🚀 Implementation Protocol (Instruction for Gemini)
 "Please implement Feature [X.X] from the Feature Implementation File.

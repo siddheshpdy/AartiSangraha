@@ -3,41 +3,174 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { flushSync } from 'react-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 
-function highlightText(text, highlight) {
+// Transliteration Map for Cross-Script "Phonetic Equivalence" Search
+const phoneticMap = {
+  // Velar (K/G)
+  'क':'k', 'ख':'k', 'ग':'k', 'घ':'k', 'k':'k', 'g':'k', 'q':'k',
+  // Palatal (C/J)
+  'च':'c', 'छ':'c', 'ज':'c', 'झ':'c', 'c':'c', 'j':'c', 'z':'c',
+  // Retroflex & Dental (T/D)
+  'ट':'t', 'ठ':'t', 'ड':'t', 'ढ':'t', 'त':'t', 'थ':'t', 'द':'t', 'ध':'t', 't':'t', 'd':'t',
+  // Labial (P/B/F)
+  'प':'p', 'फ':'p', 'ब':'p', 'भ':'p', 'p':'p', 'b':'p', 'f':'p',
+  // Nasals (N/M)
+  'ङ':'n', 'ञ':'n', 'ण':'n', 'न':'n', 'n':'n', 'म':'m', 'm':'m',
+  // Sibilants (S/Sh)
+  'श':'s', 'ष':'s', 'स':'s', 's':'s',
+  // Liquids & Glides (R/L/V/W/Y)
+  'र':'r', 'ल':'l', 'व':'v', 'ळ':'l', 'r':'r', 'l':'l', 'v':'v', 'w':'v', 'य':'y', 'y':'y',
+  // Conjuncts & Special
+  'क्ष':'ks', 'x':'ks', 
+  'ज्ञ':'tny', // Marathi pronunciation 'dnya' -> t+n+y
+  'ं':'n', 'ँ':'n', 'ृ':'ri', 'ऋ':'ri',
+  
+  // Vowel Signature (all non-schwa vowels map to 'i' placeholder)
+  // Enforces precise matching rhythm while tolerating i/e/u/o typos
+  'इ':'i', 'ई':'i', 'ि':'i', 'ी':'i', 'i':'i',
+  'उ':'i', 'ऊ':'i', 'ु':'i', 'ू':'i', 'u':'i',
+  'ए':'i', 'ऐ':'i', 'े':'i', 'ै':'i', 'e':'i',
+  'ओ':'i', 'औ':'i', 'ो':'i', 'ौ':'i', 'o':'i'
+  // Note: 'a' and 'h' are intentionally omitted to avoid Schwa/Aspiration mismatch.
+};
+
+function getSearchSkeleton(str) {
+  if (!str) return "";
+  let normalized = "";
+  let lastChar = '';
+  for (let char of str.toLowerCase()) {
+    let mappedChar = null;
+    if (phoneticMap[char] !== undefined) {
+      mappedChar = phoneticMap[char];
+    } else if (/[\n\r।॥,.;:!?]/.test(char)) {
+      mappedChar = ' '; // Sentence boundaries prevent cross-sentence false positives
+    }
+
+    if (mappedChar) {
+      for (let i = 0; i < mappedChar.length; i++) {
+        let c = mappedChar[i];
+        if (c !== lastChar) {
+          normalized += c;
+          lastChar = c;
+        }
+      }
+    }
+  }
+  return normalized;
+}
+
+function getSkeletonMapping(str) {
+  if (!str) return { skeleton: "", mapping: [] };
+  let skeleton = "";
+  let mapping = [];
+  
+  let lastSkeletonChar = '';
+  for (let i = 0; i < str.length; i++) {
+    let char = str.charAt(i).toLowerCase();
+    let mappedChar = null;
+    
+    if (phoneticMap[char] !== undefined) {
+      mappedChar = phoneticMap[char];
+    } else if (/[\n\r।॥,.;:!?]/.test(char)) {
+      mappedChar = ' ';
+    }
+    
+    if (mappedChar) {
+      for (let j = 0; j < mappedChar.length; j++) {
+        let c = mappedChar[j];
+        if (c !== lastSkeletonChar) {
+          skeleton += c;
+          mapping.push(i);
+          lastSkeletonChar = c;
+        }
+      }
+    }
+  }
+  return { skeleton, mapping };
+}
+
+function highlightText(text, highlight, querySkeleton) {
   if (!text) return null;
   if (!highlight || !highlight.trim()) return text;
   
   text = String(text);
   
-  // Escape special regex characters to prevent errors
+  // 1. Literal match (e.g., if you searched using actual Devanagari)
   const escapedHighlight = highlight.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  let regex;
-  try {
-    // Match start of string or any non-letter/number/mark character, followed by the search query
-    regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])(${escapedHighlight})`, 'giu');
-  } catch (e) {
-    // Fallback for older mobile browsers that do not support unicode property escapes
-    regex = new RegExp(`(^|\\W)(${escapedHighlight})`, 'gi');
-  }
-  
+  const regex = new RegExp(`(${escapedHighlight})`, 'gi');
   const parts = text.split(regex);
   
-  const result = [];
-  for (let i = 0; i < parts.length; i++) {
-    // Every 3rd element starting from index 2 is the actual matched text
-    if (i % 3 === 2) {
-      result.push(
-        <mark key={i} style={{ backgroundColor: 'var(--color-border)', padding: '0 2px', borderRadius: '3px', color: 'inherit' }}>
-          {parts[i]}
-        </mark>
-      );
-    } else if (parts[i]) {
-      // Push prefix or surrounding text
-      result.push(parts[i]);
+  if (parts.length > 1) {
+    return parts.map((part, i) => {
+      if (i % 2 === 1) {
+        return (
+          <mark key={i} style={{ backgroundColor: 'var(--color-border)', padding: '0 2px', borderRadius: '3px', color: 'inherit' }}>
+            {part}
+          </mark>
+        );
+      }
+      return part;
+    });
+  }
+
+  // 2. Cross-script skeleton match
+  if (querySkeleton && querySkeleton.length >= 3) {
+    const { skeleton, mapping } = getSkeletonMapping(text);
+    let matchIdx = skeleton.indexOf(querySkeleton);
+    
+    if (matchIdx !== -1) {
+      let wordRegex;
+      try {
+        wordRegex = /^[\p{L}\p{M}\p{N}]+$/u;
+      } catch (e) {
+        wordRegex = /^\w+$/;
+      }
+
+      const result = [];
+      let lastEnd = 0;
+
+      while (matchIdx !== -1) {
+        const startCharIdx = mapping[matchIdx];
+        const endCharIdx = mapping[matchIdx + querySkeleton.length - 1];
+        
+        let highlightStart = startCharIdx;
+        while (highlightStart > 0 && wordRegex.test(text[highlightStart - 1])) {
+          highlightStart--;
+        }
+        
+        let highlightEnd = endCharIdx;
+        while (highlightEnd < text.length - 1 && wordRegex.test(text[highlightEnd + 1])) {
+          highlightEnd++;
+        }
+        
+        if (highlightStart < lastEnd) {
+           highlightStart = lastEnd;
+        }
+
+        if (highlightStart > lastEnd) {
+          result.push(text.slice(lastEnd, highlightStart));
+        }
+        
+        if (highlightEnd >= highlightStart) {
+          result.push(
+            <mark key={matchIdx} style={{ backgroundColor: 'var(--color-border)', padding: '0 2px', borderRadius: '3px', color: 'inherit' }}>
+              {text.slice(highlightStart, highlightEnd + 1)}
+            </mark>
+          );
+        }
+        
+        lastEnd = highlightEnd + 1;
+        matchIdx = skeleton.indexOf(querySkeleton, matchIdx + 1);
+      }
+
+      if (lastEnd < text.length) {
+        result.push(text.slice(lastEnd));
+      }
+
+      return result.length > 0 ? result : text;
     }
   }
   
-  return result;
+  return text;
 }
 
 const deityOrder = [
@@ -65,6 +198,11 @@ const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
   return weightA - weightB;
 });
 
+// Pre-calculate search skeletons once on app load
+sortedAartiData.forEach(a => {
+  a._searchSkeleton = getSearchSkeleton((a.title || "") + " " + (a.deity || "") + " " + (a.lyrics || ""));
+});
+
 function App() {
   const [query, setQuery] = useState("");
   const [contentType, setContentType] = useState("Aartya");
@@ -73,6 +211,9 @@ function App() {
   const [fontSize, setFontSize] = useState(18); // Default 18px (1.125rem)
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "system";
+  });
+  const [script, setScript] = useState(() => {
+    return localStorage.getItem("script") || "devanagari";
   });
   const [favorites, setFavorites] = useState(() => {
     try {
@@ -106,6 +247,8 @@ function App() {
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   let searchRegex = null;
+  let querySkeleton = "";
+  let isFuzzyEligible = false;
   if (searchQuery) {
     try {
       // Word boundary for Unicode: Start of string or any non-word character (not letter, mark, or number)
@@ -113,6 +256,8 @@ function App() {
     } catch (e) {
       searchRegex = new RegExp(`(^|\\W)` + escapedQuery, 'i');
     }
+    querySkeleton = getSearchSkeleton(searchQuery);
+    isFuzzyEligible = querySkeleton.length >= 3;
   }
 
   // Filter against the pre-sorted data
@@ -123,7 +268,11 @@ function App() {
     const matchesQuery = !searchRegex || (
       (a.title && searchRegex.test(a.title)) || 
       (a.deity && searchRegex.test(a.deity)) ||
-      (a.lyrics && searchRegex.test(a.lyrics))
+      (a.lyrics && searchRegex.test(a.lyrics)) ||
+      (a.titleEng && searchRegex.test(a.titleEng)) ||
+      (a.deityEng && searchRegex.test(a.deityEng)) ||
+      (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
+      (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
     );
     const matchesCategory = selectedCategory === "All" 
       || (selectedCategory === "Favorites" && favorites.includes(a.id))
@@ -224,6 +373,10 @@ function App() {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("script", script);
+  }, [script]);
 
   const requestWakeLock = async () => {
     try {
@@ -340,6 +493,15 @@ function App() {
             </button>
             <button
               className="theme-toggle"
+              onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')}
+              aria-label="Toggle Script"
+              title={script === 'devanagari' ? "Read in English" : "Read in Marathi"}
+              style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+            >
+              {script === 'devanagari' ? 'A' : 'अ'}
+            </button>
+            <button
+              className="theme-toggle"
               onClick={toggleWakeLock}
               aria-label="Toggle Wake Lock"
               title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"}
@@ -434,9 +596,9 @@ function App() {
               <button className="font-btn" onClick={() => setFontSize(f => Math.max(14, f - 2))} aria-label="Decrease font size">A-</button>
               <button className="font-btn" onClick={() => setFontSize(f => Math.min(32, f + 2))} aria-label="Increase font size">A+</button>
             </div>
-            <h2 className="aarti-title">{highlightText(aarti.title, searchQuery)}</h2>
-            {aarti.deity && <h3 className="aarti-deity">{highlightText(aarti.deity, searchQuery)}</h3>}
-            <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(aarti.lyrics, searchQuery)}</div>
+            <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</h2>
+            {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
+            <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
           </article>
         ))}
         {filtered.length === 0 && <p style={{ textAlign: 'center', color: '#888' }}>No Aartya found matching "{query}"</p>}
