@@ -100,6 +100,7 @@ h1, h2, h3, h4, h5, h6, title {
   cursor: pointer;
   padding: 0;
   transition: transform 0.2s;
+  color: inherit;
 }
 
 .theme-toggle:active {
@@ -399,12 +400,12 @@ body.dark .install-btn {
   }
 
   .header-actions {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     padding-top: 0;
     margin: 0;
     max-height: none;
-    overflow: visible;
+    overflow: clip;
     gap: 16px;
   }
 
