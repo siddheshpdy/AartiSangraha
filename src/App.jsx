@@ -226,6 +226,7 @@ function App() {
   const [isWakeLockActive, setIsWakeLockActive] = useState(false);
   const wakeLockRef = useRef(null);
   const userWantsWakeLock = useRef(false);
+  const [focusedAartiId, setFocusedAartiId] = useState(null); // New state for focus mode
 
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
@@ -476,7 +477,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
+      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''} ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
         <div className="sidebar-left-pane">
           <div className="header-actions">
             <div className="header-actions-row">
@@ -543,8 +544,9 @@ function App() {
             ))}
           </div>
         </div>
-      </header>
-      <div className="sidebar-right-pane">
+      </header> 
+      {/* Hide sidebar-right-pane when in focus mode */}
+      <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
         <div className="header-title-container">
           {titleMap[contentType] || "Aarti Sangraha"}
         </div>
@@ -577,14 +579,28 @@ function App() {
             </button>
           ))}
         </div>
-      </div>
-      <div className="aarti-list">
+      </div> 
+      {/* Render only the focused Aarti if focusedAartiId is set */}
+      <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
         {filtered.map((aarti, index) => (
+          // Only render the focused Aarti if in focus mode, otherwise render all
+          (focusedAartiId === null || focusedAartiId === aarti.id) &&
           <article 
             key={aarti.id} 
-            className="aarti-card" 
+            className={`aarti-card ${focusedAartiId === aarti.id ? 'focused-aarti-card' : ''}`}
             style={selectedCategory === "Favorites" && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
+            onClick={() => setFocusedAartiId(aarti.id)} // Click to focus
           >
+            {focusedAartiId === aarti.id && (
+              <button 
+                className="close-focus-mode-btn" 
+                onClick={(e) => { e.stopPropagation(); setFocusedAartiId(null); }}
+                aria-label="Exit Focus Mode"
+                title="Exit Focus Mode"
+              >
+                ✕
+              </button>
+            )}
             <div className="font-resizer">
               {selectedCategory === "Favorites" && !searchQuery && (
                 <>
@@ -602,18 +618,18 @@ function App() {
                   >▼</button>
                 </>
               )}
-              <button className="favorite-btn" onClick={() => toggleFavorite(aarti.id)} aria-label="Toggle favorite">
+              <button className="favorite-btn" onClick={(e) => { e.stopPropagation(); toggleFavorite(aarti.id); }} aria-label="Toggle favorite">
                 {favorites.includes(aarti.id) ? '❤️' : '🤍'}
               </button>
-              <button className="font-btn" onClick={() => setFontSize(f => Math.max(14, f - 2))} aria-label="Decrease font size">A-</button>
-              <button className="font-btn" onClick={() => setFontSize(f => Math.min(32, f + 2))} aria-label="Increase font size">A+</button>
+              <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.max(14, f - 2)); }} aria-label="Decrease font size">A-</button>
+              <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.min(32, f + 2)); }} aria-label="Increase font size">A+</button>
             </div>
             <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</h2>
             {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
           </article>
         ))}
-        {filtered.length === 0 && <p style={{ textAlign: 'center', color: '#888' }}>No Aartya found matching "{query}"</p>}
+        {filtered.length === 0 && !focusedAartiId && <p style={{ textAlign: 'center', color: '#888' }}>No Aartya found matching "{query}"</p>}
       </div>
     </div>
   );
