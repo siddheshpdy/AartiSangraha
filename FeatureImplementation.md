@@ -60,7 +60,7 @@ Success Metric: User can move their favorites up and down in the list.
 
 
 🟣 Phase 5: Hands-Free & Immersive Experience
-⏳ Feature 5.1: Focus / Zen Mode - PENDING
+⏳ Feature 5.1: Focus / Zen Mode - COMPLETED
 
 When a user taps on an Aarti card, expand it to take up the full screen (hiding the search bar, filter chips, and other Aartya).
 
