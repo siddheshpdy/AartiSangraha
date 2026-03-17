@@ -479,45 +479,57 @@ function App() {
       <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="sidebar-left-pane">
           <div className="header-actions">
-            <button
-              className="theme-toggle"
-              onClick={() => setTheme(prev => {
-                if (prev === 'light') return 'dark';
-                if (prev === 'dark') return 'system';
-                return 'light';
-              })}
-              aria-label="Toggle Theme"
-              title={`Theme: ${theme}`}
-            >
-              {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
-            </button>
-            <button
-              className="theme-toggle"
-              onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')}
-              aria-label="Toggle Script"
-              title={script === 'devanagari' ? "Read in English" : "Read in Marathi"}
-              style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
-            >
-              {script === 'devanagari' ? 'A' : 'अ'}
-            </button>
-            <button
-              className="theme-toggle"
-              onClick={toggleWakeLock}
-              aria-label="Toggle Wake Lock"
-              title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"}
-              style={{ opacity: isWakeLockActive ? 1 : 0.6 }}
-            >
-              {isWakeLockActive ? '💡' : '💤'}
-            </button>
-            {installPrompt && (
+            <div className="header-actions-row">
               <button
-                onClick={handleInstallClick}
-                className="install-btn"
-                aria-label="Install App"
+                className="theme-toggle"
+                onClick={() => setTheme(prev => {
+                  if (prev === 'light') return 'dark';
+                  if (prev === 'dark') return 'system';
+                  return 'light';
+                })}
+                aria-label="Toggle Theme"
+                title={`Theme: ${theme}`}
               >
-                📥 Install
+                {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
               </button>
-            )}
+              <button
+                className="theme-toggle"
+                onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')}
+                aria-label="Toggle Script"
+                title={script === 'devanagari' ? "Read in English" : "Read in Marathi"}
+                style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+              >
+                {script === 'devanagari' ? 'A' : 'अ'}
+              </button>
+              <button
+                className="theme-toggle"
+                onClick={toggleWakeLock}
+                aria-label="Toggle Wake Lock"
+                title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"}
+                style={{ opacity: isWakeLockActive ? 1 : 0.6 }}
+              >
+                {isWakeLockActive ? '💡' : '💤'}
+              </button>
+            </div>
+            <div className="header-actions-row">
+              <button
+                className="add-btn"
+                onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')}
+                aria-label="Submit New Aarti"
+                title="Submit New Aarti"
+              >
+                ➕ Add
+              </button>
+              {installPrompt && (
+                <button
+                  onClick={handleInstallClick}
+                  className="install-btn"
+                  aria-label="Install App"
+                >
+                  📥 Install
+                </button>
+              )}
+            </div>
           </div>
           <div className="content-type-tabs">
             {["Aartya", "Bhovtya", "Pradakshina"].map(type => (

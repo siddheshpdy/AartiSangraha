@@ -79,12 +79,25 @@ h1, h2, h3, h4, h5, h6, title {
 
 .header-actions {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 8px;
   flex-shrink: 0; /* Prevents this container from shrinking */
   transition: all 0.3s ease;
-  max-height: 50px;
+  max-height: 100px; /* Accommodate two rows */
   overflow: hidden;
+}
+
+.header-actions-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.header-actions-row:first-child {
+  justify-content: space-between;
 }
 
 .sticky-header div {
@@ -107,7 +120,8 @@ h1, h2, h3, h4, h5, h6, title {
   transform: scale(0.9);
 }
 
-.install-btn {
+.install-btn,
+.add-btn {
   background-color: var(--color-maroon);
   color: var(--color-white);
   border: none;
@@ -125,18 +139,21 @@ h1, h2, h3, h4, h5, h6, title {
   transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-.install-btn:hover {
+.install-btn:hover,
+.add-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   filter: brightness(0.95);
 }
 
-.install-btn:active {
+.install-btn:active,
+.add-btn:active {
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-body.dark .install-btn {
+body.dark .install-btn,
+body.dark .add-btn {
   color: var(--color-cream); /* Maps to #1A1A1A (dark text) in dark mode */
 }
 
@@ -400,13 +417,23 @@ body.dark .install-btn {
   }
 
   .header-actions {
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
     padding-top: 0;
     margin: 0;
     max-height: none;
-    overflow: clip;
+    overflow: visible;
     gap: 16px;
+  }
+
+  .header-actions-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions-row:first-child {
+    justify-content: space-between;
   }
 
   .header-title-container {
