@@ -30,6 +30,10 @@ body {
   font-family: 'Mukta', sans-serif;
   line-height: 1.8;
 }
+body.focus-mode-active {
+  overflow: hidden; /* Prevent scrolling of background content */
+  height: 100vh; /* Occupy full viewport height */
+}
 
 h1, h2, h3, h4, h5, h6, title {
   font-family: 'Mukta', sans-serif;
@@ -41,7 +45,11 @@ h1, h2, h3, h4, h5, h6, title {
   margin: 0 auto;
   padding: 0 16px 20px;
   display: flex;
+  min-height: 100vh; /* Ensure app-container takes full height */
   flex-direction: column;
+}
+body.focus-mode-active .app-container {
+  padding: 0; /* Remove padding for full screen */
 }
 
 .sticky-header {
@@ -62,6 +70,11 @@ h1, h2, h3, h4, h5, h6, title {
   transition: padding 0.3s ease;
 }
 
+/* Hide header in focus mode */
+.hidden-in-focus-mode {
+  display: none !important;
+}
+
 .sidebar-left-pane,
 .sidebar-right-pane {
   display: contents;
@@ -80,7 +93,7 @@ h1, h2, h3, h4, h5, h6, title {
 .header-actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* Ensure rows stretch to full width */
   width: 100%;
   gap: 8px;
   flex-shrink: 0; /* Prevents this container from shrinking */
@@ -416,6 +429,10 @@ body.dark .add-btn {
     order: 2;
   }
 
+  body.focus-mode-active .app-container {
+    flex-direction: column; /* Override desktop flex-direction for focus mode */
+  }
+
   .header-actions {
     flex-direction: column;
     align-items: stretch;
@@ -490,5 +507,8 @@ body.dark .add-btn {
     flex-grow: 1;
     min-width: 0; /* Prevents flex flex-grow from expanding past container bounds */
     order: 3;
+  }
+  .focused-aarti-card {
+    padding: 3rem; /* More padding on desktop */
   }
 }
