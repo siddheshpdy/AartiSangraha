@@ -85,12 +85,15 @@ export function generateAartya() {
                 const lyrics = content.trim();
                 allContent.push({ 
                     id: `${category}-${file.replace('.md', '')}-${index}`, 
-                    type: category, 
-                    ...data, 
+                    type: category,
+                    title: transliterate(data.title || ""),
+                    deity: transliterate(data.deity || "").toUpperCase(),
                     titleEng: transliterate(data.title || ""),
-                    deityEng: transliterate(data.deity || ""),
+                    deityEng: transliterate(data.deity || "").toUpperCase(), // Deity names often look better in uppercase
                     lyricsEng: transliterate(lyrics),
+                    link: data.link || "",
                     lyrics: lyrics 
+
                 });
                 index++;
             }
