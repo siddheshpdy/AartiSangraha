@@ -252,11 +252,13 @@ deity: "Vitthal"
 
 तुका म्हणे माझी इच्छा पूर्ण झाली |
 कांही न राहिली वासना हे || ३ ||
+
 ---
-title: Nam fukache fukache
-deity: VITTHAL
-link: 
-submittedBy:sidddheshpdy@gmail.com---
+title: "Nam fukache fukache"
+deity: "VITTHAL"
+link: ""
+submittedBy:"sidddheshpdy@gmail.com"
+---
 नाम फुकाचें फुकाचें ।
 देवा पंढरीरायाचें ॥ १ ॥
 
