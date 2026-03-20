@@ -46,7 +46,8 @@ deity: "Ram"
 title: Raam Naam Uchara Janmache Sarthak Kara
 deity: RAM
 link: https://youtu.be/zRBDJGdQpyM?si=H0Yfnv3ThRY8YG40
-submittedBy:siddheshpdy@gmail.com---
+submittedBy:siddheshpdy@gmail.com
+---
 राम नाम उच्चारा जन्माचे सार्थक करा, (×२)
 नामस्मरणे मुनिजन तरले तारक मंत्र स्मरा, (×२)
 श्री राम जय राम जय जय राम ॐ श्री राम जय राम जय जय राम (×७)
