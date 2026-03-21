@@ -257,7 +257,7 @@ deity: "Vitthal"
 title: "Nam fukache fukache"
 deity: "VITTHAL"
 link: ""
-submittedBy:"sidddheshpdy@gmail.com"
+submittedBy: "sidddheshpdy@gmail.com"
 ---
 नाम फुकाचें फुकाचें ।
 देवा पंढरीरायाचें ॥ १ ॥
