@@ -1,6 +1,6 @@
 ---
-title: "Aarti Dnyanraja"
-deity: "Dnyaneshwar"
+title: "आरती ज्ञानराजा"
+deity: "ज्ञानेश्वर"
 ---
 आरती ज्ञानराजा | महाकैवल्यतेजा |
  सेविती साधुसंत | मनु वेधला माझा |आरती ज्ञानराजा ||धृ०||
@@ -15,8 +15,8 @@ deity: "Dnyaneshwar"
 रामा जनार्दनी | पायीं मस्तक ठेविलें || ३ ||
 
 ---
-title: "aghasankta bhaynashan sukhada vighnesha"
-deity: "Panchayatan"
+title: "अघसंकटभयनाशन सुखदा विग्धेशा"
+deity: "पंचायतन"
 ---
 
 अघसंकटभयनाशन सुखदा विग्धेशा । 
@@ -49,8 +49,8 @@ deity: "Panchayatan"
 करुणा करिसी अंबे ss माया मन विश्रा माया ‖ जय ‖ ५‖ जय देव .. 
  
 ---
-title: "Sagun He Aarti"
-deity: "Others"
+title: "सगुण हे आरती"
+deity: "इतर"
 ---
 सगुण हे आरती निर्गुण ओवाळू l
 कल्पनेचे घृत घालू दीप पाजळू ‖१‖
@@ -62,8 +62,8 @@ deity: "Others"
 रामानंद जीवन मुक्त झाला संसारी ‖३‖ ओवाळू आरती..
 
 ---
-title: "Jai Jai Satchitsvarupa"
-deity: "Gajanan Maharaj"
+title: "जय जय सत्चित्स्वरूपा"
+deity: "गजानन महाराज"
 ---
 ‖ गजानन महाराज आरती ‖
 
@@ -90,8 +90,8 @@ deity: "Gajanan Maharaj"
 भवसिंधु हा तरण्या नौका तव चरण।
 स्वामी दासगणुचे मान्य करा कवन ‖ ४‖
 ---
-title: "Pahi Pahi Mahalase"
-deity: "Mahalasa Narayani"
+title: "पाहि पाहि महालसे"
+deity: "महालसा नारायणी"
 ---
 ‖ महालसा नारायणी ( गोवा )‖
 पाहि पाहि महालसे गतलालसे सुखनालसे ।

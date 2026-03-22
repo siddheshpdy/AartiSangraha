@@ -466,9 +466,15 @@ function App() {
   }, []);
 
   const titleMap = {
-    "Aartya": "Aarti Sangraha",
-    "Bhovtya": "Bhovti Sangraha",
-    "Pradakshina": "Pradakshina Sangraha"
+    "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
+    "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
+    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह"
+  };
+
+  const tabLabelMap = {
+    "Aartya": script === 'latin' ? "Aartya" : "आरत्या",
+    "Bhovtya": script === 'latin' ? "Bhovtya" : "भोवत्या",
+    "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा"
   };
 
   if (sortedAartiData.length === 0) {
@@ -539,7 +545,7 @@ function App() {
                 className={`tab-btn ${contentType === type ? 'active' : ''}`}
                 onClick={() => setContentType(type)}
               >
-                {type}
+                {tabLabelMap[type]}
               </button>
             ))}
           </div>
@@ -569,15 +575,27 @@ function App() {
           )}
         </div>
         <div className="filter-chips">
-          {categories.map(category => (
-            <button
-              key={category}
-              className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
+          {categories.map(category => {
+            let label = category;
+            if (category === "All") label = script === 'latin' ? "All" : "सर्व";
+            else if (category === "Favorites") label = script === 'latin' ? "Favorites" : "आवडते";
+            else if (script === 'latin') {
+              // If we're in English mode, pull the generated English transliteration for the chip
+              const match = sortedAartiData.find(a => a.deity === category);
+              if (match && match.deityEng) label = match.deityEng;
+            }
+            
+            return (
+              <button
+                key={category}
+                className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(category)}
+                style={{ textTransform: script === 'latin' && category !== "All" && category !== "Favorites" ? 'capitalize' : 'none' }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
       </div> 
       {/* Render only the focused Aarti if focusedAartiId is set */}

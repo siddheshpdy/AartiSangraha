@@ -1,6 +1,6 @@
 ---
-title: "Jai Jai Anjanibala"
-deity: "Maruti"
+title: "जय जय अंजनिबाला"
+deity: "मारुती"
 ---
 जय जय अंजनिबाला । 
 पंचारति ही करितों तुजला ‖
@@ -16,8 +16,8 @@ deity: "Maruti"
 धन्य करी या बलवत्कविला ‖ जय. ‖ २ ‖
 
 ---
-title: "Satrane Uddane Hunkar Vadani"
-deity: "Maruti"
+title: "सत्राणे उड्डाणे हुंकार वदनी"
+deity: "मारुती"
 ---
 सत्राणे उड्डाणे हुंकार वदनी। 
 करि डळमळ भूमंडळ सिंधूजळ गगनीं ।
