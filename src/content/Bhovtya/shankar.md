@@ -1,6 +1,6 @@
 ---
-title: "Agadam Bam Bagadam Baje Damaru"
-deity: "Shankar"
+title: "अगड़म बम बगड़म बाजे डमरू"
+deity: "शंकर"
 ---
 अगड़म बम बगड़म बाजे डमरू l 
 नाचे सदा शिव जगत गुरु ‖

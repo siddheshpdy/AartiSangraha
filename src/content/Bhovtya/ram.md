@@ -1,6 +1,6 @@
 ---
-title: "Sangad Bandha Re Bhaktichi"
-deity: "Ram"
+title: "सांगड बांधा रे भक्तीची"
+deity: "राम"
 ---
 सांगड बांधा रे भक्तीची l 
 रघुनाथ नामाची ‖ धृ॰ ‖
@@ -17,8 +17,8 @@ deity: "Ram"
 नरहरी सोनार बोधला बोधला ।
 हरिनामी रंगला ‖ ४ ‖
 ---
-title: "Chinchechya Panavar"
-deity: "Ram"
+title: "चिंचेच्या पानावर"
+deity: "राम"
 ---
 चिंचेच्या पानावर देऊळ रचियले । 
 आधी कळस मग पाया रे ‖ १ ‖
@@ -35,16 +35,16 @@ deity: "Ram"
 एकाजनार्दनी एकपणे विनवी ।
 हरीच्या नामे तरले रे ‖ ४ ‖
 ---
-title: "Jya Mantrane Valya Koli Tarala Re"
-deity: "Ram"
+title: "ज्या मंत्राने वाल्या कोली तरला रे"
+deity: "राम"
 ---
 ज्या मंत्राने वाल्या कोली तरला रे |
 तो मंत्र मुखाने बोला रे |
 राम श्री राम , जय राम जय जय राम| 
 
 ---
-title: Raam Naam Uchara Janmache Sarthak Kara
-deity: RAM
+title: "राम नाम उच्चारा जन्माचे सार्थक करा"
+deity: "राम"
 link: https://youtu.be/zRBDJGdQpyM?si=H0Yfnv3ThRY8YG40
 submittedBy: siddheshpdy@gmail.com
 ---

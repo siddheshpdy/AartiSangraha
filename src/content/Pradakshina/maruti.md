@@ -1,6 +1,6 @@
 ---
-title: "Dhanya Anjanicha Sut"
-deity: "Maruti"
+title: "धन्य अंजनीचा सूत"
+deity: "मारुती"
 ---
 धन्य अंजनीचा सूत ।
 नाव त्याचे हनुमंत ‖१‖

@@ -1,6 +1,6 @@
 ---
-title: "Naam Tujhe Re Narayana"
-deity: "Vishnu"
+title: "नाम तुझे रे नारायणा"
+deity: "विष्णू"
 ---
 नाम तुझे रे नारायणा
 पाषाणासी फोडी पान्हा ‖
@@ -14,8 +14,8 @@ deity: "Vishnu"
 ऐसा नामाचा महिमा
 तुका म्हणे झाली सीमा ‖
 ---
-title: "Aavadine Bhave Harinaam Ghesi"
-deity: "Vishnu"
+title: "आवडीनें भावें हरिनाम घेसी"
+deity: "विष्णू"
 ---
 आवडीनें भावें हरिनाम घेसी।
 तुझी चिंता त्यासी सर्व आहे ॥१॥

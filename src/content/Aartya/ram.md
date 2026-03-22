@@ -1,6 +1,6 @@
 ---
-title: "Avatarla Raghupati"
-deity: "Ram"
+title: "अवतरला रघुपती"
+deity: "राम"
 ---
 अवतरला रघुपती जे । (हा हा हा हा… )
 आनंदली वसुधा ती‖
@@ -21,8 +21,8 @@ deity: "Ram"
 
 
 ---
-title: "shyamsundar ramache charankamale"
-deity: "Ram"
+title: "श्यामसुंदर रामाचे चरणकमळे"
+deity: "राम"
 ---
 श्यामसुंदर रामाचे चरणकमळे । 
 ओवाळू आरती कनकपरियळी ‖ धृ‖
@@ -37,8 +37,8 @@ deity: "Ram"
 क्षण एक विश्रांति करा अंतरी ‖३‖
 
 ---
-title: "Tribhuvan Mandit Mala"
-deity: "Ram"
+title: "त्रिभुवन मंडित माळ"
+deity: "राम"
 ---
 त्रिभुवन मंडित माळ गळा । 
 आरती ओवाळू पाहू ब्रह्मपुतळा ‖ १ ‖
@@ -59,8 +59,8 @@ deity: "Ram"
 आरती ओवाळू पाहू सीतापतीते‖ ‖ ५‖
 
 ---
-title: "Jai Dasharathi Prabhu Ram"
-deity: "Ram"
+title: "जय दाशरथी प्रभू राम"
+deity: "राम"
 ---
 जय दाशरथी प्रभू राम ।  करू आरती प्रेमाने ‖ धृ ‖
 

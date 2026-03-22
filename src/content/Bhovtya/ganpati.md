@@ -1,6 +1,6 @@
 ---
-title: "Chala Jau Pahu Tya Ganpatila"
-deity: "Ganpati"
+title: "चला जाऊ पाहू त्या गणपतीला"
+deity: "गणपती"
 ---
 चला जाऊ पाहू त्या गणपतीला 
 प्रेमे वंदू तयाचे चरणाला ‖
