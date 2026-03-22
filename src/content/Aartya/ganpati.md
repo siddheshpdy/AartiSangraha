@@ -214,7 +214,7 @@ deity: "Ganpati"
 भक्ती दे अखंड चरणाची । आरती …‖ ३ ‖
 
 ---
-title: "Aarti Sundar Vadanachi"
+title: "Jay Dev Moreshwara"
 deity: "Ganpati"
 ---
 
