@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { flushSync } from 'react-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 
+import { usePlaylists } from '../usePlaylists'; // Adjust path if you moved this to src/hooks/
+import PujaPlayer from '../PujaPlayer';         // Adjust path if you moved this to src/components/
+
 // Transliteration Map for Cross-Script "Phonetic Equivalence" Search
 const phoneticMap = {
   // Velar (K/G)
@@ -228,14 +231,28 @@ function App() {
   const userWantsWakeLock = useRef(false);
   const [focusedAartiId, setFocusedAartiId] = useState(null); // New state for focus mode
 
+  const { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist, moveAartiInPlaylist } = usePlaylists();
+  const [activePlaylist, setActivePlaylist] = useState(null);
+  const [expandedAartiId, setExpandedAartiId] = useState(null);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
 
   useEffect(() => {
-    setSelectedCategory("All");
+    setQuery(""); // Clear search when switching tabs
+    if (contentType === "Playlists") {
+      setSelectedCategory(playlists.length > 0 ? `playlist-${playlists[0].id}` : "All");
+    } else {
+      setSelectedCategory("All");
+    }
   }, [contentType]);
 
   const categories = useMemo(() => {
+    if (contentType === "Playlists") {
+      return playlists.map(p => `playlist-${p.id}`);
+    }
     const availableDeities = Array.from(new Set(
       sortedAartiData
         .filter(a => (a.type || "Aartya") === contentType)
@@ -243,7 +260,15 @@ function App() {
         .filter(Boolean)
     ));
     return ["All", "Favorites", ...availableDeities];
-  }, [contentType]);
+  }, [contentType, playlists]);
+
+  // Fallback to "All" if the currently selected playlist gets deleted
+  useEffect(() => {
+    if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
+      const exists = playlists.some(p => `playlist-${p.id}` === selectedCategory);
+      if (!exists) setSelectedCategory(playlists.length > 0 ? `playlist-${playlists[0].id}` : "All");
+    }
+  }, [playlists, selectedCategory]);
 
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -263,6 +288,23 @@ function App() {
 
   // Filter against the pre-sorted data
   let filtered = sortedAartiData.filter(a => {
+    if (contentType === "Playlists") {
+      if (!selectedCategory.startsWith("playlist-")) return false;
+      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+      if (!activeP || !activeP.aartiIds.includes(a.id)) return false;
+      
+      const matchesQuery = !searchRegex || (
+        (a.title && searchRegex.test(a.title)) || 
+        (a.deity && searchRegex.test(a.deity)) ||
+        (a.lyrics && searchRegex.test(a.lyrics)) ||
+        (a.titleEng && searchRegex.test(a.titleEng)) ||
+        (a.deityEng && searchRegex.test(a.deityEng)) ||
+        (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
+        (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
+      );
+      return matchesQuery;
+    }
+
     const itemType = a.type || "Aartya";
     if (itemType !== contentType) return false;
 
@@ -281,10 +323,15 @@ function App() {
     return matchesQuery && matchesCategory;
   });
 
-  if (selectedCategory === "Favorites" && !searchQuery) {
-    filtered.sort((a, b) => {
-      return favorites.indexOf(a.id) - favorites.indexOf(b.id);
-    });
+  if (!searchQuery) {
+    if (selectedCategory === "Favorites") {
+      filtered.sort((a, b) => favorites.indexOf(a.id) - favorites.indexOf(b.id));
+    } else if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
+      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+      if (activeP) {
+        filtered.sort((a, b) => activeP.aartiIds.indexOf(a.id) - activeP.aartiIds.indexOf(b.id));
+      }
+    }
   }
 
   const toggleFavorite = (id) => {
@@ -335,6 +382,22 @@ function App() {
       });
     } else {
       performMove(); // Fallback for older browsers
+    }
+  };
+
+  const handleMoveInPlaylist = (id, direction) => {
+    const playlistId = selectedCategory.replace('playlist-', '');
+    const performMove = () => {
+      moveAartiInPlaylist(playlistId, id, direction);
+    };
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          performMove();
+        });
+      });
+    } else {
+      performMove(); 
     }
   };
 
@@ -465,151 +528,282 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobile, isMenuOpen]);
+
   const titleMap = {
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
     "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
-    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह"
+    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह",
+    "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट"
   };
 
   const tabLabelMap = {
     "Aartya": script === 'latin' ? "Aartya" : "आरत्या",
     "Bhovtya": script === 'latin' ? "Bhovtya" : "भोवत्या",
-    "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा"
+    "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा",
+    "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट"
   };
 
   if (sortedAartiData.length === 0) {
     return <div>Loading Aartya or no Aartya found... Check src/content/ folder.</div>;
   }
 
+  // Dynamically calculate the active theme colors for inline styling where CSS vars fail
+  const isDarkTheme = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || (typeof document !== 'undefined' && document.body.classList.contains('dark'));
+  const drawerBgColor = isDarkTheme ? '#1f2937' : '#ffffff';
+  const drawerBgColorTransparent = isDarkTheme ? 'rgba(31, 41, 55, 0)' : 'rgba(255, 255, 255, 0)';
+  const drawerTextColor = isDarkTheme ? '#f9fafb' : '#000000';
+  const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
+
   return (
     <div className="app-container">
-      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''} ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        <div className="sidebar-left-pane">
-          <div className="header-actions">
-            <div className="header-actions-row">
-              <button
-                className="theme-toggle"
-                onClick={() => setTheme(prev => {
-                  if (prev === 'light') return 'dark';
-                  if (prev === 'dark') return 'system';
-                  return 'light';
-                })}
-                aria-label="Toggle Theme"
-                title={`Theme: ${theme}`}
-              >
-                {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
-              </button>
-              <button
-                className="theme-toggle"
-                onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')}
-                aria-label="Toggle Script"
-                title={script === 'devanagari' ? "Read in English" : "Read in Marathi"}
-                style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
-              >
-                {script === 'devanagari' ? 'A' : 'अ'}
-              </button>
-              <button
-                className="theme-toggle"
-                onClick={toggleWakeLock}
-                aria-label="Toggle Wake Lock"
-                title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"}
-                style={{ opacity: isWakeLockActive ? 1 : 0.6 }}
-              >
-                {isWakeLockActive ? '💡' : '💤'}
-              </button>
+      {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
+      {isMobile && (
+        <>
+          {isMenuOpen && (
+            <div 
+              style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 9999, touchAction: 'none' }} 
+              onClick={() => setIsMenuOpen(false)}
+            />
+          )}
+          <div 
+            style={{
+              position: 'fixed', top: 0, left: 0, bottom: 0, width: '280px', maxWidth: '85vw',
+              backgroundColor: drawerBgColor, color: drawerTextColor,
+              boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000, 
+              transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
+              transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 
+              padding: '20px 15px', 
+              overflowY: 'auto', overflowX: 'hidden', overscrollBehavior: 'contain',
+              boxSizing: 'border-box', display: 'block'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+               <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0 }}>Menu</h2>
+               <button onClick={() => setIsMenuOpen(false)} style={{ background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'inherit' }}>✖</button>
             </div>
-            <div className="header-actions-row">
-              <button
-                className="add-btn"
-                onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')}
-                aria-label="Submit New Aarti"
-                title="Submit New Aarti"
-              >
-                ➕ Add
-              </button>
-              {installPrompt && (
-                <button
-                  onClick={handleInstallClick}
-                  className="install-btn"
-                  aria-label="Install App"
-                >
-                  📥 Install
+            
+            <div className="header-actions" style={{ marginBottom: '15px', boxSizing: 'border-box' }}>
+              <div className="header-actions-row">
+                <button className="theme-toggle" onClick={() => setTheme(prev => prev === 'light' ? 'dark' : prev === 'dark' ? 'system' : 'light')} title={`Theme: ${theme}`}>
+                  {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
                 </button>
-              )}
+                <button className="theme-toggle" onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')} style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                  {script === 'devanagari' ? 'A' : 'अ'}
+                </button>
+                <button className="theme-toggle" onClick={toggleWakeLock} style={{ opacity: isWakeLockActive ? 1 : 0.6 }}>
+                  {isWakeLockActive ? '💡' : '💤'}
+                </button>
+              </div>
+              <div className="header-actions-row">
+                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')}>➕ Add</button>
+                {installPrompt && <button className="install-btn" onClick={handleInstallClick}>📥 Install</button>}
+              </div>
+            </div>
+
+            <div className="content-type-tabs" style={{ display: 'flex', flexDirection: 'column', marginBottom: '15px', boxSizing: 'border-box' }}>
+              {["Aartya", "Bhovtya", "Pradakshina", "Playlists"].map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); }}>
+                  {tabLabelMap[type]}
+                </button>
+              ))}
             </div>
           </div>
-          <div className="content-type-tabs">
-            {["Aartya", "Bhovtya", "Pradakshina"].map(type => (
-              <button
-                key={type}
-                className={`tab-btn ${contentType === type ? 'active' : ''}`}
-                onClick={() => setContentType(type)}
-              >
-                {tabLabelMap[type]}
-              </button>
-            ))}
+        </>
+      )}
+
+      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''} ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
+        {isMobile && (
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%', height: '60px', padding: '0 15px', backgroundColor: drawerBgColor, borderBottom: `1px solid ${drawerBorderColor}` }}>
+            <button 
+              className="hamburger-btn"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle Menu"
+              style={{ background: 'transparent', border: 'none', fontSize: '1.8rem', cursor: 'pointer', color: 'inherit', marginRight: '15px' }}
+            >
+              ☰
+            </button>
+            <h1 style={{ fontSize: '1.2rem', margin: 0, fontWeight: 'bold', color: drawerTextColor }}>
+              {titleMap[contentType] || "Aarti Sangraha"}
+            </h1>
           </div>
-        </div>
+        )}
+        
+        {/* DESKTOP ONLY: Sidebar Left Pane */}
+        {!isMobile && (
+          <div className="sidebar-left-pane">
+            <div className="header-actions">
+              <div className="header-actions-row">
+                <button className="theme-toggle" onClick={() => setTheme(prev => prev === 'light' ? 'dark' : prev === 'dark' ? 'system' : 'light')} title={`Theme: ${theme}`}>
+                  {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
+                </button>
+                <button className="theme-toggle" onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')} title={script === 'devanagari' ? "Read in English" : "Read in Marathi"} style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                  {script === 'devanagari' ? 'A' : 'अ'}
+                </button>
+                <button className="theme-toggle" onClick={toggleWakeLock} title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"} style={{ opacity: isWakeLockActive ? 1 : 0.6 }}>
+                  {isWakeLockActive ? '💡' : '💤'}
+                </button>
+              </div>
+              <div className="header-actions-row">
+                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')} title="Submit New Aarti">➕ Add</button>
+                {installPrompt && <button onClick={handleInstallClick} className="install-btn">📥 Install</button>}
+              </div>
+            </div>
+            <div className="content-type-tabs">
+              {["Aartya", "Bhovtya", "Pradakshina", "Playlists"].map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => setContentType(type)}>
+                  {tabLabelMap[type]}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </header> 
       {/* Hide sidebar-right-pane when in focus mode */}
       <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        <div className="header-title-container">
-          {titleMap[contentType] || "Aarti Sangraha"}
-        </div>
-        <div className={`search-container ${query ? 'has-query' : ''}`}>
-          <input 
-            type="text" 
-            placeholder="Search deity, title, or lyrics..." 
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="search-input"
-          />
-          {query && (
-            <button 
-              onClick={() => setQuery("")}
-              className="clear-search-btn"
-              aria-label="Clear search"
-            >
-              &times;
-            </button>
-          )}
-        </div>
-        <div className="filter-chips">
-          {categories.map(category => {
-            let label = category;
-            if (category === "All") label = script === 'latin' ? "All" : "सर्व";
-            else if (category === "Favorites") label = script === 'latin' ? "Favorites" : "आवडते";
-            else if (script === 'latin') {
-              // If we're in English mode, pull the generated English transliteration for the chip
-              const match = sortedAartiData.find(a => a.deity === category);
-              if (match && match.deityEng) label = match.deityEng;
-            }
-            
-            return (
-              <button
-                key={category}
-                className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(category)}
-                style={{ textTransform: script === 'latin' && category !== "All" && category !== "Favorites" ? 'capitalize' : 'none' }}
+        {!isMobile && (
+          <div className="header-title-container">
+            {titleMap[contentType] || "Aarti Sangraha"}
+          </div>
+        )}
+        {contentType !== "Playlists" && (
+          <div className={`search-container ${query ? 'has-query' : ''}`}>
+            <input 
+              type="text" 
+              placeholder="Search deity, title, or lyrics..." 
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="search-input"
+            />
+            {query && (
+              <button 
+                onClick={() => setQuery("")}
+                className="clear-search-btn"
+                aria-label="Clear search"
               >
-                {label}
+                &times;
               </button>
-            );
-          })}
-        </div>
+            )}
+          </div>
+        )}
+        
+        {/* Render Playlists and Categories in main view for all devices */}
+        {contentType === "Playlists" && (
+          <div style={{ padding: '10px 15px', display: 'flex', flexDirection: 'column', gap: '10px', background: drawerBgColor, borderBottom: `1px solid ${drawerBorderColor}` }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>My Playlists</span>
+              <button 
+                onClick={() => {
+                  const name = window.prompt("Enter new playlist name:");
+                  if (name && name.trim()) {
+                    createPlaylist(name);
+                  }
+                }} 
+                style={{ padding: '8px 12px', background: '#10b981', color: 'white', borderRadius: '4px', fontWeight: 'bold', border: 'none', cursor: 'pointer', fontSize: '1rem' }}
+                title="Create New Playlist"
+              >
+                &#10011;
+              </button>
+            </div>
+            
+            <div style={{ maxHeight: isMobile ? '200px' : 'none', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {playlists.length === 0 ? (
+                <span style={{ padding: '8px 0', fontSize: '0.9rem', opacity: 0.7 }}>No playlists yet. Create one above!</span>
+              ) : (
+                playlists.map(p => (
+                  <div 
+                    key={p.id} 
+                    style={{ 
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
+                      padding: '10px', borderRadius: '6px', border: `1px solid ${drawerBorderColor}`,
+                      background: selectedCategory === `playlist-${p.id}` ? drawerBorderColor : 'transparent',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setSelectedCategory(`playlist-${p.id}`)}
+                  >
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <strong style={{ fontSize: '1rem' }}>{p.name}</strong>
+                      <span style={{ fontSize: '0.85rem', opacity: 0.8 }}>{p.aartiIds.length} items</span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); if (p.aartiIds.length > 0) setActivePlaylist(p); }}
+                        disabled={p.aartiIds.length === 0}
+                        style={{ padding: '6px 12px', background: p.aartiIds.length === 0 ? '#ccc' : '#10b981', color: 'white', borderRadius: '4px', fontWeight: 'bold', border: 'none', cursor: p.aartiIds.length === 0 ? 'not-allowed' : 'pointer' }}
+                        title="Play"
+                      >▶</button>
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); if (window.confirm('Delete this playlist?')) deletePlaylist(p.id); }} 
+                        style={{ padding: '6px 10px', background: '#ef4444', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
+                        title="Delete"
+                      >🗑</button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
+        {contentType !== "Playlists" && (
+          <div className="filter-chips">
+            {categories.map(category => {
+              let label = category;
+              if (category === "All") label = script === 'latin' ? "All" : "सर्व";
+              else if (category === "Favorites") label = script === 'latin' ? "Favorites" : "आवडते";
+              else if (script === 'latin') {
+                const match = sortedAartiData.find(a => a.deity === category);
+                if (match && match.deityEng) label = match.deityEng;
+              }
+              return (
+                <button
+                  key={category}
+                  className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(category)}
+                  style={{ textTransform: script === 'latin' && !["All", "Favorites"].includes(category) ? 'capitalize' : 'none' }}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div> 
       {/* Render only the focused Aarti if focusedAartiId is set */}
       <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
-        {filtered.map((aarti, index) => (
-          // Only render the focused Aarti if in focus mode, otherwise render all
-          (focusedAartiId === null || focusedAartiId === aarti.id) &&
+        {filtered.map((aarti, index) => {
+          const isFocused = focusedAartiId === aarti.id;
+          const isExpanded = expandedAartiId === aarti.id;
+          const showContent = isExpanded || isFocused || !!searchQuery;
+          
+          return (focusedAartiId === null || focusedAartiId === aarti.id) && (
           <article 
             key={aarti.id} 
-            className={`aarti-card ${focusedAartiId === aarti.id ? 'focused-aarti-card' : ''}`}
-            style={selectedCategory === "Favorites" && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
-            onClick={() => setFocusedAartiId(aarti.id)} // Click to focus
+            className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
+            style={(selectedCategory === "Favorites" || selectedCategory.startsWith("playlist-")) && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
+            onClick={() => {
+              if (isMobile && !isFocused) {
+                setExpandedAartiId(prev => prev === aarti.id ? null : aarti.id);
+              } else if (!isMobile) {
+                setFocusedAartiId(aarti.id);
+              }
+            }}
           >
-            {focusedAartiId === aarti.id && (
+            {isFocused && (
               <button 
                 className="close-focus-mode-btn" 
                 onClick={(e) => { e.stopPropagation(); setFocusedAartiId(null); }}
@@ -620,19 +814,27 @@ function App() {
               </button>
             )}
             <div className="font-resizer">
-              {selectedCategory === "Favorites" && !searchQuery && (
+              {(selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery && (
                 <>
                   <button 
                     className="font-btn" 
-                    onClick={() => moveFavorite(aarti.id, 'up')} 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (selectedCategory === "Favorites") moveFavorite(aarti.id, 'up');
+                      else handleMoveInPlaylist(aarti.id, 'up');
+                    }} 
                     disabled={index === 0}
-                    aria-label="Move Favorite Up"
+                    aria-label="Move Up"
                   >▲</button>
                   <button 
                     className="font-btn" 
-                    onClick={() => moveFavorite(aarti.id, 'down')} 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (selectedCategory === "Favorites") moveFavorite(aarti.id, 'down');
+                      else handleMoveInPlaylist(aarti.id, 'down');
+                    }} 
                     disabled={index === filtered.length - 1}
-                    aria-label="Move Favorite Down"
+                    aria-label="Move Down"
                   >▼</button>
                 </>
               )}
@@ -642,13 +844,81 @@ function App() {
               <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.max(14, f - 2)); }} aria-label="Decrease font size">A-</button>
               <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.min(32, f + 2)); }} aria-label="Increase font size">A+</button>
             </div>
-            <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</h2>
+            <div className="playlist-dropdown" style={{ marginBottom: '10px' }} onClick={(e) => e.stopPropagation()}>
+              <select 
+                onChange={(e) => {
+                  if (e.target.value === 'CREATE_NEW') {
+                    const name = window.prompt("Enter new playlist name:");
+                    if (name && name.trim()) {
+                      createPlaylist(name, aarti.id);
+                    }
+                  } else if (e.target.value) {
+                    toggleAartiInPlaylist(e.target.value, aarti.id);
+                  }
+                  e.target.value = ""; 
+                }} 
+                defaultValue=""
+                style={{ padding: '4px', borderRadius: '4px', fontSize: '0.85rem', width: '100%', border: `1px solid ${drawerBorderColor}`, background: 'transparent', color: 'inherit' }}
+              >
+                <option value="" disabled>+ Add to Playlist...</option>
+                <option value="CREATE_NEW" style={{ color: 'black', fontWeight: 'bold' }}>➕ Create New Playlist</option>
+                {playlists.map(p => (
+                  <option key={p.id} value={p.id} style={{ color: 'black' }}>
+                    {p.aartiIds.includes(aarti.id) ? '✓ Remove from' : '+ Add to'} {p.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
+              {isMobile && !isFocused && !searchQuery && (
+                <span style={{ fontSize: '0.8em', opacity: 0.5, marginLeft: '10px' }}>{isExpanded ? '▲' : ''}</span>
+              )}
+            </h2>
             {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
-            <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
+            
+            <div style={!showContent ? { maxHeight: '120px', overflow: 'hidden', position: 'relative' } : undefined}>
+              <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
+              {!showContent && (
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px', background: `linear-gradient(to bottom, ${drawerBgColorTransparent}, ${drawerBgColor})` }} />
+              )}
+            </div>
+            {!showContent && (
+              <div style={{ textAlign: 'center', marginTop: '4px', color: '#e65100', fontWeight: 'bold', fontSize: '0.95rem' }}>
+                Read More ▼
+              </div>
+            )}
           </article>
-        ))}
-        {filtered.length === 0 && !focusedAartiId && <p style={{ textAlign: 'center', color: '#888' }}>No Aartya found matching "{query}"</p>}
+          );
+        })}
+        {filtered.length === 0 && !focusedAartiId && (
+          <p style={{ textAlign: 'center', color: '#888', marginTop: '20px' }}>
+            {contentType === "Playlists" 
+              ? (categories.length === 0 ? "Create a playlist above to get started!" : "This playlist is empty. Add Aartya from other tabs!")
+              : `No Aartya found matching "${query}"`}
+          </p>
+        )}
       </div>
+
+      {/* Puja Player Fullscreen Overlay */}
+      {activePlaylist && (
+        <PujaPlayer 
+          playlist={activePlaylist} 
+          allAartya={sortedAartiData} 
+          onExit={() => setActivePlaylist(null)} 
+          theme={theme}
+          setTheme={setTheme}
+          script={script}
+          setScript={setScript}
+          AartiDetailComponent={({ aarti }) => (
+            <article className="aarti-card focused-aarti-card" style={{ margin: '0 auto', maxWidth: '800px', boxShadow: 'none' }}>
+              <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title}</h2>
+              {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity}</h3>}
+              <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics}</div>
+            </article>
+          )} 
+        />
+      )}
     </div>
   );
 }

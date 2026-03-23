@@ -103,9 +103,38 @@ function getDevanagari(text) {
   // Guessing Devanagari from English creates gibberish without ML/APIs.
   return text;
 }
-  
+
+// Dictionary to enforce perfect English spelling for common Marathi names
+const englishDict = {
+  "इतर": "Other",
+  "दत्त": "Datta",
+  "विठ्ठल": "Vitthal",
+  "गणपती": "Ganpati",
+  "गणेश": "Ganesh",
+  "राम": "Ram",
+  "कृष्ण": "Krishna",
+  "शंकर": "Shankar",
+  "देवी": "Devi",
+  "मारुती": "Maruti",
+  "खंडोबा": "Khandoba",
+  "ज्ञानेश्वर": "Dnyaneshwar",
+  "नामदेव": "Namdev",
+  "तुकराम": "Tukaram",
+  "दुर्गा": "Durga",
+  "साई": "Sai",
+  "भवानी": "Bhavani",
+  "महालक्ष्मी": "Mahalaxmi",
+  "मनगौरी": "Mangauri"
+};
+
 function getEnglish(text) {
   if (!text) return "";
+
+  // 1. Exact match override for common Marathi names to English
+  if (englishDict[text.trim()]) {
+    return englishDict[text.trim()];
+  }
+
   if (isDevanagari(text)) {
     return marathiToEnglish(text);
   }
