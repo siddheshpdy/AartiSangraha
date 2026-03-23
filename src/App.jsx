@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { flushSync } from 'react-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 
+import { usePlaylists } from '../usePlaylists'; // Adjust path if you moved this to src/hooks/
+import PujaPlayer from '../PujaPlayer';         // Adjust path if you moved this to src/components/
+
 // Transliteration Map for Cross-Script "Phonetic Equivalence" Search
 const phoneticMap = {
   // Velar (K/G)
@@ -228,14 +231,25 @@ function App() {
   const userWantsWakeLock = useRef(false);
   const [focusedAartiId, setFocusedAartiId] = useState(null); // New state for focus mode
 
+  const { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist, moveAartiInPlaylist } = usePlaylists();
+  const [activePlaylist, setActivePlaylist] = useState(null);
+  const [newPlaylistName, setNewPlaylistName] = useState('');
+
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
 
   useEffect(() => {
-    setSelectedCategory("All");
+    if (contentType === "Playlists") {
+      setSelectedCategory(playlists.length > 0 ? `playlist-${playlists[0].id}` : "All");
+    } else {
+      setSelectedCategory("All");
+    }
   }, [contentType]);
 
   const categories = useMemo(() => {
+    if (contentType === "Playlists") {
+      return playlists.map(p => `playlist-${p.id}`);
+    }
     const availableDeities = Array.from(new Set(
       sortedAartiData
         .filter(a => (a.type || "Aartya") === contentType)
@@ -243,7 +257,15 @@ function App() {
         .filter(Boolean)
     ));
     return ["All", "Favorites", ...availableDeities];
-  }, [contentType]);
+  }, [contentType, playlists]);
+
+  // Fallback to "All" if the currently selected playlist gets deleted
+  useEffect(() => {
+    if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
+      const exists = playlists.some(p => `playlist-${p.id}` === selectedCategory);
+      if (!exists) setSelectedCategory(playlists.length > 0 ? `playlist-${playlists[0].id}` : "All");
+    }
+  }, [playlists, selectedCategory]);
 
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -263,6 +285,23 @@ function App() {
 
   // Filter against the pre-sorted data
   let filtered = sortedAartiData.filter(a => {
+    if (contentType === "Playlists") {
+      if (!selectedCategory.startsWith("playlist-")) return false;
+      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+      if (!activeP || !activeP.aartiIds.includes(a.id)) return false;
+      
+      const matchesQuery = !searchRegex || (
+        (a.title && searchRegex.test(a.title)) || 
+        (a.deity && searchRegex.test(a.deity)) ||
+        (a.lyrics && searchRegex.test(a.lyrics)) ||
+        (a.titleEng && searchRegex.test(a.titleEng)) ||
+        (a.deityEng && searchRegex.test(a.deityEng)) ||
+        (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
+        (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
+      );
+      return matchesQuery;
+    }
+
     const itemType = a.type || "Aartya";
     if (itemType !== contentType) return false;
 
@@ -281,10 +320,15 @@ function App() {
     return matchesQuery && matchesCategory;
   });
 
-  if (selectedCategory === "Favorites" && !searchQuery) {
-    filtered.sort((a, b) => {
-      return favorites.indexOf(a.id) - favorites.indexOf(b.id);
-    });
+  if (!searchQuery) {
+    if (selectedCategory === "Favorites") {
+      filtered.sort((a, b) => favorites.indexOf(a.id) - favorites.indexOf(b.id));
+    } else if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
+      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+      if (activeP) {
+        filtered.sort((a, b) => activeP.aartiIds.indexOf(a.id) - activeP.aartiIds.indexOf(b.id));
+      }
+    }
   }
 
   const toggleFavorite = (id) => {
@@ -335,6 +379,22 @@ function App() {
       });
     } else {
       performMove(); // Fallback for older browsers
+    }
+  };
+
+  const handleMoveInPlaylist = (id, direction) => {
+    const playlistId = selectedCategory.replace('playlist-', '');
+    const performMove = () => {
+      moveAartiInPlaylist(playlistId, id, direction);
+    };
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          performMove();
+        });
+      });
+    } else {
+      performMove(); 
     }
   };
 
@@ -468,13 +528,15 @@ function App() {
   const titleMap = {
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
     "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
-    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह"
+    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह",
+    "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट"
   };
 
   const tabLabelMap = {
     "Aartya": script === 'latin' ? "Aartya" : "आरत्या",
     "Bhovtya": script === 'latin' ? "Bhovtya" : "भोवत्या",
-    "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा"
+    "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा",
+    "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट"
   };
 
   if (sortedAartiData.length === 0) {
@@ -539,7 +601,7 @@ function App() {
             </div>
           </div>
           <div className="content-type-tabs">
-            {["Aartya", "Bhovtya", "Pradakshina"].map(type => (
+            {["Aartya", "Bhovtya", "Pradakshina", "Playlists"].map(type => (
               <button
                 key={type}
                 className={`tab-btn ${contentType === type ? 'active' : ''}`}
@@ -574,13 +636,63 @@ function App() {
             </button>
           )}
         </div>
+        {contentType === "Playlists" && (
+          <div style={{ padding: '10px 15px', display: 'flex', flexDirection: 'column', gap: '10px', background: 'var(--bg-card)', borderBottom: '1px solid var(--color-border)' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <input 
+                type="text" 
+                value={newPlaylistName} 
+                onChange={e => setNewPlaylistName(e.target.value)} 
+                placeholder="New Playlist Name..." 
+                style={{ flex: 1, padding: '8px', borderRadius: '4px', border: '1px solid var(--color-border)', background: 'transparent', color: 'inherit' }} 
+              />
+              <button 
+                onClick={() => { createPlaylist(newPlaylistName); setNewPlaylistName(''); }} 
+                style={{ padding: '8px 12px', background: '#e65100', color: 'white', borderRadius: '4px', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}
+              >
+                ➕ Create
+              </button>
+            </div>
+            {selectedCategory.startsWith('playlist-') && playlists.some(p => `playlist-${p.id}` === selectedCategory) && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px' }}>
+                <button 
+                  onClick={() => {
+                    const p = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+                    if (p && p.aartiIds.length > 0) setActivePlaylist(p);
+                  }}
+                  disabled={filtered.length === 0}
+                  style={{ padding: '8px 16px', background: filtered.length === 0 ? '#ccc' : '#10b981', color: 'white', borderRadius: '4px', fontWeight: 'bold', border: 'none', cursor: filtered.length === 0 ? 'not-allowed' : 'pointer' }}
+                >
+                ▶ Start
+                </button>
+                <button 
+                  onClick={() => {
+                    const p = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+                    if (p && window.confirm('Delete this playlist?')) deletePlaylist(p.id);
+                  }}
+                  style={{ padding: '8px 12px', background: '#ef4444', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
+                >
+                  🗑 Delete Playlist
+                </button>
+              </div>
+            )}
+          </div>
+        )}
         <div className="filter-chips">
+          {categories.length === 0 && contentType === "Playlists" && (
+            <span style={{ padding: '8px 16px', fontSize: '0.9rem', opacity: 0.7 }}>No playlists yet. Create one above!</span>
+          )}
           {categories.map(category => {
             let label = category;
+            let isPlaylist = false;
             if (category === "All") label = script === 'latin' ? "All" : "सर्व";
             else if (category === "Favorites") label = script === 'latin' ? "Favorites" : "आवडते";
+            else if (category.startsWith("playlist-")) {
+              const match = playlists.find(p => `playlist-${p.id}` === category);
+              if (match) label = match.name;
+              isPlaylist = true;
+            }
             else if (script === 'latin') {
-              // If we're in English mode, pull the generated English transliteration for the chip
               const match = sortedAartiData.find(a => a.deity === category);
               if (match && match.deityEng) label = match.deityEng;
             }
@@ -590,9 +702,9 @@ function App() {
                 key={category}
                 className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(category)}
-                style={{ textTransform: script === 'latin' && category !== "All" && category !== "Favorites" ? 'capitalize' : 'none' }}
+                style={{ textTransform: script === 'latin' && !["All", "Favorites"].includes(category) && !isPlaylist ? 'capitalize' : 'none' }}
               >
-                {label}
+                {isPlaylist ? '🎵 ' : ''}{label}
               </button>
             );
           })}
@@ -606,7 +718,7 @@ function App() {
           <article 
             key={aarti.id} 
             className={`aarti-card ${focusedAartiId === aarti.id ? 'focused-aarti-card' : ''}`}
-            style={selectedCategory === "Favorites" && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
+            style={(selectedCategory === "Favorites" || selectedCategory.startsWith("playlist-")) && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
             onClick={() => setFocusedAartiId(aarti.id)} // Click to focus
           >
             {focusedAartiId === aarti.id && (
@@ -620,19 +732,27 @@ function App() {
               </button>
             )}
             <div className="font-resizer">
-              {selectedCategory === "Favorites" && !searchQuery && (
+              {(selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery && (
                 <>
                   <button 
                     className="font-btn" 
-                    onClick={() => moveFavorite(aarti.id, 'up')} 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (selectedCategory === "Favorites") moveFavorite(aarti.id, 'up');
+                      else handleMoveInPlaylist(aarti.id, 'up');
+                    }} 
                     disabled={index === 0}
-                    aria-label="Move Favorite Up"
+                    aria-label="Move Up"
                   >▲</button>
                   <button 
                     className="font-btn" 
-                    onClick={() => moveFavorite(aarti.id, 'down')} 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (selectedCategory === "Favorites") moveFavorite(aarti.id, 'down');
+                      else handleMoveInPlaylist(aarti.id, 'down');
+                    }} 
                     disabled={index === filtered.length - 1}
-                    aria-label="Move Favorite Down"
+                    aria-label="Move Down"
                   >▼</button>
                 </>
               )}
@@ -642,13 +762,64 @@ function App() {
               <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.max(14, f - 2)); }} aria-label="Decrease font size">A-</button>
               <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.min(32, f + 2)); }} aria-label="Increase font size">A+</button>
             </div>
+            <div className="playlist-dropdown" style={{ marginBottom: '10px' }} onClick={(e) => e.stopPropagation()}>
+              <select 
+                onChange={(e) => {
+                  if (e.target.value === 'CREATE_NEW') {
+                    const name = window.prompt("Enter new playlist name:");
+                    if (name && name.trim()) {
+                      createPlaylist(name, aarti.id);
+                    }
+                  } else if (e.target.value) {
+                    toggleAartiInPlaylist(e.target.value, aarti.id);
+                  }
+                  e.target.value = ""; 
+                }} 
+                defaultValue=""
+                style={{ padding: '4px', borderRadius: '4px', fontSize: '0.85rem', width: '100%', border: '1px solid var(--color-border)', background: 'transparent', color: 'inherit' }}
+              >
+                <option value="" disabled>+ Add to Custom Playlist...</option>
+                <option value="CREATE_NEW" style={{ color: 'black', fontWeight: 'bold' }}>➕ Create New Playlist</option>
+                {playlists.map(p => (
+                  <option key={p.id} value={p.id} style={{ color: 'black' }}>
+                    {p.aartiIds.includes(aarti.id) ? '✓ Remove from' : '+ Add to'} {p.name}
+                  </option>
+                ))}
+              </select>
+            </div>
             <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</h2>
             {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
           </article>
         ))}
-        {filtered.length === 0 && !focusedAartiId && <p style={{ textAlign: 'center', color: '#888' }}>No Aartya found matching "{query}"</p>}
+        {filtered.length === 0 && !focusedAartiId && (
+          <p style={{ textAlign: 'center', color: '#888', marginTop: '20px' }}>
+            {contentType === "Playlists" 
+              ? (categories.length === 0 ? "Create a playlist above to get started!" : "This playlist is empty. Add Aartya from other tabs!")
+              : `No Aartya found matching "${query}"`}
+          </p>
+        )}
       </div>
+
+      {/* Puja Player Fullscreen Overlay */}
+      {activePlaylist && (
+        <PujaPlayer 
+          playlist={activePlaylist} 
+          allAartya={sortedAartiData} 
+          onExit={() => setActivePlaylist(null)} 
+          theme={theme}
+          setTheme={setTheme}
+          script={script}
+          setScript={setScript}
+          AartiDetailComponent={({ aarti }) => (
+            <article className="aarti-card focused-aarti-card" style={{ margin: '0 auto', maxWidth: '800px', boxShadow: 'none' }}>
+              <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title}</h2>
+              {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity}</h3>}
+              <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics}</div>
+            </article>
+          )} 
+        />
+      )}
     </div>
   );
 }

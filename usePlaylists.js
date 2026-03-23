@@ -11,10 +11,15 @@ export function usePlaylists() {
     localStorage.setItem('puja_playlists', JSON.stringify(playlists));
   }, [playlists]);
 
-  const createPlaylist = (name) => {
+  const createPlaylist = (name, initialAartiId = null) => {
     if (!name.trim()) return;
-    const newPlaylist = { id: Date.now().toString(), name, aartiIds: [] };
+    const newPlaylist = { 
+      id: Date.now().toString(), 
+      name, 
+      aartiIds: initialAartiId ? [initialAartiId] : [] 
+    };
     setPlaylists([...playlists, newPlaylist]);
+    return newPlaylist.id;
   };
 
   const deletePlaylist = (id) => {
@@ -36,5 +41,21 @@ export function usePlaylists() {
     }));
   };
 
-  return { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist };
+  const moveAartiInPlaylist = (playlistId, aartiId, direction) => {
+    setPlaylists(playlists.map(playlist => {
+      if (playlist.id === playlistId) {
+        const currentIdx = playlist.aartiIds.indexOf(aartiId);
+        if (currentIdx < 0) return playlist;
+        const swapIdx = direction === 'up' ? currentIdx - 1 : currentIdx + 1;
+        if (swapIdx < 0 || swapIdx >= playlist.aartiIds.length) return playlist;
+
+        const newAartiIds = [...playlist.aartiIds];
+        [newAartiIds[currentIdx], newAartiIds[swapIdx]] = [newAartiIds[swapIdx], newAartiIds[currentIdx]];
+        return { ...playlist, aartiIds: newAartiIds };
+      }
+      return playlist;
+    }));
+  };
+
+  return { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist, moveAartiInPlaylist };
 }
