@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-export default function BackupRestoreSettings({ onRestoreSuccess }) {
+export default function BackupRestoreSettings({ onRestoreSuccess, theme }) {
   const fileInputRef = useRef(null);
 
   const handleExport = () => {
@@ -62,20 +62,26 @@ export default function BackupRestoreSettings({ onRestoreSuccess }) {
     event.target.value = ''; // Reset input so the same file can be selected again if needed
   };
 
+  const isDarkTheme = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || (typeof document !== 'undefined' && document.body.classList.contains('dark'));
+  const bgColor = isDarkTheme ? '#1f2937' : '#f9fafb';
+  const textColor = isDarkTheme ? '#f9fafb' : '#111827';
+  const subTextColor = isDarkTheme ? '#9ca3af' : '#4b5563';
+  const borderColor = isDarkTheme ? '#374151' : '#e5e7eb';
+
   return (
-    <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow mt-6 border border-gray-200 dark:border-gray-700">
-      <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-200">Backup & Restore</h3>
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+    <div style={{ padding: '15px', backgroundColor: bgColor, color: textColor, borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', marginTop: '10px', border: `1px solid ${borderColor}` }}>
+      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px', margin: 0 }}>Backup & Restore</h3>
+      <p style={{ fontSize: '0.85rem', color: subTextColor, marginBottom: '15px', marginTop: 0 }}>
         Export your favorites, custom playlists, and app settings to a file, or restore them from a previous backup.
       </p>
-      <div className="flex gap-4">
-        <button onClick={handleExport} className="flex-1 py-2 bg-blue-600 text-white font-semibold rounded shadow hover:bg-blue-700 transition">
-          📥 Export Backup
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <button onClick={handleExport} style={{ flex: 1, padding: '8px', backgroundColor: '#3b82f6', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>
+          📥 Export
         </button>
-        <button onClick={() => fileInputRef.current.click()} className="flex-1 py-2 bg-green-600 text-white font-semibold rounded shadow hover:bg-green-700 transition">
-          📤 Import Backup
+        <button onClick={() => fileInputRef.current.click()} style={{ flex: 1, padding: '8px', backgroundColor: '#10b981', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>
+          📤 Import
         </button>
-        <input type="file" accept=".json" ref={fileInputRef} onChange={handleImport} className="hidden" />
+        <input type="file" accept=".json" ref={fileInputRef} onChange={handleImport} style={{ display: 'none' }} />
       </div>
     </div>
   );

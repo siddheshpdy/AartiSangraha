@@ -5,6 +5,7 @@ import aartiData from './data/Aartya.json'; // Direct import
 
 import { usePlaylists } from '../usePlaylists'; // Adjust path if you moved this to src/hooks/
 import PujaPlayer from '../PujaPlayer';         // Adjust path if you moved this to src/components/
+import BackupRestoreSettings from '../BackupRestoreSettings';
 
 // Transliteration Map for Cross-Script "Phonetic Equivalence" Search
 const phoneticMap = {
@@ -623,6 +624,10 @@ function App() {
                 </button>
               ))}
             </div>
+
+            <div style={{ padding: '0 15px', boxSizing: 'border-box' }}>
+              <BackupRestoreSettings theme={theme} />
+            </div>
           </div>
         </>
       )}
@@ -670,6 +675,10 @@ function App() {
                   {tabLabelMap[type]}
                 </button>
               ))}
+            </div>
+
+            <div style={{ padding: '15px', boxSizing: 'border-box' }}>
+              <BackupRestoreSettings theme={theme} />
             </div>
           </div>
         )}
