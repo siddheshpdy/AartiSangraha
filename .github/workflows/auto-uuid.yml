@@ -1,0 +1,37 @@
+name: Validate PR & Auto-UUID
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  add-uuids:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+          
+      - name: Run UUID Generator Script
+        run: node src/scripts/add-uuids.js
+        
+      - name: Commit changes back to PR
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-generate missing UUIDs for new Aarties"
+          
+      - name: Validate Aartya Generation
+        run: npm run prebuild-json
