@@ -50,16 +50,10 @@ export default defineConfig({
                 statuses: [0, 200]
               }
             }
-          },
-          {
-            urlPattern: /manifest\.webmanifest$/i,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'manifest-cache'
-            }
           }
         ]
       },
+      manifestFilename: 'manifest.json',
       manifest: {
         name: 'Aarti Sangraha',
         short_name: 'AartiApp',
