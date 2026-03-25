@@ -572,7 +572,7 @@ function App() {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <div className="app-container">
+    <main className="app-container">
       {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
       {isMobile && (
         <>
@@ -855,6 +855,7 @@ function App() {
             </div>
             <div className="playlist-dropdown" style={{ marginBottom: '10px' }} onClick={(e) => e.stopPropagation()}>
               <select 
+                aria-label="Select a playlist to add this Aarti"
                 onChange={(e) => {
                   if (e.target.value === 'CREATE_NEW') {
                     const name = window.prompt("Enter new playlist name:");
@@ -893,7 +894,7 @@ function App() {
               )}
             </div>
             {!showContent && (
-              <div style={{ textAlign: 'center', marginTop: '4px', color: '#e65100', fontWeight: 'bold', fontSize: '0.95rem' }}>
+              <div style={{ textAlign: 'center', marginTop: '4px', color: '#CC4800', fontWeight: 'bold', fontSize: '0.95rem' }}>
                 Read More ▼
               </div>
             )}
@@ -928,7 +929,7 @@ function App() {
           )} 
         />
       )}
-    </div>
+    </main>
   );
 }
 

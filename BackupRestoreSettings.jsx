@@ -75,10 +75,10 @@ export default function BackupRestoreSettings({ onRestoreSuccess, theme }) {
         Export your favorites, custom playlists, and app settings to a file, or restore them from a previous backup.
       </p>
       <div style={{ display: 'flex', gap: '10px' }}>
-        <button onClick={handleExport} style={{ flex: 1, padding: '8px', backgroundColor: '#3b82f6', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>
+        <button onClick={handleExport} style={{ flex: 1, padding: '8px', backgroundColor: '#1d4ed8', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>
           📥 Export
         </button>
-        <button onClick={() => fileInputRef.current.click()} style={{ flex: 1, padding: '8px', backgroundColor: '#10b981', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>
+        <button onClick={() => fileInputRef.current.click()} style={{ flex: 1, padding: '8px', backgroundColor: '#047857', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>
           📤 Import
         </button>
         <input type="file" accept=".json" ref={fileInputRef} onChange={handleImport} style={{ display: 'none' }} />
