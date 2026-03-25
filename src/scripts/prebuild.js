@@ -146,6 +146,7 @@ export function generateAartya() {
 
     const categories = ['Aartya', 'Bhovtya', 'Pradakshina'];
     const allContent = [];
+    const seenIds = new Set();
 
     categories.forEach(category => {
         const categoryDir = path.join(contentDir, category);
@@ -168,13 +169,27 @@ export function generateAartya() {
                 const rawBlock = `---\n${match[1]}\n---\n${match[2]}`;
                 const { data, content } = matter(rawBlock);
                 const lyrics = content.trim();
+                
+                const titleEng = getEnglish(data.title || "");
+                const deityEng = getEnglish(data.deity || "").toUpperCase();
+                
+                if (!data.id) {
+                    throw new Error(`Aarti "${data.title || index}" in file "${category}/${file}" is missing a unique 'id' in its frontmatter! Please generate a UUID and add it as 'id: <uuid>'.`);
+                }
+                const finalId = String(data.id);
+                
+                if (seenIds.has(finalId)) {
+                    throw new Error(`Duplicate ID "${finalId}" found in "${category}/${file}". Every Aarti must have a completely unique UUID.`);
+                }
+                seenIds.add(finalId);
+                
                 allContent.push({ 
-                    id: `${category}-${file.replace('.md', '')}-${index}`, 
+                    id: finalId, 
                     type: category,
                     title: getDevanagari(data.title || ""),
                     deity: getDevanagari(data.deity || ""),
-                    titleEng: getEnglish(data.title || ""),
-                    deityEng: getEnglish(data.deity || "").toUpperCase(), // Deity names often look better in uppercase
+                    titleEng: titleEng,
+                    deityEng: deityEng,
                     lyricsEng: getEnglish(lyrics),
                     link: data.link || "",
                     lyrics: lyrics 
