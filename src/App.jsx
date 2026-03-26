@@ -250,6 +250,29 @@ function App() {
     }
   }, [location.pathname]);
 
+  const titleMap = useMemo(() => ({
+    "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
+    "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
+    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह",
+    "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट"
+  }), [script]);
+
+  // Dynamic Page Title for SEO and Bookmarking
+  useEffect(() => {
+    if (focusedAartiId) {
+      const aarti = sortedAartiData.find(a => a.id === focusedAartiId);
+      if (aarti) {
+        const title = script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title;
+        const baseTitle = titleMap[aarti.type || 'Aartya'] || 'Aarti Sangraha';
+        document.title = `${title} | ${baseTitle}`;
+      }
+    } else {
+      document.title = titleMap[contentType] || "Aarti Sangraha";
+    }
+    // titleMap is derived from script, but including both for clarity as they are used
+    // in different parts of the effect.
+  }, [focusedAartiId, contentType, script, titleMap]);
+
   const handleFocusAarti = (id) => {
     navigate(`/aarti/${id}`);
   };
@@ -589,13 +612,6 @@ function App() {
     }
     return () => { document.body.style.overflow = ''; };
   }, [isMobile, isMenuOpen]);
-
-  const titleMap = {
-    "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
-    "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
-    "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह",
-    "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट"
-  };
 
   const tabLabelMap = {
     "Aartya": script === 'latin' ? "Aartya" : "आरत्या",
