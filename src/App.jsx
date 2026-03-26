@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { flushSync } from 'react-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 
 import { usePlaylists } from '../usePlaylists'; // Adjust path if you moved this to src/hooks/
@@ -208,6 +209,8 @@ sortedAartiData.forEach(a => {
 });
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [query, setQuery] = useState("");
   const [contentType, setContentType] = useState("Aartya");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -234,9 +237,50 @@ function App() {
 
   const { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist, moveAartiInPlaylist } = usePlaylists();
   const [activePlaylist, setActivePlaylist] = useState(null);
-  const [expandedAartiId, setExpandedAartiId] = useState(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Sync route with focusedAartiId for direct links
+  useEffect(() => {
+    const match = location.pathname.match(/^\/aarti\/(.+)$/);
+    if (match && match[1]) {
+      setFocusedAartiId(match[1]);
+    } else {
+      setFocusedAartiId(null);
+    }
+  }, [location.pathname]);
+
+  const handleFocusAarti = (id) => {
+    navigate(`/aarti/${id}`);
+  };
+
+  const handleCloseFocus = () => {
+    navigate(`/`);
+  };
+
+  const handleShare = async (e, aarti) => {
+    e.stopPropagation();
+    const shareUrl = `${window.location.origin}/aarti/${aarti.id}`;
+    const shareData = {
+      title: `Aarti Sangraha - ${aarti.title}`,
+      text: `Read the ${aarti.title} on Aarti Sangraha!`,
+      url: shareUrl,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        // Ignore AbortError which fires if the user closes the native share sheet
+        if (error.name !== "AbortError") {
+          console.error("Error sharing the Aarti:", error);
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(shareUrl);
+      alert("Link copied to clipboard! You can now paste it in WhatsApp or elsewhere.");
+    }
+  };
 
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
@@ -796,8 +840,7 @@ function App() {
       <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
         {filtered.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
-          const isExpanded = expandedAartiId === aarti.id;
-          const showContent = isExpanded || isFocused || !!searchQuery;
+          const showContent = isFocused || !!searchQuery;
           
           return (focusedAartiId === null || focusedAartiId === aarti.id) && (
           <article 
@@ -805,17 +848,15 @@ function App() {
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
             style={(selectedCategory === "Favorites" || selectedCategory.startsWith("playlist-")) && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
             onClick={() => {
-              if (isMobile && !isFocused) {
-                setExpandedAartiId(prev => prev === aarti.id ? null : aarti.id);
-              } else if (!isMobile) {
-                setFocusedAartiId(aarti.id);
+              if (!isFocused) {
+                handleFocusAarti(aarti.id);
               }
             }}
           >
             {isFocused && (
               <button 
                 className="close-focus-mode-btn" 
-                onClick={(e) => { e.stopPropagation(); setFocusedAartiId(null); }}
+                onClick={(e) => { e.stopPropagation(); handleCloseFocus(); }}
                 aria-label="Exit Focus Mode"
                 title="Exit Focus Mode"
               >
@@ -823,6 +864,7 @@ function App() {
               </button>
             )}
             <div className="font-resizer">
+              <button className="font-btn" onClick={(e) => handleShare(e, aarti)} aria-label="Share Aarti" title="Share Aarti">🔗</button>
               {(selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery && (
                 <>
                   <button 
@@ -881,9 +923,6 @@ function App() {
             </div>
             <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
-              {isMobile && !isFocused && !searchQuery && (
-                <span style={{ fontSize: '0.8em', opacity: 0.5, marginLeft: '10px' }}>{isExpanded ? '▲' : ''}</span>
-              )}
             </h2>
             {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             
@@ -894,8 +933,10 @@ function App() {
               )}
             </div>
             {!showContent && (
-              <div style={{ textAlign: 'center', marginTop: '4px', color: '#CC4800', fontWeight: 'bold', fontSize: '0.95rem' }}>
-                Read More ▼
+              <div style={{ textAlign: 'center', marginTop: '12px' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#CC4800', fontWeight: 'bold', fontSize: '0.95rem', padding: '6px 16px', border: '1px solid #CC4800', borderRadius: '999px', backgroundColor: 'rgba(204, 72, 0, 0.05)' }}>
+                  Open ⤢
+                </span>
               </div>
             )}
           </article>
