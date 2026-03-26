@@ -26,6 +26,8 @@ export default defineConfig({
       devOptions: {
         enabled: true
       },
+      // Explicitly cache your static icons for offline use
+      includeAssets: ['favicon.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
       workbox: {
         cleanupOutdatedCaches: true,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
