@@ -23,6 +23,8 @@ export default defineConfig({
     },
     VitePWA({
       registerType: 'autoUpdate',
+      // Rename the PWA Service Worker so it doesn't overwrite your Monetag public/sw.js
+      filename: 'pwa-sw.js',
       devOptions: {
         enabled: true
       },
@@ -30,7 +32,7 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
       workbox: {
         cleanupOutdatedCaches: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
