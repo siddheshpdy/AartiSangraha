@@ -12,9 +12,11 @@
 }
 
 iframe {
+  margin: 15px 0;
   display: block;
-  margin-bottom: 5px;
+  max-width: 100%;
 }
+
 body.dark {
   --color-saffron: #D4AF37; /* Spiritual Night Gold */
   --color-maroon: #D4AF37; /* Spiritual Night Gold */
