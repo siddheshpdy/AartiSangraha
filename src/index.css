@@ -20,7 +20,7 @@ iframe {
 iframe {
   margin-top: 2rem !important;
   margin-bottom: 2rem !important;
-  position: relative !important; /* Forces it out of 'absolute' or 'fixed' overlaps */
+  position: absolute !important; /* Forces it out of 'absolute' or 'fixed' overlaps */
   clear: both; /* Prevents floating elements from crowding it */
 }
 
