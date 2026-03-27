@@ -16,6 +16,14 @@ iframe {
   display: block !important;
   max-width: 100% !important;
 }
+/* This targets every iframe on the site automatically */
+iframe {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  position: relative !important; /* Forces it out of 'absolute' or 'fixed' overlaps */
+  clear: both; /* Prevents floating elements from crowding it */
+}
+
 
 body.dark {
   --color-saffron: #D4AF37; /* Spiritual Night Gold */
