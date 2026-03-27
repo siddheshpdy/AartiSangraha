@@ -79,6 +79,11 @@ body.focus-mode-active .app-container {
   display: contents;
 }
 
+.far-left-pane,
+.far-right-pane {
+  display: none;
+}
+
 .header-title-container {
   display: flex;
   align-items: center;
@@ -392,6 +397,7 @@ body.dark .add-btn {
     padding-top: 32px;
     padding-right: 24px;
     gap: 32px;
+    max-width: 1200px;
   }
 
   .sticky-header {
@@ -509,5 +515,27 @@ body.dark .add-btn {
   }
   .focused-aarti-card {
     padding: 3rem; /* More padding on desktop */
+  }
+}
+
+@media (min-width: 1366px) {
+  .app-container {
+    max-width: 1536px;
+    justify-content: center;
+  }
+  .far-left-pane,
+  .far-right-pane {
+    display: block;
+    width: 160px; /* Standard wide-skyscraper ad size width */
+    flex-shrink: 0;
+    position: sticky;
+    top: 32px;
+    height: fit-content;
+  }
+  .far-left-pane {
+    order: 0;
+  }
+  .far-right-pane {
+    order: 4;
   }
 }

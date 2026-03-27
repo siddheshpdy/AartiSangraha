@@ -208,6 +208,24 @@ sortedAartiData.forEach(a => {
   a._searchSkeleton = getSearchSkeleton((a.title || "") + " " + (a.deity || "") + " " + (a.lyrics || ""));
 });
 
+function MonetagSidebarAd({ zoneId }) {
+  const adRef = useRef(null);
+
+  useEffect(() => {
+    if (!adRef.current) return;
+    if (adRef.current.querySelector('script')) return; // Prevent duplicate injection
+
+    const script = document.createElement('script');
+    script.dataset.zone = zoneId;
+    script.src = 'https://nap5k.com/tag.min.js';
+    script.async = true;
+    
+    adRef.current.appendChild(script);
+  }, [zoneId]);
+
+  return <div ref={adRef} className="monetag-sidebar-ad" style={{ margin: '20px auto', width: '100%', minHeight: '250px', display: 'flex', justifyContent: 'center' }}></div>;
+}
+
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -633,6 +651,13 @@ function App() {
 
   return (
     <main className="app-container">
+      {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
+      {!isMobile && (
+        <div className="far-left-pane">
+          <MonetagSidebarAd zoneId="10786137" />
+        </div>
+      )}
+
       {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
       {isMobile && (
         <>
@@ -692,7 +717,7 @@ function App() {
         </>
       )}
 
-      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''} ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
+      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
         {isMobile && (
           <div style={{ display: 'flex', alignItems: 'center', width: '100%', height: '60px', padding: '0 15px', backgroundColor: drawerBgColor, borderBottom: `1px solid ${drawerBorderColor}` }}>
             <button 
@@ -985,6 +1010,13 @@ function App() {
             </article>
           )} 
         />
+      )}
+      
+      {/* DESKTOP ONLY: Far Right Pane for Monetag Ad */}
+      {!isMobile && (
+        <div className="far-right-pane">
+          <MonetagSidebarAd zoneId="10786137" />
+        </div>
       )}
     </main>
   );
