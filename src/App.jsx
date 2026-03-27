@@ -1086,8 +1086,6 @@ setInterval(() => {
     if (ad.style.position !== 'fixed') {
       ad.style.setProperty('position', 'fixed', 'important');
       ad.style.setProperty('bottom', '10px', 'important');
-      ad.style.setProperty('left', '50%', 'important');
-      ad.style.setProperty('transform', 'translateX(-50%)', 'important');
     }
   });
 }, 2000);
