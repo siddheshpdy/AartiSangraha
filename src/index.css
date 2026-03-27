@@ -12,27 +12,11 @@
 }
 
 /* This targets every iframe on the site automatically */
-/*iframe {
+iframe {
   margin-top: calc(100% - 200px) !important;
   margin-bottom: 5px !important;
   position: absolute !important;
   clear: both; 
-}*/
-
-/* Target common Monetag/Ad-network classes and all iframes */
-iframe, 
-div[class^="monetag"], 
-div[id^="monetag"] {
-  position: fixed !important;
-  bottom: 10px !important;    /* Position at the bottom */
-  top: auto !important;       /* Disable any 'top' positioning */
-  left: 50% !important;       /* Move to horizontal center */
-  right: auto !important;
-  transform: translateX(-50%) !important; /* Perfect centering */
-  z-index: 9999999 !important; /* Ensure it stays above your content */
-  margin: 0 auto !important;
-  display: block !important;
-  max-width: 95vw !important; /* Prevents it from going off-screen on mobile */
 }
 
 /* Fix for the Aarti Sangraha content so the ad doesn't hide the text */
