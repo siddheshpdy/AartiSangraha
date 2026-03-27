@@ -655,11 +655,11 @@ function App() {
   return (
     <main className="app-container">
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
-      {!isMobile && focusedAartiId === null && (
+      {/* {!isMobile && focusedAartiId === null && (
         <div className="far-left-pane">
           <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
         </div>
-      )}
+      )} */}
       
       {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
       {isMobile && (
@@ -818,7 +818,7 @@ function App() {
               </button>
             </div>
             
-            <div style={{ maxHeight: isMobile ? '200px' : 'none', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {playlists.length === 0 ? (
                 <span style={{ padding: '8px 0', fontSize: '0.9rem', opacity: 0.7 }}>No playlists yet. Create one above!</span>
               ) : (
@@ -1016,14 +1016,14 @@ function App() {
       )}
       
       {/* DESKTOP ONLY: Far Right Pane for Monetag Ad */}
-      {!isMobile && (
+      {/* {!isMobile && (
         <div className="far-right-pane">
           <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
         </div>
-      )}
+      )} */}
 
       {/* MOBILE ONLY: Bottom Ad Space */}
-      {isMobile && (
+      {/* {isMobile && (
         <div style={{
           position: 'fixed',
           bottom: 0,
@@ -1040,7 +1040,7 @@ function App() {
         }}>
           <MonetagAdUnit zoneId="10790266" containerStyle={{ width: '100%', height: '100%' }} />
         </div>
-      )}
+      )} */}
     </main>
   );
 }
