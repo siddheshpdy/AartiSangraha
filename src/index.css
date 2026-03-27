@@ -11,21 +11,11 @@
   --color-text-muted: #374151;
 }
 
-/* Add this to your App.css */
-iframe {
-  position: fixed !important;
-  bottom: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 9999; /* Keeps it above everything else */
-  margin-bottom: 20px !important; /* The space you liked! */
-}
-
 /* This targets every iframe on the site automatically */
 iframe {
-  margin-top: 2rem !important;
-  margin-bottom: 2rem !important;
-  /*position: absolute !important; /* Forces it out of 'absolute' or 'fixed' overlaps */
+  margin-top: calc(100% - 200px) !important;
+  margin-bottom: 5px !important;
+  position: absolute !important; /* Forces it out of 'absolute' or 'fixed' overlaps */
   clear: both; /* Prevents floating elements from crowding it */
 }
 
