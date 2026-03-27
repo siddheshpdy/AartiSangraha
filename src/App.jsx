@@ -1062,7 +1062,7 @@ useEffect(() => {
   );
 }
 // Place this at the very bottom of your file, OUTSIDE of any function
-const observer = new MutationObserver(() => {
+/*const observer = new MutationObserver(() => {
   const iframes = document.querySelectorAll('iframe');
   
   iframes.forEach(iframe => {
@@ -1077,5 +1077,20 @@ const observer = new MutationObserver(() => {
 
 // Start watching the entire document for changes
 observer.observe(document.body, { childList: true, subtree: true });
+*/
+
+// Force-check every second if a Monetag ad is misplaced
+setInterval(() => {
+  const ads = document.querySelectorAll('iframe');
+  ads.forEach(ad => {
+    if (ad.style.position !== 'fixed') {
+      ad.style.setProperty('position', 'fixed', 'important');
+      ad.style.setProperty('bottom', '10px', 'important');
+      ad.style.setProperty('left', '50%', 'important');
+      ad.style.setProperty('transform', 'translateX(-50%)', 'important');
+    }
+  });
+}, 2000);
+
 
 export default App;
