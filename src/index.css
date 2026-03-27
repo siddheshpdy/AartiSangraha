@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6, title {
 .app-container {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 0 16px 20px;
+  padding: 0 16px 20px 0;
   display: flex;
   min-height: 100vh; /* Ensure app-container takes full height */
   flex-direction: column;
@@ -517,6 +517,7 @@ body.dark .add-btn {
     padding: 3rem; /* More padding on desktop */
   }
 }
+
 
 @media (min-width: 1366px) {
   .app-container {

@@ -653,14 +653,14 @@ function App() {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <main className="app-container" style={isMobile ? { paddingBottom: '220px' } : {}}>
+    <main className="app-container">
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
-      {!isMobile && (
+      {!isMobile && focusedAartiId === null && (
         <div className="far-left-pane">
           <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
         </div>
       )}
-
+      
       {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
       {isMobile && (
         <>
@@ -674,7 +674,7 @@ function App() {
             style={{
               position: 'fixed', top: 0, left: 0, bottom: 0, width: '280px', maxWidth: '85vw',
               backgroundColor: drawerBgColor, color: drawerTextColor,
-              boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000, 
+              boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000,
               transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
               transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 
               padding: '20px 15px', 
