@@ -271,6 +271,23 @@ function App() {
     }
   }, [location.pathname]);
 
+  
+useEffect(() => {
+  const observer = new MutationObserver((mutations) => {
+    const iframeExists = document.querySelector('iframe');
+    if (iframeExists) {
+      // Apply your spacing logic here
+      iframeExists.style.margin = '5px';
+      iframeExists.style.display = 'block';
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  return () => observer.disconnect(); // Cleanup
+}, []);
+
+
   const titleMap = useMemo(() => ({
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
     "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
