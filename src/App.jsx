@@ -208,22 +208,25 @@ sortedAartiData.forEach(a => {
   a._searchSkeleton = getSearchSkeleton((a.title || "") + " " + (a.deity || "") + " " + (a.lyrics || ""));
 });
 
-function MonetagSidebarAd({ zoneId }) {
+function MonetagAdUnit({ zoneId, containerStyle }) {
   const adRef = useRef(null);
 
   useEffect(() => {
-    if (!adRef.current) return;
-    if (adRef.current.querySelector('script')) return; // Prevent duplicate injection
+    // Return if the ad container isn't ready, or if the script is already there.
+    // This prevents re-injection on re-renders.
+    if (!adRef.current || adRef.current.querySelector('script')) {
+      return;
+    }
 
     const script = document.createElement('script');
     script.dataset.zone = zoneId;
     script.src = 'https://nap5k.com/tag.min.js';
     script.async = true;
-    
+
     adRef.current.appendChild(script);
   }, [zoneId]);
 
-  return <div ref={adRef} className="monetag-sidebar-ad" style={{ margin: '20px auto', width: '100%', minHeight: '250px', display: 'flex', justifyContent: 'center' }}></div>;
+  return <div ref={adRef} style={containerStyle} />;
 }
 
 function App() {
@@ -650,11 +653,11 @@ function App() {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <main className="app-container" style={isMobile ? { paddingBottom: '170px' } : {}}>
+    <main className="app-container" style={isMobile ? { paddingBottom: '220px' } : {}}>
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
       {!isMobile && (
         <div className="far-left-pane">
-          <MonetagSidebarAd zoneId="10786137" />
+          <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
         </div>
       )}
 
@@ -1015,7 +1018,7 @@ function App() {
       {/* DESKTOP ONLY: Far Right Pane for Monetag Ad */}
       {!isMobile && (
         <div className="far-right-pane">
-          <MonetagSidebarAd zoneId="10786137" />
+          <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
         </div>
       )}
 
@@ -1026,7 +1029,7 @@ function App() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: '150px',
+          height: '200px',
           width: '100%',
           backgroundColor: 'var(--color-cream)',
           borderTop: `1px solid var(--color-border)`,
@@ -1035,7 +1038,7 @@ function App() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          {/* Monetag ad placeholder */}
+          <MonetagAdUnit zoneId="10790266" containerStyle={{ width: '100%', height: '100%' }} />
         </div>
       )}
     </main>
