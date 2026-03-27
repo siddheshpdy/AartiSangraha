@@ -1061,5 +1061,21 @@ useEffect(() => {
     </main>
   );
 }
+// Place this at the very bottom of your file, OUTSIDE of any function
+const observer = new MutationObserver(() => {
+  const iframes = document.querySelectorAll('iframe');
+  
+  iframes.forEach(iframe => {
+    // Only apply if we haven't already styled it
+    if (iframe.style.margin !== '20px') {
+      iframe.style.margin = '20px auto';
+      iframe.style.display = 'block';
+      console.log('Iframe found and spaced out!');
+    }
+  });
+});
+
+// Start watching the entire document for changes
+observer.observe(document.body, { childList: true, subtree: true });
 
 export default App;
