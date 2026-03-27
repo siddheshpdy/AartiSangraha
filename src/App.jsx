@@ -650,7 +650,7 @@ function App() {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <main className="app-container">
+    <main className="app-container" style={isMobile ? { paddingBottom: '170px' } : {}}>
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
       {!isMobile && (
         <div className="far-left-pane">
@@ -1016,6 +1016,26 @@ function App() {
       {!isMobile && (
         <div className="far-right-pane">
           <MonetagSidebarAd zoneId="10786137" />
+        </div>
+      )}
+
+      {/* MOBILE ONLY: Bottom Ad Space */}
+      {isMobile && (
+        <div style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '150px',
+          width: '100%',
+          backgroundColor: 'var(--color-cream)',
+          borderTop: `1px solid var(--color-border)`,
+          zIndex: 51, // Above sticky header's z-index (50) but below drawer/modals
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          {/* Monetag ad placeholder */}
         </div>
       )}
     </main>
