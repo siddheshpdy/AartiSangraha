@@ -261,7 +261,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
-
+  
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
     const match = location.pathname.match(/^\/aarti\/(.+)$/);
@@ -271,44 +271,6 @@ function App() {
       setFocusedAartiId(null);
     }
   }, [location.pathname]);
-
-  
-  // Effect to detect Monetag iframe ad injected directly into <html>
-  useEffect(() => {
-    const checkMonetagAd = () => {
-      // This ad detection is specifically for a desktop-positioned ad.
-      // If on mobile, we assume this ad won't be present or won't require top-right padding.
-      if (isMobile) {
-        setHasTopRightIframeAd(false);
-        return;
-      };
-
-      const iframes = Array.from(document.querySelectorAll('html > iframe'));
-      const foundAd = iframes.find(iframe => {
-        const style = window.getComputedStyle(iframe);
-        // Check for fixed position, specific height, and top-right positioning
-        return style.position === 'fixed' &&
-               style.height === '90px' && // Assuming the intended height
-               style.top === '15px' &&     // Assuming the intended top offset
-               style.right === '0px';      // Assuming the intended right offset
-      });
-      setHasTopRightIframeAd(!!foundAd);
-    };
-
-    // Initial check
-    checkMonetagAd();
-
-    // Observe DOM changes to detect dynamically added/removed iframes
-    const observer = new MutationObserver(checkMonetagAd);
-    observer.observe(document.body, { childList: true, subtree: true });
-    // Also observe documentElement (html) just in case it's a direct child of html
-    // Observe document.documentElement for direct iframe children
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-
-    return () => {
-      observer.disconnect();
-    }; // isMobile is a dependency because the checkMonetagAd logic depends on it.
-  }, [isMobile]);
 
   const titleMap = useMemo(() => ({
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
@@ -692,8 +654,8 @@ function App() {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <main className="app-container" style={!isMobile && hasTopRightIframeAd ? { paddingTop: '5px' } : {}}>
-      {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
+    <main className="app-container">
+      {/* DESKTOP ONLY: Far Left Pane for Monetag Ad (commented out as per request) */}
       {!isMobile && focusedAartiId === null && (
         <div className="far-left-pane">
           {/* <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px', display: "flex", justifyContent: "center" }} /> */}
@@ -710,7 +672,8 @@ function App() {
             />
           )}
             <div style={{
-              backgroundColor: drawerBgColor, color: drawerTextColor,
+              position: 'fixed', top: 0, left: 0, height: '100vh', width: '80%', maxWidth: '300px',
+              backgroundColor: drawerBgColor, color: drawerTextColor, position: 'fixed', top: 0, left: 0, height: '100vh', width: '80%', maxWidth: '300px',
               boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000,
               transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
               transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 
@@ -718,7 +681,7 @@ function App() {
               overflowY: 'auto', overflowX: 'hidden', overscrollBehavior: 'contain',
               boxSizing: 'border-box', display: 'block'
             }}
-           >
+            >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
                <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0 }}>Menu</h2>
                <button onClick={() => setIsMenuOpen(false)} style={{ background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'inherit' }}>✖</button>
@@ -1098,17 +1061,5 @@ function App() {
 // Start watching the entire document for changes
 observer.observe(document.body, { childList: true, subtree: true });
 */
-
-// Force-check every second if a Monetag ad is misplaced
-setInterval(() => {
-  const ads = document.querySelectorAll('iframe');
-  ads.forEach(ad => {
-    if (ad.style.position !== 'fixed') {
-      ad.style.setProperty('position', 'fixed', 'important');
-      ad.style.setProperty('bottom', '10px', 'important');
-    }
-  });
-}, 2000);
-
 
 export default App;
