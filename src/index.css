@@ -11,20 +11,6 @@
   --color-text-muted: #374151;
 }
 
-/* This targets every iframe on the site automatically */
-iframe {
-  margin-top: calc(100% - 200px) !important;
-  margin-bottom: 5px !important;
-  position: absolute !important;
-  clear: both; 
-}
-
-/* Fix for the Aarti Sangraha content so the ad doesn't hide the text */
-#root, .app-container, body {
-  padding-bottom: 100px !important; /* Creates a "safe zone" at the bottom */
-}
-
-
 body.dark {
   --color-saffron: #D4AF37; /* Spiritual Night Gold */
   --color-maroon: #D4AF37; /* Spiritual Night Gold */
@@ -530,6 +516,20 @@ body.dark .add-btn {
   .focused-aarti-card {
     padding: 3rem; /* More padding on desktop */
   }
+}
+/* Specific CSS for iframes that are direct children of the <html> tag */
+html > iframe {
+  width: 100% !important;
+  height: 190px !important;
+  opacity: 1 !important;
+  max-width: 420px !important;
+  border: none !important;
+  position: fixed !important;
+  display: block !important;
+  z-index: 2147483647 !important;
+  inset: 15px 0px auto auto !important; /* This means top: 15px, right: 0px */
+  background: transparent !important;
+  color-scheme: auto !important;
 }
 
 

@@ -260,6 +260,7 @@ function App() {
   const [activePlaylist, setActivePlaylist] = useState(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
 
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
@@ -272,21 +273,42 @@ function App() {
   }, [location.pathname]);
 
   
-useEffect(() => {
-  const observer = new MutationObserver((mutations) => {
-    const iframeExists = document.querySelector('iframe');
-    if (iframeExists) {
-      // Apply your spacing logic here
-      iframeExists.style.margin = '5px';
-      iframeExists.style.display = 'block';
-    }
-  });
+  // Effect to detect Monetag iframe ad injected directly into <html>
+  useEffect(() => {
+    const checkMonetagAd = () => {
+      // This ad detection is specifically for a desktop-positioned ad.
+      // If on mobile, we assume this ad won't be present or won't require top-right padding.
+      if (isMobile) {
+        setHasTopRightIframeAd(false);
+        return;
+      };
 
-  observer.observe(document.body, { childList: true, subtree: true });
+      const iframes = Array.from(document.querySelectorAll('html > iframe'));
+      const foundAd = iframes.find(iframe => {
+        const style = window.getComputedStyle(iframe);
+        // Check for fixed position, specific height, and top-right positioning
+        return style.position === 'fixed' &&
+               style.height === '190px' && // Assuming the intended height
+               style.top === '15px' &&     // Assuming the intended top offset
+               style.right === '0px';      // Assuming the intended right offset
+      });
+      setHasTopRightIframeAd(!!foundAd);
+    };
 
-  return () => observer.disconnect(); // Cleanup
-}, []);
+    // Initial check
+    checkMonetagAd();
 
+    // Observe DOM changes to detect dynamically added/removed iframes
+    const observer = new MutationObserver(checkMonetagAd);
+    observer.observe(document.body, { childList: true, subtree: true });
+    // Also observe documentElement (html) just in case it's a direct child of html
+    // Observe document.documentElement for direct iframe children
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+    }; // isMobile is a dependency because the checkMonetagAd logic depends on it.
+  }, [isMobile]);
 
   const titleMap = useMemo(() => ({
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
@@ -670,13 +692,13 @@ useEffect(() => {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <main className="app-container">
+    <main className="app-container" style={!isMobile && hasTopRightIframeAd ? { paddingTop: '205px' } : {}}>
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
-      {/* {!isMobile && focusedAartiId === null && (
+      {!isMobile && focusedAartiId === null && (
         <div className="far-left-pane">
-          <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
+          {/* <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px', display: "flex", justifyContent: "center" }} /> */}
         </div>
-      )} */}
+      )}
       
       {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
       {isMobile && (
@@ -687,9 +709,7 @@ useEffect(() => {
               onClick={() => setIsMenuOpen(false)}
             />
           )}
-          <div 
-            style={{
-              position: 'fixed', top: 0, left: 0, bottom: 0, width: '280px', maxWidth: '85vw',
+            <div style={{
               backgroundColor: drawerBgColor, color: drawerTextColor,
               boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000,
               transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
@@ -698,7 +718,7 @@ useEffect(() => {
               overflowY: 'auto', overflowX: 'hidden', overscrollBehavior: 'contain',
               boxSizing: 'border-box', display: 'block'
             }}
-          >
+           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
                <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0 }}>Menu</h2>
                <button onClick={() => setIsMenuOpen(false)} style={{ background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'inherit' }}>✖</button>
@@ -734,7 +754,7 @@ useEffect(() => {
               <BackupRestoreSettings theme={theme} />
             </div>
           </div>
-        </>
+         </>
       )}
 
       <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
