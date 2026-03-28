@@ -83,13 +83,26 @@ Success Metric: The phone screen does not dim or lock while an Aarti is expanded
 Add an optional frontmatter field `youtubeUrl` in the markdown files. Display an embedded mini YouTube player or a "Watch Video" button on the card if the URL exists.
 Success Metric: User can play and listen to the tune of the Aarti via YouTube while reading the lyrics.
 
-⏳ Feature 5.2: Share Button - PENDING
+⏳ Feature 5.2: Share Button - COMPLETED
 
 Add a share icon to each Aarti that uses the native Web Share API (`navigator.share`). It can share a deep-link to the app or copy the lyrics/title as text.
 Success Metric: User can click share and send the Aarti lyrics directly to a family WhatsApp group.
 
 
-🚀 Implementation Protocol (Instruction for Gemini)
+🗂️ Expanded Categories & Content
+⏳ Feature 6.1: New Content Types (Tabs) - PENDING
+
+Add support for entirely new types of spiritual texts: Stotra, Mantra, and Shloka.
+Update the `tabLabelMap`, `titleMap`, and mapping arrays in `App.jsx` to render these new tabs.
+Success Metric: New tabs for "Stotra", "Mantra", and "Shloka" appear and successfully filter items based on their `type`.
+
+⏳ Feature 6.2: New Deities (Filter Chips) - PENDING
+
+Add new deities/subjects under existing tabs (e.g., Sai Baba, Swami Samarth).
+Update the `deityOrder` array in `App.jsx` with the exact sequence for the new filter chips.
+Success Metric: Filter chips automatically appear in the horizontally scrolling bar based on `deityOrder`.
+
+� Implementation Protocol (Instruction for Gemini)
 "Please implement Feature [X.X] from the Feature Implementation File.
 
 Provide only the code for this specific feature.

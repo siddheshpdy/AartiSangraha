@@ -192,15 +192,21 @@ const deityOrder = [
   "dnyaneshwar",
   "others",
   "gajanan maharaj",
-  "mahalasa Narayani"
+  "mahalasa narayani"
 ];
 
 const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
-  const indexA = deityOrder.indexOf(a.deity.toLowerCase());
-  const indexB = deityOrder.indexOf(b.deity.toLowerCase());
+  const deityA = (a.deityEng || "others").toLowerCase().trim();
+  const deityB = (b.deityEng || "others").toLowerCase().trim();
+  const indexA = deityOrder.indexOf(deityA);
+  const indexB = deityOrder.indexOf(deityB);
   const weightA = indexA === -1 ? 999 : indexA;
   const weightB = indexB === -1 ? 999 : indexB;
-  return weightA - weightB;
+  
+  if (weightA !== weightB) return weightA - weightB;
+  
+  // Secondary sort by title alphabetically if deities are the same
+  return (a.title || "").localeCompare(b.title || "");
 });
 
 // Pre-calculate search skeletons once on app load
@@ -343,22 +349,33 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
+    
+    const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
+    
     const availableDeities = Array.from(new Set(
-      sortedAartiData
-        .filter(a => (a.type || "Aartya") === contentType)
-        .map(a => a.deity)
-        .filter(Boolean)
+      itemsInTab.map(a => a.deity).filter(Boolean)
     ));
-    return ["All", "Favorites", ...availableDeities];
-  }, [contentType, playlists]);
 
-  // Fallback to "All" if the currently selected playlist gets deleted
+    const hasFavorites = itemsInTab.some(a => favorites.includes(a.id));
+    
+    const chips = [];
+    if (itemsInTab.length > 0) chips.push("All");
+    if (hasFavorites) chips.push("Favorites");
+    
+    return [...chips, ...availableDeities];
+  }, [contentType, playlists, favorites]);
+
+  // Fallback to "All" if the currently selected category or playlist disappears (e.g. deleted or un-favorited)
   useEffect(() => {
     if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
       const exists = playlists.some(p => `playlist-${p.id}` === selectedCategory);
       if (!exists) setSelectedCategory(playlists.length > 0 ? `playlist-${playlists[0].id}` : "All");
+    } else if (contentType !== "Playlists") {
+      if (selectedCategory !== "All" && categories.length > 0 && !categories.includes(selectedCategory)) {
+        setSelectedCategory("All");
+      }
     }
-  }, [playlists, selectedCategory]);
+  }, [playlists, selectedCategory, contentType, categories]);
 
   const searchQuery = query.trim();
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
