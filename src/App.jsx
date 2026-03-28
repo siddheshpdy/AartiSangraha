@@ -288,7 +288,7 @@ function App() {
         const style = window.getComputedStyle(iframe);
         // Check for fixed position, specific height, and top-right positioning
         return style.position === 'fixed' &&
-               style.height === '190px' && // Assuming the intended height
+               style.height === '90px' && // Assuming the intended height
                style.top === '15px' &&     // Assuming the intended top offset
                style.right === '0px';      // Assuming the intended right offset
       });
