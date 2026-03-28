@@ -102,6 +102,12 @@ Add new deities/subjects under existing tabs (e.g., Sai Baba, Swami Samarth).
 Update the `deityOrder` array in `App.jsx` with the exact sequence for the new filter chips.
 Success Metric: Filter chips automatically appear in the horizontally scrolling bar based on `deityOrder`.
 
+⏳ Feature 7.1: optimize website for search engines- PENDING
+
+make website easy to search through search engine.
+
+
+
 � Implementation Protocol (Instruction for Gemini)
 "Please implement Feature [X.X] from the Feature Implementation File.
 
