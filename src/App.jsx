@@ -692,7 +692,7 @@ function App() {
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
   return (
-    <main className="app-container" style={!isMobile && hasTopRightIframeAd ? { paddingTop: '205px' } : {}}>
+    <main className="app-container" style={!isMobile && hasTopRightIframeAd ? { paddingTop: '5px' } : {}}>
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad */}
       {!isMobile && focusedAartiId === null && (
         <div className="far-left-pane">
