@@ -208,6 +208,27 @@ sortedAartiData.forEach(a => {
   a._searchSkeleton = getSearchSkeleton((a.title || "") + " " + (a.deity || "") + " " + (a.lyrics || ""));
 });
 
+function MonetagAdUnit({ zoneId, containerStyle }) {
+  const adRef = useRef(null);
+
+  useEffect(() => {
+    // Return if the ad container isn't ready, or if the script is already there.
+    // This prevents re-injection on re-renders.
+    if (!adRef.current || adRef.current.querySelector('script')) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.dataset.zone = zoneId;
+    script.src = 'https://nap5k.com/tag.min.js';
+    script.async = true;
+
+    adRef.current.appendChild(script);
+  }, [zoneId]);
+
+  return <div ref={adRef} style={containerStyle} />;
+}
+
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -239,7 +260,8 @@ function App() {
   const [activePlaylist, setActivePlaylist] = useState(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
+  
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
     const match = location.pathname.match(/^\/aarti\/(.+)$/);
@@ -633,6 +655,13 @@ function App() {
 
   return (
     <main className="app-container">
+      {/* DESKTOP ONLY: Far Left Pane for Monetag Ad (commented out as per request) */}
+      {!isMobile && focusedAartiId === null && (
+        <div className="far-left-pane">
+          {/* <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px', display: "flex", justifyContent: "center" }} /> */}
+        </div>
+      )}
+      
       {/* MOBILE DRAWER (Rendered outside header to avoid stacking/clipping issues) */}
       {isMobile && (
         <>
@@ -642,18 +671,17 @@ function App() {
               onClick={() => setIsMenuOpen(false)}
             />
           )}
-          <div 
-            style={{
-              position: 'fixed', top: 0, left: 0, bottom: 0, width: '280px', maxWidth: '85vw',
-              backgroundColor: drawerBgColor, color: drawerTextColor,
-              boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000, 
+            <div style={{
+              position: 'fixed', top: 0, left: 0, height: '100vh', width: '80%', maxWidth: '300px',
+              backgroundColor: drawerBgColor, color: drawerTextColor, position: 'fixed', top: 0, left: 0, height: '100vh', width: '80%', maxWidth: '300px',
+              boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000,
               transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
               transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 
               padding: '20px 15px', 
               overflowY: 'auto', overflowX: 'hidden', overscrollBehavior: 'contain',
               boxSizing: 'border-box', display: 'block'
             }}
-          >
+            >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
                <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0 }}>Menu</h2>
                <button onClick={() => setIsMenuOpen(false)} style={{ background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'inherit' }}>✖</button>
@@ -689,10 +717,10 @@ function App() {
               <BackupRestoreSettings theme={theme} />
             </div>
           </div>
-        </>
+         </>
       )}
 
-      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''} ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
+      <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
         {isMobile && (
           <div style={{ display: 'flex', alignItems: 'center', width: '100%', height: '60px', padding: '0 15px', backgroundColor: drawerBgColor, borderBottom: `1px solid ${drawerBorderColor}` }}>
             <button 
@@ -790,7 +818,7 @@ function App() {
               </button>
             </div>
             
-            <div style={{ maxHeight: isMobile ? '200px' : 'none', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {playlists.length === 0 ? (
                 <span style={{ padding: '8px 0', fontSize: '0.9rem', opacity: 0.7 }}>No playlists yet. Create one above!</span>
               ) : (
@@ -986,8 +1014,52 @@ function App() {
           )} 
         />
       )}
+      
+      {/* DESKTOP ONLY: Far Right Pane for Monetag Ad */}
+      {/* {!isMobile && (
+        <div className="far-right-pane">
+          <MonetagAdUnit zoneId="10786137" containerStyle={{ margin: '20px auto', width: '100%', minHeight: '250px' }} />
+        </div>
+      )} */}
+
+      {/* MOBILE ONLY: Bottom Ad Space */}
+      {/* {isMobile && (
+        <div style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '200px',
+          width: '100%',
+          backgroundColor: 'var(--color-cream)',
+          borderTop: `1px solid var(--color-border)`,
+          zIndex: 51, // Above sticky header's z-index (50) but below drawer/modals
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <MonetagAdUnit zoneId="10790266" containerStyle={{ width: '100%', height: '100%' }} />
+        </div>
+      )} */}
     </main>
   );
 }
+// Place this at the very bottom of your file, OUTSIDE of any function
+/*const observer = new MutationObserver(() => {
+  const iframes = document.querySelectorAll('iframe');
+  
+  iframes.forEach(iframe => {
+    // Only apply if we haven't already styled it
+    if (iframe.style.margin !== '20px') {
+      iframe.style.margin = '20px auto';
+      iframe.style.display = 'block';
+      console.log('Iframe found and spaced out!');
+    }
+  });
+});
+
+// Start watching the entire document for changes
+observer.observe(document.body, { childList: true, subtree: true });
+*/
 
 export default App;

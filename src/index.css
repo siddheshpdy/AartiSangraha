@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6, title {
 .app-container {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 0 16px 20px;
+  padding: 0 16px 20px; /* Symmetric horizontal padding for mobile */
   display: flex;
   min-height: 100vh; /* Ensure app-container takes full height */
   flex-direction: column;
@@ -77,6 +77,11 @@ body.focus-mode-active .app-container {
 .sidebar-left-pane,
 .sidebar-right-pane {
   display: contents;
+}
+
+.far-left-pane,
+.far-right-pane {
+  display: none;
 }
 
 .header-title-container {
@@ -176,7 +181,7 @@ body.dark .add-btn {
     opacity: 0;
   }
   .sticky-header.scrolled {
-    padding: 8px 0;
+    padding: 0 0 8px 0;
   }
 }
 
@@ -389,9 +394,9 @@ body.dark .add-btn {
   .app-container {
     flex-direction: row;
     align-items: flex-start;
-    padding-top: 32px;
-    padding-right: 24px;
+    padding: 0 24px 20px 24px; /* Remove top padding, let sticky elements handle top offset */
     gap: 32px;
+    max-width: 1200px;
   }
 
   .sticky-header {
@@ -509,5 +514,42 @@ body.dark .add-btn {
   }
   .focused-aarti-card {
     padding: 3rem; /* More padding on desktop */
+  }
+}
+/* Specific CSS for iframes that are direct children of the <html> tag */
+html > iframe {
+  width: 100% !important;
+  height: 190px !important;
+  opacity: 1 !important;
+  max-width: 420px !important;
+  border: none !important;
+  position: fixed !important;
+  display: block !important;
+  z-index: 2147483647 !important;
+  inset: 15px 0px auto auto !important; /* This means top: 15px, right: 0px */
+  background: transparent !important;
+  color-scheme: auto !important;
+}
+
+
+@media (min-width: 1366px) {
+  .app-container {
+    max-width: 1536px;
+    justify-content: center;
+  }
+  .far-left-pane,
+  .far-right-pane {
+    display: block;
+    width: 160px; /* Standard wide-skyscraper ad size width */
+    flex-shrink: 0;
+    position: sticky;
+    top: 32px;
+    height: fit-content;
+  }
+  .far-left-pane {
+    order: 0;
+  }
+  .far-right-pane {
+    order: 4;
   }
 }
