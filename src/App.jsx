@@ -192,15 +192,21 @@ const deityOrder = [
   "dnyaneshwar",
   "others",
   "gajanan maharaj",
-  "mahalasa Narayani"
+  "mahalasa narayani"
 ];
 
 const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
-  const indexA = deityOrder.indexOf(a.deity.toLowerCase());
-  const indexB = deityOrder.indexOf(b.deity.toLowerCase());
+  const deityA = (a.deityEng || "others").toLowerCase().trim();
+  const deityB = (b.deityEng || "others").toLowerCase().trim();
+  const indexA = deityOrder.indexOf(deityA);
+  const indexB = deityOrder.indexOf(deityB);
   const weightA = indexA === -1 ? 999 : indexA;
   const weightB = indexB === -1 ? 999 : indexB;
-  return weightA - weightB;
+  
+  if (weightA !== weightB) return weightA - weightB;
+  
+  // Secondary sort by title alphabetically if deities are the same
+  return (a.title || "").localeCompare(b.title || "");
 });
 
 // Pre-calculate search skeletons once on app load
@@ -258,9 +264,11 @@ function App() {
 
   const { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist, moveAartiInPlaylist } = usePlaylists();
   const [activePlaylist, setActivePlaylist] = useState(null);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
+  const [suggestions, setSuggestions] = useState([]);
+  const searchContainerRef = useRef(null);
   
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
@@ -343,24 +351,87 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
+    
+    const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
+    
     const availableDeities = Array.from(new Set(
-      sortedAartiData
-        .filter(a => (a.type || "Aartya") === contentType)
-        .map(a => a.deity)
-        .filter(Boolean)
+      itemsInTab.map(a => a.deity).filter(Boolean)
     ));
-    return ["All", "Favorites", ...availableDeities];
-  }, [contentType, playlists]);
 
-  // Fallback to "All" if the currently selected playlist gets deleted
+    const hasFavorites = itemsInTab.some(a => favorites.includes(a.id));
+    
+    const chips = [];
+    if (itemsInTab.length > 0) chips.push("All");
+    if (hasFavorites) chips.push("Favorites");
+    
+    return [...chips, ...availableDeities];
+  }, [contentType, playlists, favorites]);
+
+  // Fallback to "All" if the currently selected category or playlist disappears (e.g. deleted or un-favorited)
   useEffect(() => {
     if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
       const exists = playlists.some(p => `playlist-${p.id}` === selectedCategory);
       if (!exists) setSelectedCategory(playlists.length > 0 ? `playlist-${playlists[0].id}` : "All");
+    } else if (contentType !== "Playlists") {
+      if (selectedCategory !== "All" && categories.length > 0 && !categories.includes(selectedCategory)) {
+        setSelectedCategory("All");
+      }
     }
-  }, [playlists, selectedCategory]);
+  }, [playlists, selectedCategory, contentType, categories]);
 
   const searchQuery = query.trim();
+
+  // Autocomplete suggestions
+  useEffect(() => {
+    if (searchQuery.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    const lowerQuery = searchQuery.toLowerCase();
+    const querySkeleton = getSearchSkeleton(searchQuery);
+    const isFuzzyEligible = querySkeleton.length >= 3;
+    const seen = new Set();
+    const newSuggestions = [];
+
+    const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
+
+    for (const aarti of itemsInTab) {
+      if (newSuggestions.length >= 7) break; // Limit total suggestions
+
+      const titleLocal = script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title;
+      const titleMatch = (aarti.title && aarti.title.toLowerCase().includes(lowerQuery)) ||
+                         (aarti.titleEng && aarti.titleEng.toLowerCase().includes(lowerQuery)) ||
+                         (isFuzzyEligible && aarti._searchSkeleton && aarti._searchSkeleton.includes(querySkeleton));
+      if (titleMatch && !seen.has(titleLocal)) {
+        newSuggestions.push(titleLocal);
+        seen.add(titleLocal);
+      }
+
+      if (newSuggestions.length >= 7) break;
+
+      const deityLocal = script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity;
+      const deityMatch = (aarti.deity && aarti.deity.toLowerCase().includes(lowerQuery)) ||
+                         (aarti.deityEng && aarti.deityEng.toLowerCase().includes(lowerQuery));
+      if (deityMatch && deityLocal && !seen.has(deityLocal)) {
+        newSuggestions.push(deityLocal);
+        seen.add(deityLocal);
+      }
+    }
+    setSuggestions(newSuggestions);
+  }, [searchQuery, contentType, script]);
+
+  // Close suggestions on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+        setSuggestions([]);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [searchContainerRef]);
+
   const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   let searchRegex = null;
   let querySkeleton = "";
@@ -620,7 +691,7 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -779,13 +850,18 @@ function App() {
           </div>
         )}
         {contentType !== "Playlists" && (
-          <div className={`search-container ${query ? 'has-query' : ''}`}>
+          <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
               placeholder="Search deity, title, or lyrics..." 
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="search-input"
+              autoComplete="off"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded={suggestions.length > 0}
+              aria-controls="autocomplete-list"
             />
             {query && (
               <button 
@@ -795,6 +871,24 @@ function App() {
               >
                 &times;
               </button>
+            )}
+            {suggestions.length > 0 && (
+              <ul id="autocomplete-list" className="autocomplete-suggestions" role="listbox">
+                {suggestions.map((suggestion, index) => (
+                  <li
+                    key={index}
+                    role="option"
+                    className="suggestion-item"
+                    onMouseDown={(e) => { // Use onMouseDown to fire before input's onBlur
+                      e.preventDefault();
+                      setQuery(suggestion);
+                      setSuggestions([]);
+                    }}
+                  >
+                    {suggestion}
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         )}
