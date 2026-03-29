@@ -35,3 +35,6 @@ jobs:
           
       - name: Validate Aartya Generation
         run: npm run prebuild-json
+
+      - name: Build Project
+        run: npm run build
