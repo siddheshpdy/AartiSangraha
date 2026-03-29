@@ -204,8 +204,12 @@ export function generateAartya() {
     });
 
     console.log(`Generated ${allContent.length} items across all categories.`);
-    fs.writeFileSync(outputFile, JSON.stringify(allContent, null, 2));
-    console.log("✅ JSON generated!");
+    
+    const newJson = JSON.stringify(allContent, null, 2);
+    if (!fs.existsSync(outputFile) || fs.readFileSync(outputFile, 'utf8') !== newJson) {
+        fs.writeFileSync(outputFile, newJson);
+        console.log("✅ JSON generated/updated!");
+    }
 
     // Generate sitemap.xml for SEO
     const domain = "https://aartisangraha.co.in";
@@ -218,12 +222,18 @@ export function generateAartya() {
     
     sitemapContent += `</urlset>`;
     if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
-    fs.writeFileSync(sitemapFile, sitemapContent);
-    console.log("✅ Sitemap generated!");
+    
+    if (!fs.existsSync(sitemapFile) || fs.readFileSync(sitemapFile, 'utf8') !== sitemapContent) {
+        fs.writeFileSync(sitemapFile, sitemapContent);
+        console.log("✅ Sitemap generated/updated!");
+    }
 
     // Optionally generate robots.txt
     const robotsTxtContent = `User-agent: *\nAllow: /\n\nSitemap: ${domain}/sitemap.xml\n`;
-    fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsTxtContent);
+    const robotsFile = path.join(publicDir, 'robots.txt');
+    if (!fs.existsSync(robotsFile) || fs.readFileSync(robotsFile, 'utf8') !== robotsTxtContent) {
+        fs.writeFileSync(robotsFile, robotsTxtContent);
+    }
 }
 
 // Run directly if executed as a script (e.g., via npm run prebuild-json)
