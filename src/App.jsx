@@ -284,6 +284,9 @@ function App() {
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
     "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
     "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह",
+    "Stotra": script === 'latin' ? "Stotra Sangraha" : "स्तोत्र संग्रह",
+    "Mantra": script === 'latin' ? "Mantra Sangraha" : "मंत्र संग्रह",
+    "Shloka": script === 'latin' ? "Shloka Sangraha" : "श्लोक संग्रह",
     "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट"
   }), [script]);
 
@@ -710,6 +713,9 @@ function App() {
     "Aartya": script === 'latin' ? "Aartya" : "आरत्या",
     "Bhovtya": script === 'latin' ? "Bhovtya" : "भोवत्या",
     "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा",
+    "Stotra": script === 'latin' ? "Stotra" : "स्तोत्रे",
+    "Mantra": script === 'latin' ? "Mantra" : "मंत्र",
+    "Shloka": script === 'latin' ? "Shloka" : "श्लोक",
     "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट"
   };
 
@@ -777,7 +783,7 @@ function App() {
             </div>
 
             <div className="content-type-tabs" style={{ display: 'flex', flexDirection: 'column', marginBottom: '15px', boxSizing: 'border-box' }}>
-              {["Aartya", "Bhovtya", "Pradakshina", "Playlists"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -829,7 +835,7 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Playlists"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => setContentType(type)}>
                   {tabLabelMap[type]}
                 </button>
