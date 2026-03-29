@@ -146,7 +146,7 @@ function getEnglish(text) {
 export function generateAartya() {
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-    const categories = ['Aartya', 'Bhovtya', 'Pradakshina'];
+    const categories = ['Aartya', 'Bhovtya', 'Pradakshina', 'Stotra', 'Mantra', 'Shloka'];
     const allContent = [];
     const seenIds = new Set();
 

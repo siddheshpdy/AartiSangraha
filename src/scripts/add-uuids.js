@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const contentDir = path.join(__dirname, '../content');
-const categories = ['Aartya', 'Bhovtya', 'Pradakshina'];
+const categories = ['Aartya', 'Bhovtya', 'Pradakshina', 'Stotra', 'Mantra', 'Shloka'];
 
 let filesModified = 0;
 let idsAdded = 0;
