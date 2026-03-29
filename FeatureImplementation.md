@@ -107,6 +107,17 @@ Success Metric: Filter chips automatically appear in the horizontally scrolling 
 make website easy to search through search engine.
 
 
+ℹ️ Information & Support
+⏳ Feature 8.1: Help Page - PENDING
+
+Add a dedicated "Help" section explaining how to use the website, covering functionalities like the font resizer, dark mode, transliteration toggle, playlists, and focus mode.
+Success Metric: Users can easily find and understand how to navigate and use all the app's features.
+
+⏳ Feature 8.2: About Page - PENDING
+
+Add an "About" section detailing the purpose of the Aarti Sangraha app, its offline capabilities, and contact/contribution info.
+Success Metric: Users can read the background of the project and know how to contribute or reach out.
+
 
 � Implementation Protocol (Instruction for Gemini)
 "Please implement Feature [X.X] from the Feature Implementation File.
