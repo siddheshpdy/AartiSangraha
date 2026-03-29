@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prebuild-json": "node src/scripts/prebuild.js",
+    "prebuild-json": "node src/scripts/add-uuids.js && node src/scripts/prebuild.js",
     "dev": "npm run prebuild-json && vite",
     "build": "npm run prebuild-json && vite build",
     "preview": "vite preview"

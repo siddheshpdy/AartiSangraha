@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { generateAartya } from './src/scripts/prebuild.js'
+import { addUuids } from './src/scripts/add-uuids.js'
+
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
@@ -12,11 +14,13 @@ export default defineConfig({
       name: 'watch-markdown-content',
       buildStart() {
         // Runs once when you start the dev server or run a build
+        addUuids();
         generateAartya();
       },
       handleHotUpdate({ file }) {
         // Runs whenever any file is saved during dev
         if (file.endsWith('.md')) {
+          addUuids();
           generateAartya();
         }
       }

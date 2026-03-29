@@ -784,7 +784,7 @@ function App() {
 
             <div className="content-type-tabs" style={{ display: 'flex', flexDirection: 'column', marginBottom: '15px', boxSizing: 'border-box' }}>
               {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
-                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); }}>
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
               ))}
@@ -836,7 +836,7 @@ function App() {
             </div>
             <div className="content-type-tabs">
               {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
-                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => setContentType(type)}>
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
               ))}
@@ -861,7 +861,7 @@ function App() {
               type="text" 
               placeholder="Search deity, title, or lyrics..." 
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => { setQuery(e.target.value); navigate('/'); }}
               className="search-input"
               autoComplete="off"
               role="combobox"
@@ -871,7 +871,7 @@ function App() {
             />
             {query && (
               <button 
-                onClick={() => setQuery("")}
+                onClick={() => { setQuery(""); navigate('/'); }}
                 className="clear-search-btn"
                 aria-label="Clear search"
               >
@@ -889,6 +889,7 @@ function App() {
                       e.preventDefault();
                       setQuery(suggestion);
                       setSuggestions([]);
+                      navigate('/');
                     }}
                   >
                     {suggestion}
@@ -931,7 +932,7 @@ function App() {
                       background: selectedCategory === `playlist-${p.id}` ? drawerBorderColor : 'transparent',
                       cursor: 'pointer'
                     }}
-                    onClick={() => setSelectedCategory(`playlist-${p.id}`)}
+                    onClick={() => { setSelectedCategory(`playlist-${p.id}`); navigate('/'); }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <strong style={{ fontSize: '1rem' }}>{p.name}</strong>
@@ -970,7 +971,7 @@ function App() {
                 <button
                   key={category}
                   className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(category)}
+                    onClick={() => { setSelectedCategory(category); navigate('/'); }}
                   style={{ textTransform: script === 'latin' && !["All", "Favorites"].includes(category) ? 'capitalize' : 'none' }}
                 >
                   {label}
