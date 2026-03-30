@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { flushSync } from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
+import { Helmet } from 'react-helmet-async';
 
 import { usePlaylists } from '../usePlaylists'; // Adjust path if you moved this to src/hooks/
 import PujaPlayer from '../PujaPlayer';         // Adjust path if you moved this to src/components/
@@ -243,19 +244,10 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isScrolled, setIsScrolled] = useState(false);
   const [fontSize, setFontSize] = useState(18); // Default 18px (1.125rem)
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "system";
-  });
-  const [script, setScript] = useState(() => {
-    return localStorage.getItem("script") || "devanagari";
-  });
-  const [favorites, setFavorites] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("favorites") || "[]");
-    } catch {
-      return [];
-    }
-  });
+  const [theme, setTheme] = useState("system"); // Default for SSR
+  const [script, setScript] = useState("devanagari"); // Default for SSR
+  const [favorites, setFavorites] = useState([]); // Default for SSR
+  const [isMounted, setIsMounted] = useState(false);
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isWakeLockActive, setIsWakeLockActive] = useState(false);
   const wakeLockRef = useRef(null);
@@ -264,7 +256,7 @@ function App() {
 
   const { playlists, createPlaylist, deletePlaylist, toggleAartiInPlaylist, moveAartiInPlaylist } = usePlaylists();
   const [activePlaylist, setActivePlaylist] = useState(null);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
+  const [isMobile, setIsMobile] = useState(false); // Default for SSR
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
   const [suggestions, setSuggestions] = useState([]);
@@ -340,6 +332,22 @@ function App() {
 
   const isScrolledRef = useRef(isScrolled);
   isScrolledRef.current = isScrolled;
+
+  useEffect(() => {
+    setIsMounted(true);
+    setIsMobile(window.innerWidth < 1024);
+
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) setTheme(storedTheme);
+
+    const storedScript = localStorage.getItem("script");
+    if (storedScript) setScript(storedScript);
+
+    try {
+      const storedFavs = localStorage.getItem("favorites");
+      if (storedFavs) setFavorites(JSON.parse(storedFavs));
+    } catch {}
+  }, []);
 
   useEffect(() => {
     setQuery(""); // Clear search when switching tabs
@@ -501,7 +509,7 @@ function App() {
   const toggleFavorite = (id) => {
     setFavorites(prev => {
       const newFavs = prev.includes(id) ? prev.filter(fId => fId !== id) : [...prev, id];
-      localStorage.setItem("favorites", JSON.stringify(newFavs));
+      if (isMounted) localStorage.setItem("favorites", JSON.stringify(newFavs));
       return newFavs;
     });
   };
@@ -531,7 +539,7 @@ function App() {
 
         if (i1 >= 0 && i2 >= 0) {
           [newFavs[i1], newFavs[i2]] = [newFavs[i2], newFavs[i1]];
-          localStorage.setItem("favorites", JSON.stringify(newFavs));
+          if (isMounted) localStorage.setItem("favorites", JSON.stringify(newFavs));
         }
         return newFavs;
       });
@@ -592,7 +600,9 @@ function App() {
     };
 
     applyTheme();
-    localStorage.setItem("theme", theme);
+    if (isMounted) {
+      localStorage.setItem("theme", theme);
+    }
 
     // Listen for OS-level theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -600,11 +610,13 @@ function App() {
     
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme]);
+  }, [theme, isMounted]);
 
   useEffect(() => {
-    localStorage.setItem("script", script);
-  }, [script]);
+    if (isMounted) {
+      localStorage.setItem("script", script);
+    }
+  }, [script, isMounted]);
 
   const requestWakeLock = async () => {
     try {
@@ -724,14 +736,39 @@ function App() {
   }
 
   // Dynamically calculate the active theme colors for inline styling where CSS vars fail
-  const isDarkTheme = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || (typeof document !== 'undefined' && document.body.classList.contains('dark'));
+  const isDarkTheme = isMounted && (
+    theme === 'dark' || 
+    (theme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || 
+    (document.body.classList.contains('dark'))
+  );
   const drawerBgColor = isDarkTheme ? '#1f2937' : '#ffffff';
   const drawerBgColorTransparent = isDarkTheme ? 'rgba(31, 41, 55, 0)' : 'rgba(255, 255, 255, 0)';
   const drawerTextColor = isDarkTheme ? '#f9fafb' : '#000000';
   const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
 
+  const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
+  const currentTitle = aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha");
+  const structuredData = aarti ? {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": currentTitle,
+    "text": script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics,
+    "inLanguage": "mr",
+    "genre": "Aarti",
+    "about": script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity
+  } : null;
+
   return (
     <main className="app-container">
+      <Helmet>
+        <title>{`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`}</title>
+        <meta name="description" content={aarti ? `Read the lyrics for ${currentTitle}.` : "Offline capable Marathi Aarti Sangraha"} />
+        {structuredData && (
+          <script type="application/ld+json">
+            {JSON.stringify(structuredData)}
+          </script>
+        )}
+      </Helmet>
       {/* DESKTOP ONLY: Far Left Pane for Monetag Ad (commented out as per request) */}
       {!isMobile && focusedAartiId === null && (
         <div className="far-left-pane">

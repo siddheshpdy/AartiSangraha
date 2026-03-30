@@ -5,9 +5,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p) => path.resolve(__dirname, p);
 
-// This data should come from your markdown build script.
-// We'll assume it generates a file at `src/data/aartis.json`.
-const aartisFile = fs.readFileSync(toAbsolute('src/data/aartis.json'), 'utf-8');
+const aartisFile = fs.readFileSync(toAbsolute('src/data/Aartya.json'), 'utf-8');
 const aartis = JSON.parse(aartisFile);
 const routesToPrerender = ['/', ...aartis.map((aarti) => `/aarti/${aarti.id}`)];
 
@@ -21,10 +19,11 @@ const { render } = await import('./dist/server/entry-server.js');
     const { helmet } = helmetContext;
 
     let html = template
+      .replace(`<div id="root"></div>`, `<div id="root">${appHtml}</div>`)
       .replace(`<!--app-html-->`, appHtml)
       .replace(
         /<title>.*<\/title>/,
-        helmet.title.toString() + helmet.meta.toString() + helmet.script.toString()
+        helmet ? (helmet.title.toString() + helmet.meta.toString() + helmet.script.toString()) : '<title>Aarti Sangraha</title>'
       )
       .replace(/<meta name="description"[^>]*>/, '');
 

@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react';
 
 export function usePlaylists() {
-  const [playlists, setPlaylists] = useState(() => {
-    const saved = localStorage.getItem('puja_playlists');
-    // Data structure: [{ id: '123', name: 'Evening Puja', aartiIds: ['ganpati', 'shankar'] }]
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [playlists, setPlaylists] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('puja_playlists', JSON.stringify(playlists));
-  }, [playlists]);
+    setIsMounted(true);
+    const saved = localStorage.getItem('puja_playlists');
+    if (saved) {
+      try {
+        setPlaylists(JSON.parse(saved));
+      } catch (e) {}
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      localStorage.setItem('puja_playlists', JSON.stringify(playlists));
+    }
+  }, [playlists, isMounted]);
 
   const createPlaylist = (name, initialAartiId = null) => {
     if (!name.trim()) return;
