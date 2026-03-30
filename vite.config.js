@@ -8,6 +8,10 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
+  build: {
+    outDir: 'dist/static',
+    chunkSizeWarningLimit: 2000,
+  },
   plugins: [
     react(),
     {
@@ -26,7 +30,7 @@ export default defineConfig({
       }
     },
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       // Rename the PWA Service Worker so it doesn't overwrite your Monetag public/sw.js
       filename: 'pwa-sw.js',
       devOptions: {
@@ -36,6 +40,8 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
       workbox: {
         cleanupOutdatedCaches: true,
+        // For SPA behavior, fallback to index.html for navigation requests.
+        navigateFallback: 'index.html',
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         runtimeCaching: [
           {

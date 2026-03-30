@@ -1,16 +1,22 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { registerSW } from 'virtual:pwa-register'
 import { BrowserRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 
 registerSW()
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root')
+
+hydrateRoot(
+  container,
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
   </StrictMode>,
 )
