@@ -6,7 +6,9 @@
   "scripts": {
     "prebuild-json": "node src/scripts/add-uuids.js && node src/scripts/prebuild.js",
     "dev": "npm run prebuild-json && vite",
-    "build": "npm run prebuild-json && vite build",
+    "build:client": "vite build --outDir dist/static",
+    "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
+    "build": "npm run prebuild-json && npm run build:client && npm run build:server && node prerender.js",
     "preview": "vite preview"
   },
   "dependencies": {

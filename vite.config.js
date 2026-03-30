@@ -36,6 +36,8 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
       workbox: {
         cleanupOutdatedCaches: true,
+        // For SPA behavior, fallback to index.html for navigation requests.
+        navigateFallback: 'index.html',
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         runtimeCaching: [
           {
