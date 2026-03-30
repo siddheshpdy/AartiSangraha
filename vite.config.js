@@ -30,7 +30,7 @@ export default defineConfig({
       }
     },
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       // Rename the PWA Service Worker so it doesn't overwrite your Monetag public/sw.js
       filename: 'pwa-sw.js',
       devOptions: {
