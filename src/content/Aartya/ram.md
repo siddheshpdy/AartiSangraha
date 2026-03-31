@@ -65,6 +65,7 @@ deity: "राम"
 id: 54474d97-0dd9-47d7-ae07-9afc332cd32b
 title: "जय दाशरथी प्रभू राम"
 deity: "राम"
+link: https://youtu.be/wfmOkxRK8wk?si=hO2j_S2gZ7BHJ-oD
 ---
 जय दाशरथी प्रभू राम ।  करू आरती प्रेमाने ‖ धृ ‖
 

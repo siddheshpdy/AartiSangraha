@@ -24,6 +24,7 @@ deity: "देवी"
 id: 1f58f863-4da2-4415-bad7-f361843ab4ac
 title: "जय देवी जय देवी जय आदिशक्ती"
 deity: "देवी"
+link: https://youtu.be/MIoHbXoRjm4?si=Gwc1tzWOnXQ1oci0
 ---
 जय देवी जय देवी जय आदिशक्ती ।
 ओवाळू आरती तुज हो भगवती ‖ धृ ‖
@@ -47,6 +48,7 @@ deity: "देवी"
 id: 89c03113-5fc3-424f-9e31-932faf779147
 title: "ओवाळीन वोजा"
 deity: "देवी"
+link: https://youtu.be/VIG_OpmImd8?si=Aac2l6MzW0A2VKp5
 ---
 ओवाळीन वोजा ‖ शिवसहजा, आदिभवानी गिरीजा , कल्लोलस्तरजा ‖
 चारुभुजा, आई तुकाई तुळजा, शाकंभरिभर्गा ।
@@ -73,6 +75,7 @@ deity: "देवी"
 id: 058886f1-d29d-40c8-8fa7-6a6d661ca4a8
 title: "महिषासुरमर्दिनी देवि त्रिपुरसुंदरी"
 deity: "देवी"
+link: https://youtu.be/7bmaJz05LTI?si=SDLq4Rd24Nehe2zi
 ---
 (चाल - जय जय जी मदानांतक गौरीशंकरा )
 महिषासुरमर्दिनी देवि त्रिपुरसुंदरी ।  
@@ -92,6 +95,7 @@ deity: "देवी"
 id: 5ff5531a-0c6b-4aaa-a191-404e3237d2cf
 title: "जय जय जगदंबे"
 deity: "देवी"
+link: https://youtu.be/EOt0oQs5TQo?si=WHRRiLrcjTU0-oO2
 ---
 जय जय जगदंबे | श्री अंबे | रेणुके कल्पकदंबे | जय जय || धृ ||
  

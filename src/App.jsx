@@ -94,6 +94,17 @@ function getSkeletonMapping(str) {
   return { skeleton, mapping };
 }
 
+function getYouTubeVideoId(url) {
+    if (!url) return null;
+    // This regex should handle most common YouTube URL formats
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regex);
+    if (match && match[1]) {
+        return match[1];
+    }
+    return null;
+}
+
 function highlightText(text, highlight, querySkeleton) {
   if (!text) return null;
   if (!highlight || !highlight.trim()) return text;
@@ -1023,6 +1034,7 @@ function App() {
         {filtered.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
           const showContent = isFocused || !!searchQuery;
+          const videoId = getYouTubeVideoId(aarti.link);
           
           return (focusedAartiId === null || focusedAartiId === aarti.id) && (
           <article 
@@ -1108,6 +1120,35 @@ function App() {
             </h2>
             {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             
+            {videoId && (
+              <div className="youtube-player" style={{
+                position: 'relative',
+                paddingBottom: '56.25%', // 16:9 aspect ratio
+                height: 0,
+                overflow: 'hidden',
+                maxWidth: '100%',
+                background: '#000',
+                margin: '15px 0',
+                borderRadius: '8px'
+              }}>
+                <iframe
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: '0'
+                  }}
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
+
             <div style={!showContent ? { maxHeight: '120px', overflow: 'hidden', position: 'relative' } : undefined}>
               <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
               {!showContent && (
@@ -1143,13 +1184,44 @@ function App() {
           setTheme={setTheme}
           script={script}
           setScript={setScript}
-          AartiDetailComponent={({ aarti }) => (
-            <article className="aarti-card focused-aarti-card" style={{ margin: '0 auto', maxWidth: '800px', boxShadow: 'none' }}>
-              <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title}</h2>
-              {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity}</h3>}
-              <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics}</div>
-            </article>
-          )} 
+          AartiDetailComponent={({ aarti }) => {
+            const videoId = getYouTubeVideoId(aarti.link);
+            return (
+              <article className="aarti-card focused-aarti-card" style={{ margin: '0 auto', maxWidth: '800px', boxShadow: 'none' }}>
+                <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title}</h2>
+                {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity}</h3>}
+                {videoId && (
+                  <div className="youtube-player" style={{
+                    position: 'relative',
+                    paddingBottom: '56.25%', // 16:9 aspect ratio
+                    height: 0,
+                    overflow: 'hidden',
+                    maxWidth: '100%',
+                    background: '#000',
+                    margin: '15px 0',
+                    borderRadius: '8px'
+                  }}>
+                    <iframe
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        border: '0'
+                      }}
+                      src={`https://www.youtube.com/embed/${videoId}`}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                )}
+                <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics}</div>
+              </article>
+            );
+          }}
         />
       )}
       

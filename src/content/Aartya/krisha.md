@@ -41,6 +41,7 @@ deity: "कृष्ण"
 id: eb2e9181-4987-4c06-8d8f-9d4ad038a672
 title: "आरती भुवनसुंदराची"
 deity: "कृष्ण"
+link: https://youtu.be/ygyCoH0DreI?si=nffIysDbZmL6M2H7
 ---
 आरती भुवनसुंदराची । इंदिरावरा मुकुंदाची ‖धृ‖
 

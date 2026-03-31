@@ -20,6 +20,7 @@ deity: "मारुती"
 id: a8cef0ed-b7df-42b0-a566-e0d59404fcf7
 title: "सत्राणे उड्डाणे हुंकार वदनी"
 deity: "मारुती"
+link: https://youtu.be/VcAScMm21j4?si=PSZ6JGeU35Sq2-vj
 ---
 सत्राणे उड्डाणे हुंकार वदनी। 
 करि डळमळ भूमंडळ सिंधूजळ गगनीं ।
