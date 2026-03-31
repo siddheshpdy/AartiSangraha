@@ -78,6 +78,7 @@ deity: "विष्णू"
 id: 26e663c6-2c00-4324-b2ad-5e86a7137ddf
 title: "सत्यनारायण"
 deity: "विष्णू"
+link: https://youtu.be/t-DQWXgLjPU?si=1aV6-nTNLfOc5yNr
 ---
 जय जय दीन दयाळा सत्यनारायण देवा ।
 पंचारती ओवाळू श्रीपती तुज भक्ती भावा ॥ धृ. ॥
@@ -115,6 +116,7 @@ deity: "विष्णू"
 id: 70cec606-0bea-4ae1-a448-4f13abf4609f
 title: "लक्ष्मीरमणा भवभयहरणा"
 deity: "विष्णू"
+link: https://youtu.be/rRUmoU0BOAc?si=PiOGjAJhy8zW_Lzp
 ---
 लक्ष्मीरमणा भवभयहरणा चित्सुखसदना हत्कमला ।
 बहु प्रेमाने पंचारति ही करित असो बा तुज विमला ॥ ध्रु० ॥

@@ -63,6 +63,7 @@ deity: "शंकर"
 id: 83979e59-eded-482a-847e-3be215a56ec8
 title: "जयजयजी मदनांतक गौरीशंकरा"
 deity: "शंकर"
+link: https://youtu.be/N03U-317-8E?si=P8suuYQIn8tnTQJY
 ---
 जयजयजी मदनांतक गौरीशंकरा ‖
 पंचारति करितों तुज हे महेश्वरा ‖ धृ. ‖
@@ -86,6 +87,7 @@ deity: "शंकर"
 id: 670dec1f-211f-4881-bdc6-c040d834fab5
 title: "आरती करू तूझी शिवशंकरा"
 deity: "शंकर"
+link: https://youtu.be/FGY2DF8vGCI?si=vU4easEAklqxNIUi
 ---
 आरती करू तूझी शिवशंकरा ‖ 
 भक्तीभावे ओवाळीतो पार्वतीवरा ‖ धृ०‖
@@ -109,6 +111,7 @@ deity: "शंकर"
 id: bbfa84d7-73d3-4dbc-9453-dcde9b3dd720
 title: "उमावरा शंकरा"
 deity: "शंकर"
+link: https://youtu.be/Hprx6ke14dM?si=Brj1gBaaXkcWXstr
 ---
 उमावरा शंकरा, पामर हा नर सादर शंकरा, 
 पामर हा नर सादर शरण तुम्हा तारा ‖ धृ‖ 
@@ -132,6 +135,7 @@ deity: "शंकर"
 id: a8e2b218-d71e-4e86-aa70-36ab50760ddd
 title: "कर्पूरगौरा गौरीशंकरा"
 deity: "शंकर"
+link: https://youtu.be/rujHYX8TV0A?si=uGr_OAikulCeblIt
 ---
 कर्पूरगौरा गौरीशंकरा आरती करू तुजला।
 नाम स्मरतां प्रसन्न होउनि पावसि भक्ताला ‖ धृ ‖

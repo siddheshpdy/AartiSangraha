@@ -3,6 +3,7 @@
 id: 8b908eae-0082-470a-8101-04cd18870958
 title: "जय देव जय देव जय श्री गुरुदत्ता"
 deity: "दत्त"
+link: https://youtu.be/BimFQ1mnDs0?si=H0b3j6WXVeQemHK2
 ---
 जय देव जय देव जय श्री गुरुदत्ता ।
 आरती ओवाळिता हरली भवचिंता ‖ धृ ‖
@@ -31,6 +32,7 @@ deity: "दत्त"
 id: 386dff1c-6fcf-4a94-ae77-2c5f851d0fa7
 title: "करितो प्रेमे तुज निरांजन"
 deity: "दत्त"
+link: https://youtu.be/F1BuwGt2nns?si=qEwtOXt3ydcXQxH1
 ---
 करितो प्रेमे तुज निरांजन स्थिरवुनिया मन
 दत्तात्रेया सद्गुरूवर्या भावार्थेकरून ‖धृ ‖
@@ -54,6 +56,7 @@ deity: "दत्त"
 id: 842c0599-a5d9-42ab-bd40-33a0e7fab50f
 title: "श्री गुरुदत्तराज मूर्ती"
 deity: "दत्त"
+link: https://youtu.be/FBPa8sUyeoU?si=r07H-BeVWFM7DBLO
 ---
 श्री गुरुदत्तराज मूर्ती ओवाळितो प्रेमे आरती ‖ धृ ‖
 
