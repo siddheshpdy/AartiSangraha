@@ -721,6 +721,45 @@ body {
   font-weight: bold;
 }
 
+/* Help Page */
+.help-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.help-title {
+  color: var(--color-secondary);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+.dark .help-title {
+  color: var(--color-primary);
+}
+.help-section {
+  margin-bottom: 25px;
+}
+.help-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--drawer-text-color);
+}
+.help-section p {
+  color: var(--color-text-muted);
+  margin: 0;
+  padding-left: 35px;
+  line-height: 1.6;
+}
+.help-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  font-size: 1.2rem;
+}
+
 /* Ad Iframe styles */
 html > iframe {
   width: 100% !important;

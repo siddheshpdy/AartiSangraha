@@ -285,7 +285,8 @@ function App() {
     "Stotra": script === 'latin' ? "Stotra Sangraha" : "स्तोत्र संग्रह",
     "Mantra": script === 'latin' ? "Mantra Sangraha" : "मंत्र संग्रह",
     "Shloka": script === 'latin' ? "Shloka Sangraha" : "श्लोक संग्रह",
-    "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट"
+    "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट",
+    "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर"
   }), [script]);
 
   // Dynamic Page Title for SEO and Bookmarking
@@ -368,6 +369,7 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
+    if (contentType === "Help") return [];
     
     const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
     
@@ -466,6 +468,8 @@ function App() {
 
   // Filter against the pre-sorted data
   let filtered = sortedAartiData.filter(a => {
+    if (contentType === "Help") return false;
+
     if (contentType === "Playlists") {
       if (!selectedCategory.startsWith("playlist-")) return false;
       const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
@@ -734,7 +738,8 @@ function App() {
     "Stotra": script === 'latin' ? "Stotra" : "स्तोत्रे",
     "Mantra": script === 'latin' ? "Mantra" : "मंत्र",
     "Shloka": script === 'latin' ? "Shloka" : "श्लोक",
-    "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट"
+    "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट",
+    "Help": script === 'latin' ? "Help" : "मदत"
   };
 
   if (sortedAartiData.length === 0) {
@@ -801,7 +806,7 @@ function App() {
             </div>
             
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -853,7 +858,7 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -871,7 +876,7 @@ function App() {
             {titleMap[contentType] || "Aarti Sangraha"}
           </div>
         )}
-        {contentType !== "Playlists" && (
+        {!["Playlists", "Help"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
@@ -968,7 +973,7 @@ function App() {
             </div>
           </div>
         )}
-        {contentType !== "Playlists" && (
+        {!["Playlists", "Help"].includes(contentType) && (
           <div className="filter-chips">
             {categories.map(category => {
               let label = category;
@@ -993,6 +998,66 @@ function App() {
       </div> 
       {/* Render only the selected content */}
       <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
+        {contentType === "Help" && (
+          <article className="aarti-card help-container">
+            <h2 className="help-title">{script === 'latin' ? "How to use Aarti Sangraha?" : "आरती संग्रह कसे वापरावे?"}</h2>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">☀️/🌙</span> {script === 'latin' ? "Dark Mode" : "डार्क मोड"}</h3>
+              <p>{script === 'latin' ? "Toggle between Light, Dark, and System themes using the top-left sun/moon icon." : "डाव्या बाजूच्या आयकॉनचा वापर करून लाईट किंवा डार्क थीम निवडा."}</p>
+            </div>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">A/अ</span> {script === 'latin' ? "Transliteration" : "लिप्यांतरण"}</h3>
+              <p>{script === 'latin' ? "Switch between English (Latin) and Marathi (Devanagari) scripts instantly to read comfortably." : "इंग्रजी (लॅटिन) आणि मराठी (देवनागरी) लिपींमध्ये त्वरित बदल करा."}</p>
+            </div>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">A- / A+</span> {script === 'latin' ? "Font Resizer" : "फॉन्ट आकार"}</h3>
+              <p>{script === 'latin' ? "Increase or decrease the lyrics text size on any Aarti card to suit your reading preference." : "तुमच्या वाचनाच्या सोयीनुसार कोणत्याही आरती कार्डवर मजकुराचा आकार कमी किंवा जास्त करा."}</p>
+            </div>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">▶</span> {script === 'latin' ? "Custom Playlists & Puja Player" : "कस्टम प्लेलिस्ट आणि पूजा प्लेयर"}</h3>
+              <p>{script === 'latin' ? "Create custom sequences (e.g., 'Morning Puja'). Add Aartis to them and use the Puja Player to navigate sequentially without distractions." : "तुमच्या आवडीनुसार प्लेलिस्ट तयार करा (उदा. 'सकाळची पूजा'). यात आरत्या जोडा आणि विनाव्यत्यय एकापाठोपाठ एक आरती वाचण्यासाठी पूजा प्लेयर वापरा."}</p>
+            </div>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">⤢</span> {script === 'latin' ? "Focus Mode" : "फोकस मोड"}</h3>
+              <p>{script === 'latin' ? "Tap on any Aarti card to enter distraction-free mode. It expands the card, hiding menus and other items." : "कोणत्याही आरतीवर क्लिक केल्यास ती पूर्ण स्क्रीनवर दिसेल, जेणेकरून तुम्ही लक्ष केंद्रित करून वाचू शकाल."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">💡/💤</span> {script === 'latin' ? "Wake Lock" : "वेक लॉक"}</h3>
+              <p>{script === 'latin' ? "Keep your screen awake while reading or performing puja by toggling the bulb/zzz icon in the menu." : "वाचत असताना किंवा पूजा करताना तुमची स्क्रीन चालू ठेवण्यासाठी मेनूमधील बल्ब आयकॉनवर क्लिक करा."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">🔍</span> {script === 'latin' ? "Search & Filters" : "शोध आणि फिल्टर्स"}</h3>
+              <p>{script === 'latin' ? "Search across titles and lyrics in English or Marathi. Use the top chips to quickly find Aartya by deity." : "इंग्रजी किंवा मराठीत शीर्षक आणि मजकूर शोधा. विशिष्ट देवांच्या आरत्या लवकर शोधण्यासाठी वरील चिप्सचा वापर करा."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">❤️</span> {script === 'latin' ? "Favorites" : "आवडत्या आरत्या"}</h3>
+              <p>{script === 'latin' ? "Tap the heart icon on any Aarti to save it to your Favorites list. You can reorder them using the Up/Down arrows." : "कोणतीही आरती तुमच्या 'आवडत्या' यादीत जोडण्यासाठी हार्ट आयकॉनवर टॅप करा. तुम्ही त्यांना वर/खाली बाणांचा वापर करून क्रमवारी लावू शकता."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">📥</span> {script === 'latin' ? "Offline Use & Install" : "ऑफलाइन आणि इन्स्टॉल"}</h3>
+              <p>{script === 'latin' ? "Install the app on your home screen via the menu to read Aartya completely offline without internet." : "इंटरनेटशिवाय आरत्या वाचण्यासाठी मेनूमधून हे ॲप तुमच्या होम स्क्रीनवर इन्स्टॉल करा."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">🔗</span> {script === 'latin' ? "Share" : "शेअर करा"}</h3>
+              <p>{script === 'latin' ? "Send your favorite Aartya directly to friends and family on WhatsApp or other apps using the share icon." : "तुमच्या आवडत्या आरत्या मित्र आणि कुटुंबासोबत WhatsApp किंवा इतर ॲप्सवर थेट पाठवण्यासाठी शेअर आयकॉनचा वापर करा."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">💾</span> {script === 'latin' ? "Backup & Restore" : "बॅकअप आणि रिस्टोअर"}</h3>
+              <p>{script === 'latin' ? "Use the menu to export your playlists, favorites, and settings, keeping them safe if you change devices." : "तुमच्या प्लेलिस्ट, आवडत्या आरत्या आणि सेटिंग्ज सुरक्षित ठेवण्यासाठी किंवा नवीन फोनवर घेण्यासाठी मेनूमधून बॅकअप आणि रिस्टोअर वापरा."}</p>
+            </div>
+          </article>
+        )}
         {filtered.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
           const showContent = isFocused || !!searchQuery;
@@ -1110,7 +1175,7 @@ function App() {
           </article>
           );
         })}
-        {filtered.length === 0 && !focusedAartiId && (
+        {filtered.length === 0 && !focusedAartiId && contentType !== "Help" && (
           <p className="no-results">
             {contentType === "Playlists" 
               ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")

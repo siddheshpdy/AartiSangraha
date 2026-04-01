@@ -108,7 +108,7 @@ make website easy to search through search engine.
 
 
 ℹ️ Information & Support
-⏳ Feature 8.1: Help Page - PENDING
+✅ Feature 8.1: Help Page - COMPLETED
 
 Add a dedicated "Help" section explaining how to use the website, covering functionalities like the font resizer, dark mode, transliteration toggle, playlists, and focus mode.
 Success Metric: Users can easily find and understand how to navigate and use all the app's features.
