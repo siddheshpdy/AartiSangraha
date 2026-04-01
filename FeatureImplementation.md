@@ -78,7 +78,7 @@ Success Metric: The phone screen does not dim or lock while an Aarti is expanded
 
 
 🌐 Content & Social Features
-⏳ Feature 5.1: YouTube Video Playback - PENDING
+✅ Feature 5.1: YouTube Video Playback - COMPLETED
 
 Add an optional frontmatter field `link` in the markdown files. Display an embedded mini YouTube player or a "Watch Video" button on the card if the URL exists.
 Success Metric: User can play and listen to the tune of the Aarti via YouTube while reading the lyrics.

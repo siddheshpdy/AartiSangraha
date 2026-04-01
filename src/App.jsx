@@ -4,9 +4,10 @@ import { flushSync } from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 import { Helmet } from 'react-helmet-async';
-
-import { usePlaylists } from '../usePlaylists'; // Adjust path if you moved this to src/hooks/
-import PujaPlayer from '../PujaPlayer';         // Adjust path if you moved this to src/components/
+import './App.css';
+ 
+import { usePlaylists } from '../usePlaylists';
+import PujaPlayer from '../PujaPlayer';
 import BackupRestoreSettings from '../BackupRestoreSettings';
 
 // Transliteration Map for Cross-Script "Phonetic Equivalence" Search
@@ -119,11 +120,7 @@ function highlightText(text, highlight, querySkeleton) {
   if (parts.length > 1) {
     return parts.map((part, i) => {
       if (i % 2 === 1) {
-        return (
-          <mark key={i} style={{ backgroundColor: 'var(--color-border)', padding: '0 2px', borderRadius: '3px', color: 'inherit' }}>
-            {part}
-          </mark>
-        );
+        return <mark key={i} className="highlight">{part}</mark>;
       }
       return part;
     });
@@ -169,9 +166,7 @@ function highlightText(text, highlight, querySkeleton) {
         
         if (highlightEnd >= highlightStart) {
           result.push(
-            <mark key={matchIdx} style={{ backgroundColor: 'var(--color-border)', padding: '0 2px', borderRadius: '3px', color: 'inherit' }}>
-              {text.slice(highlightStart, highlightEnd + 1)}
-            </mark>
+            <mark key={matchIdx} className="highlight">{text.slice(highlightStart, highlightEnd + 1)}</mark>
           );
         }
         
@@ -746,17 +741,6 @@ function App() {
     return <div>Loading Aartya or no Aartya found... Check src/content/ folder.</div>;
   }
 
-  // Dynamically calculate the active theme colors for inline styling where CSS vars fail
-  const isDarkTheme = isMounted && (
-    theme === 'dark' || 
-    (theme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || 
-    (document.body.classList.contains('dark'))
-  );
-  const drawerBgColor = isDarkTheme ? '#1f2937' : '#ffffff';
-  const drawerBgColorTransparent = isDarkTheme ? 'rgba(31, 41, 55, 0)' : 'rgba(255, 255, 255, 0)';
-  const drawerTextColor = isDarkTheme ? '#f9fafb' : '#000000';
-  const drawerBorderColor = isDarkTheme ? '#374151' : '#e5e7eb';
-
   const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
   const currentTitle = aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha");
   const structuredData = aarti ? {
@@ -765,7 +749,6 @@ function App() {
     "name": currentTitle,
     "text": script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics,
     "inLanguage": "mr",
-    "genre": "Aarti",
     "about": script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity
   } : null;
 
@@ -791,46 +774,33 @@ function App() {
       {isMobile && (
         <>
           {isMenuOpen && (
-            <div 
-              style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 9999, touchAction: 'none' }} 
-              onClick={() => setIsMenuOpen(false)}
-            />
+            <div className="mobile-drawer-overlay" onClick={() => setIsMenuOpen(false)} />
           )}
-            <div style={{
-              position: 'fixed', top: 0, left: 0, height: '100vh', width: '80%', maxWidth: '300px',
-              backgroundColor: drawerBgColor, color: drawerTextColor, position: 'fixed', top: 0, left: 0, height: '100vh', width: '80%', maxWidth: '300px',
-              boxShadow: '2px 0 15px rgba(0,0,0,0.5)', zIndex: 10000,
-              transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
-              transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 
-              padding: '20px 15px', 
-              overflowY: 'auto', overflowX: 'hidden', overscrollBehavior: 'contain',
-              boxSizing: 'border-box', display: 'block'
-            }}
-            >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-               <h2 style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0 }}>Menu</h2>
-               <button onClick={() => setIsMenuOpen(false)} style={{ background: 'transparent', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'inherit' }}>✖</button>
+            <div className={`mobile-drawer ${isMenuOpen ? 'open' : ''}`}>
+            <div className="drawer-header">
+               <h2>Menu</h2>
+               <button onClick={() => setIsMenuOpen(false)} className="close-drawer-btn">✖</button>
             </div>
             
-            <div className="header-actions" style={{ marginBottom: '15px', boxSizing: 'border-box' }}>
+            <div className="header-actions">
               <div className="header-actions-row">
                 <button className="theme-toggle" onClick={() => setTheme(prev => prev === 'light' ? 'dark' : prev === 'dark' ? 'system' : 'light')} title={`Theme: ${theme}`}>
                   {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
                 </button>
-                <button className="theme-toggle" onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')} style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                <button className="theme-toggle script-toggle" onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')} title={script === 'devanagari' ? "Read in English" : "Read in Marathi"}>
                   {script === 'devanagari' ? 'A' : 'अ'}
                 </button>
-                <button className="theme-toggle" onClick={toggleWakeLock} style={{ opacity: isWakeLockActive ? 1 : 0.6 }}>
+                <button className={`theme-toggle wakelock-toggle ${isWakeLockActive ? 'active' : ''}`} onClick={toggleWakeLock}>
                   {isWakeLockActive ? '💡' : '💤'}
                 </button>
               </div>
               <div className="header-actions-row">
-                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')}>➕ Add</button>
-                {installPrompt && <button className="install-btn" onClick={handleInstallClick}>📥 Install</button>}
+                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')} title="Submit New Aarti">➕ Add</button>
+                {installPrompt && <button onClick={handleInstallClick} className="install-btn">📥 Install</button>}
               </div>
             </div>
-
-            <div className="content-type-tabs" style={{ display: 'flex', flexDirection: 'column', marginBottom: '15px', boxSizing: 'border-box' }}>
+            
+            <div className="content-type-tabs">
               {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
@@ -838,7 +808,7 @@ function App() {
               ))}
             </div>
 
-            <div style={{ padding: '0 15px', boxSizing: 'border-box' }}>
+            <div className="drawer-section">
               <BackupRestoreSettings theme={theme} />
             </div>
           </div>
@@ -847,20 +817,20 @@ function App() {
 
       <header className={`sticky-header ${isScrolled ? 'scrolled' : ''}`}>
         {isMobile && (
-          <div style={{ display: 'flex', alignItems: 'center', width: '100%', height: '60px', padding: '0 15px', backgroundColor: drawerBgColor, borderBottom: `1px solid ${drawerBorderColor}` }}>
+          <div className="mobile-header">
             <button 
               className="hamburger-btn"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle Menu"
-              style={{ background: 'transparent', border: 'none', fontSize: '1.8rem', cursor: 'pointer', color: 'inherit', marginRight: '15px' }}
             >
               ☰
             </button>
-            <h1 style={{ fontSize: '1.2rem', margin: 0, fontWeight: 'bold', color: drawerTextColor }}>
+            <h1 className="mobile-title">
               {titleMap[contentType] || "Aarti Sangraha"}
             </h1>
           </div>
         )}
+      </header>
         
         {/* DESKTOP ONLY: Sidebar Left Pane */}
         {!isMobile && (
@@ -870,10 +840,10 @@ function App() {
                 <button className="theme-toggle" onClick={() => setTheme(prev => prev === 'light' ? 'dark' : prev === 'dark' ? 'system' : 'light')} title={`Theme: ${theme}`}>
                   {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
                 </button>
-                <button className="theme-toggle" onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')} title={script === 'devanagari' ? "Read in English" : "Read in Marathi"} style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                <button className="theme-toggle script-toggle" onClick={() => setScript(prev => prev === 'devanagari' ? 'latin' : 'devanagari')} title={script === 'devanagari' ? "Read in English" : "Read in Marathi"}>
                   {script === 'devanagari' ? 'A' : 'अ'}
                 </button>
-                <button className="theme-toggle" onClick={toggleWakeLock} title={isWakeLockActive ? "Screen Awake: ON" : "Screen Awake: OFF"} style={{ opacity: isWakeLockActive ? 1 : 0.6 }}>
+                <button className={`theme-toggle wakelock-toggle ${isWakeLockActive ? 'active' : ''}`} onClick={toggleWakeLock}>
                   {isWakeLockActive ? '💡' : '💤'}
                 </button>
               </div>
@@ -890,13 +860,11 @@ function App() {
               ))}
             </div>
 
-            <div style={{ padding: '15px', boxSizing: 'border-box' }}>
+            <div className="sidebar-section">
               <BackupRestoreSettings theme={theme} />
             </div>
           </div>
         )}
-      </header> 
-      {/* Hide sidebar-right-pane when in focus mode */}
       <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
         {!isMobile && (
           <div className="header-title-container">
@@ -950,52 +918,47 @@ function App() {
         
         {/* Render Playlists and Categories in main view for all devices */}
         {contentType === "Playlists" && (
-          <div style={{ padding: '10px 15px', display: 'flex', flexDirection: 'column', gap: '10px', background: drawerBgColor, borderBottom: `1px solid ${drawerBorderColor}` }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>My Playlists</span>
+          <div className="playlist-container">
+            <div className="playlist-header">
+              <span className="playlist-title">My Playlists</span>
               <button 
                 onClick={() => {
                   const name = window.prompt("Enter new playlist name:");
                   if (name && name.trim()) {
                     createPlaylist(name);
                   }
-                }} 
-                style={{ padding: '8px 12px', background: '#10b981', color: 'white', borderRadius: '4px', fontWeight: 'bold', border: 'none', cursor: 'pointer', fontSize: '1rem' }}
+                }}
+                className="playlist-create-btn"
                 title="Create New Playlist"
               >
                 &#10011;
               </button>
             </div>
             
-            <div style={{ overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="playlist-list">
               {playlists.length === 0 ? (
-                <span style={{ padding: '8px 0', fontSize: '0.9rem', opacity: 0.7 }}>No playlists yet. Create one above!</span>
+                <span className="empty-playlist-message">No playlists yet. Create one above!</span>
               ) : (
                 playlists.map(p => (
                   <div 
                     key={p.id} 
-                    style={{ 
-                      display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
-                      padding: '10px', borderRadius: '6px', border: `1px solid ${drawerBorderColor}`,
-                      background: selectedCategory === `playlist-${p.id}` ? drawerBorderColor : 'transparent',
-                      cursor: 'pointer'
-                    }}
+                    className={`playlist-item ${selectedCategory === `playlist-${p.id}` ? 'active' : ''}`}
                     onClick={() => { setSelectedCategory(`playlist-${p.id}`); navigate('/'); }}
                   >
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <strong style={{ fontSize: '1rem' }}>{p.name}</strong>
-                      <span style={{ fontSize: '0.85rem', opacity: 0.8 }}>{p.aartiIds.length} items</span>
+                    <div className="playlist-item-details">
+                      <strong className="playlist-item-name">{p.name}</strong>
+                      <span className="playlist-item-count">{p.aartiIds.length} items</span>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px' }}>
+                    <div className="playlist-item-actions">
                       <button 
                         onClick={(e) => { e.stopPropagation(); if (p.aartiIds.length > 0) setActivePlaylist(p); }}
                         disabled={p.aartiIds.length === 0}
-                        style={{ padding: '6px 12px', background: p.aartiIds.length === 0 ? '#ccc' : '#10b981', color: 'white', borderRadius: '4px', fontWeight: 'bold', border: 'none', cursor: p.aartiIds.length === 0 ? 'not-allowed' : 'pointer' }}
+                        className="playlist-play-btn"
                         title="Play"
                       >▶</button>
                       <button 
                         onClick={(e) => { e.stopPropagation(); if (window.confirm('Delete this playlist?')) deletePlaylist(p.id); }} 
-                        style={{ padding: '6px 10px', background: '#ef4444', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
+                        className="playlist-delete-btn"
                         title="Delete"
                       >🗑</button>
                     </div>
@@ -1016,11 +979,10 @@ function App() {
                 if (match && match.deityEng) label = match.deityEng;
               }
               return (
-                <button
-                  key={category}
-                  className={`filter-chip ${selectedCategory === category ? 'active' : ''}`}
-                    onClick={() => { setSelectedCategory(category); navigate('/'); }}
-                  style={{ textTransform: script === 'latin' && !["All", "Favorites"].includes(category) ? 'capitalize' : 'none' }}
+                <button 
+                  key={category} 
+                  className={`chip ${selectedCategory === category ? 'active' : ''} ${script === 'latin' && !["All", "Favorites"].includes(category) ? 'text-latin' : ''}`} 
+                  onClick={() => { setSelectedCategory(category); navigate('/'); }}
                 >
                   {label}
                 </button>
@@ -1029,7 +991,7 @@ function App() {
           </div>
         )}
       </div> 
-      {/* Render only the focused Aarti if focusedAartiId is set */}
+      {/* Render only the selected content */}
       <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
         {filtered.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
@@ -1040,7 +1002,6 @@ function App() {
           <article 
             key={aarti.id} 
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
-            style={(selectedCategory === "Favorites" || selectedCategory.startsWith("playlist-")) && !searchQuery ? { viewTransitionName: `card-${aarti.id.replace(/[^a-zA-Z0-9]/g, '')}` } : undefined}
             onClick={() => {
               if (!isFocused) {
                 handleFocusAarti(aarti.id);
@@ -1057,6 +1018,32 @@ function App() {
                 ✕
               </button>
             )}
+        <div className="aarti-card-actions">
+          <div className="playlist-dropdown" onClick={(e) => e.stopPropagation()}>
+            <select 
+              aria-label="Select a playlist to add this Aarti"
+              onChange={(e) => {
+                if (e.target.value === 'CREATE_NEW') {
+                  const name = window.prompt("Enter new playlist name:");
+                  if (name && name.trim()) {
+                    createPlaylist(name, aarti.id);
+                  }
+                } else if (e.target.value) {
+                  toggleAartiInPlaylist(e.target.value, aarti.id);
+                }
+                e.target.value = ""; 
+              }} 
+              defaultValue=""
+            >
+              <option value="" disabled>+ Add to Playlist...</option>
+              <option value="CREATE_NEW" className="opt-create-new">➕ Create New Playlist</option>
+              {playlists.map(p => (
+                <option key={p.id} value={p.id} className="opt-black">
+                  {p.aartiIds.includes(aarti.id) ? '✓ Remove from' : '+ Add to'} {p.name}
+                </option>
+              ))}
+            </select>
+          </div>
             <div className="font-resizer">
               <button className="font-btn" onClick={(e) => handleShare(e, aarti)} aria-label="Share Aarti" title="Share Aarti">🔗</button>
               {(selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery && (
@@ -1089,57 +1076,15 @@ function App() {
               <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.max(14, f - 2)); }} aria-label="Decrease font size">A-</button>
               <button className="font-btn" onClick={(e) => { e.stopPropagation(); setFontSize(f => Math.min(32, f + 2)); }} aria-label="Increase font size">A+</button>
             </div>
-            <div className="playlist-dropdown" style={{ marginBottom: '10px' }} onClick={(e) => e.stopPropagation()}>
-              <select 
-                aria-label="Select a playlist to add this Aarti"
-                onChange={(e) => {
-                  if (e.target.value === 'CREATE_NEW') {
-                    const name = window.prompt("Enter new playlist name:");
-                    if (name && name.trim()) {
-                      createPlaylist(name, aarti.id);
-                    }
-                  } else if (e.target.value) {
-                    toggleAartiInPlaylist(e.target.value, aarti.id);
-                  }
-                  e.target.value = ""; 
-                }} 
-                defaultValue=""
-                style={{ padding: '4px', borderRadius: '4px', fontSize: '0.85rem', width: '100%', border: `1px solid ${drawerBorderColor}`, background: 'transparent', color: 'inherit' }}
-              >
-                <option value="" disabled>+ Add to Playlist...</option>
-                <option value="CREATE_NEW" style={{ color: 'black', fontWeight: 'bold' }}>➕ Create New Playlist</option>
-                {playlists.map(p => (
-                  <option key={p.id} value={p.id} style={{ color: 'black' }}>
-                    {p.aartiIds.includes(aarti.id) ? '✓ Remove from' : '+ Add to'} {p.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        </div>
+            <h2 className={`aarti-title ${script === 'latin' ? 'text-latin' : ''}`}>
               <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
             </h2>
-            {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
+            {aarti.deity && <h3 className={`aarti-deity ${script === 'latin' ? 'text-latin' : ''}`}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             
             {videoId && (
-              <div className="youtube-player" style={{
-                position: 'relative',
-                paddingBottom: '56.25%', // 16:9 aspect ratio
-                height: 0,
-                overflow: 'hidden',
-                maxWidth: '100%',
-                background: '#000',
-                margin: '15px 0',
-                borderRadius: '8px'
-              }}>
+              <div className="youtube-player">
                 <iframe
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: '0'
-                  }}
                   src={`https://www.youtube.com/embed/${videoId}`}
                   title="YouTube video player"
                   frameBorder="0"
@@ -1149,15 +1094,15 @@ function App() {
               </div>
             )}
 
-            <div style={!showContent ? { maxHeight: '120px', overflow: 'hidden', position: 'relative' } : undefined}>
+            <div className={!showContent ? 'lyrics-preview' : ''}>
               <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
               {!showContent && (
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px', background: `linear-gradient(to bottom, ${drawerBgColorTransparent}, ${drawerBgColor})` }} />
+                <div className="aarti-fade-out" />
               )}
             </div>
             {!showContent && (
-              <div style={{ textAlign: 'center', marginTop: '12px' }}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#CC4800', fontWeight: 'bold', fontSize: '0.95rem', padding: '6px 16px', border: '1px solid #CC4800', borderRadius: '999px', backgroundColor: 'rgba(204, 72, 0, 0.05)' }}>
+              <div className="open-indicator-container">
+                <span className="open-indicator">
                   Open ⤢
                 </span>
               </div>
@@ -1166,9 +1111,9 @@ function App() {
           );
         })}
         {filtered.length === 0 && !focusedAartiId && (
-          <p style={{ textAlign: 'center', color: '#888', marginTop: '20px' }}>
+          <p className="no-results">
             {contentType === "Playlists" 
-              ? (categories.length === 0 ? "Create a playlist above to get started!" : "This playlist is empty. Add Aartya from other tabs!")
+              ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")
               : `No Aartya found matching "${query}"`}
           </p>
         )}
@@ -1187,29 +1132,12 @@ function App() {
           AartiDetailComponent={({ aarti }) => {
             const videoId = getYouTubeVideoId(aarti.link);
             return (
-              <article className="aarti-card focused-aarti-card" style={{ margin: '0 auto', maxWidth: '800px', boxShadow: 'none' }}>
-                <h2 className="aarti-title" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title}</h2>
-                {aarti.deity && <h3 className="aarti-deity" style={{ textTransform: script === 'latin' ? 'capitalize' : 'none' }}>{script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity}</h3>}
+              <article className="aarti-card focused-aarti-card puja-player-card">
+                <h2 className={`aarti-title ${script === 'latin' ? 'text-latin' : ''}`}>{script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title}</h2>
+                {aarti.deity && <h3 className={`aarti-deity ${script === 'latin' ? 'text-latin' : ''}`}>{script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity}</h3>}
                 {videoId && (
-                  <div className="youtube-player" style={{
-                    position: 'relative',
-                    paddingBottom: '56.25%', // 16:9 aspect ratio
-                    height: 0,
-                    overflow: 'hidden',
-                    maxWidth: '100%',
-                    background: '#000',
-                    margin: '15px 0',
-                    borderRadius: '8px'
-                  }}>
+                  <div className="youtube-player">
                     <iframe
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        border: '0'
-                      }}
                       src={`https://www.youtube.com/embed/${videoId}`}
                       title="YouTube video player"
                       frameBorder="0"
