@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { flushSync } from 'react-dom';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 import { Helmet } from 'react-helmet-async';
 import './App.css';
@@ -313,6 +313,8 @@ function App() {
         const title = script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title;
         const baseTitle = titleMap[aarti.type || 'Aartya'] || 'Aarti Sangraha';
         document.title = `${title} | ${baseTitle}`;
+        } else {
+          document.title = script === 'latin' ? "404 Not Found | Aarti Sangraha" : "४०४ सापडले नाही | आरती संग्रह";
       }
     } else {
       document.title = titleMap[contentType] || "Aarti Sangraha";
@@ -776,7 +778,11 @@ function App() {
   }
 
   const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
-  const currentTitle = aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha");
+  const isNotFound = focusedAartiId && !aarti;
+  const currentTitle = isNotFound ? (script === 'latin' ? "404 Not Found" : "४०४ सापडले नाही") : (aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha"));
+  const currentUrl = `https://aartisangraha.co.in${focusedAartiId ? `/aarti/${focusedAartiId}` : ''}`;
+  const currentDescription = isNotFound ? "The requested Aarti could not be found." : (aarti ? `Read the lyrics for ${currentTitle} in Marathi and English on Aarti Sangraha.` : "Offline capable Marathi Aarti Sangraha");
+
   const structuredData = aarti ? {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -794,7 +800,13 @@ function App() {
     <main className="app-container">
       <Helmet>
         <title>{`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`}</title>
-        <meta name="description" content={aarti ? `Read the lyrics for ${currentTitle}.` : "Offline capable Marathi Aarti Sangraha"} />
+        <meta name="description" content={currentDescription} />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`} />
+        <meta property="og:description" content={currentDescription} />
+        <meta property="og:url" content={currentUrl} />
+        <meta name="twitter:title" content={`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`} />
+        <meta name="twitter:description" content={currentDescription} />
         {structuredData && (
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
@@ -1113,6 +1125,23 @@ function App() {
             </div>
           </article>
         )}
+        
+        {isNotFound && (
+          <article className="aarti-card help-container" style={{ textAlign: 'center', padding: '40px 20px' }}>
+            <h2 className="help-title" style={{ fontSize: '2rem', marginBottom: '15px' }}>
+              {script === 'latin' ? "404 - Not Found" : "४०४ - सापडले नाही"}
+            </h2>
+            <p style={{ color: 'var(--color-text-muted)', marginBottom: '30px', fontSize: '1.1rem' }}>
+              {script === 'latin' 
+                ? "The requested Aarti could not be found or has been removed." 
+                : "तुम्ही शोधत असलेली आरती सापडली नाही किंवा काढून टाकण्यात आली आहे."}
+            </p>
+            <button className="add-btn" onClick={() => navigate('/')} style={{ padding: '10px 20px', cursor: 'pointer' }}>
+              {script === 'latin' ? "🏠 Return to Home" : "🏠 मुख्य पानावर जा"}
+            </button>
+          </article>
+        )}
+
         {displayedAartya.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
           const showContent = isFocused || !!searchQuery;
@@ -1199,7 +1228,13 @@ function App() {
             </div>
         </div>
             <h2 className={`aarti-title ${script === 'latin' ? 'text-latin' : ''}`}>
-              <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
+              {isFocused ? (
+                <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
+              ) : (
+                <Link to={`/aarti/${aarti.id}`} className="seo-link" onClick={(e) => e.stopPropagation()}>
+                  {highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}
+                </Link>
+              )}
             </h2>
             {aarti.deity && <h3 className={`aarti-deity ${script === 'latin' ? 'text-latin' : ''}`}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             
