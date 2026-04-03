@@ -767,7 +767,12 @@ function App() {
   };
 
   if (sortedAartiData.length === 0) {
-    return <div>Loading Aartya or no Aartya found... Check src/content/ folder.</div>;
+    return (
+      <div className="pwa-splash-screen">
+        <div className="loading-spinner"></div>
+        <div className="pwa-splash-title">Loading...</div>
+      </div>
+    );
   }
 
   const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
@@ -898,12 +903,14 @@ function App() {
             </div>
           </div>
         )}
+        
+      {!isMobile && !focusedAartiId && (
+        <div className="header-title-container desktop-title">
+          {titleMap[contentType] || "Aarti Sangraha"}
+        </div>
+      )}
+      
       <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        {!isMobile && (
-          <div className="header-title-container">
-            {titleMap[contentType] || "Aarti Sangraha"}
-          </div>
-        )}
         {!["Playlists", "Help", "About"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
@@ -1226,7 +1233,14 @@ function App() {
           );
         })}
         {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Help", "About"].includes(contentType) && (
-          <div ref={loadMoreRef} style={{ height: '20px', margin: '10px 0' }} />
+          <div ref={loadMoreRef} className="load-more-container">
+            <div className="loading-spinner load-more-spinner"></div>
+          </div>
+        )}
+        {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["Help", "About"].includes(contentType) && (
+          <div className="end-of-list-message">
+            {script === 'latin' ? "~ You have reached the end ~" : "~ तुम्ही यादीच्या शेवटी पोहोचलात ~"}
+          </div>
         )}
         {filtered.length === 0 && !focusedAartiId && !["Help", "About"].includes(contentType) && (
           <p className="no-results">

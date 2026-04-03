@@ -37,7 +37,7 @@ export default defineConfig({
         enabled: true
       },
       // Explicitly cache your static icons for offline use
-      includeAssets: ['favicon.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
+      includeAssets: ['favicon.jpeg', 'pwa-192x192.png', 'pwa-512x512.png', 'apple-touch-icon-180x180.png', 'maskable-icon-512x512.png'],
       workbox: {
         cleanupOutdatedCaches: true,
         // For SPA behavior, fallback to index.html for navigation requests.
@@ -88,10 +88,10 @@ export default defineConfig({
             type: 'image/png'
           },
           {
-            src: 'favicon.svg',
-          sizes: '192x192 512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
+            src: 'maskable-icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
       }
