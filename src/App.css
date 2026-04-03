@@ -759,13 +759,18 @@ body {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+@keyframes fadeEndMessage {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 0.7; transform: scale(1); }
+}
 .end-of-list-message {
   text-align: center;
   padding: 15px 15px;
   color: var(--color-text-muted);
   font-size: 1rem;
-  opacity: 0.7;
   font-style: italic;
+  opacity: 0;
+  animation: fadeEndMessage 0.4s ease-in-out 0.15s forwards;
 }
 .no-results {
   text-align: center;
