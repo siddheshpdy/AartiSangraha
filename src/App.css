@@ -43,6 +43,7 @@
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  overflow-x: clip; /* Allows position: sticky to work correctly */
 }
 
 body {
@@ -91,6 +92,7 @@ body {
     position: sticky;
     top: 0;
     overflow-y: auto;
+    overscroll-behavior: contain; /* Prevents scroll chaining to the main page */
   }
   .sidebar-left-pane {
     grid-column: 1;
@@ -569,6 +571,18 @@ body {
   cursor: pointer;
   position: relative;
   transition: box-shadow 0.2s, border-color 0.2s;
+  animation: fadeUpCard 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUpCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .aarti-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -578,6 +592,18 @@ body {
 }
 .focused-aarti-card {
   cursor: default;
+  animation: enterFocus 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enterFocus {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 .close-focus-mode-btn {
   position: absolute;
@@ -602,6 +628,9 @@ body {
   margin-bottom: 15px;
   padding-bottom: 12px;
   border-bottom: 1px dashed var(--drawer-border-color);
+}
+.focused-aarti-card .aarti-card-actions {
+  padding-right: 32px; /* Prevents overlap with the absolute close button */
 }
 .font-resizer {
   display: flex;
@@ -760,17 +789,39 @@ body {
   font-size: 1.2rem;
 }
 
-/* Ad Iframe styles */
-html > iframe {
-  width: 100% !important;
-  height: 190px !important;
-  opacity: 1 !important;
-  max-width: 420px !important;
-  border: none !important;
-  position: fixed !important;
-  display: block !important;
-  z-index: 2147483647 !important;
-  inset: 15px 0px auto auto !important; /* This means top: 15px, right: 0px */
-  background: transparent !important;
-  color-scheme: auto !important;
+/* Back to Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.back-to-top-btn:hover {
+  transform: scale(1.1);
+}
+.dark .back-to-top-btn {
+  color: var(--color-bg);
+}
+@media (max-width: 1024px) {
+  .back-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
 }

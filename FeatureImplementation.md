@@ -113,7 +113,7 @@ make website easy to search through search engine.
 Add a dedicated "Help" section explaining how to use the website, covering functionalities like the font resizer, dark mode, transliteration toggle, playlists, and focus mode.
 Success Metric: Users can easily find and understand how to navigate and use all the app's features.
 
-⏳ Feature 8.2: About Page - PENDING
+✅ Feature 8.2: About Page - COMPLETED
 
 Add an "About" section detailing the purpose of the Aarti Sangraha app, its offline capabilities, and contact/contribution info.
 Success Metric: Users can read the background of the project and know how to contribute or reach out.

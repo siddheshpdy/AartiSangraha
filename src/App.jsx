@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { flushSync } from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
@@ -264,10 +264,25 @@ function App() {
   const [activePlaylist, setActivePlaylist] = useState(null);
   const [isMobile, setIsMobile] = useState(false); // Default for SSR
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
   const [suggestions, setSuggestions] = useState([]);
   const searchContainerRef = useRef(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   
+  // Lazy loading state and observer
+  const [visibleCount, setVisibleCount] = useState(20);
+  useEffect(() => {
+    setVisibleCount(20); // Reset limit when filters change
+  }, [contentType, selectedCategory, query]);
+  
+  const observerRef = useRef(null);
+  const loadMoreRef = useCallback(node => {
+    if (observerRef.current) observerRef.current.disconnect();
+    observerRef.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) setVisibleCount(prev => prev + 20);
+    });
+    if (node) observerRef.current.observe(node);
+  }, []);
+
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
     const match = location.pathname.match(/^\/aarti\/(.+)$/);
@@ -286,7 +301,8 @@ function App() {
     "Mantra": script === 'latin' ? "Mantra Sangraha" : "मंत्र संग्रह",
     "Shloka": script === 'latin' ? "Shloka Sangraha" : "श्लोक संग्रह",
     "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट",
-    "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर"
+    "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर",
+    "About": script === 'latin' ? "About Us" : "आमच्याबद्दल"
   }), [script]);
 
   // Dynamic Page Title for SEO and Bookmarking
@@ -369,7 +385,7 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
-    if (contentType === "Help") return [];
+    if (["Help", "About"].includes(contentType)) return [];
     
     const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
     
@@ -451,29 +467,47 @@ function App() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [searchContainerRef]);
 
-  const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  let searchRegex = null;
-  let querySkeleton = "";
-  let isFuzzyEligible = false;
-  if (searchQuery) {
-    try {
-      // Word boundary for Unicode: Start of string or any non-word character (not letter, mark, or number)
-      searchRegex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])` + escapedQuery, 'iu');
-    } catch (e) {
-      searchRegex = new RegExp(`(^|\\W)` + escapedQuery, 'i');
+  const { searchRegex, querySkeleton, isFuzzyEligible } = useMemo(() => {
+    let regex = null;
+    let skeleton = "";
+    let fuzzy = false;
+    if (searchQuery) {
+      const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      try {
+        regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])` + escapedQuery, 'iu');
+      } catch (e) {
+        regex = new RegExp(`(^|\\W)` + escapedQuery, 'i');
+      }
+      skeleton = getSearchSkeleton(searchQuery);
+      fuzzy = skeleton.length >= 3;
     }
-    querySkeleton = getSearchSkeleton(searchQuery);
-    isFuzzyEligible = querySkeleton.length >= 3;
-  }
+    return { searchRegex: regex, querySkeleton: skeleton, isFuzzyEligible: fuzzy };
+  }, [searchQuery]);
 
   // Filter against the pre-sorted data
-  let filtered = sortedAartiData.filter(a => {
-    if (contentType === "Help") return false;
+  const filtered = useMemo(() => {
+    let result = sortedAartiData.filter(a => {
+      if (["Help", "About"].includes(contentType)) return false;
 
-    if (contentType === "Playlists") {
-      if (!selectedCategory.startsWith("playlist-")) return false;
-      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
-      if (!activeP || !activeP.aartiIds.includes(a.id)) return false;
+      if (contentType === "Playlists") {
+        if (!selectedCategory.startsWith("playlist-")) return false;
+        const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+        if (!activeP || !activeP.aartiIds.includes(a.id)) return false;
+        
+        const matchesQuery = !searchRegex || (
+          (a.title && searchRegex.test(a.title)) || 
+          (a.deity && searchRegex.test(a.deity)) ||
+          (a.lyrics && searchRegex.test(a.lyrics)) ||
+          (a.titleEng && searchRegex.test(a.titleEng)) ||
+          (a.deityEng && searchRegex.test(a.deityEng)) ||
+          (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
+          (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
+        );
+        return matchesQuery;
+      }
+
+      const itemType = a.type || "Aartya";
+      if (itemType !== contentType) return false;
       
       const matchesQuery = !searchRegex || (
         (a.title && searchRegex.test(a.title)) || 
@@ -484,37 +518,24 @@ function App() {
         (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
         (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
       );
-      return matchesQuery;
-    }
+      const matchesCategory = selectedCategory === "All" 
+        || (selectedCategory === "Favorites" && favorites.includes(a.id))
+        || a.deity === selectedCategory;
+      return matchesQuery && matchesCategory;
+    });
 
-    const itemType = a.type || "Aartya";
-    if (itemType !== contentType) return false;
-
-    const matchesQuery = !searchRegex || (
-      (a.title && searchRegex.test(a.title)) || 
-      (a.deity && searchRegex.test(a.deity)) ||
-      (a.lyrics && searchRegex.test(a.lyrics)) ||
-      (a.titleEng && searchRegex.test(a.titleEng)) ||
-      (a.deityEng && searchRegex.test(a.deityEng)) ||
-      (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
-      (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
-    );
-    const matchesCategory = selectedCategory === "All" 
-      || (selectedCategory === "Favorites" && favorites.includes(a.id))
-      || a.deity === selectedCategory;
-    return matchesQuery && matchesCategory;
-  });
-
-  if (!searchQuery) {
-    if (selectedCategory === "Favorites") {
-      filtered.sort((a, b) => favorites.indexOf(a.id) - favorites.indexOf(b.id));
-    } else if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
-      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
-      if (activeP) {
-        filtered.sort((a, b) => activeP.aartiIds.indexOf(a.id) - activeP.aartiIds.indexOf(b.id));
+    if (!searchQuery) {
+      if (selectedCategory === "Favorites") {
+        result.sort((a, b) => favorites.indexOf(a.id) - favorites.indexOf(b.id));
+      } else if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
+        const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+        if (activeP) {
+          result.sort((a, b) => activeP.aartiIds.indexOf(a.id) - activeP.aartiIds.indexOf(b.id));
+        }
       }
     }
-  }
+    return result;
+  }, [contentType, playlists, selectedCategory, searchQuery, searchRegex, querySkeleton, isFuzzyEligible, favorites]);
 
   const toggleFavorite = (id) => {
     setFavorites(prev => {
@@ -672,6 +693,8 @@ function App() {
 
       const currentScrollY = window.scrollY;
       
+      setShowBackToTop(currentScrollY > 400);
+      
       if (currentScrollY <= 0) {
         if (isScrolledRef.current) {
           setIsScrolled(false);
@@ -739,7 +762,8 @@ function App() {
     "Mantra": script === 'latin' ? "Mantra" : "मंत्र",
     "Shloka": script === 'latin' ? "Shloka" : "श्लोक",
     "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट",
-    "Help": script === 'latin' ? "Help" : "मदत"
+    "Help": script === 'latin' ? "Help" : "मदत",
+    "About": script === 'latin' ? "About" : "बद्दल"
   };
 
   if (sortedAartiData.length === 0) {
@@ -756,6 +780,10 @@ function App() {
     "inLanguage": "mr",
     "about": script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity
   } : null;
+
+  // Ensure reorderable tabs render fully so index shifts don't break up/down movement
+  const isReorderableList = (selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery;
+  const displayedAartya = (focusedAartiId || isReorderableList) ? filtered : filtered.slice(0, visibleCount);
 
   return (
     <main className="app-container">
@@ -806,7 +834,7 @@ function App() {
             </div>
             
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -858,7 +886,7 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -876,7 +904,7 @@ function App() {
             {titleMap[contentType] || "Aarti Sangraha"}
           </div>
         )}
-        {!["Playlists", "Help"].includes(contentType) && (
+        {!["Playlists", "Help", "About"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
@@ -973,7 +1001,7 @@ function App() {
             </div>
           </div>
         )}
-        {!["Playlists", "Help"].includes(contentType) && (
+        {!["Playlists", "Help", "About"].includes(contentType) && (
           <div className="filter-chips">
             {categories.map(category => {
               let label = category;
@@ -1058,7 +1086,27 @@ function App() {
             </div>
           </article>
         )}
-        {filtered.map((aarti, index) => {
+        {contentType === "About" && (
+          <article className="aarti-card help-container">
+            <h2 className="help-title">{script === 'latin' ? "About Aarti Sangraha" : "आरती संग्रहाबद्दल"}</h2>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">ℹ️</span> {script === 'latin' ? "Purpose" : "उद्देश"}</h3>
+              <p>{script === 'latin' ? "Aarti Sangraha is a free, open-source, offline-capable digital collection of Marathi devotional texts. It aims to preserve and make accessible traditional Aartya, Stotras, and Mantras for daily spiritual practice without distractions." : "आरती संग्रह हा मराठी भक्ती साहित्याचा एक विनामूल्य, ओपन-सोर्स आणि ऑफलाइन चालणारा डिजिटल संग्रह आहे. पारंपरिक आरत्या, स्तोत्रे आणि मंत्र दैनंदिन उपासनेसाठी विनाव्यत्यय उपलब्ध करून देणे हा यामागील मुख्य उद्देश आहे."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">📱</span> {script === 'latin' ? "Offline Capabilities (PWA)" : "ऑफलाइन सुविधा (PWA)"}</h3>
+              <p>{script === 'latin' ? "This application is built as a Progressive Web App (PWA). Once you open it, it caches the text data so you can read all your favorite Aartya even without an active internet connection or while in Airplane mode." : "हे ॲप्लिकेशन प्रोग्रेसिव्ह वेब ॲप (PWA) म्हणून तयार केले आहे. एकदा हे उघडल्यानंतर, ते सर्व डेटा सेव्ह करते, जेणेकरून तुम्ही इंटरनेट कनेक्शन नसताना किंवा एअरप्लेन मोडमध्येही आरत्या वाचू शकता."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">🤝</span> {script === 'latin' ? "Contribute & Contact" : "योगदान आणि संपर्क"}</h3>
+              <p>{script === 'latin' ? "We welcome contributions! If you notice any corrections or wish to add new Aartya, you can use the '+' button in the menu. For support or feedback, please reach out via the provided Google Form." : "आम्ही तुमच्या योगदानाचे स्वागत करतो! जर तुम्हाला काही सुधारणा सुचवायच्या असतील किंवा नवीन आरत्या जोडायच्या असतील, तर तुम्ही मेनूमधील '+' बटण वापरू शकता. मदत किंवा अभिप्रायासाठी, कृपया दिलेल्या गुगल फॉर्मद्वारे संपर्क साधा."}</p>
+            </div>
+          </article>
+        )}
+        {displayedAartya.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
           const showContent = isFocused || !!searchQuery;
           const videoId = getYouTubeVideoId(aarti.link);
@@ -1067,6 +1115,7 @@ function App() {
           <article 
             key={aarti.id} 
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
+            style={!isFocused ? { animationDelay: `${(index % 20) * 0.05}s` } : {}}
             onClick={() => {
               if (!isFocused) {
                 handleFocusAarti(aarti.id);
@@ -1155,6 +1204,7 @@ function App() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 ></iframe>
               </div>
             )}
@@ -1175,7 +1225,10 @@ function App() {
           </article>
           );
         })}
-        {filtered.length === 0 && !focusedAartiId && contentType !== "Help" && (
+        {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Help", "About"].includes(contentType) && (
+          <div ref={loadMoreRef} style={{ height: '20px', margin: '10px 0' }} />
+        )}
+        {filtered.length === 0 && !focusedAartiId && !["Help", "About"].includes(contentType) && (
           <p className="no-results">
             {contentType === "Playlists" 
               ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")
@@ -1217,6 +1270,17 @@ function App() {
           }}
         />
       )}
+
+      {showBackToTop && !focusedAartiId && !activePlaylist && (
+        <button 
+          className="back-to-top-btn" 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Back to top"
+          title="Back to top"
+        >
+          ↑
+        </button>
+      )}
       
       {/* DESKTOP ONLY: Far Right Pane for Monetag Ad */}
       {/* {!isMobile && (
@@ -1247,22 +1311,5 @@ function App() {
     </main>
   );
 }
-// Place this at the very bottom of your file, OUTSIDE of any function
-/*const observer = new MutationObserver(() => {
-  const iframes = document.querySelectorAll('iframe');
-  
-  iframes.forEach(iframe => {
-    // Only apply if we haven't already styled it
-    if (iframe.style.margin !== '20px') {
-      iframe.style.margin = '20px auto';
-      iframe.style.display = 'block';
-      console.log('Iframe found and spaced out!');
-    }
-  });
-});
-
-// Start watching the entire document for changes
-observer.observe(document.body, { childList: true, subtree: true });
-*/
 
 export default App;
