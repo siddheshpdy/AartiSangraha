@@ -264,7 +264,6 @@ function App() {
   const [activePlaylist, setActivePlaylist] = useState(null);
   const [isMobile, setIsMobile] = useState(false); // Default for SSR
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasTopRightIframeAd, setHasTopRightIframeAd] = useState(false); // New state to track html > iframe ad
   const [suggestions, setSuggestions] = useState([]);
   const searchContainerRef = useRef(null);
   
@@ -1089,6 +1088,7 @@ function App() {
           <article 
             key={aarti.id} 
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
+            style={!isFocused ? { animationDelay: `${Math.min(index * 0.05, 0.5)}s` } : {}}
             onClick={() => {
               if (!isFocused) {
                 handleFocusAarti(aarti.id);
@@ -1269,22 +1269,5 @@ function App() {
     </main>
   );
 }
-// Place this at the very bottom of your file, OUTSIDE of any function
-/*const observer = new MutationObserver(() => {
-  const iframes = document.querySelectorAll('iframe');
-  
-  iframes.forEach(iframe => {
-    // Only apply if we haven't already styled it
-    if (iframe.style.margin !== '20px') {
-      iframe.style.margin = '20px auto';
-      iframe.style.display = 'block';
-      console.log('Iframe found and spaced out!');
-    }
-  });
-});
-
-// Start watching the entire document for changes
-observer.observe(document.body, { childList: true, subtree: true });
-*/
 
 export default App;

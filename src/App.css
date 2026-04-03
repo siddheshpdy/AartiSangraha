@@ -569,6 +569,18 @@ body {
   cursor: pointer;
   position: relative;
   transition: box-shadow 0.2s, border-color 0.2s;
+  animation: fadeUpCard 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUpCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .aarti-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -578,6 +590,18 @@ body {
 }
 .focused-aarti-card {
   cursor: default;
+  animation: enterFocus 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enterFocus {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 .close-focus-mode-btn {
   position: absolute;
@@ -761,20 +785,4 @@ body {
   align-items: center;
   width: 25px;
   font-size: 1.2rem;
-}
-
-/* Ad Iframe styles */
-html > iframe {
-  width: 100% !important;
-  height: 190px !important;
-  opacity: 1 !important;
-  max-width: 420px !important;
-  border: none !important;
-  position: fixed !important;
-  display: block !important;
-  z-index: 2147483647 !important;
-  inset: 15px 0px auto auto !important; /* This means top: 15px, right: 0px */
-  background: transparent !important;
-  color-scheme: auto !important;
-  pointer-events: none !important;
 }
