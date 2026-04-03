@@ -603,6 +603,9 @@ body {
   padding-bottom: 12px;
   border-bottom: 1px dashed var(--drawer-border-color);
 }
+.focused-aarti-card .aarti-card-actions {
+  padding-right: 32px; /* Prevents overlap with the absolute close button */
+}
 .font-resizer {
   display: flex;
   justify-content: flex-end;
@@ -773,4 +776,5 @@ html > iframe {
   inset: 15px 0px auto auto !important; /* This means top: 15px, right: 0px */
   background: transparent !important;
   color-scheme: auto !important;
+  pointer-events: none !important;
 }
