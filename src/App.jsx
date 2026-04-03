@@ -451,29 +451,47 @@ function App() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [searchContainerRef]);
 
-  const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  let searchRegex = null;
-  let querySkeleton = "";
-  let isFuzzyEligible = false;
-  if (searchQuery) {
-    try {
-      // Word boundary for Unicode: Start of string or any non-word character (not letter, mark, or number)
-      searchRegex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])` + escapedQuery, 'iu');
-    } catch (e) {
-      searchRegex = new RegExp(`(^|\\W)` + escapedQuery, 'i');
+  const { searchRegex, querySkeleton, isFuzzyEligible } = useMemo(() => {
+    let regex = null;
+    let skeleton = "";
+    let fuzzy = false;
+    if (searchQuery) {
+      const escapedQuery = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      try {
+        regex = new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}])` + escapedQuery, 'iu');
+      } catch (e) {
+        regex = new RegExp(`(^|\\W)` + escapedQuery, 'i');
+      }
+      skeleton = getSearchSkeleton(searchQuery);
+      fuzzy = skeleton.length >= 3;
     }
-    querySkeleton = getSearchSkeleton(searchQuery);
-    isFuzzyEligible = querySkeleton.length >= 3;
-  }
+    return { searchRegex: regex, querySkeleton: skeleton, isFuzzyEligible: fuzzy };
+  }, [searchQuery]);
 
   // Filter against the pre-sorted data
-  let filtered = sortedAartiData.filter(a => {
-    if (["Help", "About"].includes(contentType)) return false;
+  const filtered = useMemo(() => {
+    let result = sortedAartiData.filter(a => {
+      if (["Help", "About"].includes(contentType)) return false;
 
-    if (contentType === "Playlists") {
-      if (!selectedCategory.startsWith("playlist-")) return false;
-      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
-      if (!activeP || !activeP.aartiIds.includes(a.id)) return false;
+      if (contentType === "Playlists") {
+        if (!selectedCategory.startsWith("playlist-")) return false;
+        const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+        if (!activeP || !activeP.aartiIds.includes(a.id)) return false;
+        
+        const matchesQuery = !searchRegex || (
+          (a.title && searchRegex.test(a.title)) || 
+          (a.deity && searchRegex.test(a.deity)) ||
+          (a.lyrics && searchRegex.test(a.lyrics)) ||
+          (a.titleEng && searchRegex.test(a.titleEng)) ||
+          (a.deityEng && searchRegex.test(a.deityEng)) ||
+          (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
+          (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
+        );
+        return matchesQuery;
+      }
+
+      const itemType = a.type || "Aartya";
+      if (itemType !== contentType) return false;
       
       const matchesQuery = !searchRegex || (
         (a.title && searchRegex.test(a.title)) || 
@@ -484,37 +502,24 @@ function App() {
         (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
         (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
       );
-      return matchesQuery;
-    }
+      const matchesCategory = selectedCategory === "All" 
+        || (selectedCategory === "Favorites" && favorites.includes(a.id))
+        || a.deity === selectedCategory;
+      return matchesQuery && matchesCategory;
+    });
 
-    const itemType = a.type || "Aartya";
-    if (itemType !== contentType) return false;
-
-    const matchesQuery = !searchRegex || (
-      (a.title && searchRegex.test(a.title)) || 
-      (a.deity && searchRegex.test(a.deity)) ||
-      (a.lyrics && searchRegex.test(a.lyrics)) ||
-      (a.titleEng && searchRegex.test(a.titleEng)) ||
-      (a.deityEng && searchRegex.test(a.deityEng)) ||
-      (a.lyricsEng && searchRegex.test(a.lyricsEng)) ||
-      (isFuzzyEligible && a._searchSkeleton && a._searchSkeleton.includes(querySkeleton))
-    );
-    const matchesCategory = selectedCategory === "All" 
-      || (selectedCategory === "Favorites" && favorites.includes(a.id))
-      || a.deity === selectedCategory;
-    return matchesQuery && matchesCategory;
-  });
-
-  if (!searchQuery) {
-    if (selectedCategory === "Favorites") {
-      filtered.sort((a, b) => favorites.indexOf(a.id) - favorites.indexOf(b.id));
-    } else if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
-      const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
-      if (activeP) {
-        filtered.sort((a, b) => activeP.aartiIds.indexOf(a.id) - activeP.aartiIds.indexOf(b.id));
+    if (!searchQuery) {
+      if (selectedCategory === "Favorites") {
+        result.sort((a, b) => favorites.indexOf(a.id) - favorites.indexOf(b.id));
+      } else if (contentType === "Playlists" && selectedCategory.startsWith("playlist-")) {
+        const activeP = playlists.find(p => `playlist-${p.id}` === selectedCategory);
+        if (activeP) {
+          result.sort((a, b) => activeP.aartiIds.indexOf(a.id) - activeP.aartiIds.indexOf(b.id));
+        }
       }
     }
-  }
+    return result;
+  }, [contentType, playlists, selectedCategory, searchQuery, searchRegex, querySkeleton, isFuzzyEligible, favorites]);
 
   const toggleFavorite = (id) => {
     setFavorites(prev => {
@@ -1177,6 +1182,7 @@ function App() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 ></iframe>
               </div>
             )}
