@@ -702,6 +702,13 @@ body {
   word-break: break-word;
   overflow-wrap: break-word;
 }
+.seo-link {
+  text-decoration: none;
+  color: inherit;
+}
+.seo-link:hover {
+  text-decoration: underline;
+}
 .aarti-deity {
   margin: 0 0 16px 0;
   color: var(--color-primary);

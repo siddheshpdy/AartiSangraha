@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { flushSync } from 'react-dom';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
 import { Helmet } from 'react-helmet-async';
 import './App.css';
@@ -777,6 +777,9 @@ function App() {
 
   const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
   const currentTitle = aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha");
+  const currentUrl = `https://aartisangraha.co.in${focusedAartiId ? `/aarti/${focusedAartiId}` : ''}`;
+  const currentDescription = aarti ? `Read the lyrics for ${currentTitle} in Marathi and English on Aarti Sangraha.` : "Offline capable Marathi Aarti Sangraha";
+
   const structuredData = aarti ? {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -794,7 +797,13 @@ function App() {
     <main className="app-container">
       <Helmet>
         <title>{`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`}</title>
-        <meta name="description" content={aarti ? `Read the lyrics for ${currentTitle}.` : "Offline capable Marathi Aarti Sangraha"} />
+        <meta name="description" content={currentDescription} />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`} />
+        <meta property="og:description" content={currentDescription} />
+        <meta property="og:url" content={currentUrl} />
+        <meta name="twitter:title" content={`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`} />
+        <meta name="twitter:description" content={currentDescription} />
         {structuredData && (
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
@@ -1199,7 +1208,13 @@ function App() {
             </div>
         </div>
             <h2 className={`aarti-title ${script === 'latin' ? 'text-latin' : ''}`}>
-              <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
+              {isFocused ? (
+                <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
+              ) : (
+                <Link to={`/aarti/${aarti.id}`} className="seo-link" onClick={(e) => e.stopPropagation()}>
+                  {highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}
+                </Link>
+              )}
             </h2>
             {aarti.deity && <h3 className={`aarti-deity ${script === 'latin' ? 'text-latin' : ''}`}>{highlightText(script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity, searchQuery, querySkeleton)}</h3>}
             
