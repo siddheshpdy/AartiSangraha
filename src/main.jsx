@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { hydrateRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { registerSW } from 'virtual:pwa-register'
 import { BrowserRouter } from 'react-router-dom'
@@ -9,8 +9,7 @@ registerSW()
 
 const container = document.getElementById('root')
 
-hydrateRoot(
-  container,
+createRoot(container).render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>

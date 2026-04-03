@@ -313,6 +313,8 @@ function App() {
         const title = script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title;
         const baseTitle = titleMap[aarti.type || 'Aartya'] || 'Aarti Sangraha';
         document.title = `${title} | ${baseTitle}`;
+        } else {
+          document.title = script === 'latin' ? "404 Not Found | Aarti Sangraha" : "४०४ सापडले नाही | आरती संग्रह";
       }
     } else {
       document.title = titleMap[contentType] || "Aarti Sangraha";
@@ -776,9 +778,10 @@ function App() {
   }
 
   const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
-  const currentTitle = aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha");
+  const isNotFound = focusedAartiId && !aarti;
+  const currentTitle = isNotFound ? (script === 'latin' ? "404 Not Found" : "४०४ सापडले नाही") : (aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha"));
   const currentUrl = `https://aartisangraha.co.in${focusedAartiId ? `/aarti/${focusedAartiId}` : ''}`;
-  const currentDescription = aarti ? `Read the lyrics for ${currentTitle} in Marathi and English on Aarti Sangraha.` : "Offline capable Marathi Aarti Sangraha";
+  const currentDescription = isNotFound ? "The requested Aarti could not be found." : (aarti ? `Read the lyrics for ${currentTitle} in Marathi and English on Aarti Sangraha.` : "Offline capable Marathi Aarti Sangraha");
 
   const structuredData = aarti ? {
     "@context": "https://schema.org",
@@ -1122,6 +1125,23 @@ function App() {
             </div>
           </article>
         )}
+        
+        {isNotFound && (
+          <article className="aarti-card help-container" style={{ textAlign: 'center', padding: '40px 20px' }}>
+            <h2 className="help-title" style={{ fontSize: '2rem', marginBottom: '15px' }}>
+              {script === 'latin' ? "404 - Not Found" : "४०४ - सापडले नाही"}
+            </h2>
+            <p style={{ color: 'var(--color-text-muted)', marginBottom: '30px', fontSize: '1.1rem' }}>
+              {script === 'latin' 
+                ? "The requested Aarti could not be found or has been removed." 
+                : "तुम्ही शोधत असलेली आरती सापडली नाही किंवा काढून टाकण्यात आली आहे."}
+            </p>
+            <button className="add-btn" onClick={() => navigate('/')} style={{ padding: '10px 20px', cursor: 'pointer' }}>
+              {script === 'latin' ? "🏠 Return to Home" : "🏠 मुख्य पानावर जा"}
+            </button>
+          </article>
+        )}
+
         {displayedAartya.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
           const showContent = isFocused || !!searchQuery;
