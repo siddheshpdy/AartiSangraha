@@ -741,6 +741,32 @@ body {
   border-radius: 999px;
   background-color: rgba(204, 72, 0, 0.05);
 }
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  opacity: 0;
+  animation: fadeLoadMore 0.4s ease-in-out 0.15s forwards;
+}
+.load-more-spinner {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+  margin-bottom: 0;
+}
+@keyframes fadeLoadMore {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.end-of-list-message {
+  text-align: center;
+  padding: 15px 15px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  opacity: 0.7;
+  font-style: italic;
+}
 .no-results {
   text-align: center;
   color: #888;

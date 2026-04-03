@@ -29,9 +29,50 @@
     <script src="https://5gvci.com/act/files/tag.min.js?z=10790266" data-cfasync="false" defer></script>
     <script defer>(function(s){s.dataset.zone='10790421',s.src='https://izcle.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
   
+      <style>
+        body { margin: 0; background-color: #FFF8E1; }
+        .pwa-splash-screen {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          width: 100vw;
+          background-color: #FFF8E1;
+          font-family: 'Mukta', 'Inter', system-ui, sans-serif;
+          color: #FF9933;
+        }
+        .loading-spinner {
+          width: 50px;
+          height: 50px;
+          border: 5px solid rgba(255, 153, 51, 0.3);
+          border-radius: 50%;
+          border-top-color: #FF9933;
+          margin-bottom: 24px;
+          animation: spin 1s ease-in-out infinite;
+        }
+        .pwa-splash-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          letter-spacing: 0.5px;
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+        @media (prefers-color-scheme: dark) {
+          body, .pwa-splash-screen { background-color: #1A1A1A; color: #D4AF37; }
+          .loading-spinner { border-color: rgba(212, 175, 55, 0.3); border-top-color: #D4AF37; }
+        }
+      </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Custom PWA Splash Screen (Shown while React is loading) -->
+      <div class="pwa-splash-screen">
+        <div class="loading-spinner"></div>
+        <div class="pwa-splash-title">Aarti Sangraha</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
