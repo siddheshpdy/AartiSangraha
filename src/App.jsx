@@ -898,12 +898,14 @@ function App() {
             </div>
           </div>
         )}
+        
+      {!isMobile && !focusedAartiId && (
+        <div className="header-title-container desktop-title">
+          {titleMap[contentType] || "Aarti Sangraha"}
+        </div>
+      )}
+      
       <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        {!isMobile && (
-          <div className="header-title-container">
-            {titleMap[contentType] || "Aarti Sangraha"}
-          </div>
-        )}
         {!["Playlists", "Help", "About"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
