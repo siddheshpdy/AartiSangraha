@@ -286,7 +286,8 @@ function App() {
     "Mantra": script === 'latin' ? "Mantra Sangraha" : "मंत्र संग्रह",
     "Shloka": script === 'latin' ? "Shloka Sangraha" : "श्लोक संग्रह",
     "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट",
-    "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर"
+    "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर",
+    "About": script === 'latin' ? "About Us" : "आमच्याबद्दल"
   }), [script]);
 
   // Dynamic Page Title for SEO and Bookmarking
@@ -369,7 +370,7 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
-    if (contentType === "Help") return [];
+    if (["Help", "About"].includes(contentType)) return [];
     
     const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
     
@@ -468,7 +469,7 @@ function App() {
 
   // Filter against the pre-sorted data
   let filtered = sortedAartiData.filter(a => {
-    if (contentType === "Help") return false;
+    if (["Help", "About"].includes(contentType)) return false;
 
     if (contentType === "Playlists") {
       if (!selectedCategory.startsWith("playlist-")) return false;
@@ -739,7 +740,8 @@ function App() {
     "Mantra": script === 'latin' ? "Mantra" : "मंत्र",
     "Shloka": script === 'latin' ? "Shloka" : "श्लोक",
     "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट",
-    "Help": script === 'latin' ? "Help" : "मदत"
+    "Help": script === 'latin' ? "Help" : "मदत",
+    "About": script === 'latin' ? "About" : "बद्दल"
   };
 
   if (sortedAartiData.length === 0) {
@@ -806,7 +808,7 @@ function App() {
             </div>
             
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -858,7 +860,7 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -876,7 +878,7 @@ function App() {
             {titleMap[contentType] || "Aarti Sangraha"}
           </div>
         )}
-        {!["Playlists", "Help"].includes(contentType) && (
+        {!["Playlists", "Help", "About"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
@@ -973,7 +975,7 @@ function App() {
             </div>
           </div>
         )}
-        {!["Playlists", "Help"].includes(contentType) && (
+        {!["Playlists", "Help", "About"].includes(contentType) && (
           <div className="filter-chips">
             {categories.map(category => {
               let label = category;
@@ -1055,6 +1057,26 @@ function App() {
             <div className="help-section">
               <h3><span className="help-icon">💾</span> {script === 'latin' ? "Backup & Restore" : "बॅकअप आणि रिस्टोअर"}</h3>
               <p>{script === 'latin' ? "Use the menu to export your playlists, favorites, and settings, keeping them safe if you change devices." : "तुमच्या प्लेलिस्ट, आवडत्या आरत्या आणि सेटिंग्ज सुरक्षित ठेवण्यासाठी किंवा नवीन फोनवर घेण्यासाठी मेनूमधून बॅकअप आणि रिस्टोअर वापरा."}</p>
+            </div>
+          </article>
+        )}
+        {contentType === "About" && (
+          <article className="aarti-card help-container">
+            <h2 className="help-title">{script === 'latin' ? "About Aarti Sangraha" : "आरती संग्रहाबद्दल"}</h2>
+            
+            <div className="help-section">
+              <h3><span className="help-icon">ℹ️</span> {script === 'latin' ? "Purpose" : "उद्देश"}</h3>
+              <p>{script === 'latin' ? "Aarti Sangraha is a free, open-source, offline-capable digital collection of Marathi devotional texts. It aims to preserve and make accessible traditional Aartya, Stotras, and Mantras for daily spiritual practice without distractions." : "आरती संग्रह हा मराठी भक्ती साहित्याचा एक विनामूल्य, ओपन-सोर्स आणि ऑफलाइन चालणारा डिजिटल संग्रह आहे. पारंपरिक आरत्या, स्तोत्रे आणि मंत्र दैनंदिन उपासनेसाठी विनाव्यत्यय उपलब्ध करून देणे हा यामागील मुख्य उद्देश आहे."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">📱</span> {script === 'latin' ? "Offline Capabilities (PWA)" : "ऑफलाइन सुविधा (PWA)"}</h3>
+              <p>{script === 'latin' ? "This application is built as a Progressive Web App (PWA). Once you open it, it caches the text data so you can read all your favorite Aartya even without an active internet connection or while in Airplane mode." : "हे ॲप्लिकेशन प्रोग्रेसिव्ह वेब ॲप (PWA) म्हणून तयार केले आहे. एकदा हे उघडल्यानंतर, ते सर्व डेटा सेव्ह करते, जेणेकरून तुम्ही इंटरनेट कनेक्शन नसताना किंवा एअरप्लेन मोडमध्येही आरत्या वाचू शकता."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3><span className="help-icon">🤝</span> {script === 'latin' ? "Contribute & Contact" : "योगदान आणि संपर्क"}</h3>
+              <p>{script === 'latin' ? "We welcome contributions! If you notice any corrections or wish to add new Aartya, you can use the '+' button in the menu. For support or feedback, please reach out via the provided Google Form." : "आम्ही तुमच्या योगदानाचे स्वागत करतो! जर तुम्हाला काही सुधारणा सुचवायच्या असतील किंवा नवीन आरत्या जोडायच्या असतील, तर तुम्ही मेनूमधील '+' बटण वापरू शकता. मदत किंवा अभिप्रायासाठी, कृपया दिलेल्या गुगल फॉर्मद्वारे संपर्क साधा."}</p>
             </div>
           </article>
         )}
@@ -1175,7 +1197,7 @@ function App() {
           </article>
           );
         })}
-        {filtered.length === 0 && !focusedAartiId && contentType !== "Help" && (
+        {filtered.length === 0 && !focusedAartiId && !["Help", "About"].includes(contentType) && (
           <p className="no-results">
             {contentType === "Playlists" 
               ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")
