@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { flushSync } from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import aartiData from './data/Aartya.json'; // Direct import
@@ -266,7 +266,23 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const searchContainerRef = useRef(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   
+  // Lazy loading state and observer
+  const [visibleCount, setVisibleCount] = useState(20);
+  useEffect(() => {
+    setVisibleCount(20); // Reset limit when filters change
+  }, [contentType, selectedCategory, query]);
+  
+  const observerRef = useRef(null);
+  const loadMoreRef = useCallback(node => {
+    if (observerRef.current) observerRef.current.disconnect();
+    observerRef.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) setVisibleCount(prev => prev + 20);
+    });
+    if (node) observerRef.current.observe(node);
+  }, []);
+
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
     const match = location.pathname.match(/^\/aarti\/(.+)$/);
@@ -677,6 +693,8 @@ function App() {
 
       const currentScrollY = window.scrollY;
       
+      setShowBackToTop(currentScrollY > 400);
+      
       if (currentScrollY <= 0) {
         if (isScrolledRef.current) {
           setIsScrolled(false);
@@ -762,6 +780,10 @@ function App() {
     "inLanguage": "mr",
     "about": script === 'latin' ? (aarti.deityEng || aarti.deity) : aarti.deity
   } : null;
+
+  // Ensure reorderable tabs render fully so index shifts don't break up/down movement
+  const isReorderableList = (selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery;
+  const displayedAartya = (focusedAartiId || isReorderableList) ? filtered : filtered.slice(0, visibleCount);
 
   return (
     <main className="app-container">
@@ -1084,7 +1106,7 @@ function App() {
             </div>
           </article>
         )}
-        {filtered.map((aarti, index) => {
+        {displayedAartya.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
           const showContent = isFocused || !!searchQuery;
           const videoId = getYouTubeVideoId(aarti.link);
@@ -1093,7 +1115,7 @@ function App() {
           <article 
             key={aarti.id} 
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
-            style={!isFocused ? { animationDelay: `${Math.min(index * 0.05, 0.5)}s` } : {}}
+            style={!isFocused ? { animationDelay: `${(index % 20) * 0.05}s` } : {}}
             onClick={() => {
               if (!isFocused) {
                 handleFocusAarti(aarti.id);
@@ -1203,6 +1225,9 @@ function App() {
           </article>
           );
         })}
+        {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Help", "About"].includes(contentType) && (
+          <div ref={loadMoreRef} style={{ height: '20px', margin: '10px 0' }} />
+        )}
         {filtered.length === 0 && !focusedAartiId && !["Help", "About"].includes(contentType) && (
           <p className="no-results">
             {contentType === "Playlists" 
@@ -1244,6 +1269,17 @@ function App() {
             );
           }}
         />
+      )}
+
+      {showBackToTop && !focusedAartiId && !activePlaylist && (
+        <button 
+          className="back-to-top-btn" 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Back to top"
+          title="Back to top"
+        >
+          ↑
+        </button>
       )}
       
       {/* DESKTOP ONLY: Far Right Pane for Monetag Ad */}
