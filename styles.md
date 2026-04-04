@@ -69,4 +69,4 @@ Card Background: #262626
 
 Text: #E5E7EB (Light Grey)
 
-Accent: Gold (#D4AF37) instead of Maroon.
+Accent: Gold (#cea00d) instead of Maroon.

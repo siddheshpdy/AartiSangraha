@@ -1,8 +1,7 @@
 // src/App.jsx
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef, useMemo, useCallback } from 'react';
 import { flushSync } from 'react-dom';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import aartiData from './data/Aartya.json'; // Direct import
 import { Helmet } from 'react-helmet-async';
 import './App.css';
  
@@ -202,25 +201,6 @@ const deityOrder = [
   "mahalasa narayani"
 ];
 
-const sortedAartiData = [...(aartiData || [])].sort((a, b) => {
-  const deityA = (a.deityEng || "others").toLowerCase().trim();
-  const deityB = (b.deityEng || "others").toLowerCase().trim();
-  const indexA = deityOrder.indexOf(deityA);
-  const indexB = deityOrder.indexOf(deityB);
-  const weightA = indexA === -1 ? 999 : indexA;
-  const weightB = indexB === -1 ? 999 : indexB;
-  
-  if (weightA !== weightB) return weightA - weightB;
-  
-  // Secondary sort by title alphabetically if deities are the same
-  return (a.title || "").localeCompare(b.title || "");
-});
-
-// Pre-calculate search skeletons once on app load
-sortedAartiData.forEach(a => {
-  a._searchSkeleton = getSearchSkeleton((a.title || "") + " " + (a.deity || "") + " " + (a.lyrics || ""));
-});
-
 function MonetagAdUnit({ zoneId, containerStyle }) {
   const adRef = useRef(null);
 
@@ -242,9 +222,50 @@ function MonetagAdUnit({ zoneId, containerStyle }) {
   return <div ref={adRef} style={containerStyle} />;
 }
 
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+function LyricsPreview({ fontSize, showContent, children }) {
+  const [isOverflowing, setIsOverflowing] = useState(true);
+  const contentRef = useRef(null);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!contentRef.current) return;
+    const checkOverflow = () => {
+      // .lyrics-preview has max-height: 120px. 
+      // We check if the natural height is strictly greater than 125px (allowing a small 5px buffer)
+      setIsOverflowing(contentRef.current.scrollHeight > 125);
+    };
+    checkOverflow();
+    
+    const observer = new ResizeObserver(checkOverflow);
+    observer.observe(contentRef.current);
+    return () => observer.disconnect();
+  }, [fontSize, children, showContent]);
+
+  return (
+    <>
+      <div className={!showContent ? 'lyrics-preview' : ''}>
+        <div className="aarti-lyrics" ref={contentRef} style={{ fontSize: `${fontSize}px` }}>
+          {children}
+        </div>
+        {!showContent && isOverflowing && <div className="aarti-fade-out" />}
+      </div>
+      {!showContent && isOverflowing && (
+        <div className="open-indicator-container">
+          <span className="open-indicator">
+            Open ⤢
+          </span>
+        </div>
+      )}
+    </>
+  );
+}
+
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [sortedAartiData, setSortedAartiData] = useState([]);
+  const [isLoadingData, setIsLoadingData] = useState(true);
   const [query, setQuery] = useState("");
   const [contentType, setContentType] = useState("Aartya");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -281,6 +302,42 @@ function App() {
       if (entries[0].isIntersecting) setVisibleCount(prev => prev + 20);
     });
     if (node) observerRef.current.observe(node);
+  }, []);
+
+  // Fetch, sort, and process Aarti data asynchronously
+  useEffect(() => {
+    let isMounted = true;
+    import('./data/Aartya.json')
+      .then(module => {
+        if (!isMounted) return;
+        const rawData = module.default || module;
+        const dataArray = Array.isArray(rawData) ? rawData : [];
+        
+        // Spread into a new array to prevent mutating a read-only ES module
+        const sorted = [...dataArray].sort((a, b) => {
+          const deityA = (a.deityEng || "others").toLowerCase().trim();
+          const deityB = (b.deityEng || "others").toLowerCase().trim();
+          const indexA = deityOrder.indexOf(deityA);
+          const indexB = deityOrder.indexOf(deityB);
+          const weightA = indexA === -1 ? 999 : indexA;
+          const weightB = indexB === -1 ? 999 : indexB;
+          
+          if (weightA !== weightB) return weightA - weightB;
+          return (a.title || "").localeCompare(b.title || "");
+        });
+
+        sorted.forEach(a => {
+          a._searchSkeleton = getSearchSkeleton((a.title || "") + " " + (a.deity || "") + " " + (a.lyrics || ""));
+        });
+        
+        setSortedAartiData(sorted);
+      })
+      .catch(err => console.error("Error loading Aarti data:", err))
+      .finally(() => {
+        if (isMounted) setIsLoadingData(false);
+      });
+      
+    return () => { isMounted = false; };
   }, []);
 
   // Sync route with focusedAartiId for direct links
@@ -321,7 +378,7 @@ function App() {
     }
     // titleMap is derived from script, but including both for clarity as they are used
     // in different parts of the effect.
-  }, [focusedAartiId, contentType, script, titleMap]);
+  }, [focusedAartiId, contentType, script, titleMap, sortedAartiData]);
 
   const handleFocusAarti = (id) => {
     navigate(`/aarti/${id}`);
@@ -402,7 +459,7 @@ function App() {
     if (hasFavorites) chips.push("Favorites");
     
     return [...chips, ...availableDeities];
-  }, [contentType, playlists, favorites]);
+  }, [contentType, playlists, favorites, sortedAartiData]);
 
   // Fallback to "All" if the currently selected category or playlist disappears (e.g. deleted or un-favorited)
   useEffect(() => {
@@ -456,7 +513,7 @@ function App() {
       }
     }
     setSuggestions(newSuggestions);
-  }, [searchQuery, contentType, script]);
+  }, [searchQuery, contentType, script, sortedAartiData]);
 
   // Close suggestions on outside click
   useEffect(() => {
@@ -537,7 +594,7 @@ function App() {
       }
     }
     return result;
-  }, [contentType, playlists, selectedCategory, searchQuery, searchRegex, querySkeleton, isFuzzyEligible, favorites]);
+  }, [contentType, playlists, selectedCategory, searchQuery, searchRegex, querySkeleton, isFuzzyEligible, favorites, sortedAartiData]);
 
   const toggleFavorite = (id) => {
     setFavorites(prev => {
@@ -768,7 +825,7 @@ function App() {
     "About": script === 'latin' ? "About" : "बद्दल"
   };
 
-  if (sortedAartiData.length === 0) {
+  if (isLoadingData) {
     return (
       <div className="pwa-splash-screen">
         <div className="loading-spinner"></div>
@@ -845,7 +902,7 @@ function App() {
                 </button>
               </div>
               <div className="header-actions-row">
-                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')} title="Submit New Aarti">➕ Add</button>
+                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')} title="Submit New Aarti"><span className="add-icon">+</span> Add</button>
                 {installPrompt && <button onClick={handleInstallClick} className="install-btn">📥 Install</button>}
               </div>
             </div>
@@ -900,7 +957,7 @@ function App() {
                 </button>
               </div>
               <div className="header-actions-row">
-                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')} title="Submit New Aarti">➕ Add</button>
+                <button className="add-btn" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfp0rSScIkrGEkXX_v45_TWAizAIlICU7A0U7Ebt1p0HPlRAQ/viewform', '_blank', 'noopener,noreferrer')} title="Submit New Aarti"><span className="add-icon">+</span> Add</button>
                 {installPrompt && <button onClick={handleInstallClick} className="install-btn">📥 Install</button>}
               </div>
             </div>
@@ -1297,19 +1354,9 @@ function App() {
               </div>
             )}
 
-            <div className={!showContent ? 'lyrics-preview' : ''}>
-              <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}</div>
-              {!showContent && (
-                <div className="aarti-fade-out" />
-              )}
-            </div>
-            {!showContent && (
-              <div className="open-indicator-container">
-                <span className="open-indicator">
-                  Open ⤢
-                </span>
-              </div>
-            )}
+            <LyricsPreview fontSize={fontSize} showContent={showContent}>
+              {highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}
+            </LyricsPreview>
           </article>
           );
         })}
