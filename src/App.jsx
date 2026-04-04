@@ -7,8 +7,8 @@ import { Helmet } from 'react-helmet-async';
 import './App.css';
  
 import { usePlaylists } from '../usePlaylists';
-import PujaPlayer from '../PujaPlayer';
-import BackupRestoreSettings from '../BackupRestoreSettings';
+const PujaPlayer = React.lazy(() => import('../PujaPlayer'));
+const BackupRestoreSettings = React.lazy(() => import('../BackupRestoreSettings'));
 
 // Transliteration Map for Cross-Script "Phonetic Equivalence" Search
 const phoneticMap = {
@@ -859,7 +859,9 @@ function App() {
             </div>
 
             <div className="drawer-section">
-              <BackupRestoreSettings theme={theme} />
+              <React.Suspense fallback={<div className="loading-spinner" style={{ width: '24px', height: '24px', margin: '0 auto' }}></div>}>
+                <BackupRestoreSettings theme={theme} />
+              </React.Suspense>
             </div>
           </div>
          </>
@@ -911,7 +913,9 @@ function App() {
             </div>
 
             <div className="sidebar-section">
-              <BackupRestoreSettings theme={theme} />
+              <React.Suspense fallback={<div className="loading-spinner" style={{ width: '24px', height: '24px', margin: '0 auto' }}></div>}>
+                <BackupRestoreSettings theme={theme} />
+              </React.Suspense>
             </div>
           </div>
         )}
@@ -1330,6 +1334,7 @@ function App() {
 
       {/* Puja Player Fullscreen Overlay */}
       {activePlaylist && (
+        <React.Suspense fallback={<div className="pwa-splash-screen" style={{ position: 'fixed', zIndex: 9999 }}><div className="loading-spinner"></div></div>}>
         <PujaPlayer 
           playlist={activePlaylist} 
           allAartya={sortedAartiData} 
@@ -1360,6 +1365,7 @@ function App() {
             );
           }}
         />
+        </React.Suspense>
       )}
 
       {showBackToTop && !focusedAartiId && !activePlaylist && (
