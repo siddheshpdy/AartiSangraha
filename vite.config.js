@@ -11,6 +11,16 @@ export default defineConfig({
   build: {
     outDir: 'dist/static',
     chunkSizeWarningLimit: 2000,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Automatically removes all console.logs in production
+        drop_debugger: true,
+      },
+      format: {
+        comments: false, // Removes all comments from the final bundle
+      }
+    }
   },
   plugins: [
     react(),
@@ -42,7 +52,7 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         // For SPA behavior, fallback to index.html for navigation requests.
         navigateFallback: 'index.html',
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

@@ -4,9 +4,9 @@
   /* Main Theme Colors (Light) */
   --color-bg: #FFF8E1;
   --color-text: #2D2D2D;
-  --color-primary: #FF9933;
+  --color-primary: #da6d00;
   --color-secondary: #800000;
-  --color-border: #FF9933;
+  --color-border: #da6d00;
   --color-cream: #FFF8E1;
   --color-cream-transparent: rgba(255, 248, 225, 0.85);
   --color-text-muted: #374151;
@@ -371,7 +371,7 @@ body {
   font-size: 0.95rem;
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .chip.active {
@@ -476,9 +476,14 @@ body {
   opacity: 1;
 }
 .add-btn {
-  background-color: #10b981;
+  background-color: rgb(4, 120, 87);
   color: white;
-  border-color: #10b981;
+  border-color: rgb(4, 120, 87);
+}
+.add-icon {
+  color: var(--color-primary); /* You can change this to any color (e.g. #FFFFFF) */
+  margin-right: 4px;
+  font-size: 1.3rem;
 }
 .install-btn {
   background-color: var(--color-primary);
