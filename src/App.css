@@ -4,9 +4,9 @@
   /* Main Theme Colors (Light) */
   --color-bg: #FFF8E1;
   --color-text: #2D2D2D;
-  --color-primary: #FF9933;
+  --color-primary: #b84c00;
   --color-secondary: #800000;
-  --color-border: #FF9933;
+  --color-border: #b84c00;
   --color-cream: #FFF8E1;
   --color-cream-transparent: rgba(255, 248, 225, 0.85);
   --color-text-muted: #374151;
@@ -22,9 +22,9 @@
   /* Main Theme Colors (Dark) */
   --color-bg: #1A1A1A;
   --color-text: #E5E7EB;
-  --color-primary: #D4AF37;
-  --color-secondary: #D4AF37;
-  --color-border: #D4AF37;
+  --color-primary: #cea00d;
+  --color-secondary: #cea00d;
+  --color-border: #cea00d;
   --color-cream: #1A1A1A;
   --color-cream-transparent: rgba(26, 26, 26, 0.85);
   --color-text-muted: #D1D5DB;
@@ -260,7 +260,7 @@ body {
 
 .playlist-create-btn {
   padding: 8px 12px;
-  background: #10b981;
+  background: #047857;
   color: white;
   border-radius: 4px;
   font-weight: bold;
@@ -313,7 +313,7 @@ body {
 
 .playlist-play-btn {
   padding: 6px 12px;
-  background: #10b981;
+  background: #047857;
   color: white;
   border-radius: 4px;
   font-weight: bold;
@@ -328,7 +328,7 @@ body {
 
 .playlist-delete-btn {
   padding: 6px 10px;
-  background: #ef4444;
+  background: #dc2626;
   color: white;
   border-radius: 4px;
   border: none;
@@ -371,13 +371,17 @@ body {
   font-size: 0.95rem;
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .chip.active {
   background-color: var(--color-primary);
   color: #fff;
   font-weight: bold;
+}
+
+.dark .chip.active {
+  color: #1A1A1A;
 }
 
 /* Mobile Drawer */
@@ -476,9 +480,14 @@ body {
   opacity: 1;
 }
 .add-btn {
-  background-color: #10b981;
+  background-color: rgb(4, 120, 87);
   color: white;
-  border-color: #10b981;
+  border-color: rgb(4, 120, 87);
+}
+.add-icon {
+  color: #FFFFFF;
+  margin-right: 4px;
+  font-size: 1.3rem;
 }
 .install-btn {
   background-color: var(--color-primary);

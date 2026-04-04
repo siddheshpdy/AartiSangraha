@@ -10,7 +10,7 @@ The goal is to blend modern "Glassmorphism" with traditional Indian spiritual ae
 ### 🎨 Color Palette
 | Element | Hex Code | Purpose |
 | :--- | :--- | :--- |
-| **Primary Saffron** | `#FF9933` | Primary buttons, active states, icons. |
+| **Primary Saffron** | `#da6d00` | Primary buttons, active states, icons. |
 | **Deep Maroon** | `#800000` | Header text, borders, secondary accents. |
 | **Cream/Amber** | `#FFF8E1` | Main background (soft on eyes for low light). |
 | **Dark Grey** | `#2D2D2D` | Body text for high readability. |
@@ -52,7 +52,7 @@ Add these to your `tailwind.config.js` to use the theme easily:
 theme: {
   extend: {
     colors: {
-      saffron: '#FF9933',
+      saffron: '#da6d00',
       maroon: '#800000',
       cream: '#FFF8E1',
     },
@@ -69,4 +69,4 @@ Card Background: #262626
 
 Text: #E5E7EB (Light Grey)
 
-Accent: Gold (#D4AF37) instead of Maroon.
+Accent: Gold (#cea00d) instead of Maroon.
