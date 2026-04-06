@@ -10,8 +10,6 @@ const __dirname = path.dirname(__filename);
 const contentDir = path.join(__dirname, '../content');
 const outputDir = path.join(__dirname, '../data');
 const outputFile = path.join(outputDir, 'Aartya.json');
-const publicDir = path.join(__dirname, '../../public');
-const sitemapFile = path.join(publicDir, 'sitemap.xml');
 
 function isDevanagari(text) {
   return /[\u0900-\u097F]/.test(text);
@@ -209,30 +207,6 @@ export function generateAartya() {
     if (!fs.existsSync(outputFile) || fs.readFileSync(outputFile, 'utf8') !== newJson) {
         fs.writeFileSync(outputFile, newJson);
         console.log("✅ JSON generated/updated!");
-    }
-
-    // Generate sitemap.xml for SEO
-    const domain = "https://aartisangraha.co.in";
-    let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    sitemapContent += `  <url>\n    <loc>${domain}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
-    
-    allContent.forEach(aarti => {
-        sitemapContent += `  <url>\n    <loc>${domain}/aarti/${aarti.id}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
-    });
-    
-    sitemapContent += `</urlset>`;
-    if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
-    
-    if (!fs.existsSync(sitemapFile) || fs.readFileSync(sitemapFile, 'utf8') !== sitemapContent) {
-        fs.writeFileSync(sitemapFile, sitemapContent);
-        console.log("✅ Sitemap generated/updated!");
-    }
-
-    // Optionally generate robots.txt
-    const robotsTxtContent = `User-agent: *\nAllow: /\n\nSitemap: ${domain}/sitemap.xml\n`;
-    const robotsFile = path.join(publicDir, 'robots.txt');
-    if (!fs.existsSync(robotsFile) || fs.readFileSync(robotsFile, 'utf8') !== robotsTxtContent) {
-        fs.writeFileSync(robotsFile, robotsTxtContent);
     }
 }
 

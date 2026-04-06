@@ -359,7 +359,8 @@ function App() {
     "Shloka": script === 'latin' ? "Shloka Sangraha" : "श्लोक संग्रह",
     "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट",
     "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर",
-    "About": script === 'latin' ? "About Us" : "आमच्याबद्दल"
+    "About": script === 'latin' ? "About Us" : "आमच्याबद्दल",
+    "Contact": script === 'latin' ? "Contact Us" : "संपर्क"
   }), [script]);
 
   // Dynamic Page Title for SEO and Bookmarking
@@ -444,7 +445,7 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
-    if (["Help", "About"].includes(contentType)) return [];
+    if (["Help", "About", "Contact"].includes(contentType)) return [];
     
     const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
     
@@ -546,7 +547,7 @@ function App() {
   // Filter against the pre-sorted data
   const filtered = useMemo(() => {
     let result = sortedAartiData.filter(a => {
-      if (["Help", "About"].includes(contentType)) return false;
+      if (["Help", "About", "Contact"].includes(contentType)) return false;
 
       if (contentType === "Playlists") {
         if (!selectedCategory.startsWith("playlist-")) return false;
@@ -822,7 +823,8 @@ function App() {
     "Shloka": script === 'latin' ? "Shloka" : "श्लोक",
     "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट",
     "Help": script === 'latin' ? "Help" : "मदत",
-    "About": script === 'latin' ? "About" : "बद्दल"
+    "About": script === 'latin' ? "About" : "बद्दल",
+    "Contact": script === 'latin' ? "Contact" : "संपर्क"
   };
 
   if (isLoadingData) {
@@ -908,7 +910,7 @@ function App() {
             </div>
             
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About", "Contact"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -962,7 +964,7 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About"].map(type => (
+              {["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About", "Contact"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -984,7 +986,7 @@ function App() {
       )}
       
       <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        {!["Playlists", "Help", "About"].includes(contentType) && (
+        {!["Playlists", "Help", "About", "Contact"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
@@ -1081,7 +1083,7 @@ function App() {
             </div>
           </div>
         )}
-        {!["Playlists", "Help", "About"].includes(contentType) && (
+        {!["Playlists", "Help", "About", "Contact"].includes(contentType) && (
           <div className="filter-chips">
             {categories.map(category => {
               let label = category;
@@ -1229,6 +1231,25 @@ function App() {
           </article>
         )}
         
+        {contentType === "Contact" && (
+          <article className="aarti-card help-container">
+            <h2 className="help-title">{script === 'latin' ? "Contact Us" : "संपर्क"}</h2>
+            
+            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
+              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>📧</div>
+              <div>
+                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Get in Touch" : "आमच्याशी संपर्क साधा"}</h3>
+                <p style={{ margin: 0, lineHeight: '1.5' }}>
+                  {script === 'latin' 
+                    ? "For any updates or issues write email to " 
+                    : "कोणत्याही अपडेट्स किंवा समस्यांसाठी येथे ईमेल लिहा: "}
+                  <a href="mailto:siddheshpdy@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>{"siddheshpdy@gmail.com"}</a>
+                </p>
+              </div>
+            </div>
+          </article>
+        )}
+        
         {isNotFound && (
           <article className="aarti-card help-container" style={{ textAlign: 'center', padding: '40px 20px' }}>
             <h2 className="help-title" style={{ fontSize: '2rem', marginBottom: '15px' }}>
@@ -1360,17 +1381,17 @@ function App() {
           </article>
           );
         })}
-        {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Help", "About"].includes(contentType) && (
+        {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Help", "About", "Contact"].includes(contentType) && (
           <div ref={loadMoreRef} className="load-more-container">
             <div className="loading-spinner load-more-spinner"></div>
           </div>
         )}
-        {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["Help", "About"].includes(contentType) && (
+        {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["Help", "About", "Contact"].includes(contentType) && (
           <div className="end-of-list-message">
             {script === 'latin' ? "~ You have reached the end ~" : "~ तुम्ही यादीच्या शेवटी पोहोचलात ~"}
           </div>
         )}
-        {filtered.length === 0 && !focusedAartiId && !["Help", "About"].includes(contentType) && (
+        {filtered.length === 0 && !focusedAartiId && !["Help", "About", "Contact"].includes(contentType) && (
           <p className="no-results">
             {contentType === "Playlists" 
               ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")
