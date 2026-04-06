@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { generateAartya } from './src/scripts/prebuild.js'
 import { addUuids } from './src/scripts/add-uuids.js'
+import fs from 'fs'
+import path from 'path'
 
 import { VitePWA } from 'vite-plugin-pwa'
 
@@ -37,6 +39,38 @@ export default defineConfig({
           addUuids();
           generateAartya();
         }
+      }
+    },
+    {
+      name: 'generate-sitemap',
+      generateBundle() {
+        const aartyaPath = path.resolve(process.cwd(), 'src/data/Aartya.json');
+        if (!fs.existsSync(aartyaPath)) return;
+        
+        const aartyaData = JSON.parse(fs.readFileSync(aartyaPath, 'utf-8'));
+        const domain = "https://aartisangraha.co.in";
+        
+        let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+        sitemapContent += `  <url>\n    <loc>${domain}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
+        
+        aartyaData.forEach(aarti => {
+            sitemapContent += `  <url>\n    <loc>${domain}/aarti/${aarti.id}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+        });
+        
+        sitemapContent += `</urlset>`;
+
+        this.emitFile({
+          type: 'asset',
+          fileName: 'sitemap.xml',
+          source: sitemapContent
+        });
+
+        const robotsTxtContent = `User-agent: *\nAllow: /\n\nSitemap: ${domain}/sitemap.xml\n`;
+        this.emitFile({
+          type: 'asset',
+          fileName: 'robots.txt',
+          source: robotsTxtContent
+        });
       }
     },
     VitePWA({

@@ -28,6 +28,7 @@ jobs:
       - name: Build
         run: |
           npm run build
+          cp ./dist/static/index.html ./dist/static/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
