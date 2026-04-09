@@ -266,6 +266,7 @@ function App() {
   const location = useLocation();
   const [sortedAartiData, setSortedAartiData] = useState([]);
   const [isLoadingData, setIsLoadingData] = useState(true);
+  const [isFadingSplash, setIsFadingSplash] = useState(false);
   const [query, setQuery] = useState("");
   const [contentType, setContentType] = useState("Aartya");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -829,10 +830,12 @@ function App() {
 
   if (isLoadingData) {
     return (
-      <div className="pwa-splash-screen">
-        <div className="loading-spinner"></div>
-        <div className="pwa-splash-title">Loading...</div>
-      </div>
+      <>
+        <div key="splash" className="pwa-splash-screen">
+          <div className="loading-spinner"></div>
+          <div className="pwa-splash-title">Aarti Sangraha</div>
+        </div>
+      </>
     );
   }
 
@@ -856,7 +859,14 @@ function App() {
   const displayedAartya = (focusedAartiId || isReorderableList) ? filtered : filtered.slice(0, visibleCount);
 
   return (
-    <main className="app-container">
+    <>
+      {isFadingSplash && (
+        <div key="splash" className="pwa-splash-screen fade-out">
+          <div className="loading-spinner"></div>
+          <div className="pwa-splash-title">Aarti Sangraha</div>
+        </div>
+      )}
+      <main key="main" className="app-container">
       <Helmet>
         <title>{`${currentTitle}${focusedAartiId ? " - Aarti Sangraha" : ""}`}</title>
         <meta name="description" content={currentDescription} />
@@ -918,7 +928,7 @@ function App() {
             </div>
 
             <div className="drawer-section">
-              <React.Suspense fallback={<div className="loading-spinner" style={{ width: '24px', height: '24px', margin: '0 auto' }}></div>}>
+              <React.Suspense fallback={<div className="loading-spinner small-spinner"></div>}>
                 <BackupRestoreSettings theme={theme} />
               </React.Suspense>
             </div>
@@ -972,7 +982,7 @@ function App() {
             </div>
 
             <div className="sidebar-section">
-              <React.Suspense fallback={<div className="loading-spinner" style={{ width: '24px', height: '24px', margin: '0 auto' }}></div>}>
+              <React.Suspense fallback={<div className="loading-spinner small-spinner"></div>}>
                 <BackupRestoreSettings theme={theme} />
               </React.Suspense>
             </div>
@@ -1112,91 +1122,91 @@ function App() {
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "How to use Aarti Sangraha?" : "आरती संग्रह कसे वापरावे?"}</h2>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>☀️/🌙</div>
+            <div className="help-section">
+              <div className="help-icon">☀️/🌙</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Dark Mode" : "डार्क मोड"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Toggle between Light, Dark, and System themes using the top-left sun/moon icon." : "डाव्या बाजूच्या आयकॉनचा वापर करून लाईट किंवा डार्क थीम निवडा."}</p>
+                <h3>{script === 'latin' ? "Dark Mode" : "डार्क मोड"}</h3>
+                <p>{script === 'latin' ? "Toggle between Light, Dark, and System themes using the top-left sun/moon icon." : "डाव्या बाजूच्या आयकॉनचा वापर करून लाईट किंवा डार्क थीम निवडा."}</p>
               </div>
             </div>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>A/अ</div>
+            <div className="help-section">
+              <div className="help-icon">A/अ</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Transliteration" : "लिप्यांतरण"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Switch between English (Latin) and Marathi (Devanagari) scripts instantly to read comfortably." : "इंग्रजी (लॅटिन) आणि मराठी (देवनागरी) लिपींमध्ये त्वरित बदल करा."}</p>
+                <h3>{script === 'latin' ? "Transliteration" : "लिप्यांतरण"}</h3>
+                <p>{script === 'latin' ? "Switch between English (Latin) and Marathi (Devanagari) scripts instantly to read comfortably." : "इंग्रजी (लॅटिन) आणि मराठी (देवनागरी) लिपींमध्ये त्वरित बदल करा."}</p>
               </div>
             </div>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>A- / A+</div>
+            <div className="help-section">
+              <div className="help-icon">A- / A+</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Font Resizer" : "फॉन्ट आकार"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Increase or decrease the lyrics text size on any Aarti card to suit your reading preference." : "तुमच्या वाचनाच्या सोयीनुसार कोणत्याही आरती कार्डवर मजकुराचा आकार कमी किंवा जास्त करा."}</p>
+                <h3>{script === 'latin' ? "Font Resizer" : "फॉन्ट आकार"}</h3>
+                <p>{script === 'latin' ? "Increase or decrease the lyrics text size on any Aarti card to suit your reading preference." : "तुमच्या वाचनाच्या सोयीनुसार कोणत्याही आरती कार्डवर मजकुराचा आकार कमी किंवा जास्त करा."}</p>
               </div>
             </div>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>▶</div>
+            <div className="help-section">
+              <div className="help-icon">▶</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Custom Playlists & Puja Player" : "कस्टम प्लेलिस्ट आणि पूजा प्लेयर"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Create custom sequences (e.g., 'Morning Puja'). Add Aartis to them and use the Puja Player to navigate sequentially without distractions." : "तुमच्या आवडीनुसार प्लेलिस्ट तयार करा (उदा. 'सकाळची पूजा'). यात आरत्या जोडा आणि विनाव्यत्यय एकापाठोपाठ एक आरती वाचण्यासाठी पूजा प्लेयर वापरा."}</p>
+                <h3>{script === 'latin' ? "Custom Playlists & Puja Player" : "कस्टम प्लेलिस्ट आणि पूजा प्लेयर"}</h3>
+                <p>{script === 'latin' ? "Create custom sequences (e.g., 'Morning Puja'). Add Aartis to them and use the Puja Player to navigate sequentially without distractions." : "तुमच्या आवडीनुसार प्लेलिस्ट तयार करा (उदा. 'सकाळची पूजा'). यात आरत्या जोडा आणि विनाव्यत्यय एकापाठोपाठ एक आरती वाचण्यासाठी पूजा प्लेयर वापरा."}</p>
               </div>
             </div>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>⤢</div>
+            <div className="help-section">
+              <div className="help-icon">⤢</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Focus Mode" : "फोकस मोड"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Tap on any Aarti card to enter distraction-free mode. It expands the card, hiding menus and other items." : "कोणत्याही आरतीवर क्लिक केल्यास ती पूर्ण स्क्रीनवर दिसेल, जेणेकरून तुम्ही लक्ष केंद्रित करून वाचू शकाल."}</p>
+                <h3>{script === 'latin' ? "Focus Mode" : "फोकस मोड"}</h3>
+                <p>{script === 'latin' ? "Tap on any Aarti card to enter distraction-free mode. It expands the card, hiding menus and other items." : "कोणत्याही आरतीवर क्लिक केल्यास ती पूर्ण स्क्रीनवर दिसेल, जेणेकरून तुम्ही लक्ष केंद्रित करून वाचू शकाल."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>💡/💤</div>
+            <div className="help-section">
+              <div className="help-icon">💡/💤</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Wake Lock" : "वेक लॉक"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Keep your screen awake while reading or performing puja by toggling the bulb/zzz icon in the menu." : "वाचत असताना किंवा पूजा करताना तुमची स्क्रीन चालू ठेवण्यासाठी मेनूमधील बल्ब आयकॉनवर क्लिक करा."}</p>
+                <h3>{script === 'latin' ? "Wake Lock" : "वेक लॉक"}</h3>
+                <p>{script === 'latin' ? "Keep your screen awake while reading or performing puja by toggling the bulb/zzz icon in the menu." : "वाचत असताना किंवा पूजा करताना तुमची स्क्रीन चालू ठेवण्यासाठी मेनूमधील बल्ब आयकॉनवर क्लिक करा."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>🔍</div>
+            <div className="help-section">
+              <div className="help-icon">🔍</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Search & Filters" : "शोध आणि फिल्टर्स"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Search across titles and lyrics in English or Marathi. Use the top chips to quickly find Aartya by deity." : "इंग्रजी किंवा मराठीत शीर्षक आणि मजकूर शोधा. विशिष्ट देवांच्या आरत्या लवकर शोधण्यासाठी वरील चिप्सचा वापर करा."}</p>
+                <h3>{script === 'latin' ? "Search & Filters" : "शोध आणि फिल्टर्स"}</h3>
+                <p>{script === 'latin' ? "Search across titles and lyrics in English or Marathi. Use the top chips to quickly find Aartya by deity." : "इंग्रजी किंवा मराठीत शीर्षक आणि मजकूर शोधा. विशिष्ट देवांच्या आरत्या लवकर शोधण्यासाठी वरील चिप्सचा वापर करा."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>❤️</div>
+            <div className="help-section">
+              <div className="help-icon">❤️</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Favorites" : "आवडत्या आरत्या"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Tap the heart icon on any Aarti to save it to your Favorites list. You can reorder them using the Up/Down arrows." : "कोणतीही आरती तुमच्या 'आवडत्या' यादीत जोडण्यासाठी हार्ट आयकॉनवर टॅप करा. तुम्ही त्यांना वर/खाली बाणांचा वापर करून क्रमवारी लावू शकता."}</p>
+                <h3>{script === 'latin' ? "Favorites" : "आवडत्या आरत्या"}</h3>
+                <p>{script === 'latin' ? "Tap the heart icon on any Aarti to save it to your Favorites list. You can reorder them using the Up/Down arrows." : "कोणतीही आरती तुमच्या 'आवडत्या' यादीत जोडण्यासाठी हार्ट आयकॉनवर टॅप करा. तुम्ही त्यांना वर/खाली बाणांचा वापर करून क्रमवारी लावू शकता."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>📥</div>
+            <div className="help-section">
+              <div className="help-icon">📥</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Offline Use & Install" : "ऑफलाइन आणि इन्स्टॉल"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Install the app on your home screen via the menu to read Aartya completely offline without internet." : "इंटरनेटशिवाय आरत्या वाचण्यासाठी मेनूमधून हे ॲप तुमच्या होम स्क्रीनवर इन्स्टॉल करा."}</p>
+                <h3>{script === 'latin' ? "Offline Use & Install" : "ऑफलाइन आणि इन्स्टॉल"}</h3>
+                <p>{script === 'latin' ? "Install the app on your home screen via the menu to read Aartya completely offline without internet." : "इंटरनेटशिवाय आरत्या वाचण्यासाठी मेनूमधून हे ॲप तुमच्या होम स्क्रीनवर इन्स्टॉल करा."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>🔗</div>
+            <div className="help-section">
+              <div className="help-icon">🔗</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Share" : "शेअर करा"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Send your favorite Aartya directly to friends and family on WhatsApp or other apps using the share icon." : "तुमच्या आवडत्या आरत्या मित्र आणि कुटुंबासोबत WhatsApp किंवा इतर ॲप्सवर थेट पाठवण्यासाठी शेअर आयकॉनचा वापर करा."}</p>
+                <h3>{script === 'latin' ? "Share" : "शेअर करा"}</h3>
+                <p>{script === 'latin' ? "Send your favorite Aartya directly to friends and family on WhatsApp or other apps using the share icon." : "तुमच्या आवडत्या आरत्या मित्र आणि कुटुंबासोबत WhatsApp किंवा इतर ॲप्सवर थेट पाठवण्यासाठी शेअर आयकॉनचा वापर करा."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>💾</div>
+            <div className="help-section">
+              <div className="help-icon">💾</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Backup & Restore" : "बॅकअप आणि रिस्टोअर"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Use the menu to export your playlists, favorites, and settings, keeping them safe if you change devices." : "तुमच्या प्लेलिस्ट, आवडत्या आरत्या आणि सेटिंग्ज सुरक्षित ठेवण्यासाठी किंवा नवीन फोनवर घेण्यासाठी मेनूमधून बॅकअप आणि रिस्टोअर वापरा."}</p>
+                <h3>{script === 'latin' ? "Backup & Restore" : "बॅकअप आणि रिस्टोअर"}</h3>
+                <p>{script === 'latin' ? "Use the menu to export your playlists, favorites, and settings, keeping them safe if you change devices." : "तुमच्या प्लेलिस्ट, आवडत्या आरत्या आणि सेटिंग्ज सुरक्षित ठेवण्यासाठी किंवा नवीन फोनवर घेण्यासाठी मेनूमधून बॅकअप आणि रिस्टोअर वापरा."}</p>
               </div>
             </div>
           </article>
@@ -1205,30 +1215,30 @@ function App() {
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "About Aarti Sangraha" : "आरती संग्रहाबद्दल"}</h2>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>ℹ️</div>
+            <div className="help-section">
+              <div className="help-icon">ℹ️</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Purpose" : "उद्देश"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "Aarti Sangraha is a free, open-source, offline-capable digital collection of Marathi devotional texts. It aims to preserve and make accessible traditional Aartya, Stotras, and Mantras for daily spiritual practice without distractions." : "आरती संग्रह हा मराठी भक्ती साहित्याचा एक विनामूल्य, ओपन-सोर्स आणि ऑफलाइन चालणारा डिजिटल संग्रह आहे. पारंपरिक आरत्या, स्तोत्रे आणि मंत्र दैनंदिन उपासनेसाठी विनाव्यत्यय उपलब्ध करून देणे हा यामागील मुख्य उद्देश आहे."}</p>
+                <h3>{script === 'latin' ? "Purpose" : "उद्देश"}</h3>
+                <p>{script === 'latin' ? "Aarti Sangraha is a free, open-source, offline-capable digital collection of Marathi devotional texts. It aims to preserve and make accessible traditional Aartya, Stotras, and Mantras for daily spiritual practice without distractions." : "आरती संग्रह हा मराठी भक्ती साहित्याचा एक विनामूल्य, ओपन-सोर्स आणि ऑफलाइन चालणारा डिजिटल संग्रह आहे. पारंपरिक आरत्या, स्तोत्रे आणि मंत्र दैनंदिन उपासनेसाठी विनाव्यत्यय उपलब्ध करून देणे हा यामागील मुख्य उद्देश आहे."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>📱</div>
+            <div className="help-section">
+              <div className="help-icon">📱</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Offline Capabilities (PWA)" : "ऑफलाइन सुविधा (PWA)"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "This application is built as a Progressive Web App (PWA). Once you open it, it caches the text data so you can read all your favorite Aartya even without an active internet connection or while in Airplane mode." : "हे ॲप्लिकेशन प्रोग्रेसिव्ह वेब ॲप (PWA) म्हणून तयार केले आहे. एकदा हे उघडल्यानंतर, ते सर्व डेटा सेव्ह करते, जेणेकरून तुम्ही इंटरनेट कनेक्शन नसताना किंवा एअरप्लेन मोडमध्येही आरत्या वाचू शकता."}</p>
+                <h3>{script === 'latin' ? "Offline Capabilities (PWA)" : "ऑफलाइन सुविधा (PWA)"}</h3>
+                <p>{script === 'latin' ? "This application is built as a Progressive Web App (PWA). Once you open it, it caches the text data so you can read all your favorite Aartya even without an active internet connection or while in Airplane mode." : "हे ॲप्लिकेशन प्रोग्रेसिव्ह वेब ॲप (PWA) म्हणून तयार केले आहे. एकदा हे उघडल्यानंतर, ते सर्व डेटा सेव्ह करते, जेणेकरून तुम्ही इंटरनेट कनेक्शन नसताना किंवा एअरप्लेन मोडमध्येही आरत्या वाचू शकता."}</p>
               </div>
             </div>
 
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>🤝</div>
+            <div className="help-section">
+              <div className="help-icon">🤝</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Contribute & Contact" : "योगदान आणि संपर्क"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>
+                <h3>{script === 'latin' ? "Contribute & Contact" : "योगदान आणि संपर्क"}</h3>
+                <p>
                   {script === 'latin' 
-                    ? <>We welcome contributions! To add new Aartya, you can use the '+' button in the menu. For any updates, corrections, or support, please visit the <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Contact</a> page.</>
-                    : <>आम्ही तुमच्या योगदानाचे स्वागत करतो! नवीन आरत्या जोडण्यासाठी, तुम्ही मेनूमधील '+' बटण वापरू शकता. कोणत्याही सुधारणा किंवा आमच्याशी संपर्क साधण्यासाठी, कृपया <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>संपर्क</a> पानाला भेट द्या.</>
+                    ? <>We welcome contributions! To add new Aartya, you can use the '+' button in the menu. For any updates, corrections, or support, please visit the <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="help-link">Contact</a> page.</>
+                    : <>आम्ही तुमच्या योगदानाचे स्वागत करतो! नवीन आरत्या जोडण्यासाठी, तुम्ही मेनूमधील '+' बटण वापरू शकता. कोणत्याही सुधारणा किंवा आमच्याशी संपर्क साधण्यासाठी, कृपया <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="help-link">संपर्क</a> पानाला भेट द्या.</>
                   }
                 </p>
               </div>
@@ -1240,15 +1250,15 @@ function App() {
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "Contact Us" : "संपर्क"}</h2>
             
-            <div className="help-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px' }}>
-              <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>📧</div>
+            <div className="help-section">
+              <div className="help-icon">📧</div>
               <div>
-                <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Get in Touch" : "आमच्याशी संपर्क साधा"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>
+                <h3>{script === 'latin' ? "Get in Touch" : "आमच्याशी संपर्क साधा"}</h3>
+                <p>
                   {script === 'latin' 
                     ? "For any updates or issues write email to " 
                     : "कोणत्याही अपडेट्स किंवा समस्यांसाठी येथे ईमेल लिहा: "}
-                  <a href="mailto:siddheshpdy@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>{"siddheshpdy@gmail.com"}</a>
+                  <a href="mailto:siddheshpdy@gmail.com" className="help-link">{"siddheshpdy@gmail.com"}</a>
                 </p>
               </div>
             </div>
@@ -1256,16 +1266,16 @@ function App() {
         )}
         
         {isNotFound && (
-          <article className="aarti-card help-container" style={{ textAlign: 'center', padding: '40px 20px' }}>
-            <h2 className="help-title" style={{ fontSize: '2rem', marginBottom: '15px' }}>
+          <article className="aarti-card help-container not-found-container">
+            <h2 className="help-title not-found-title">
               {script === 'latin' ? "404 - Not Found" : "४०४ - सापडले नाही"}
             </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '30px', fontSize: '1.1rem' }}>
+            <p className="not-found-text">
               {script === 'latin' 
                 ? "The requested Aarti could not be found or has been removed." 
                 : "तुम्ही शोधत असलेली आरती सापडली नाही किंवा काढून टाकण्यात आली आहे."}
             </p>
-            <button className="add-btn" onClick={() => navigate('/')} style={{ padding: '10px 20px', cursor: 'pointer' }}>
+            <button className="add-btn return-home-btn" onClick={() => navigate('/')}>
               {script === 'latin' ? "🏠 Return to Home" : "🏠 मुख्य पानावर जा"}
             </button>
           </article>
@@ -1407,7 +1417,12 @@ function App() {
 
       {/* Puja Player Fullscreen Overlay */}
       {activePlaylist && (
-        <React.Suspense fallback={<div className="pwa-splash-screen" style={{ position: 'fixed', zIndex: 9999 }}><div className="loading-spinner"></div></div>}>
+        <React.Suspense fallback={
+          <div className="pwa-splash-screen fullscreen-overlay-splash">
+            <div className="loading-spinner"></div>
+            <div className="pwa-splash-title">Aarti Sangraha</div>
+          </div>
+        }>
         <PujaPlayer 
           playlist={activePlaylist} 
           allAartya={sortedAartiData} 
@@ -1478,7 +1493,8 @@ function App() {
           <MonetagAdUnit zoneId="10790266" containerStyle={{ width: '100%', height: '100%' }} />
         </div>
       )} */}
-    </main>
+      </main>
+    </>
   );
 }
 
