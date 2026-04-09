@@ -890,3 +890,16 @@ body {
     font-size: 1.2rem;
   }
 }
+
+/* Utility for smaller loading spinners */
+.loading-spinner.small-spinner {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+
+/* Fullscreen overlay splash for PujaPlayer Suspense fallback */
+.fullscreen-overlay-splash {
+  position: fixed;
+  z-index: 9999;
+}
