@@ -71,3 +71,28 @@ The content is sourced from a single JSON file, `Aartya.json`. Each object in th
 ```
 
 This centralized data model allows for easy filtering, searching, and rendering across the application.
+
+## 7. AI Agent Directives & Constraints
+
+To ensure codebase stability, predictability, and high code quality, all AI agents and coding assistants MUST adhere to the following strict constraints when generating responses, updating code, or designing functionality:
+
+### 7.1. Plan-First Approach
+* **Always formulate a plan first.** Before writing or outputting any code modifications, you must explicitly outline a clear, step-by-step plan of action based on the user's request.
+* Think step-by-step about how the requested changes interact with the existing architecture outlined in this document before proposing diffs.
+* **Explain the "Why".** For every code modification or architecture change proposed in your plan, you must explicitly explain *why* it is necessary to fulfill the user's request. Avoid arbitrary or unexplained refactors.
+
+### 7.2. Strict Scope Containment (No Unnecessary Changes)
+* **Modify only what is requested.** Do not refactor, rewrite, reformat, or "clean up" adjacent code that falls outside the explicit scope of the user's prompt.
+* Do not alter existing logic, variable names, or file structures unless it is absolutely necessary to fulfill the prompt.
+* Keep code diffs as minimal, localized, and targeted as possible.
+
+### 7.3. Anti-Hallucination & Reality Check
+* **Do not guess or assume.** If a necessary file, component, API, or piece of context is missing from your current view, do not hallucinate its implementation. Explicitly ask the user to provide the missing file.
+* Ensure all code suggestions use the exact variable names, routing structures, and data models (e.g., `Aartya.json` schema) provided in the context.
+
+### 7.4. Styling Adherence
+* When adding new elements, adhere to the `App.css` rule established in Section 5. However, **do not** unsolicitedly refactor existing inline styles into CSS classes unless the user specifically asks for a styling refactor.
+
+### 7.5. Mandatory Documentation Checks
+* **Consult the Design System:** Before implementing any UI changes or new components, you MUST check `styles.md` to ensure compliance with the official color palette, typography, and component styling guidelines.
+* **Follow Feature Protocols:** Always reference `FeatureImplementation.md` to understand the current state of features. Ensure your proposed changes do not conflict with "COMPLETED" features and strictly follow the "Implementation Protocol" outlined at the bottom of that document.

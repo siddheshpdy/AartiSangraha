@@ -1225,7 +1225,12 @@ function App() {
               <div className="help-icon" style={{ flex: '0 0 75px', textAlign: 'center', fontSize: '1.5rem', whiteSpace: 'nowrap' }}>🤝</div>
               <div>
                 <h3 style={{ margin: '0 0 8px 0' }}>{script === 'latin' ? "Contribute & Contact" : "योगदान आणि संपर्क"}</h3>
-                <p style={{ margin: 0, lineHeight: '1.5' }}>{script === 'latin' ? "We welcome contributions! If you notice any corrections or wish to add new Aartya, you can use the '+' button in the menu. For support or feedback, please reach out via the provided Google Form." : "आम्ही तुमच्या योगदानाचे स्वागत करतो! जर तुम्हाला काही सुधारणा सुचवायच्या असतील किंवा नवीन आरत्या जोडायच्या असतील, तर तुम्ही मेनूमधील '+' बटण वापरू शकता. मदत किंवा अभिप्रायासाठी, कृपया दिलेल्या गुगल फॉर्मद्वारे संपर्क साधा."}</p>
+                <p style={{ margin: 0, lineHeight: '1.5' }}>
+                  {script === 'latin' 
+                    ? <>We welcome contributions! To add new Aartya, you can use the '+' button in the menu. For any updates, corrections, or support, please visit the <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Contact</a> page.</>
+                    : <>आम्ही तुमच्या योगदानाचे स्वागत करतो! नवीन आरत्या जोडण्यासाठी, तुम्ही मेनूमधील '+' बटण वापरू शकता. कोणत्याही सुधारणा किंवा आमच्याशी संपर्क साधण्यासाठी, कृपया <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>संपर्क</a> पानाला भेट द्या.</>
+                  }
+                </p>
               </div>
             </div>
           </article>
