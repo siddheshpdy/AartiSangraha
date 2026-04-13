@@ -315,7 +315,7 @@ function App() {
         const dataArray = Array.isArray(rawData) ? rawData : [];
         
         // Spread into a new array to prevent mutating a read-only ES module
-        const sorted = [...dataArray].sort((a, b) => {
+        const sorted = dataArray.map((item, index) => ({ ...item, _originalIndex: index })).sort((a, b) => {
           const deityA = (a.deityEng || "others").toLowerCase().trim();
           const deityB = (b.deityEng || "others").toLowerCase().trim();
           const indexA = deityOrder.indexOf(deityA);
@@ -324,7 +324,8 @@ function App() {
           const weightB = indexB === -1 ? 999 : indexB;
           
           if (weightA !== weightB) return weightA - weightB;
-          return (a.title || "").localeCompare(b.title || "");
+          // Preserve original markdown file sequence instead of sorting alphabetically
+          return a._originalIndex - b._originalIndex;
         });
 
         sorted.forEach(a => {
