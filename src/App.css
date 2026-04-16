@@ -736,6 +736,15 @@ body {
   word-break: break-word;
   overflow-wrap: break-word;
 }
+.aarti-description {
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin: 1.5rem 0 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--drawer-border-color);
+  line-height: 1.7;
+  font-size: 1rem;
+}
 .lyrics-preview {
   max-height: 120px;
   overflow: hidden;

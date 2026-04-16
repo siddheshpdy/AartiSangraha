@@ -362,7 +362,6 @@ function App() {
     "Shloka": script === 'latin' ? "Shloka Sangraha" : "श्लोक संग्रह",
     "Playlists": script === 'latin' ? "My Playlists" : "माझी प्लेलिस्ट",
     "Help": script === 'latin' ? "Help & Usage" : "मदत आणि वापर",
-    "About": script === 'latin' ? "About Us" : "आमच्याबद्दल",
     "Contact": script === 'latin' ? "Contact Us" : "संपर्क",
     "Privacy": script === 'latin' ? "Privacy Policy" : "गोपनीयता धोरण",
     "Terms": script === 'latin' ? "Terms of Use" : "वापराच्या अटी"
@@ -450,7 +449,7 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
-    if (["Home", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType)) return [];
+    if (["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType)) return [];
     
     const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
     
@@ -552,7 +551,7 @@ function App() {
   // Filter against the pre-sorted data
   const filtered = useMemo(() => {
     let result = sortedAartiData.filter(a => {
-      if (["Home", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType)) return false;
+      if (["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType)) return false;
 
       if (contentType === "Playlists") {
         if (!selectedCategory.startsWith("playlist-")) return false;
@@ -829,7 +828,6 @@ function App() {
     "Shloka": script === 'latin' ? "Shloka" : "श्लोक",
     "Playlists": script === 'latin' ? "Playlists" : "प्लेलिस्ट",
     "Help": script === 'latin' ? "Help" : "मदत",
-    "About": script === 'latin' ? "About" : "बद्दल",
     "Contact": script === 'latin' ? "Contact" : "संपर्क",
     "Privacy": script === 'latin' ? "Privacy" : "गोपनीयता",
     "Terms": script === 'latin' ? "Terms" : "अटी"
@@ -927,7 +925,7 @@ function App() {
             </div>
             
             <div className="content-type-tabs">
-              {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About", "Contact", "Privacy", "Terms"].map(type => (
+              {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -981,7 +979,7 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "About", "Contact", "Privacy", "Terms"].map(type => (
+              {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"].map(type => (
                 <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
                   {tabLabelMap[type]}
                 </button>
@@ -1003,7 +1001,7 @@ function App() {
       )}
       
       <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        {!["Home", "Playlists", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType) && (
+        {!["Home", "Playlists", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
@@ -1100,7 +1098,7 @@ function App() {
             </div>
           </div>
         )}
-        {!["Home", "Playlists", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType) && (
+        {!["Home", "Playlists", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div className="filter-chips">
             {categories.map(category => {
               let label = category;
@@ -1134,31 +1132,50 @@ function App() {
                   ? "Your daily companion for peace and devotion. A complete collection of authentic Marathi Aartis, Stotras, and Mantras, carefully curated for your daily spiritual practice." 
                   : "तुमच्या दैनंदिन साधनेसाठी एक हक्काचा सोबती. अस्सल आणि पारंपरिक आरत्या, स्तोत्रे आणि मंत्रांचा एक परिपूर्ण संग्रह, जो तुम्हाला भक्तीचा आनंद देतो."}
               </p>
-              <button className="home-cta-btn" onClick={() => setContentType('Aartya')}>
-                {script === 'latin' ? "Explore Aarti Collection →" : "आरती संग्रह पहा →"}
-              </button>
             </div>
             
             <div className="help-section">
               <h3>
-                <span>{script === 'latin' ? "Read Anywhere, Anytime" : "कधीही, कुठेही वाचा"}</span>
-                <span className="help-icon">🙏</span>
+                <span>{script === 'latin' ? "Our Story" : "आमची प्रेरणा"}</span>
+                <span className="help-icon">🪔</span>
               </h3>
-              <p>{script === 'latin' ? "No internet? No problem. The app works completely offline, ensuring your daily prayers are never interrupted." : "इंटरनेट नाही? काही हरकत नाही. तुमचे दैनंदिन नामस्मरण कधीही थांबू नये म्हणून हे ॲप पूर्णपणे ऑफलाइन चालते."}</p>
+              <p>{script === 'latin' ? "The idea for Aarti Sangraha was born from a simple, shared experience during the Maghi Ganpati festival at our village temple. With only one or two physical prayer books available, it was difficult for everyone to read and sing along together. Over the years, our family tried many solutions. Decades ago, my grandfather lovingly created xeroxed copies, but they eventually tore and faded. More recently, we cousins compiled a PDF, which was a step forward, but it was still hard to search. Seeing this, I realized I could use my skills to build a better way—a true digital home for our traditions." : "‘आरती संग्रह’ची कल्पना आमच्या गावातील मंदिरात, माघी गणपती उत्सवादरम्यानच्या एका साध्या, कौटुंबिक गरजेतून जन्माला आली. आरतीच्या वेळी फक्त एक-दोन छापील पुस्तकं उपलब्ध असल्यामुळे, सर्वांना एकत्र आरत्या म्हणणं कठीण जायचं. गेल्या काही वर्षांत, आमच्या कुटुंबाने यावर अनेक उपाय करून पाहिले. दशकांपूर्वी, माझ्या आजोबांनी काही आरत्या कागदावर लिहून त्याच्या झेरॉक्स प्रती काढल्या होत्या, पण कालांतराने त्या फाटल्या. अलीकडे, आम्ही भावंडांनी मिळून एक PDF तयार केली, पण ती शोधायला अवघड होती. हे सर्व पाहून, मला माझ्या कौशल्याचा वापर करून एक चांगला उपाय तयार करावासा वाटला - आपल्या परंपरांसाठी एक खरंखुरं डिजिटल घर."}</p>
             </div>
+
             <div className="help-section">
               <h3>
-                <span>{script === 'latin' ? "Comfortable Reading" : "वाचनाचा आनंद"}</span>
-                <span className="help-icon">📖</span>
+                <span>{script === 'latin' ? "Our Solution" : "आमचे समाधान"}</span>
+                <span className="help-icon">💡</span>
               </h3>
-              <p>{script === 'latin' ? "Switch instantly between Marathi and English scripts. Adjust the text size to your comfort and read effortlessly without straining your eyes." : "तुमच्या सोयीनुसार मराठी (देवनागरी) किंवा इंग्रजी लिपीमध्ये त्वरित बदल करा. डोळ्यांना त्रास होऊ नये म्हणून अक्षरांचा आकार तुमच्या आवडीनुसार कमी-जास्त करा."}</p>
+              <p>{script === 'latin' ? "That's when Aarti Sangraha was created. It's a reliable digital platform designed to be in your pocket whenever you need it. We focused on solving the real-world problems we faced:" : "तेव्हाच ‘आरती संग्रह’ची निर्मिती झाली. हे एक असं डिजिटल व्यासपीठ आहे जे तुम्हाला गरज असेल तेव्हा तुमच्या खिशात तयार असेल. आम्ही प्रत्यक्ष अनुभवातील समस्यांवर लक्ष केंद्रित केले:"}</p>
+              <ul className="solution-list">
+                <li><strong>{script === 'latin' ? "Works Perfectly Offline:" : "ऑफलाइन चालते:"}</strong> {script === 'latin' ? "Built for places like our village temple where the internet is unreliable. Once you visit the site, it saves the content so you can use it anywhere, anytime." : "हे ॲप खास आमच्या गावातील मंदिरासारख्या ठिकाणांसाठी बनवले आहे, जिथे इंटरनेटची सुविधा उपलब्ध नसते. एकदा तुम्ही वेबसाइट उघडली की, सर्व आरत्या तुमच्या फोनमध्ये सेव्ह होतात."}</li>
+                <li><strong>{script === 'latin' ? "Instant Search:" : "सहज शोधा:"}</strong> {script === 'latin' ? "Find any Aarti, Stotra, or Mantra in seconds, without flipping through pages." : "कोणतीही आरती, स्तोत्र किंवा मंत्र काही सेकंदात शोधा, पानं उलटण्याची गरज नाही."}</li>
+                <li><strong>{script === 'latin' ? "English Transliteration:" : "इंग्रजी लिपी:"}</strong> {script === 'latin' ? "To help the younger generation and our friends living abroad, we added an instant English script toggle so they can read, chant, and feel connected to their roots." : "नवीन पिढीला आणि परदेशात राहणाऱ्या आमच्या मित्रांना सहजपणे आरत्या वाचता याव्यात आणि आपल्या संस्कृतीशी जोडलेले राहाता यावे, यासाठी आम्ही इंग्रजी लिपीचा पर्याय दिला आहे."}</li>
+              </ul>
             </div>
+
             <div className="help-section">
               <h3>
-                <span>{script === 'latin' ? "Your Personal Puja Sequence" : "तुमची स्वतःची पूजा मांडणी"}</span>
-                <span className="help-icon">📿</span>
+                <span>{script === 'latin' ? "What is an 'App-like' Website?" : "'ॲप' सारखी वेबसाइट म्हणजे काय?"}</span>
+                <span className="help-icon">📱</span>
               </h3>
-              <p>{script === 'latin' ? "Create your own daily reading lists. Arrange the Aartis in your preferred order and read them one after another with complete peace of mind." : "तुमच्या रोजच्या पूजेसाठी स्वतंत्र याद्या तयार करा. आरत्या तुमच्या आवडीच्या क्रमाने लावा आणि एकापाठोपाठ एक शांततेत वाचा."}</p>
+              <p>{script === 'latin' ? "You might notice our website acts like an app you'd get from an app store. This is a 'Progressive Web App' (PWA). It means you can add it to your phone's home screen, and once you do, it works completely offline, just like a native app. It's fast, reliable, and always there for you." : "तुम्ही हे ॲप तुमच्या फोनच्या होम स्क्रीनवर 'इन्स्टॉल' करू शकता. याला 'प्रोग्रेसिव्ह वेब ॲप' (PWA) म्हणतात. एकदा इन्स्टॉल केल्यावर, हे ॲप स्टोअरमधून डाउनलोड केलेल्या ॲपप्रमाणेच इंटरनेटशिवाय पूर्णपणे काम करते."}</p>
+            </div>
+
+            <div className="help-section">
+              <h3>
+                <span>{script === 'latin' ? "Explore Our Collection" : "आमचा संग्रह"}</span>
+                <span className="help-icon">📚</span>
+              </h3>
+              <div className="category-links">
+                <button className="category-link-btn" onClick={() => { setContentType('Aartya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Aartya']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Stotra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Stotra']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Mantra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Mantra']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Shloka'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Shloka']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Bhovtya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Bhovtya']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Pradakshina'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Pradakshina']}</button>
+              </div>
             </div>
           </article>
         )}
@@ -1252,41 +1269,6 @@ function App() {
                 <span className="help-icon">💾</span>
               </h3>
               <p>{script === 'latin' ? "Use the menu to export your playlists, favorites, and settings, keeping them safe if you change devices." : "तुमच्या प्लेलिस्ट, आवडत्या आरत्या आणि सेटिंग्ज सुरक्षित ठेवण्यासाठी किंवा नवीन फोनवर घेण्यासाठी मेनूमधून बॅकअप आणि रिस्टोअर वापरा."}</p>
-            </div>
-          </article>
-        )}
-        {contentType === "About" && (
-          <article className="aarti-card help-container">
-            <h2 className="help-title">{script === 'latin' ? "About Aarti Sangraha" : "आरती संग्रहाबद्दल"}</h2>
-            
-            <div className="help-section">
-              <h3>
-                <span>{script === 'latin' ? "Purpose" : "उद्देश"}</span>
-                <span className="help-icon">ℹ️</span>
-              </h3>
-              <p>{script === 'latin' ? "Aarti Sangraha is a free, open-source, offline-capable digital collection of Marathi devotional texts. It aims to preserve and make accessible traditional Aartya, Stotras, and Mantras for daily spiritual practice without distractions." : "आरती संग्रह हा मराठी भक्ती साहित्याचा एक विनामूल्य, ओपन-सोर्स आणि ऑफलाइन चालणारा डिजिटल संग्रह आहे. पारंपरिक आरत्या, स्तोत्रे आणि मंत्र दैनंदिन उपासनेसाठी विनाव्यत्यय उपलब्ध करून देणे हा यामागील मुख्य उद्देश आहे."}</p>
-              <p>{script === 'latin' ? "Aarti Sangraha is a free, open-source, offline-capable digital collection of Marathi devotional texts. It aims to preserve and make accessible traditional Aartya, Stotras, and Mantras for daily spiritual practice." : "आरती संग्रह हा मराठी भक्ती साहित्याचा एक विनामूल्य, ओपन-सोर्स आणि ऑफलाइन चालणारा डिजिटल संग्रह आहे. पारंपरिक आरत्या, स्तोत्रे आणि मंत्र दैनंदिन उपासनेसाठी सहज उपलब्ध करून देणे हा यामागील मुख्य उद्देश आहे."}</p>
-            </div>
-
-            <div className="help-section">
-              <h3>
-                <span>{script === 'latin' ? "Offline Capabilities (PWA)" : "ऑफलाइन सुविधा (PWA)"}</span>
-                <span className="help-icon">📱</span>
-              </h3>
-              <p>{script === 'latin' ? "This application is built as a Progressive Web App (PWA). Once you open it, it caches the text data so you can read all your favorite Aartya even without an active internet connection or while in Airplane mode." : "हे ॲप्लिकेशन प्रोग्रेसिव्ह वेब ॲप (PWA) म्हणून तयार केले आहे. एकदा हे उघडल्यानंतर, ते सर्व डेटा सेव्ह करते, जेणेकरून तुम्ही इंटरनेट कनेक्शन नसताना किंवा एअरप्लेन मोडमध्येही आरत्या वाचू शकता."}</p>
-            </div>
-
-            <div className="help-section">
-              <h3>
-                <span>{script === 'latin' ? "Contribute & Contact" : "योगदान आणि संपर्क"}</span>
-                <span className="help-icon">🤝</span>
-              </h3>
-              <p>
-                {script === 'latin' 
-                  ? <>We welcome contributions! To add new Aartya, you can use the '+' button in the menu. For any updates, corrections, or support, please visit the <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="help-link">Contact</a> page.</>
-                  : <>आम्ही तुमच्या योगदानाचे स्वागत करतो! नवीन आरत्या जोडण्यासाठी, तुम्ही मेनूमधील '+' बटण वापरू शकता. कोणत्याही सुधारणा किंवा आमच्याशी संपर्क साधण्यासाठी, कृपया <a href="#" onClick={(e) => { e.preventDefault(); setContentType("Contact"); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="help-link">संपर्क</a> पानाला भेट द्या.</>
-                }
-              </p>
             </div>
           </article>
         )}
@@ -1480,20 +1462,24 @@ function App() {
             <LyricsPreview fontSize={fontSize} showContent={showContent}>
               {highlightText(script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics, searchQuery, querySkeleton)}
             </LyricsPreview>
+
+            {aarti.description && (
+              <p className="aarti-description">{highlightText(script === 'latin' ? (aarti.descriptionEng || aarti.description) : aarti.description, searchQuery, querySkeleton)}</p>
+            )}
           </article>
           );
         })}
-          {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Home", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType) && (
+          {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div ref={loadMoreRef} className="load-more-container">
             <div className="loading-spinner load-more-spinner"></div>
           </div>
         )}
-          {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["Home", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType) && (
+          {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div className="end-of-list-message">
             {script === 'latin' ? "~ You have reached the end ~" : "~ तुम्ही यादीच्या शेवटी पोहोचलात ~"}
           </div>
         )}
-          {filtered.length === 0 && !focusedAartiId && !["Home", "Help", "About", "Contact", "Privacy", "Terms"].includes(contentType) && (
+          {filtered.length === 0 && !focusedAartiId && !["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <p className="no-results">
             {contentType === "Playlists" 
               ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")
@@ -1536,6 +1522,9 @@ function App() {
                   </div>
                 )}
                 <div className="aarti-lyrics" style={{ fontSize: `${fontSize}px` }}>{script === 'latin' ? (aarti.lyricsEng || aarti.lyrics) : aarti.lyrics}</div>
+            {aarti.description && (
+              <p className="aarti-description">{script === 'latin' ? (aarti.descriptionEng || aarti.description) : aarti.description}</p>
+            )}
               </article>
             );
           }}

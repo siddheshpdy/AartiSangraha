@@ -2,215 +2,74 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { fileURLToPath } from 'url';
+import { transliterate } from '@indic-transliteration/sanscript';
 
-// These two lines are needed for ES Modules to handle paths correctly
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const contentDir = path.join(__dirname, '../content');
-const outputDir = path.join(__dirname, '../data');
-const outputFile = path.join(outputDir, 'Aartya.json');
+const contentDir = path.resolve(__dirname, '../content');
+const dataDir = path.resolve(__dirname, '../data');
+const outputPath = path.join(dataDir, 'Aartya.json');
 
-function isDevanagari(text) {
-  return /[\u0900-\u097F]/.test(text);
-}
+const contentTypes = ['Aartya', 'Bhovtya', 'Pradakshina', 'Stotra', 'Mantra', 'Shloka'];
 
-// Casual Marathi to English Transliteration Maps
-const vowelMap = {
-  'अ': 'a', 'आ': 'a', 'इ': 'i', 'ई': 'i', 'उ': 'u', 'ऊ': 'u', 'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au', 'ऋ': 'ru'
-};
+function generateEngFields(data) {
+    const newData = { ...data };
+    const transliterateOptions = { skip_sgml: true };
 
-const consonantMap = {
-  'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'ङ': 'ng',
-  'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh', 'ञ': 'nj',
-  'ट': 't', 'ठ': 'th', 'ड': 'd', 'ढ': 'dh', 'ण': 'n',
-  'त': 't', 'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n',
-  'प': 'p', 'फ': 'ph', 'ब': 'b', 'भ': 'bh', 'म': 'm',
-  'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's', 'ह': 'h', 'ळ': 'l',
-  'क्ष': 'ksh', 'ज्ञ': 'dny'
-};
-
-const matraMap = {
-  'ा': 'a', 'ि': 'i', 'ी': 'i', 'ु': 'u', 'ू': 'u', 'ृ': 'ru', 'े': 'e', 'ै': 'ai', 'ो': 'o', 'ौ': 'au', 'ं': 'n', 'ँ': 'n', 'ः': 'h'
-};
-
-function marathiToEnglish(text) {
-  if (!text) return "";
-  let result = "";
-  
-  for (let i = 0; i < text.length; i++) {
-    let char = text[i];
-    let nextChar = text[i + 1];
-
-    if (consonantMap[char]) {
-      result += consonantMap[char];
-      
-      // Add implicit 'a' (schwa)
-      let isEndOfWord = !nextChar || /[\s।॥,.;:!?'"\n\r]/.test(nextChar);
-      let nextIsMatraOrHalant = nextChar === '्' || matraMap[nextChar] || vowelMap[nextChar];
-      
-      // In Marathi, we usually drop the 'a' at the end of the word (e.g. 'dev' not 'deva')
-      if (!nextIsMatraOrHalant && !isEndOfWord) {
-        result += 'a';
-      }
-    } else if (vowelMap[char]) {
-      result += vowelMap[char];
-    } else if (matraMap[char]) {
-      result += matraMap[char];
-    } else if (char !== '्') {
-      result += char; 
+    if (data.title && !data.titleEng) {
+        newData.titleEng = transliterate(data.title, 'devanagari', 'iast', transliterateOptions).replace(/\|/g, '').replace(/ ।/g, '.').trim();
     }
-  }
-  
-  // Capitalize the first letter of each line/sentence for readability
-  return result.replace(/(^\s*|[\n\r।॥]\s*)([a-z])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+    if (data.deity && !data.deityEng) {
+        newData.deityEng = transliterate(data.deity, 'devanagari', 'iast', transliterateOptions).trim();
+    }
+    if (data.lyrics && !data.lyricsEng) {
+        newData.lyricsEng = transliterate(data.lyrics, 'devanagari', 'iast', transliterateOptions).replace(/\|/g, '').replace(/ ।/g, '.').trim();
+    }
+    // **Handle optional description field**
+    if (data.description && !data.descriptionEng) {
+        newData.descriptionEng = transliterate(data.description, 'devanagari', 'iast', transliterateOptions).replace(/\|/g, '').replace(/ ।/g, '.').trim();
+    }
+    return newData;
 }
 
-// Dictionary to enforce perfect Marathi spelling for common names
-const devanagariDict = {
-  "ganapati": "गणपती",
-  "ganpati": "गणपती",
-  "ganesh": "गणेश",
-  "ram": "राम",
-  "krishna": "कृष्ण",
-  "shankar": "शंकर",
-  "devi": "देवी",
-  "datta": "दत्त",
-  "vitthal": "विठ्ठल",
-  "vithhal": "विठ्ठल",
-  "maruti": "मारुती",
-  "khandoba": "खंडोबा",
-  "dnyaneshwar": "ज्ञानेश्वर",
-  "namdev": "नामदेव",
-  "tukaram": "तुकराम",
-  "durga": "दुर्गा",
-  "sai": "साई",
-  "bhavani": "भवानी",
-  "mahalaxmi": "महालक्ष्मी",
-  "mangaur": "मनगौरी"
-};
+async function buildAartiData() {
+    let allAartya = [];
 
-function getDevanagari(text) {
-  if (!text) return "";
-  if (isDevanagari(text)) return text;
-  
-  // 1. Exact match override for common deities
-  if (devanagariDict[text.toLowerCase()]) {
-    return devanagariDict[text.toLowerCase()];
-  }
+    for (const type of contentTypes) {
+        const typeDir = path.join(contentDir, type);
+        if (!fs.existsSync(typeDir)) continue;
 
-  // If it's English and not in dictionary, just return it.
-  // Guessing Devanagari from English creates gibberish without ML/APIs.
-  return text;
-}
+        const files = fs.readdirSync(typeDir).filter(file => file.endsWith('.md'));
 
-// Dictionary to enforce perfect English spelling for common Marathi names
-const englishDict = {
-  "इतर": "Other",
-  "दत्त": "Datta",
-  "विठ्ठल": "Vitthal",
-  "गणपती": "Ganpati",
-  "गणेश": "Ganesh",
-  "राम": "Ram",
-  "कृष्ण": "Krishna",
-  "शंकर": "Shankar",
-  "देवी": "Devi",
-  "मारुती": "Maruti",
-  "खंडोबा": "Khandoba",
-  "ज्ञानेश्वर": "Dnyaneshwar",
-  "नामदेव": "Namdev",
-  "तुकराम": "Tukaram",
-  "दुर्गा": "Durga",
-  "साई": "Sai",
-  "भवानी": "Bhavani",
-  "महालक्ष्मी": "Mahalaxmi",
-  "मनगौरी": "Mangauri"
-};
-
-function getEnglish(text) {
-  if (!text) return "";
-
-  // 1. Exact match override for common Marathi names to English
-  if (englishDict[text.trim()]) {
-    return englishDict[text.trim()];
-  }
-
-  if (isDevanagari(text)) {
-    return marathiToEnglish(text);
-  }
-  return text; // Already English
-}
-
-export function generateAartya() {
-    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
-
-    const categories = ['Aartya', 'Bhovtya', 'Pradakshina', 'Stotra', 'Mantra', 'Shloka'];
-    const allContent = [];
-    const seenIds = new Set();
-
-    categories.forEach(category => {
-        const categoryDir = path.join(contentDir, category);
-        
-        if (!fs.existsSync(categoryDir)) {
-            console.warn(`Category dir not found: ${categoryDir}`);
-            return; // Skip to the next category
-        }
-
-        const files = fs.readdirSync(categoryDir);
-        
-        files.filter(f => f.endsWith('.md')).forEach(file => {
-            const fileContent = fs.readFileSync(path.join(categoryDir, file), 'utf8');
+        for (const file of files) {
+            const filePath = path.join(typeDir, file);
+            const fileContent = fs.readFileSync(filePath, 'utf8');
             
-            // Regex to split file containing multiple frontmatter blocks (--- ... ---)
-            const regex = /(?:^|\r?\n)---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n([\s\S]*?)(?=\r?\n---\s*\r?\n|$)/g;
-            
-            let index = 1;
-            for (const match of fileContent.matchAll(regex)) {
-                const rawBlock = `---\n${match[1]}\n---\n${match[2]}`;
-                const { data, content } = matter(rawBlock);
-                const lyrics = content.trim();
-                
-                const titleEng = getEnglish(data.title || "");
-                const deityEng = getEnglish(data.deity || "").toUpperCase();
-                
-                if (!data.id) {
-                    throw new Error(`Aarti "${data.title || index}" in file "${category}/${file}" is missing a unique 'id' in its frontmatter! Please generate a UUID and add it as 'id: <uuid>'.`);
-                }
-                const finalId = String(data.id);
-                
-                if (seenIds.has(finalId)) {
-                    throw new Error(`Duplicate ID "${finalId}" found in "${category}/${file}". Every Aarti must have a completely unique UUID.`);
-                }
-                seenIds.add(finalId);
-                
-                allContent.push({ 
-                    id: finalId, 
-                    type: category,
-                    title: getDevanagari(data.title || ""),
-                    deity: getDevanagari(data.deity || ""),
-                    titleEng: titleEng,
-                    deityEng: deityEng,
-                    lyricsEng: getEnglish(lyrics),
-                    link: data.link || "",
-                    lyrics: lyrics 
+            const entries = fileContent.split('---').filter(entry => entry.trim() !== '');
 
-                });
-                index++;
+            for (const entry of entries) {
+                try {
+                    const { data, content } = matter(entry);
+                    if (!data.id || !data.title) continue;
+
+                    const aartiData = {
+                        ...data,
+                        description: data.description || null, // Add the optional description
+                        lyrics: content.trim(),
+                    };
+                    
+                    allAartya.push(generateEngFields(aartiData));
+                } catch (e) {
+                    console.error(`Error processing an entry in ${file}:`, e);
+                }
             }
-            console.log(`Processed ${category}/${file} with ${index - 1} items.`);
-        });
-    });
-
-    console.log(`Generated ${allContent.length} items across all categories.`);
-    
-    const newJson = JSON.stringify(allContent, null, 2);
-    if (!fs.existsSync(outputFile) || fs.readFileSync(outputFile, 'utf8') !== newJson) {
-        fs.writeFileSync(outputFile, newJson);
-        console.log("✅ JSON generated/updated!");
+        }
     }
+
+    fs.mkdirSync(dataDir, { recursive: true });
+    fs.writeFileSync(outputPath, JSON.stringify(allAartya, null, 2));
+    console.log(`✅ Successfully built ${allAartya.length} items to Aartya.json`);
 }
 
-// Run directly if executed as a script (e.g., via npm run prebuild-json)
-if (process.argv[1] === __filename) {
-    generateAartya();
-}
+buildAartiData();
