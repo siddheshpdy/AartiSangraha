@@ -113,12 +113,6 @@ make website easy to search through search engine.
 Add a dedicated "Help" section explaining how to use the website, covering functionalities like the font resizer, dark mode, transliteration toggle, playlists, and focus mode.
 Success Metric: Users can easily find and understand how to navigate and use all the app's features.
 
-✅ Feature 8.2: About Page - COMPLETED
-
-Add an "About" section detailing the purpose of the Aarti Sangraha app, its offline capabilities, and contact/contribution info.
-Success Metric: Users can read the background of the project and know how to contribute or reach out.
-
-
 ✅ Feature 9.1: keep aarties ordered as they are in md file. - COMPLETED
 
 Currently if I have 3 aarties in 1 md file their order is changing in website which is not correct. in md file aarties are stored or can be stored with a order based on frequency in which its used. so it is better to keep same sequence in website.
