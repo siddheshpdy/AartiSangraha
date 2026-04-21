@@ -2,6 +2,8 @@
 id: 0470a3cc-dab7-4a00-8287-c9f23af91f9d
 title: "चला जाऊ पाहू त्या गणपतीला"
 deity: "गणपती"
+description: "गणपती बाप्पाच्या दर्शनासाठी आणि त्याचे मंगल रूप पाहण्यासाठी गायली जाणारी ही एक सुंदर पारंपारिक भोवती आहे."
+descriptionEng: "This is a beautiful traditional Bhovti sung to take darshan of Lord Ganpati and to behold his auspicious form."
 ---
 चला जाऊ पाहू त्या गणपतीला 
 प्रेमे वंदू तयाचे चरणाला ‖

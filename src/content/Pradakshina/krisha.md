@@ -2,6 +2,8 @@
 id: e91f98e6-d23a-4ed5-9932-4f20456ca70f
 title: "असा कसा देवाचा देव"
 deity: "कृष्ण"
+description: "संत एकनाथांनी या प्रदक्षिणेत बालकृष्णाच्या खोडकर लीलांचे आणि गवळ्यांच्या घरी दही-दूध खाणाऱ्या 'ठकड्या' देवाचे अत्यंत गमतीदार वर्णन केले आहे."
+descriptionEng: "In this Pradakshina, Sant Eknath gives a very playful description of the mischievous divine plays of child Krishna, who eats curd and milk at the cowherds' houses."
 ---
 असा कसा देवाचा देव बाई ठकडा । 
 देव एका पायाने लंगडा ‖ धृ ‖
@@ -21,6 +23,8 @@ deity: "कृष्ण"
 id: 470d9ca1-01ce-4472-9506-e9a2ba571217
 title: "नेसले ग बाई चंद्रकला"
 deity: "कृष्ण"
+description: "संत एकनाथांचे हे एक गोड गवळण-गीत आहे. यात श्रीकृष्णाच्या खोड्यांनी त्रासलेली राधिका (गवळण) त्याच्या सावळ्या आणि तिरप्या नजरेचे वर्णन करत आहे."
+descriptionEng: "This is a sweet Gavlan (folk song) by Sant Eknath. In it, Radhika (a Gopi) annoyed by Lord Krishna's pranks describes his dark complexion and mischievous side-glance."
 ---
 नेसले ग बाई, चंद्रकला ठिपक्यांची.
 बाई ठिपक्याची,
@@ -55,6 +59,8 @@ deity: "कृष्ण"
 id: e3c35ffb-7bd7-4cd3-8b25-598fa7cb6ef3
 title: "कधि येशिल मनमोहना"
 deity: "कृष्ण"
+description: "राष्ट्रसंत तुकडोजी महाराजांनी रचलेली ही राष्ट्रभक्तीने प्रेरित प्रदक्षिणा आहे. यात गुलामगिरीत अडकलेल्या भारताला सोडवण्यासाठी त्यांनी श्रीकृष्णाला (मनमोहनाला) साद घातली आहे."
+descriptionEng: "Composed by Rashtrasant Tukdoji Maharaj, this Pradakshina is inspired by patriotism. It calls upon Lord Krishna (Manmohana) to rescue a subjugated India."
 ---
 कधि येशिल मनमोहना , पाहण्या भारत अपुला पुन्हा ‖ ध्रु‖
  

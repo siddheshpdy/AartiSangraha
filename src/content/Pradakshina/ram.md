@@ -2,6 +2,8 @@
 id: c634b78e-879a-4595-acea-922693b9065e
 title: "घटका गेली पळे गेली"
 deity: "राम"
+description: "आयुष्यातील अमूल्य वेळ कसा व्यर्थ जात आहे आणि मृत्यू जवळ येत असतानाही माणूस राम-नाम घ्यायला कसा विसरतो, याची जाणीव करून देणारा हा उपदेश आहे."
+descriptionEng: "This is a spiritual teaching reminding us of how the precious time of life is being wasted, and how man forgets to chant the name of Rama even as death approaches."
 ---
 घटका गेली पळे गेली तास वाजे झणाणा ।
 आयुष्याचा नाश होतो राम कां रे म्हणाना ‖ धृ ‖
@@ -21,6 +23,8 @@ deity: "राम"
 id: 725ac505-fc13-4115-b6ab-335808f97c00
 title: "सुंदर ते ध्यान शोभे सिंहासनी"
 deity: "राम"
+description: "संत तुकाराम महाराजांनी रचलेल्या या ओवीत अयोध्येच्या सिंहासनावर विराजमान असलेल्या श्रीराम, सीता, लक्ष्मण, भरत, शत्रुघ्न आणि मारुतीरायाचे विलोभनीय ध्यान वर्णिले आहे."
+descriptionEng: "Composed by Sant Tukaram Maharaj, this Ovi describes the enchanting meditation of Shri Rama seated on the throne of Ayodhya, accompanied by Sita, Lakshman, Bharat, Shatrughna, and Hanuman."
 ---
 सुंदर ते ध्यान शोभे सिंहासनी । वामांगी नंदिनी जनकाची ‖१‖
 दक्षिणेसी उभा बंधू लक्ष्मण । भरत, शत्रुघ्न कैकयी सुत ‖धृ‖
