@@ -2,6 +2,8 @@
 id: 9a66b9b3-c5c9-47fc-87f8-b51d0bf01f76
 title: "पाय तुझे गुरुराया देवा"
 deity: "दत्त"
+description: "या प्रदक्षिणेमध्ये सद्गुरूंच्या चरणांची धूळ आणि स्नानाचे तीर्थ हेच सर्व तीर्थक्षेत्रांसमान मानून गुरुरायाला अनन्यभावे शरण जाण्याची भावना व्यक्त केली आहे."
+descriptionEng: "In this Pradakshina, the dust of the Sadguru's feet and the holy water of their bath are considered equal to all pilgrimage sites, expressing complete surrender to the Guru."
 ---
 पाय तुझे गुरुराया देवा, देवपूजा माझी देवपूजा‖१‖
 गुरु चरणाची माति माति, तेचि माझी भागीरथी ‖२‖
@@ -12,6 +14,8 @@ deity: "दत्त"
 id: 499e95e1-e3aa-45ab-ae7c-a60f34078026
 title: "सगुण मूर्ती मनोहर"
 deity: "दत्त"
+description: "भगवान दत्तात्रेयांच्या सगुण, मनोहर आणि दिगंबर स्वरूपाचे अत्यंत सुंदर वर्णन या प्रदक्षिणेत केले असून, तेच खऱ्या भक्तांचे कैवारी असल्याचे सांगितले आहे."
+descriptionEng: "This Pradakshina beautifully describes the manifest, enchanting, and Digambar form of Lord Dattatreya, praising him as the true protector of devotees."
 ---
 सगुण मूर्ती मनोहर
 स्वामी माझा दिगंबर
@@ -31,6 +35,8 @@ deity: "दत्त"
 id: aba615b5-b7ca-45ff-973e-225d5284c4fb
 title: "धन्य धन्य हो प्रदक्षिणा"
 deity: "दत्त"
+description: "सद्गुरूंना घातलेली प्रदक्षिणा कशी सर्व तीर्थयात्रांचे पुण्य देणारी आणि कोटी ब्रह्महत्यांचे पातक हरण करणारी आहे, याचा महिमा यात सांगितला आहे."
+descriptionEng: "This describes the immense glory of circumambulating (Pradakshina) the Sadguru, which yields the merit of all pilgrimages and washes away millions of sins."
 ---
 धन्य धन्य हो प्रदक्षिणा सद्गुरुरायाची ‖
  झाली त्वरा सुरवरा विमान उतरायाची ‖धृ.‖
@@ -53,6 +59,8 @@ deity: "दत्त"
 id: 441eab8a-c693-4209-8b93-0b98aa0102e3
 title: "तीन शिरें सहा हात"
 deity: "दत्त"
+description: "संत तुकाराम महाराजांनी रचलेल्या या ओवीत तीन शिरे आणि सहा हात असलेल्या, तसेच शंख, चक्र, गदा धारण करणाऱ्या दत्तात्रेयांच्या अष्टपैलू रूपाला नमस्कार केला आहे."
+descriptionEng: "Composed by Sant Tukaram Maharaj, this Ovi offers bows to the versatile form of Dattatreya with three heads, six hands, and holding a conch, discus, and mace."
 ---
 तीन शिरें सहा हात । तया माझे दंडवत ॥१॥
 काखे झोळी पुढें श्वान । नित्य जान्हवीचें स्नान ॥२॥

@@ -268,7 +268,19 @@ function App() {
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isFadingSplash, setIsFadingSplash] = useState(false);
   const [query, setQuery] = useState("");
-  const [contentType, setContentType] = useState("Home");
+  
+  const [contentType, setContentType] = useState(() => {
+    const path = location.pathname;
+    const match = path.match(/^\/([a-zA-Z]+)\/?$/);
+    if (match && match[1]) {
+      const routeCategory = match[1].toLowerCase();
+      const validTypes = ["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"];
+      const matchedType = validTypes.find(t => t.toLowerCase() === routeCategory);
+      if (matchedType) return matchedType;
+    }
+    return "Home";
+  });
+  
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isScrolled, setIsScrolled] = useState(false);
   const [fontSize, setFontSize] = useState(18); // Default 18px (1.125rem)
@@ -349,8 +361,21 @@ function App() {
       setFocusedAartiId(match[1]);
     } else {
       setFocusedAartiId(null);
+        
+        // Sync contentType based on URL if not in focus mode
+        const categoryMatch = location.pathname.match(/^\/([a-zA-Z]+)\/?$/);
+        if (categoryMatch && categoryMatch[1]) {
+          const routeCategory = categoryMatch[1].toLowerCase();
+          const validTypes = ["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"];
+          const matchedType = validTypes.find(t => t.toLowerCase() === routeCategory);
+          if (matchedType && matchedType !== contentType) {
+            setContentType(matchedType);
+          }
+        } else if (location.pathname === '/' && contentType !== "Home") {
+          setContentType("Home");
+        }
     }
-  }, [location.pathname]);
+    }, [location.pathname, contentType]);
 
   const titleMap = useMemo(() => ({
     "Home": script === 'latin' ? "Home | Aarti Sangraha" : "मुख्यपृष्ठ | आरती संग्रह",
@@ -389,8 +414,10 @@ function App() {
     navigate(`/aarti/${id}`);
   };
 
+  const getBaseUrl = () => contentType === 'Home' ? '/' : `/${contentType.toLowerCase()}`;
+
   const handleCloseFocus = () => {
-    navigate(`/`);
+    navigate(getBaseUrl());
   };
 
   const handleShare = async (e, aarti) => {
@@ -926,7 +953,7 @@ function App() {
             
             <div className="content-type-tabs">
               {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"].map(type => (
-                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate('/'); }}>
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate(type === 'Home' ? '/' : `/${type.toLowerCase()}`); }}>
                   {tabLabelMap[type]}
                 </button>
               ))}
@@ -980,7 +1007,7 @@ function App() {
             </div>
             <div className="content-type-tabs">
               {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"].map(type => (
-                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate('/'); }}>
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate(type === 'Home' ? '/' : `/${type.toLowerCase()}`); }}>
                   {tabLabelMap[type]}
                 </button>
               ))}
@@ -1007,7 +1034,7 @@ function App() {
               type="text" 
               placeholder="Search deity, title, or lyrics..." 
               value={query}
-              onChange={(e) => { setQuery(e.target.value); navigate('/'); }}
+              onChange={(e) => { setQuery(e.target.value); navigate(getBaseUrl()); }}
               className="search-input"
               autoComplete="off"
               role="combobox"
@@ -1017,7 +1044,7 @@ function App() {
             />
             {query && (
               <button 
-                onClick={() => { setQuery(""); navigate('/'); }}
+                onClick={() => { setQuery(""); navigate(getBaseUrl()); }}
                 className="clear-search-btn"
                 aria-label="Clear search"
               >
@@ -1035,7 +1062,7 @@ function App() {
                       e.preventDefault();
                       setQuery(suggestion);
                       setSuggestions([]);
-                      navigate('/');
+                      navigate(getBaseUrl());
                     }}
                   >
                     {suggestion}
@@ -1073,7 +1100,7 @@ function App() {
                   <div 
                     key={p.id} 
                     className={`playlist-item ${selectedCategory === `playlist-${p.id}` ? 'active' : ''}`}
-                    onClick={() => { setSelectedCategory(`playlist-${p.id}`); navigate('/'); }}
+                    onClick={() => { setSelectedCategory(`playlist-${p.id}`); navigate(getBaseUrl()); }}
                   >
                     <div className="playlist-item-details">
                       <strong className="playlist-item-name">{p.name}</strong>
@@ -1112,7 +1139,7 @@ function App() {
                 <button 
                   key={category} 
                   className={`chip ${selectedCategory === category ? 'active' : ''} ${script === 'latin' && !["All", "Favorites"].includes(category) ? 'text-latin' : ''}`} 
-                  onClick={() => { setSelectedCategory(category); navigate('/'); }}
+                  onClick={() => { setSelectedCategory(category); navigate(getBaseUrl()); }}
                 >
                   {label}
                 </button>
@@ -1169,12 +1196,12 @@ function App() {
                 <span className="help-icon">📚</span>
               </h3>
               <div className="category-links">
-                <button className="category-link-btn" onClick={() => { setContentType('Aartya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Aartya']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Stotra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Stotra']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Mantra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Mantra']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Shloka'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Shloka']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Bhovtya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Bhovtya']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Pradakshina'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Pradakshina']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Aartya'); navigate('/aartya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Aartya']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Stotra'); navigate('/stotra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Stotra']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Mantra'); navigate('/mantra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Mantra']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Shloka'); navigate('/shloka'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Shloka']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Bhovtya'); navigate('/bhovtya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Bhovtya']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Pradakshina'); navigate('/pradakshina'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Pradakshina']}</button>
               </div>
             </div>
           </article>

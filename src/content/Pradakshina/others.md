@@ -2,6 +2,8 @@
 id: 44e94b8e-d70d-4509-91ef-a782331afda2
 title: "त्रिशुळावरी काशीपुरी"
 deity: "इतर"
+description: "संत एकनाथांचे शिष्य 'जनार्दनी' यांनी रचलेल्या या प्रदक्षिणेत भगवान शिव (काशीनाथ) आणि भगवान विष्णू (विठ्ठल) हे दोन्ही एकच कसे आहेत, याचे अप्रतिम रूपकात्मक वर्णन केले आहे."
+descriptionEng: "Composed by Sant Eknath's disciple 'Janardani', this Pradakshina presents an exquisite allegorical description of how Lord Shiva (Kashinath) and Lord Vishnu (Vitthal) are one and the same."
 ---
 त्रिशुळावरी काशीपुरी ।
 चक्रावरी पंढरी ॥
@@ -25,6 +27,8 @@ deity: "इतर"
 id: 07c5e7d6-14a8-47ac-bfa7-8ed43822637c
 title: "राजास जी महाली"
 deity: "इतर"
+description: "राष्ट्रसंत तुकडोजी महाराजांनी रचलेले हे अत्यंत सुप्रसिद्ध भजन आहे. यात राजमहालापेक्षा आपल्या साध्या झोपडीत मिळणाऱ्या खऱ्या शांतीचे आणि सुखाचे वर्णन केले आहे."
+descriptionEng: "This is a very famous bhajan composed by Rashtrasant Tukdoji Maharaj. It describes the true peace and happiness found in one's simple hut, which surpasses even the luxury of a royal palace."
 ---
 राजास जी महाली, सौख्ये कधी मिळाली
 ती सर्व प्राप्त झाली, या झोपडीत माझ्या॥

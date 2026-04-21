@@ -2,6 +2,8 @@
 id: 40ab6b37-49c1-47f5-a476-5487c3e7b8fc
 title: "सत्वर पाव ग मला भवानी आई"
 deity: "देवी"
+description: "संत एकनाथांचे हे प्रसिद्ध भारूड आहे. यात एका सासुरवाशिणीने संसारातील जाचाला कंटाळून तुळजाभवानीला साकडे घातले आहे, ज्यातून संसारातील मोहाचा आणि षड्रिपूंचा नाश करण्याचा अध्यात्मिक अर्थ दडलेला आहे."
+descriptionEng: "This is a famous Bharud by Sant Eknath. It metaphorically describes a daughter-in-law complaining about her worldly troubles to Goddess Tuljabhavani, symbolizing a prayer to destroy worldly attachments and internal enemies."
 ---
 सत्वर पाव ग मला भवानी आई । रोडगा वाहीन तुला ‖ धृ ‖
 
@@ -26,6 +28,8 @@ deity: "देवी"
 id: cdd73a03-50ab-4a01-9445-3d4cec563391
 title: "मिठा पीठाचा जोगवा"
 deity: "देवी"
+description: "ही एक पारंपारिक देवीची भोवती (जोगवा) आहे. यात भक्ताने देवीच्या दर्शनाची ओढ आणि तिची खण-नारळाने ओटी भरून पूजा करण्याची इच्छा व्यक्त केली आहे."
+descriptionEng: "This is a traditional Jogwa (devotional song) of the Goddess. It expresses a devotee's longing to visit Tuljapur and worship the Goddess by offering traditional items like a green saree, bangles, and a coconut."
 ---
 मिठा पीठाचा जोगवा, आणा बायांनो सत्वरी 
 मला जायचंय दूरवरी गं, तुळजापूरच्या बाजारी ‖ धृ ‖

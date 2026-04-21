@@ -2,6 +2,8 @@
 id: 73e3522f-6101-4878-afb0-62dac1ae2dae
 title: "नाम तुझे रे नारायणा"
 deity: "विष्णू"
+description: "संत तुकारामांच्या या ओवीत नारायणाच्या (विष्णूच्या) नावाचा अगाध महिमा सांगितला असून, नामस्मरणाने अजामेळ आणि वाल्मिकी ऋषींचा कसा उद्धार झाला, याचा दाखला दिला आहे."
+descriptionEng: "In this Ovi, Sant Tukaram praises the profound glory of Lord Narayana's (Vishnu's) name, citing examples of how chanting the name salvaged the sinner Ajamila and Sage Valmiki."
 ---
 नाम तुझे रे नारायणा
 पाषाणासी फोडी पान्हा ‖
@@ -18,6 +20,8 @@ deity: "विष्णू"
 id: 4d5fa862-b3d7-4639-9aa0-2bc98b7ec2a7
 title: "आवडीनें भावें हरिनाम घेसी"
 deity: "विष्णू"
+description: "संत एकनाथांची ही अतिशय धीर देणारी रचना आहे. यात भक्ताला चिंता न करता प्रेमाने हरिनाम घेण्याचा उपदेश केला असून, श्रीहरी सर्व जीवांचा सांभाळ करतो हा विश्वास दिला आहे."
+descriptionEng: "This is a very reassuring composition by Sant Eknath. It advises the devotee to lovingly chant Hari's name without worrying, assuring them that Shri Hari takes care of all living beings."
 ---
 आवडीनें भावें हरिनाम घेसी।
 तुझी चिंता त्यासी सर्व आहे ॥१॥

@@ -1,3 +1,10 @@
+---
+id: b3f46a2a-b289-49fc-a212-32bfa32b0365
+title: "आनंदाचा कंद हरि हा"
+deity: "कृष्ण"
+description: "विष्णुदास नामा रचित या भजनात कुवलयापीड हत्तीचा वध आणि गोवर्धन पर्वत उचलण्यापासून ते श्रीकृष्णाच्या अनेक लीलांचे वर्णन केले आहे."
+descriptionEng: "Composed by Vishnudas Nama, this bhajan describes the many divine plays of Krishna, from the slaying of the elephant Kuvalayapida to the lifting of the Govardhan mountain."
+---
 आनंदाचा कंद हरि हा, देवकि-नंदन पाहिला ॥
 भक्तांसाठी तो जगजेठी भीमानिकटीं राहिला ॥
 कंसभयाने वसुदेवानें नंद-यशोदे वाहिला ॥
@@ -25,12 +32,26 @@
 विष्णुदास नामा म्हणे अयोयोयो ॥।
 जय गोपाल कृष्ण। राधा कृष्ण॥
 
+---
+id: 62e08c46-81da-4c07-b248-356aeb63ce5d
+title: "एक टिपरी घे दुसरीस मार्गे"
+deity: "कृष्ण"
+description: "गोपी आणि श्रीकृष्णाच्या रासलीलेचे आणि टिपऱ्या (दांडिया) खेळतानाच्या आनंदाचे वर्णन करणारे हे एक पारंपारिक गाणे आहे."
+descriptionEng: "This is a traditional song describing the joy of the Rasleela and playing Tiprya (Dandiya) between the Gopis and Lord Krishna."
+---
 एक टिपरी घे दुसरीस मार्गे 
 तिसरीस घेऊन चौथी फेर घे 
 पाचवीस घेऊनी सहावी मार्गे सातवी बदल 
 हरीसी खेळता हरि गुण गाता आनंदचित्ता अवचित रे 
 पहावया धरणी न पुरे अशी हरीची माया रे
 
+---
+id: 8d89e5a8-eb49-411a-ab60-19ef16baea1e
+title: "घ्या मुकुंद मुरारी गोविंद"
+deity: "कृष्ण"
+description: "या भजनात मुकुंद, मुरारी आणि गोविंद अशा श्रीकृष्णाच्या विविध नामांचा अखंड नामजप आणि जयघोष केला आहे."
+descriptionEng: "This bhajan is a continuous chant and proclamation of the various names of Lord Krishna, such as Mukund, Murari, and Govind."
+---
 घ्या मुकुंद मुरारी गोविंद 
 आनंद कंद घ्या हा छंद 
 घ्या मुकुंद मुरारी गोविंद 
@@ -38,6 +59,13 @@
 घ्या मुरारी घ्या गोविंद 
 घ्या मुकुंद मुरारी गोविंद
 
+---
+id: 4a3b7512-eb79-4700-9ef2-5b9c0b115ff6
+title: "छंदाने मुरलीच्या नादाने"
+deity: "कृष्ण"
+description: "श्रीकृष्णाच्या मधुर मुरलीच्या (बासरीच्या) नादाने भुलून गेलेल्या आणि त्याच्या मागे धावणाऱ्या गोकुळातील गोपींचे वर्णन यात केले आहे."
+descriptionEng: "This describes the Gopis of Gokul who were mesmerized by the sweet sound of Lord Krishna's flute (Murli) and ran after him."
+---
 छंदाने मुरलीच्या नादाने गोपी चालल्या 
 चालल्या गोपी चालल्या 
 भुलविल्या गोपी भुलविल्या 
