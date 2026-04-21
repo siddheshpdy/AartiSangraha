@@ -2,6 +2,8 @@
 id: a15e026e-6492-4ffd-9eff-d71308c5ad64
 title: "आरती ज्ञानराजा"
 deity: "ज्ञानेश्वर"
+description: "संत एकनाथांचे शिष्य 'रामा जनार्दनी' यांनी रचलेली ही आरती संत ज्ञानेश्वरांच्या (ज्ञानराजांच्या) महाकैवल्यतेजाची आणि जगाला दिलेल्या ज्ञानाची स्तुती करते."
+descriptionEng: "Composed by Sant Eknath's disciple 'Rama Janardani', this Aarti praises the supreme divine radiance (Mahakaivalya Tej) of Sant Dnyaneshwar (Dnyanraja) and the knowledge he bestowed upon the world."
 ---
 आरती ज्ञानराजा | महाकैवल्यतेजा |
  सेविती साधुसंत | मनु वेधला माझा |आरती ज्ञानराजा ||धृ०||
@@ -19,6 +21,8 @@ deity: "ज्ञानेश्वर"
 id: a944f7b9-2489-4028-b0a0-5eacdf9cbd0e
 title: "अघसंकटभयनाशन सुखदा विघ्नेशा"
 deity: "पंचायतन"
+description: "ही 'पंचायतन' पूजेची आरती आहे. यात गणपती, शिव, विष्णू (हरी), सूर्य (भास्कर) आणि देवी (अंबा) या पाच प्रमुख देवतांची एकत्रित स्तुती केली आहे."
+descriptionEng: "This is the Aarti for 'Panchayatan' worship. It collectively praises the five principal deities: Ganpati, Shiva, Vishnu (Hari), Surya (Bhaskar), and Devi (Amba)."
 ---
 
 अघसंकटभयनाशन सुखदा विघ्नेशा । 
@@ -54,6 +58,8 @@ deity: "पंचायतन"
 id: 4d8fc409-b5b4-42cf-98bc-b8893cd9345f
 title: "सगुण हे आरती"
 deity: "इतर"
+description: "रामानंद रचित या आरतीत सद्गुरू आणि पंढरीनाथाला सगुण रूपात आरती करून निर्गुण भावाने कसे ओवाळावे, याचा अध्यात्मिक उपदेश दिला आहे."
+descriptionEng: "Composed by Ramanand, this Aarti gives the spiritual teaching of how to worship the Sadguru and Pandharinath in a manifest (Saguna) form while offering the Aarti with a formless (Nirguna) devotion."
 ---
 सगुण हे आरती निर्गुण ओवाळू l
 कल्पनेचे घृत घालू दीप पाजळू ‖१‖
@@ -68,6 +74,8 @@ deity: "इतर"
 id: f9fd6fb5-94d7-4d44-ae68-cfd71ed09e7d
 title: "जय जय सत्चित्स्वरूपा"
 deity: "गजानन महाराज"
+description: "संत दासगणु महाराजांनी रचलेली ही शेगावच्या श्री गजानन महाराजांची अत्यंत लोकप्रिय आरती आहे. यात महाराजांच्या निर्गुण-सगुण स्वरूपाचे वर्णन आहे."
+descriptionEng: "Composed by Sant Dasganu Maharaj, this is a very popular Aarti of Shri Gajanan Maharaj of Shegaon. It describes the both formless (Nirguna) and manifest (Saguna) nature of the Maharaj."
 ---
 ‖ गजानन महाराज आरती ‖
 
@@ -97,6 +105,8 @@ deity: "गजानन महाराज"
 id: a3c62cbf-bd9f-4ef8-bf7f-a2e28242d76e
 title: "पाहि पाहि महालसे"
 deity: "महालसा नारायणी"
+description: "गोव्यातील श्री महालसा नारायणी (मोहिनी स्वरूप) देवीची ही संस्कृत आरती आहे. यात देवीच्या मोहिनी रूपाचे आणि भक्तांचे रक्षण करणाऱ्या कृपेचे वर्णन केले आहे."
+descriptionEng: "This is a Sanskrit Aarti of Goddess Shri Mahalasa Narayani (Mohini form) of Goa. It describes the Goddess's enchanting Mohini form and her grace that protects her devotees."
 ---
 ‖ महालसा नारायणी ( गोवा )‖
 पाहि पाहि महालसे गतलालसे सुखनालसे ।

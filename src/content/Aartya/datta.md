@@ -4,6 +4,8 @@ id: 8b908eae-0082-470a-8101-04cd18870958
 title: "जय देव जय देव जय श्री गुरुदत्ता"
 deity: "दत्त"
 link: https://youtu.be/BimFQ1mnDs0?si=H0b3j6WXVeQemHK2
+description: "संत एकनाथ (एका जनार्दनी) रचित ही दत्तात्रेयांची अत्यंत प्रसिद्ध आरती आहे. यात दत्ताच्या त्रिगुणात्मक रूपाचे आणि जन्म-मृत्यूचा फेरा चुकवणाऱ्या कृपेचे वर्णन केले आहे."
+descriptionEng: "Composed by Sant Eknath (Eka Janardani), this is a very famous Aarti of Lord Dattatreya. It describes his trigunatmaka (three-fold) form and his grace that frees one from the cycle of birth and death."
 ---
 जय देव जय देव जय श्री गुरुदत्ता ।
 आरती ओवाळिता हरली भवचिंता ‖ धृ ‖
@@ -33,6 +35,8 @@ id: 386dff1c-6fcf-4a94-ae77-2c5f851d0fa7
 title: "करितो प्रेमे तुज निरांजन"
 deity: "दत्त"
 link: https://youtu.be/F1BuwGt2nns?si=qEwtOXt3ydcXQxH1
+description: "वासुदेव रचित या आरतीत अत्री आणि अनसूयेच्या घरी अतिथी म्हणून आलेल्या आणि नंतर बाळरूप धारण केलेल्या ब्रह्मा-विष्णु-महेशांच्या कथेचे वर्णन आहे."
+descriptionEng: "Composed by Vasudev, this Aarti describes the story of Brahma, Vishnu, and Mahesh arriving as guests at the house of Sage Atri and Anasuya, and later taking the form of infants."
 ---
 करितो प्रेमे तुज निरांजन स्थिरवुनिया मन
 दत्तात्रेया सद्गुरूवर्या भावार्थेकरून ‖धृ ‖
@@ -57,6 +61,8 @@ id: 842c0599-a5d9-42ab-bd40-33a0e7fab50f
 title: "श्री गुरुदत्तराज मूर्ती"
 deity: "दत्त"
 link: https://youtu.be/FBPa8sUyeoU?si=r07H-BeVWFM7DBLO
+description: "या आरतीत गुरुदत्तात्रेयांच्या काशीतील स्नान, कोल्हापुरातील भिक्षा आणि माहूरगडावरील निद्रेच्या नित्यक्रमाचे व त्यांच्या अवधूत स्वरूपाचे सुंदर वर्णन केले आहे."
+descriptionEng: "This Aarti beautifully describes the daily routine of Guru Dattatreya—bathing in Kashi, begging for alms in Kolhapur, and sleeping on Mahurgad—as well as his Avadhut form."
 ---
 श्री गुरुदत्तराज मूर्ती ओवाळितो प्रेमे आरती ‖ धृ ‖
 

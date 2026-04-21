@@ -2,6 +2,8 @@
 id: 28e312d4-0154-4b77-be36-cf9407baa862
 title: "सुखकर्ता दुखहर्ता"
 deity: "गणपती"
+description: "समर्थ रामदास स्वामींनी रचलेली ही अत्यंत लोकप्रिय आरती आहे. यात गणपतीला सुख देणारा, दुःख हरण करणारा आणि सर्व विघ्नांचा नाश करणारा म्हटले आहे."
+descriptionEng: "Composed by Samarth Ramdas Swami, this is a very popular Aarti. It describes Ganpati as the giver of happiness, the remover of sorrow, and the destroyer of all obstacles."
 ---
 जय देव, जय देव जय मंगलमूर्ती । 
 दर्शनमात्रे मन कामना पुरती ‖धृ‖
@@ -26,6 +28,8 @@ deity: "गणपती"
 id: 4f5b9f07-ed83-4d08-b859-078beba82fc1
 title: "आरती करु तुज मोरया"
 deity: "गणपती"
+description: "संत गोसावीनंदन रचित या आरतीत गणेशाच्या संकटनाशक आणि विघ्नहरक मंगल रूपाची स्तुती केली आहे."
+descriptionEng: "Composed by Sant Gosavinandan, this Aarti praises the auspicious form of Lord Ganesha, the destroyer of crises and remover of obstacles."
 ---
 आरती करु तुज मोरया ।
  मंगळगुणानिधी राजया ‖धृ. ‖ आरती ..
@@ -43,6 +47,8 @@ deity: "गणपती"
 id: 8efc1aa1-3050-4bac-85f3-72e2c9886441
 title: "नानापरिमळ दुर्वा"
 deity: "गणपती"
+description: "गोसावीनंदन लिखित या आरतीत गणपतीच्या षोडशोपचार पूजेचे, तसेच दुर्वा, शेंदूर आणि मोदक अर्पण करण्याचे फळ व महत्त्व सांगितले आहे."
+descriptionEng: "Written by Gosavinandan, this Aarti explains the merits and significance of offering Durva, Shendur, and Modaks, as well as performing the Shodashopachar puja of Ganpati."
 ---
 नानापरिमळ दुर्वा शेंदूर शमिपत्रें । 
 लाडू मोदक अन्ने परिपूरित पात्रें ‖
@@ -65,6 +71,8 @@ deity: "गणपती"
 id: 0984f48c-57fc-490c-b0a3-6f01e763f694
 title: "हेरंभ शिवकुल दिपका"
 deity: "गणपती"
+description: "द्वारकासुत रचित या आरतीत गणपतीला शिवकुलाचा दीपक (प्रकाश) मानून त्याची अत्यंत भावपूर्ण आराधना केली आहे."
+descriptionEng: "Composed by Dwarakasut, this Aarti offers a very emotional worship of Ganpati, revering him as the lamp (light) of Shiva's lineage."
 ---
 हेरंभ शिवकुल दिपका | 
 तुज आरती गणनायका ( ३ ) |
@@ -83,6 +91,8 @@ deity: "गणपती"
 id: 3e271dd3-b492-4364-bb6b-29bccb58cca5
 title: "शेंदुर लाल् चढायो"
 deity: "गणपती"
+description: "संत गोसावीनंदन रचित ही अत्यंत लोकप्रिय आरती गणेशाच्या सुंदर अष्टसिद्धी रूपाचे वर्णन करते. ही आरती प्रामुख्याने हिंदी-ब्रज भाषेत आहे."
+descriptionEng: "Composed by Sant Gosavinandan, this highly popular Aarti describes the beautiful Ashtasiddhi form of Ganesha. This Aarti is primarily in the Hindi-Braj language."
 ---
 शेंदुर लाल् चढायो अच्छा गजमुखको । 
 दोंदिल लाल् बिराजे सुत गौरिहरको।
@@ -105,6 +115,8 @@ deity: "गणपती"
 id: 9f4b258f-d2be-4247-ae48-a1113fa5d63d
 title: "तू सुखकर्ता तु दुःखहर्ता"
 deity: "गणपती"
+description: "गणपती बाप्पा मोरयाच्या जयघोषाने भक्तांना नैराश्यातून बाहेर काढण्यासाठी आणि विद्या व ज्ञान मागण्यासाठी केलेली ही एक सुंदर प्रार्थना आहे."
+descriptionEng: "This is a beautiful prayer made with the chant of 'Ganpati Bappa Morya' to pull devotees out of despair and to seek wisdom and knowledge."
 ---
 तू सुखकर्ता तु दुःखहर्ता । विघ्नविनाशक मोरया ‖
 संकटी रक्षी शरण तुला मी । गणपती बाप्पा मोरया ‖ धृ ‖
@@ -122,6 +134,8 @@ deity: "गणपती"
 id: f549b05c-9868-4e4b-a80b-9e82d425e618
 title: "दीनदयाळा गणपति स्वामी"
 deity: "गणपती"
+description: "यादवसुत रचित या आरतीत भक्ताने गणपतीला चिंता आणि संकटातून तारण्यासाठी अत्यंत आर्त हाक दिली आहे."
+descriptionEng: "Composed by Yadavsut, in this Aarti, the devotee has given a very desperate call to Ganpati to save him from worries and crises."
 ---
 दीनदयाळा गणपति स्वामी द्यावी मज भेटी। 
 तव चरणांची सखया मजला आवडी मोठी ‖धृ.।
@@ -145,6 +159,8 @@ deity: "गणपती"
 id: 17338b87-1225-4c60-b495-23c22b498dd2
 title: "विघ्नांतक विघ्नेशा"
 deity: "गणपती"
+description: "भाद्रपद चतुर्थीला घरोघरी पुजल्या जाणाऱ्या गणेशाची ही आरती भक्तांच्या सर्व मनोकामना पूर्ण करण्यासाठी गायली जाते."
+descriptionEng: "This Aarti of Ganesha, who is worshipped in every home on Bhadrapad Chaturthi, is sung to fulfill all the heartfelt desires of the devotees."
 ---
 विघ्नांतक विघ्नेशा हे गजानना । 
 आरती मी करितों तुज पुरवि कामना ‖धृ.‖
@@ -165,6 +181,8 @@ deity: "गणपती"
 id: 1b31f6c0-c55f-49ed-b59b-9458c3268989
 title: "जय गणेश देवा"
 deity: "गणपती"
+description: "ही एक अत्यंत प्रसिद्ध पारंपारिक हिंदी आरती आहे. यात गणेशाला अंधांना दृष्टी आणि निर्धनांना संपत्ती देणारा दयाळू देव म्हटले आहे."
+descriptionEng: "This is a very famous traditional Hindi Aarti. In it, Ganesha is called a merciful god who gives sight to the blind and wealth to the poor."
 ---
 जय गणेश जय गणेश, जय गणेश देवा । 
 माता जिसकी पार्वती, पिता महादेवा‖ धृ ‖
@@ -187,6 +205,8 @@ deity: "गणपती"
 id: c8546864-ac93-4be3-aeb9-2901d2080fd9
 title: "आरती सुंदर वदनाची"
 deity: "गणपती"
+description: "त्रिविक्रम रचित ही आरती 'गणपतीपुळे' येथील पश्चिमाभिमुख स्वयंभू गणेशाच्या अत्यंत विलोभनीय रूपाचे आणि अथांग सागराचे वर्णन करते."
+descriptionEng: "Composed by Trivikram, this Aarti describes the highly enchanting form of the west-facing Swayambhu Ganesha at 'Ganpatipule' and the vast ocean."
 ---
 आरती सुंदर वदनाची । गिरिजा शशिघर तनयाची । धृ l
 
@@ -229,6 +249,8 @@ deity: "गणपती"
 id: f39dbfc8-e958-41d8-b3bc-80271440022e
 title: "जय देव जय देव जय मोरेश्वरा"
 deity: "गणपती"
+description: "विठ्ठलसुत रचित या आरतीत अष्टविनायकांपैकी एक असलेल्या मोरगावच्या 'मयूरेश्वर' (मोरेश्वर) गणपतीचा अगाध महिमा वर्णिला आहे."
+descriptionEng: "Composed by Vitthalsut, this Aarti describes the profound glory of 'Mayureshwar' (Moreshwar) Ganpati of Morgaon, one of the Ashtavinayakas."
 ---
 
 जय देव जय देव जय मोरेश्वरा । तुझा न कळे पार शेषा फणिवरा ॥ध्रु॥
@@ -257,6 +279,8 @@ deity: "गणपती"
 id: 6e7e2a32-b319-41c6-b365-d6e6c66e7715
 title: "वक्रतुंड गुणवंत विघ्नहर"
 deity: "गणपती"
+description: "मोरेश्वर सुत वासुदेव लिखित या आरतीत रिद्धी-सिद्धीसह धावून येणाऱ्या वक्रतुंड गणेशाला विघ्ने दूर करण्यासाठी साकडे घातले आहे."
+descriptionEng: "Written by Vasudev, son of Moreshwar, this Aarti earnestly appeals to the Vakratunda Ganesha, who comes rushing with Riddhi and Siddhi, to remove obstacles."
 ---
 
 वक्रतुंड गुणवंत विघ्नहर 

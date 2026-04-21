@@ -172,7 +172,7 @@ export function generateAartya() {
                 
                 const titleEng = getEnglish(data.title || "");
                 const deityEng = getEnglish(data.deity || "").toUpperCase();
-                const descriptionEng = getEnglish(data.description || "");
+                const descriptionEng = data.descriptionEng || getEnglish(data.description || "");
                 
                 if (!data.id) {
                     throw new Error(`Aarti "${data.title || index}" in file "${category}/${file}" is missing a unique 'id' in its frontmatter! Please generate a UUID and add it as 'id: <uuid>'.`);

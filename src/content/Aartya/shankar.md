@@ -3,6 +3,8 @@
 id: 4a9fe898-cd71-42cd-b3b2-0916ceb0a2f1
 title: "लवथवती विक्राळा"
 deity: "शंकर"
+description: "समर्थ रामदास स्वामींनी रचलेली ही अत्यंत स्फूर्तिदायक आरती आहे. यात भगवान शंकराच्या रुद्र रूपाचे, विषप्राशनाचे (हलाहल) आणि त्यांच्या अथांग वैभवाचे वर्णन केले आहे."
+descriptionEng: "Composed by Samarth Ramdas Swami, this is a very inspiring Aarti. It describes the Rudra form of Lord Shiva, his drinking of the poison (Halahal), and his boundless glory."
 ---
 लवथवती विक्राळा ब्रह्मांडी माळा ।
 वीषें कंठ काळा त्रिनेत्रीं ज्वाळा ‖
@@ -32,6 +34,8 @@ deity: "शंकर"
 id: 542b82eb-e727-4cc1-bc90-4b2450ab4316
 title: "पडलें गोहत्येचें पातक"
 deity: "शंकर"
+description: "संत गोसावीनंदन लिखित या आरतीत नाशिकमधील 'त्र्यंबकेश्वर' ज्योतिर्लिंगाची स्तुती आहे. महर्षी गौतमांना गोहत्येच्या शापातून मुक्त करण्यासाठी शिवाने गोदावरी कशी आणली, याचा इतिहास यात वर्णिला आहे."
+descriptionEng: "Written by Sant Gosavinandan, this Aarti praises the 'Trimbakeshwar' Jyotirlinga in Nashik. It narrates the history of how Shiva brought the Godavari river to free Sage Gautam from the curse of cow slaughter."
 ---
 पडलें गोहत्येचें पातक गौतमऋषिच्या शिरी हो।
 त्याने तप मांडिले ध्याना आणुनि तुज अंतरी हो‖
@@ -64,6 +68,8 @@ id: 83979e59-eded-482a-847e-3be215a56ec8
 title: "जयजयजी मदनांतक गौरीशंकरा"
 deity: "शंकर"
 link: https://youtu.be/N03U-317-8E?si=P8suuYQIn8tnTQJY
+description: "विठ्ठलसुत रचित या आरतीत मदनाचा (कामदेवाचा) आणि त्रिपुरासुराचा वध करणाऱ्या भगवान शंकराच्या अगाध शक्तीचे व रौद्र रूपाचे वर्णन केले आहे."
+descriptionEng: "Composed by Vitthalsut, this Aarti describes the profound power and fierce form of Lord Shiva, who slew Madana (Kamadeva) and Tripurasura."
 ---
 जयजयजी मदनांतक गौरीशंकरा ‖
 पंचारति करितों तुज हे महेश्वरा ‖ धृ. ‖
@@ -88,6 +94,8 @@ id: 670dec1f-211f-4881-bdc6-c040d834fab5
 title: "आरती करू तूझी शिवशंकरा"
 deity: "शंकर"
 link: https://youtu.be/FGY2DF8vGCI?si=vU4easEAklqxNIUi
+description: "सीताराम दास रचित या आरतीत समुद्रमंथनातून निघालेले हलाहल पचवणाऱ्या आणि राणी चांगुणेचे सत्त्व पाहणाऱ्या शिवशंकराच्या लीलांचे भावपूर्ण वर्णन आहे."
+descriptionEng: "Composed by Sitaram Das, this Aarti is an emotional description of the divine plays of Shivashankar, who digested the Halahal poison that emerged from the churning of the ocean and tested the virtue of Queen Changuna."
 ---
 आरती करू तूझी शिवशंकरा ‖ 
 भक्तीभावे ओवाळीतो पार्वतीवरा ‖ धृ०‖
@@ -112,6 +120,8 @@ id: bbfa84d7-73d3-4dbc-9453-dcde9b3dd720
 title: "उमावरा शंकरा"
 deity: "शंकर"
 link: https://youtu.be/Hprx6ke14dM?si=Brj1gBaaXkcWXstr
+description: "बल्लाळपुत्र गोविंद (बल्लाळात्मज) यांनी रचलेली ही एक अध्यात्मिक आरती आहे. यात संसाररूपी मायेतून आणि जन्म-मृत्यूच्या फेऱ्यातून मुक्त करण्यासाठी शिवाला आर्त हाक दिली आहे."
+descriptionEng: "Composed by Govind, son of Ballal (Ballalatmaj), this is a spiritual Aarti. It gives a desperate call to Shiva to liberate one from the illusion of the world and the cycle of birth and death."
 ---
 उमावरा शंकरा, पामर हा नर सादर शंकरा, 
 पामर हा नर सादर शरण तुम्हा तारा ‖ धृ‖ 
@@ -136,6 +146,8 @@ id: a8e2b218-d71e-4e86-aa70-36ab50760ddd
 title: "कर्पूरगौरा गौरीशंकरा"
 deity: "शंकर"
 link: https://youtu.be/rujHYX8TV0A?si=uGr_OAikulCeblIt
+description: "वासुदेव (मोरेश्वर सुत) लिखित या आरतीत कापरासारख्या शुभ्र, त्रिशूळ-डमरूधारी आणि मस्तकावर गंगा धारण करणाऱ्या भोळ्या सांबाचे विलोभनीय रूप वर्णिले आहे."
+descriptionEng: "Written by Vasudev (son of Moreshwar), this Aarti describes the enchanting form of the innocent Samba (Shiva), who is as white as camphor, holds a trident and a damaru, and carries the Ganges on his head."
 ---
 कर्पूरगौरा गौरीशंकरा आरती करू तुजला।
 नाम स्मरतां प्रसन्न होउनि पावसि भक्ताला ‖ धृ ‖
@@ -154,6 +166,8 @@ link: https://youtu.be/rujHYX8TV0A?si=uGr_OAikulCeblIt
 id: 0118eb41-4a87-41d7-807a-77a485e99c43
 title: "जयदेव जयदेव जय हरिहरा"
 deity: "शंकर"
+description: "या आरतीत कोकणातील 'हरिहरेश्वर' (दक्षिण काशी) येथील शिव-विष्णूच्या एकत्रित (हरि-हर) स्वरूपाचा आणि महर्षी अगस्तींच्या सेवेने प्रसन्न झालेल्या देवाचा महिमा सांगितला आहे."
+descriptionEng: "This Aarti recounts the glory of the combined Shiva-Vishnu (Hari-Hara) form at 'Harihareshwar' (Dakshin Kashi) in Konkan, and the deity who was pleased by the service of Sage Agastya."
 ---
 जयदेव जयदेव जय हरिहरा ।
 त्रिगुणात्मक त्रैमूर्ती तू विश्वंभराः ॥धृ.॥

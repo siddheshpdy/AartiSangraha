@@ -2,6 +2,8 @@
 id: e78af684-9010-4843-ab6e-d4d01d84b900
 title: "श्यामलवर्णा षड्रिपुदमना"
 deity: "कृष्ण"
+description: "दत्तात्रय रचित या आरतीत कालिया मर्दनापासून ते कंस-चाणूर वधापर्यंतच्या श्रीकृष्णाच्या विविध लीलांचे आणि भक्तरक्षक रूपाचे वर्णन केले आहे."
+descriptionEng: "Composed by Dattatraya, this Aarti describes the various divine plays of Lord Krishna, from the defeat of Kaliya to the slaying of Kamsa and Chanur, highlighting his role as the protector of devotees."
 ---
 श्यामलवर्णा षड्रिपुदमना राधारमणा तूच हरी।
 आरति करितो बहुप्रेमाने भवभयसंकट दूर करी‖  धृ ‖
@@ -19,6 +21,8 @@ deity: "कृष्ण"
 id: bd31980b-849e-4346-84a3-08c2f32a0798
 title: "ओवाळू आरती मदनगोपाळा"
 deity: "कृष्ण"
+description: "संत एकनाथांनी रचलेली ही आरती मदनगोपाळ श्रीकृष्णाच्या विलोभनीय रूपाचे, वैजयंती माळेचे आणि श्रीवत्सलांछनाचे अत्यंत भावपूर्ण वर्णन करते."
+descriptionEng: "Composed by Sant Eknath, this Aarti highly affectionately describes the enchanting form of Madangopal Krishna, his Vaijayanti garland, and the Shrivatsa mark."
 ---
 ओवाळू आरती मदनगोपाळा ।
  श्यामसुंदर गळा वैजयंतीमाळा ‖  धृ ‖
@@ -42,6 +46,8 @@ id: eb2e9181-4987-4c06-8d8f-9d4ad038a672
 title: "आरती भुवनसुंदराची"
 deity: "कृष्ण"
 link: https://youtu.be/ygyCoH0DreI?si=nffIysDbZmL6M2H7
+description: "या आरतीमध्ये वृंदावनात गोप-गोपिकांसोबत विहरणाऱ्या, मधुर मुरली वाजवणाऱ्या आणि कल्पवृक्षाखाली उभ्या असलेल्या भुवनसुंदर श्रीकृष्णाची स्तुती केली आहे."
+descriptionEng: "This Aarti praises the universally beautiful Lord Krishna, wandering in Vrindavan with cowherds and gopis, playing his sweet flute, and standing beneath the Kalpavriksha tree."
 ---
 आरती भुवनसुंदराची । इंदिरावरा मुकुंदाची ‖धृ‖
 
@@ -85,6 +91,8 @@ link: https://youtu.be/ygyCoH0DreI?si=nffIysDbZmL6M2H7
 id: 43bf1d21-6f2d-49b0-979d-81044874abef
 title: "कोटि कुर्वंडिया"
 deity: "कृष्ण"
+description: "या पारंपारिक आरतीत गोकुळातील गोपी आणि देव-गंधर्व श्रीकृष्णाला (यादवरायाला) मंगल स्नान घालून प्रेमाने कशी ओवाळणी करत आहेत, याचे वर्णन आहे."
+descriptionEng: "This traditional Aarti describes how the Gopis of Gokul and the celestial beings (Deva-Gandharvas) lovingly bathe and perform Aarti for Lord Krishna (Yadavraya)."
 ---
 कोटि कुर्वंडिया माधवपायां ‖ 
 उजळॊं येती यादवराया ‖
@@ -107,6 +115,8 @@ deity: "कृष्ण"
 id: da2878f6-c243-4acd-b664-182a43245065
 title: "विडा घ्या हो नारायणा"
 deity: "कृष्ण"
+description: "शिवराम रचित या रूपकात्मक आरतीत शांती, क्षमा, दया आणि वैराग्यरुपी विडा (तांबूल) भगवान नारायणाला (कृष्णाला) अर्पण करण्याचा सुंदर भाव व्यक्त केला आहे."
+descriptionEng: "Composed by Shivaram, this metaphorical Aarti expresses the beautiful sentiment of offering a 'Vida' (betel leaf) of peace, forgiveness, compassion, and detachment to Lord Narayana (Krishna)."
 ---
 विडा घ्या हो नारायणा कृष्णा जगज्जीवना,
 विनविते रखुमाई ‖ दासी होईन मी कान्हा
