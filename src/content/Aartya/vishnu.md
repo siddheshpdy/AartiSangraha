@@ -2,6 +2,8 @@
 id: 61edca6d-974f-4290-b14b-b16acbda764c
 title: "आवडी गंगाजळे"
 deity: "विष्णू"
+description: "रमावल्लभदास रचित या आरतीत मी-तू-पणा (अहंकार) विसरून, सद्भाव आणि प्रेमाचा नैवेद्य अर्पण करून भगवान विष्णूची कशी मानसपूजा करावी, हे सांगितले आहे."
+descriptionEng: "Composed by Ramavallabhdas, this Aarti explains how to perform the mental worship (Manaspuja) of Lord Vishnu by forgetting ego (I-ness) and offering the food of good faith and love."
 ---
 आवडी गंगाजळे, देवा न्हाणिले l 
 भक्तीचे भूषण प्रेमसुगंध अर्पीले l
@@ -35,6 +37,8 @@ deity: "विष्णू"
 id: 5539b93b-5925-4468-a604-10236a1ca245
 title: "दशावतार"
 deity: "विष्णू"
+description: "या आरतीत भगवान विष्णूने भक्तांच्या रक्षणासाठी आणि धर्मसंस्थापनेसाठी घेतलेल्या मत्स्य, कूर्म, वराह, नरसिंह अशा दहा अवतारांचे (दशावतारांचे) संक्षिप्त व सुंदर वर्णन केले आहे."
+descriptionEng: "This Aarti provides a brief and beautiful description of the ten avatars (Dashavatar), such as Matsya, Kurma, Varaha, and Narasimha, taken by Lord Vishnu for the protection of devotees and the establishment of Dharma."
 ---
 आरती सप्रेम जय जय विठ्ठल परब्रह्म l 
 भक्तसंकटी नाना स्वरूपी स्थापिसी स्वधर्म ‖ध्रु॰‖
@@ -79,6 +83,8 @@ id: 26e663c6-2c00-4324-b2ad-5e86a7137ddf
 title: "सत्यनारायण"
 deity: "विष्णू"
 link: https://youtu.be/t-DQWXgLjPU?si=1aV6-nTNLfOc5yNr
+description: "वासुदेव (मोरेश्वरसुत) रचित या आरतीत श्री सत्यनारायण व्रताचा महिमा, शतानंद विप्र, साधू वाणी आणि कलावती यांच्या कथेचा संदर्भ देऊन सत्यनारायणाची स्तुती केली आहे."
+descriptionEng: "Composed by Vasudev (son of Moreshwar), this Aarti praises Satyanarayana by referencing the glory of the Shri Satyanarayan Vrata and the stories of Shatanand Vipra, Sadhu Vani, and Kalavati."
 ---
 जय जय दीन दयाळा सत्यनारायण देवा ।
 पंचारती ओवाळू श्रीपती तुज भक्ती भावा ॥ धृ. ॥
@@ -117,6 +123,8 @@ id: 70cec606-0bea-4ae1-a448-4f13abf4609f
 title: "लक्ष्मीरमणा भवभयहरणा"
 deity: "विष्णू"
 link: https://youtu.be/rRUmoU0BOAc?si=PiOGjAJhy8zW_Lzp
+description: "रुक्मिणीसुत रचित या आरतीत ध्रुवबाळाला अढळपद देणाऱ्या आणि अर्जुनाचा रथ हाकणाऱ्या लक्ष्मीरमण भगवान विष्णूच्या औदार्याचे वर्णन केले आहे."
+descriptionEng: "Composed by Rukminisut, this Aarti describes the generosity of Lakshmiraman Lord Vishnu, who granted the eternal position to the child Dhruva and steered Arjuna's chariot."
 ---
 लक्ष्मीरमणा भवभयहरणा चित्सुखसदना हत्कमला ।
 बहु प्रेमाने पंचारति ही करित असो बा तुज विमला ॥ ध्रु० ॥

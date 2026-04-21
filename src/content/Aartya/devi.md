@@ -2,6 +2,8 @@
 id: 7e51681d-83be-46b3-9c32-630e9b9727f1
 title: "दुर्गे दुर्घट भारी"
 deity: "देवी"
+description: "नरहरी रचित ही अत्यंत लोकप्रिय आरती आहे. यात देवीला अनाथनाथा, संकटनिवारिणी आणि महिषासुरमर्दिनी म्हटले असून, भवपाशातून मुक्त करण्याची प्रार्थना केली आहे."
+descriptionEng: "This is a very popular Aarti composed by Narhari. It addresses the Goddess as Anathanatha, Sankatnivardini, and Mahishasuramardini, and prays for liberation from the cycle of birth and death."
 ---
 दुर्गे दुर्घट भारी तुजविण संसारी ।
 अनाथनाथे अंबे करुणा विस्तारी ‖
@@ -25,6 +27,8 @@ id: 1f58f863-4da2-4415-bad7-f361843ab4ac
 title: "जय देवी जय देवी जय आदिशक्ती"
 deity: "देवी"
 link: https://youtu.be/MIoHbXoRjm4?si=Gwc1tzWOnXQ1oci0
+description: "गोविंद रचित या आरतीत आदिशक्तीच्या मूळमाया स्वरूपाचे आणि शुंभ-निशुंभ व महिषासुराचा वध करणाऱ्या तिच्या रौद्र रूपाचे वर्णन केले आहे."
+descriptionEng: "Composed by Govind, this Aarti describes the original cosmic illusion (Mulamaya) form of Adishakti and her fierce form that slew demons Shumbha-Nishumbha and Mahishasura."
 ---
 जय देवी जय देवी जय आदिशक्ती ।
 ओवाळू आरती तुज हो भगवती ‖ धृ ‖
@@ -49,6 +53,8 @@ id: 89c03113-5fc3-424f-9e31-932faf779147
 title: "ओवाळीन वोजा"
 deity: "देवी"
 link: https://youtu.be/VIG_OpmImd8?si=Aac2l6MzW0A2VKp5
+description: "या आरतीमध्ये तुळजाभवानी, महालक्ष्मी, कामाक्षी, मीनाक्षी अशा देवीच्या विविध रूपांचे आणि निवासस्थानांचे अत्यंत सुंदर वर्णन करून तिला ओवाळले आहे."
+descriptionEng: "This Aarti beautifully describes and worships the various forms and abodes of the Goddess, such as Tuljabhavani, Mahalakshmi, Kamakshi, and Meenakshi."
 ---
 ओवाळीन वोजा ‖ शिवसहजा, आदिभवानी गिरीजा , कल्लोलस्तरजा ‖
 चारुभुजा, आई तुकाई तुळजा, शाकंभरिभर्गा ।
@@ -76,6 +82,8 @@ id: 058886f1-d29d-40c8-8fa7-6a6d661ca4a8
 title: "महिषासुरमर्दिनी देवि त्रिपुरसुंदरी"
 deity: "देवी"
 link: https://youtu.be/7bmaJz05LTI?si=SDLq4Rd24Nehe2zi
+description: "वासुदेव रचित या आरतीत अष्टभुजा, चंड-मुंड विनाशिनी आणि भक्तांचे रक्षण करणाऱ्या महिषासुरमर्दिनी त्रिपुरसुंदरी देवीची स्तुती केली आहे."
+descriptionEng: "Composed by Vasudev, this Aarti praises the eight-armed Mahishasuramardini Tripurasundari, the destroyer of Chanda-Munda and protector of devotees."
 ---
 (चाल - जय जय जी मदानांतक गौरीशंकरा )
 महिषासुरमर्दिनी देवि त्रिपुरसुंदरी ।  
@@ -96,6 +104,8 @@ id: 5ff5531a-0c6b-4aaa-a191-404e3237d2cf
 title: "जय जय जगदंबे"
 deity: "देवी"
 link: https://youtu.be/EOt0oQs5TQo?si=WHRRiLrcjTU0-oO2
+description: "विष्णूदास रचित या आरतीत जगदंबेच्या (रेणुका मातेच्या) अनुपम सौंदर्याचे, तिच्या दागिन्यांचे आणि भक्तांसाठी धावून येणाऱ्या कृपेचे वर्णन केले आहे."
+descriptionEng: "Composed by Vishnudas, this Aarti describes the unparalleled beauty, ornaments, and the swift grace of Goddess Jagadamba (Mother Renuka) who rushes to help her devotees."
 ---
 जय जय जगदंबे | श्री अंबे | रेणुके कल्पकदंबे | जय जय || धृ ||
  
@@ -127,6 +137,8 @@ id: 1d47b6f9-2164-45db-a07d-a37359518292
 title: "जय देवी मंगळागौरी"
 deity: "देवी"
 link: https://youtu.be/F9FNXZZmDNs?si=FQC438vrm7-wPYAR
+description: "श्रावण महिन्यात नवविवाहित स्त्रियांकडून केल्या जाणाऱ्या मंगळागौरीच्या पूजेची ही पारंपारिक आरती आहे. यात देवीच्या पूजेचे आणि नैवेद्याचे वर्णन आहे."
+descriptionEng: "This is a traditional Aarti sung during the Mangalagauri puja performed by newlywed women in the month of Shravan. It describes the worship and offerings made to the Goddess."
 ---
 जय देवी मंगळागौरी। ओंवाळीन सोनियाताटीं।।
 रत्नांचे दिवे। माणिकांच्या वाती। हिरेया ज्योती।।धृ।।
@@ -159,6 +171,8 @@ id: 71b9204c-db0c-4aca-a228-46cda1cdc5aa
 title: श्री  नवरात्रीवसीनी / अंबाबाई आरती 
 deity: "देवी"
 link: https://www.youtube.com/watch?v=SWIa8mdIdiU
+description: "समर्थ रामदास स्वामींनी रचलेली ही आरती नवरात्रीच्या नऊ दिवसांच्या उत्सवाचे आणि घटस्थापनेपासून ते सीमोल्लंघनापर्यंतच्या देवीच्या विविध रूपांचे वर्णन करते."
+descriptionEng: "Composed by Samarth Ramdas Swami, this Aarti describes the nine-day festival of Navratri and the various forms of the Goddess from Ghatasthapana to Seemollanghan."
 ---
 
 आश्विन शुद्ध पक्षीं अंबा बैसलि सिंहासनीं हो ।

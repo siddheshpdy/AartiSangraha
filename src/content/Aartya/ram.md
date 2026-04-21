@@ -2,6 +2,8 @@
 id: 37ab56cb-fea7-4966-8b71-730d366b5b94
 title: "अवतरला रघुपती"
 deity: "राम"
+description: "मध्वमुनीश्वर रचित या आरतीत भगवान श्रीरामाच्या जन्माचा (रामनवमीचा) आनंदोत्सव, अयोध्येतील मंगल वातावरण आणि कौसल्येच्या आनंदाचे वर्णन केले आहे."
+descriptionEng: "Composed by Madhvamunishwar, this Aarti describes the joyous celebration of Lord Rama's birth (Ram Navami), the auspicious atmosphere in Ayodhya, and Mother Kausalya's happiness."
 ---
 अवतरला रघुपती जे । (हा हा हा हा… )
 आनंदली वसुधा ती‖
@@ -25,6 +27,8 @@ deity: "राम"
 id: 424c85ed-5584-4d43-9f1c-afa707ffb8dd
 title: "श्यामसुंदर रामाचे चरणकमळे"
 deity: "राम"
+description: "या आरतीत अयोध्येतील सर्व स्त्रिया आणि भक्त श्यामसुंदर श्रीरामाच्या चरणकमळांना अत्यंत प्रेमाने व भक्तीभावाने आरती ओवाळत असल्याचे वर्णन आहे."
+descriptionEng: "This Aarti describes how all the women and devotees of Ayodhya are lovingly and devotionally performing Aarti to the lotus feet of the dark and beautiful Lord Rama."
 ---
 श्यामसुंदर रामाचे चरणकमळे । 
 ओवाळू आरती कनकपरियळी ‖ धृ‖
@@ -42,6 +46,8 @@ deity: "राम"
 id: f9f5d084-ccb8-419a-8074-735550749a8d
 title: "त्रिभुवन मंडित माळ"
 deity: "राम"
+description: "संत विष्णुदास नामा यांनी रचलेली ही आरती हाती धनुष्यबाण घेतलेल्या, आणि भरत-शत्रुघ्न व मारुती सोबत असलेल्या श्रीरामाच्या विलोभनीय रूपाचे वर्णन करते."
+descriptionEng: "Composed by Sant Vishnudas Nama, this Aarti describes the enchanting form of Lord Rama holding a bow and arrow, accompanied by Bharat, Shatrughna, and Hanuman."
 ---
 त्रिभुवन मंडित माळ गळा । 
 आरती ओवाळू पाहू ब्रह्मपुतळा ‖ १ ‖
@@ -66,6 +72,8 @@ id: 54474d97-0dd9-47d7-ae07-9afc332cd32b
 title: "जय दाशरथी प्रभू राम"
 deity: "राम"
 link: https://youtu.be/wfmOkxRK8wk?si=hO2j_S2gZ7BHJ-oD
+description: "या आरतीमध्ये वनवासाला जाणाऱ्या, अहिल्येचा उद्धार करणाऱ्या आणि संकटात भक्तांसाठी धावून येणाऱ्या दाशरथी श्रीरामाची अत्यंत भावपूर्ण स्तुती केलीংশে केली आहे."
+descriptionEng: "This Aarti offers a highly emotional praise of Dasharathi Shri Rama, who went into exile, redeemed Ahalya, and rushes to the rescue of his devotees in times of crisis."
 ---
 जय दाशरथी प्रभू राम ।  करू आरती प्रेमाने ‖ धृ ‖
 

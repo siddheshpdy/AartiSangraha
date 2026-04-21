@@ -2,6 +2,8 @@
 id: b8d918c4-0bff-402c-8020-1e4087c97d5d
 title: "युगे अठ्ठावीस विटेवरी ऊभा"
 deity: "विठ्ठल"
+description: "संत नामदेवांनी रचलेली ही पंढरपूरच्या विठ्ठलाची सर्वात प्रसिद्ध आरती आहे. यात पुंडलिकासाठी २८ युगे विटेवर उभ्या असलेल्या पांडुरंगाचा महिमा वर्णिला आहे."
+descriptionEng: "Composed by Sant Namdev, this is the most famous Aarti of Vitthal of Pandharpur. It describes the glory of Pandurang, who has been standing on a brick for 28 yugas for his devotee Pundalik."
 ---
 युगे अठ्ठावीस विटेवरी ऊभा ।
 वामांगी रखुमाई दिसे दिव्य शोभा ‖
@@ -34,6 +36,8 @@ deity: "विठ्ठल"
 id: 7b947398-337c-493f-b3e4-55cf3721addf
 title: "येई हो विठ्ठले माझे माउली"
 deity: "विठ्ठल"
+description: "संत विष्णुदास नामा यांनी रचलेली ही अत्यंत आर्त आरती आहे. यात भक्त आपल्या माउलीला (विठ्ठलाला) भेटण्यासाठी कशी वाट पाहत आहे, याचे सुंदर वर्णन आहे."
+descriptionEng: "Composed by Sant Vishnudas Nama, this is a deeply soulful Aarti. It beautifully describes how a devotee is eagerly waiting to meet his Mauli (Vitthal)."
 ---
 येई हो विठ्ठले माझे माउली ये l
 निढळावरि कर ठेवूनि वाट मी पाहे ‖ध्रु॰‖
