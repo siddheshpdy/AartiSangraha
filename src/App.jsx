@@ -1401,7 +1401,7 @@ function App() {
 
         {displayedAartya.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
-          const showContent = isFocused || !!searchQuery;
+          const showContent = isFocused || !!searchQuery || aarti.type === 'Shloka';
           const videoId = getYouTubeVideoId(aarti.link);
           
           return (focusedAartiId === null || focusedAartiId === aarti.id) && (
@@ -1410,7 +1410,7 @@ function App() {
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
             style={!isFocused ? { animationDelay: `${(index % 20) * 0.05}s` } : {}}
             onClick={() => {
-              if (!isFocused) {
+              if (!isFocused && aarti.type !== 'Shloka') {
                 handleFocusAarti(aarti.id);
               }
             }}
@@ -1487,7 +1487,7 @@ function App() {
             </div>
         </div>
             <h2 className={`aarti-title ${script === 'latin' ? 'text-latin' : ''}`}>
-              {isFocused || aarti.type === 'Shloka' ? (
+             {isFocused || aarti.type === 'Shloka' ? (
                 <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
               ) : (
                 <Link to={`/aarti/${aarti.id}`} className="seo-link" onClick={(e) => e.stopPropagation()}>

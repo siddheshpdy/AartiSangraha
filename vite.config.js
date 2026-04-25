@@ -7,6 +7,9 @@ import path from 'path'
 
 import { VitePWA } from 'vite-plugin-pwa'
 
+let hasRunPrebuild = false;
+let isSsrBuild = false;
+
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
@@ -28,10 +31,17 @@ export default defineConfig({
     react(),
     {
       name: 'watch-markdown-content',
+      configResolved(config) {
+        // Detect if this is the secondary SSR build step
+        isSsrBuild = !!config.build.ssr;
+      },
       buildStart() {
-        // Runs once when you start the dev server or run a build
-        addUuids();
-        generateAartya();
+        // Prevent running twice: once per process, and skip during SSR
+        if (!hasRunPrebuild && !isSsrBuild) {
+          addUuids();
+          generateAartya();
+          hasRunPrebuild = true;
+        }
       },
       handleHotUpdate({ file }) {
         // Runs whenever any file is saved during dev
