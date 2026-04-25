@@ -377,6 +377,28 @@ function App() {
     }
     }, [location.pathname, contentType]);
 
+  // Handle direct links to prevent empty pages and sync category state
+  useEffect(() => {
+    if (focusedAartiId && sortedAartiData.length > 0) {
+      const aarti = sortedAartiData.find(a => a.id === focusedAartiId);
+      if (aarti) {
+        if (aarti.type === 'Shloka') {
+          navigate('/shloka', { replace: true });
+        } else {
+          const itemType = aarti.type || 'Aartya';
+          if (contentType !== itemType) {
+            setContentType(itemType);
+          }
+          if (selectedCategory !== "All" && selectedCategory !== "Favorites" && !selectedCategory.startsWith("playlist-")) {
+            if (aarti.deity && selectedCategory !== aarti.deity) {
+              setSelectedCategory("All");
+            }
+          }
+        }
+      }
+    }
+  }, [focusedAartiId, sortedAartiData, navigate, contentType, selectedCategory]);
+
   const titleMap = useMemo(() => ({
     "Home": script === 'latin' ? "Home | Aarti Sangraha" : "मुख्यपृष्ठ | आरती संग्रह",
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
@@ -1150,7 +1172,7 @@ function App() {
       </div> 
       {/* Render only the selected content */}
       <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
-        {contentType === "Home" && (
+        {contentType === "Home" && !focusedAartiId && (
           <article className="aarti-card help-container">
             <div className="home-header">
               <h2 className="home-title">{script === 'latin' ? "Welcome to Aarti Sangraha" : "आरती संग्रहामध्ये आपले स्वागत आहे"}</h2>
@@ -1206,7 +1228,7 @@ function App() {
             </div>
           </article>
         )}
-        {contentType === "Help" && (
+        {contentType === "Help" && !focusedAartiId && (
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "How to use Aarti Sangraha?" : "आरती संग्रह कसे वापरावे?"}</h2>
             
@@ -1300,7 +1322,7 @@ function App() {
           </article>
         )}
         
-        {contentType === "Contact" && (
+        {contentType === "Contact" && !focusedAartiId && (
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "Contact Us" : "संपर्क"}</h2>
             
@@ -1319,7 +1341,7 @@ function App() {
           </article>
         )}
         
-        {contentType === "Privacy" && (
+        {contentType === "Privacy" && !focusedAartiId && (
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "Privacy Policy" : "गोपनीयता धोरण"}</h2>
             
@@ -1341,7 +1363,7 @@ function App() {
             </div>
           </article>
         )}
-        {contentType === "Terms" && (
+        {contentType === "Terms" && !focusedAartiId && (
           <article className="aarti-card help-container">
             <h2 className="help-title">{script === 'latin' ? "Terms of Use" : "वापराच्या अटी"}</h2>
             <div className="help-section">
@@ -1379,7 +1401,7 @@ function App() {
 
         {displayedAartya.map((aarti, index) => {
           const isFocused = focusedAartiId === aarti.id;
-          const showContent = isFocused || !!searchQuery;
+          const showContent = isFocused || !!searchQuery || aarti.type === 'Shloka';
           const videoId = getYouTubeVideoId(aarti.link);
           
           return (focusedAartiId === null || focusedAartiId === aarti.id) && (
@@ -1388,7 +1410,7 @@ function App() {
             className={`aarti-card ${isFocused ? 'focused-aarti-card' : ''}`}
             style={!isFocused ? { animationDelay: `${(index % 20) * 0.05}s` } : {}}
             onClick={() => {
-              if (!isFocused) {
+              if (!isFocused && aarti.type !== 'Shloka') {
                 handleFocusAarti(aarti.id);
               }
             }}
@@ -1430,7 +1452,9 @@ function App() {
             </select>
           </div>
             <div className="font-resizer">
-              <button className="font-btn" onClick={(e) => handleShare(e, aarti)} aria-label="Share Aarti" title="Share Aarti">🔗</button>
+              {aarti.type !== 'Shloka' && (
+                <button className="font-btn" onClick={(e) => handleShare(e, aarti)} aria-label="Share Aarti" title="Share Aarti">🔗</button>
+              )}
               {(selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery && (
                 <>
                   <button 
@@ -1463,7 +1487,7 @@ function App() {
             </div>
         </div>
             <h2 className={`aarti-title ${script === 'latin' ? 'text-latin' : ''}`}>
-              {isFocused ? (
+             {isFocused || aarti.type === 'Shloka' ? (
                 <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
               ) : (
                 <Link to={`/aarti/${aarti.id}`} className="seo-link" onClick={(e) => e.stopPropagation()}>
