@@ -9,6 +9,38 @@ import { usePlaylists } from '../usePlaylists';
 const PujaPlayer = React.lazy(() => import('../PujaPlayer'));
 const BackupRestoreSettings = React.lazy(() => import('../BackupRestoreSettings'));
 
+const TempleStory = React.lazy(() => import('./TempleStory'));
+const validCollectionTypes = ["CollectionHome", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help"];
+const validRootTypes = ["TempleHome", "Contact", "Privacy", "Terms"];
+
+function determineContentType(path) {
+  if (path === '/' || path === '') return 'TempleHome';
+  
+  const rootMatch = path.match(/^\/([a-zA-Z]+)\/?$/);
+  if (rootMatch && rootMatch[1]) {
+    const routeCategory = rootMatch[1].toLowerCase();
+    if (routeCategory === 'collection') return 'CollectionHome';
+    const matchedRoot = validRootTypes.find(t => t.toLowerCase() === routeCategory);
+    if (matchedRoot) return matchedRoot;
+  }
+  
+  const collectionMatch = path.match(/^\/collection\/([a-zA-Z]+)\/?$/);
+  if (collectionMatch && collectionMatch[1]) {
+    const routeCategory = collectionMatch[1].toLowerCase();
+    const matchedCol = validCollectionTypes.find(t => t.toLowerCase() === routeCategory);
+    if (matchedCol) return matchedCol;
+  }
+  
+  if (path.match(/^\/blog\//)) return 'TempleHome';
+  if (path.match(/^\/(?:collection\/)?aarti\//)) return 'CollectionHome';
+
+  return 'TempleHome';
+}
+
+const topLevelTabs = ["TempleHome", "CollectionHome"];
+const collectionTabs = ["Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists"];
+const supportTabs = ["Help", "Contact", "Privacy", "Terms"];
+
 // Transliteration Map for Cross-Script "Phonetic Equivalence" Search
 const phoneticMap = {
   // Velar (K/G)
@@ -270,15 +302,7 @@ function App() {
   const [query, setQuery] = useState("");
   
   const [contentType, setContentType] = useState(() => {
-    const path = location.pathname;
-    const match = path.match(/^\/([a-zA-Z]+)\/?$/);
-    if (match && match[1]) {
-      const routeCategory = match[1].toLowerCase();
-      const validTypes = ["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"];
-      const matchedType = validTypes.find(t => t.toLowerCase() === routeCategory);
-      if (matchedType) return matchedType;
-    }
-    return "Home";
+    return determineContentType(location.pathname);
   });
   
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -356,23 +380,16 @@ function App() {
 
   // Sync route with focusedAartiId for direct links
   useEffect(() => {
-    const match = location.pathname.match(/^\/aarti\/(.+)$/);
+    const match = location.pathname.match(/^\/(?:(?:collection\/)?aarti|blog)\/(.+)$/);
     if (match && match[1]) {
       setFocusedAartiId(match[1]);
     } else {
       setFocusedAartiId(null);
         
         // Sync contentType based on URL if not in focus mode
-        const categoryMatch = location.pathname.match(/^\/([a-zA-Z]+)\/?$/);
-        if (categoryMatch && categoryMatch[1]) {
-          const routeCategory = categoryMatch[1].toLowerCase();
-          const validTypes = ["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"];
-          const matchedType = validTypes.find(t => t.toLowerCase() === routeCategory);
-          if (matchedType && matchedType !== contentType) {
-            setContentType(matchedType);
-          }
-        } else if (location.pathname === '/' && contentType !== "Home") {
-          setContentType("Home");
+        const ct = determineContentType(location.pathname);
+        if (ct !== contentType) {
+          setContentType(ct);
         }
     }
     }, [location.pathname, contentType]);
@@ -383,11 +400,12 @@ function App() {
       const aarti = sortedAartiData.find(a => a.id === focusedAartiId);
       if (aarti) {
         if (aarti.type === 'Shloka') {
-          navigate('/shloka', { replace: true });
+          navigate('/collection/shloka', { replace: true });
         } else {
           const itemType = aarti.type || 'Aartya';
-          if (contentType !== itemType) {
-            setContentType(itemType);
+          const targetContentType = (itemType === 'Blog' || itemType === 'Article') ? 'TempleHome' : itemType;
+          if (contentType !== targetContentType) {
+            setContentType(targetContentType);
           }
           if (selectedCategory !== "All" && selectedCategory !== "Favorites" && !selectedCategory.startsWith("playlist-")) {
             if (aarti.deity && selectedCategory !== aarti.deity) {
@@ -400,7 +418,8 @@ function App() {
   }, [focusedAartiId, sortedAartiData, navigate, contentType, selectedCategory]);
 
   const titleMap = useMemo(() => ({
-    "Home": script === 'latin' ? "Home | Aarti Sangraha" : "मुख्यपृष्ठ | आरती संग्रह",
+    "TempleHome": script === 'latin' ? "Temple Home" : "मंदिर मुख्यपृष्ठ",
+    "CollectionHome": script === 'latin' ? "Collection Home | Aarti Sangraha" : "संग्रह मुख्यपृष्ठ | आरती संग्रह",
     "Aartya": script === 'latin' ? "Aarti Sangraha" : "आरती संग्रह",
     "Bhovtya": script === 'latin' ? "Bhovti Sangraha" : "भोवती संग्रह",
     "Pradakshina": script === 'latin' ? "Pradakshina Sangraha" : "प्रदक्षिणा संग्रह",
@@ -432,11 +451,20 @@ function App() {
     // in different parts of the effect.
   }, [focusedAartiId, contentType, script, titleMap, sortedAartiData]);
 
-  const handleFocusAarti = (id) => {
-    navigate(`/aarti/${id}`);
+  const handleFocusAarti = (aarti) => {
+    if (aarti.type === 'Blog' || aarti.type === 'Article') {
+      navigate(`/blog/${aarti.id}`);
+    } else {
+      navigate(`/collection/aarti/${aarti.id}`);
+    }
   };
 
-  const getBaseUrl = () => contentType === 'Home' ? '/' : `/${contentType.toLowerCase()}`;
+  const getBaseUrl = () => {
+    if (contentType === 'TempleHome') return '/';
+    if (contentType === 'CollectionHome') return '/collection';
+    if (validCollectionTypes.includes(contentType)) return `/collection/${contentType.toLowerCase()}`;
+    return `/${contentType.toLowerCase()}`;
+  };
 
   const handleCloseFocus = () => {
     navigate(getBaseUrl());
@@ -444,7 +472,8 @@ function App() {
 
   const handleShare = async (e, aarti) => {
     e.stopPropagation();
-    const shareUrl = `${window.location.origin}/aarti/${aarti.id}`;
+    const isBlog = aarti.type === 'Blog' || aarti.type === 'Article';
+    const shareUrl = `${window.location.origin}${isBlog ? `/blog/${aarti.id}` : `/collection/aarti/${aarti.id}`}`;
     const shareData = {
       title: `Aarti Sangraha - ${aarti.title}`,
       text: `Read the ${aarti.title} on Aarti Sangraha!`,
@@ -498,7 +527,7 @@ function App() {
     if (contentType === "Playlists") {
       return playlists.map(p => `playlist-${p.id}`);
     }
-    if (["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType)) return [];
+    if (validRootTypes.includes(contentType) || contentType === "CollectionHome" || contentType === "Help") return [];
     
     const itemsInTab = sortedAartiData.filter(a => (a.type || "Aartya") === contentType);
     
@@ -600,7 +629,7 @@ function App() {
   // Filter against the pre-sorted data
   const filtered = useMemo(() => {
     let result = sortedAartiData.filter(a => {
-      if (["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType)) return false;
+      if (validRootTypes.includes(contentType) || contentType === "CollectionHome" || contentType === "Help") return false;
 
       if (contentType === "Playlists") {
         if (!selectedCategory.startsWith("playlist-")) return false;
@@ -868,7 +897,8 @@ function App() {
   }, [isMobile, isMenuOpen]);
 
   const tabLabelMap = {
-    "Home": script === 'latin' ? "Home" : "मुख्यपृष्ठ",
+    "TempleHome": script === 'latin' ? "Temple" : "मंदिर",
+    "CollectionHome": script === 'latin' ? "Collection" : "संग्रह",
     "Aartya": script === 'latin' ? "Aartya" : "आरत्या",
     "Bhovtya": script === 'latin' ? "Bhovtya" : "भोवत्या",
     "Pradakshina": script === 'latin' ? "Pradakshina" : "प्रदक्षिणा",
@@ -896,7 +926,8 @@ function App() {
   const aarti = focusedAartiId ? sortedAartiData.find(a => a.id === focusedAartiId) : null;
   const isNotFound = focusedAartiId && !aarti;
   const currentTitle = isNotFound ? (script === 'latin' ? "404 Not Found" : "४०४ सापडले नाही") : (aarti ? (script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title) : (titleMap[contentType] || "Aarti Sangraha"));
-  const currentUrl = `https://aartisangraha.co.in${focusedAartiId ? `/aarti/${focusedAartiId}` : ''}`;
+  const isBlogType = aarti && (aarti.type === 'Blog' || aarti.type === 'Article');
+  const currentUrl = `https://aartisangraha.co.in${focusedAartiId ? (isBlogType ? `/blog/${focusedAartiId}` : `/collection/aarti/${focusedAartiId}`) : ''}`;
   const currentDescription = isNotFound ? "The requested Aarti could not be found." : (aarti ? `Read the lyrics for ${currentTitle} in Marathi and English on Aarti Sangraha.` : "Offline capable Marathi Aarti Sangraha");
 
   const structuredData = aarti ? {
@@ -910,7 +941,13 @@ function App() {
 
   // Ensure reorderable tabs render fully so index shifts don't break up/down movement
   const isReorderableList = (selectedCategory === "Favorites" || contentType === "Playlists") && !searchQuery;
-  const displayedAartya = (focusedAartiId || isReorderableList) ? filtered : filtered.slice(0, visibleCount);
+  const displayedAartya = focusedAartiId 
+    ? sortedAartiData.filter(a => a.id === focusedAartiId) 
+    : (isReorderableList ? filtered : filtered.slice(0, visibleCount));
+
+  const blogPosts = sortedAartiData.filter(a => a.type === 'Blog' || a.type === 'Article');
+
+  const isMiddlePaneEmpty = ["TempleHome", "CollectionHome", "Help", "Contact", "Privacy", "Terms"].includes(contentType);
 
   return (
     <>
@@ -974,8 +1011,26 @@ function App() {
             </div>
             
             <div className="content-type-tabs">
-              {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"].map(type => (
-                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate(type === 'Home' ? '/' : `/${type.toLowerCase()}`); }}>
+              {topLevelTabs.map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate(type === 'TempleHome' ? '/' : '/collection'); }}>
+                  {tabLabelMap[type]}
+                </button>
+              ))}
+            </div>
+
+            <div className="content-type-tabs">
+              <div style={{ padding: '5px 15px', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-text-muted)'}}>{script === 'latin' ? 'COLLECTION' : 'संग्रह'}</div>
+              {collectionTabs.map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate(`/collection/${type.toLowerCase()}`); }}>
+                  {tabLabelMap[type]}
+                </button>
+              ))}
+            </div>
+
+            <div className="content-type-tabs">
+              <div style={{ padding: '5px 15px', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-text-muted)'}}>{script === 'latin' ? 'SUPPORT & LEGAL' : 'मदत आणि कायदेशीर'}</div>
+              {supportTabs.map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); setIsMenuOpen(false); navigate(validCollectionTypes.includes(type) ? `/collection/${type.toLowerCase()}` : `/${type.toLowerCase()}`); }}>
                   {tabLabelMap[type]}
                 </button>
               ))}
@@ -1028,8 +1083,26 @@ function App() {
               </div>
             </div>
             <div className="content-type-tabs">
-              {["Home", "Aartya", "Bhovtya", "Pradakshina", "Stotra", "Mantra", "Shloka", "Playlists", "Help", "Contact", "Privacy", "Terms"].map(type => (
-                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate(type === 'Home' ? '/' : `/${type.toLowerCase()}`); }}>
+              {topLevelTabs.map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate(type === 'TempleHome' ? '/' : '/collection'); }}>
+                  {tabLabelMap[type]}
+                </button>
+              ))}
+            </div>
+
+            <div className="content-type-tabs">
+              <div style={{ padding: '5px 15px', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-text-muted)'}}>{script === 'latin' ? 'COLLECTION' : 'संग्रह'}</div>
+              {collectionTabs.map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate(`/collection/${type.toLowerCase()}`); }}>
+                  {tabLabelMap[type]}
+                </button>
+              ))}
+            </div>
+
+            <div className="content-type-tabs">
+              <div style={{ padding: '5px 15px', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-text-muted)'}}>{script === 'latin' ? 'SUPPORT & LEGAL' : 'मदत आणि कायदेशीर'}</div>
+              {supportTabs.map(type => (
+                <button key={type} className={`tab-btn ${contentType === type ? 'active' : ''}`} onClick={() => { setContentType(type); navigate(validCollectionTypes.includes(type) ? `/collection/${type.toLowerCase()}` : `/${type.toLowerCase()}`); }}>
                   {tabLabelMap[type]}
                 </button>
               ))}
@@ -1049,8 +1122,8 @@ function App() {
         </div>
       )}
       
-      <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''}`}>
-        {!["Home", "Playlists", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
+      <div className={`sidebar-right-pane ${focusedAartiId ? 'hidden-in-focus-mode' : ''} ${isMiddlePaneEmpty ? 'empty-pane' : ''}`}>
+        {!["TempleHome", "CollectionHome", "Playlists", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div className={`search-container ${query ? 'has-query' : ''}`} ref={searchContainerRef}>
             <input 
               type="text" 
@@ -1147,7 +1220,7 @@ function App() {
             </div>
           </div>
         )}
-        {!["Home", "Playlists", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
+        {!["TempleHome", "CollectionHome", "Playlists", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div className="filter-chips">
             {categories.map(category => {
               let label = category;
@@ -1171,8 +1244,13 @@ function App() {
         )}
       </div> 
       {/* Render only the selected content */}
-      <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''}`}>
-        {contentType === "Home" && !focusedAartiId && (
+      <div className={`aarti-list ${focusedAartiId ? 'focused-list' : ''} ${isMiddlePaneEmpty && !focusedAartiId ? 'expanded-list' : ''}`}>
+        {contentType === "TempleHome" && !focusedAartiId && (
+          <React.Suspense fallback={<div className="loading-spinner"></div>}>
+            <TempleStory script={script} />
+          </React.Suspense>
+        )}
+        {contentType === "CollectionHome" && !focusedAartiId && (
           <article className="aarti-card help-container">
             <div className="home-header">
               <h2 className="home-title">{script === 'latin' ? "Welcome to Aarti Sangraha" : "आरती संग्रहामध्ये आपले स्वागत आहे"}</h2>
@@ -1183,7 +1261,7 @@ function App() {
               </p>
             </div>
             
-            <div className="help-section">
+            <div className="help-section" style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px dashed var(--drawer-border-color)' }}>
               <h3>
                 <span>{script === 'latin' ? "Our Story" : "आमची प्रेरणा"}</span>
                 <span className="help-icon">🪔</span>
@@ -1200,7 +1278,7 @@ function App() {
               <ul className="solution-list">
                 <li><strong>{script === 'latin' ? "Works Perfectly Offline:" : "ऑफलाइन चालते:"}</strong> {script === 'latin' ? "Built for places like our village temple where the internet is unreliable. Once you visit the site, it saves the content so you can use it anywhere, anytime." : "हे ॲप खास आमच्या गावातील मंदिरासारख्या ठिकाणांसाठी बनवले आहे, जिथे इंटरनेटची सुविधा उपलब्ध नसते. एकदा तुम्ही वेबसाइट उघडली की, सर्व आरत्या तुमच्या फोनमध्ये सेव्ह होतात."}</li>
                 <li><strong>{script === 'latin' ? "Instant Search:" : "सहज शोधा:"}</strong> {script === 'latin' ? "Find any Aarti, Stotra, or Mantra in seconds, without flipping through pages." : "कोणतीही आरती, स्तोत्र किंवा मंत्र काही सेकंदात शोधा, पानं उलटण्याची गरज नाही."}</li>
-                <li><strong>{script === 'latin' ? "English Transliteration:" : "इंग्रजी लिपी:"}</strong> {script === 'latin' ? "To help the younger generation and our friends living abroad, we added an instant English script toggle so they can read, chant, and feel connected to their roots." : "नवीन पिढीला आणि परदेशात राहणाऱ्या आमच्या मित्रांना सहजपणे आरत्या वाचता याव्यात आणि आपल्या संस्कृतीशी जोडलेले राहाता यावे, यासाठी आम्ही इंग्रजी लिपीचा पर्याय दिला आहे."}</li>
+                <li><strong>{script === 'latin' ? "English Transliteration:" : "इंग्रजी लिपी:"}</strong> {script === 'latin' ? "To help the younger generation and our friends living abroad, we added an instant English script toggle so they can read, chant, and feel connected to their roots." : "नवीन पिढीला आणि परदेशात राहणाऱ्या आमच्या मित्रांना सहजपणे आरत्या वाचता याव्यात आणि आपल्या संस्कृतीशी जोडलेले राहाता বন্দর राहावे, यासाठी आम्ही इंग्रजी लिपीचा पर्याय दिला आहे."}</li>
               </ul>
             </div>
 
@@ -1218,12 +1296,12 @@ function App() {
                 <span className="help-icon">📚</span>
               </h3>
               <div className="category-links">
-                <button className="category-link-btn" onClick={() => { setContentType('Aartya'); navigate('/aartya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Aartya']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Stotra'); navigate('/stotra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Stotra']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Mantra'); navigate('/mantra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Mantra']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Shloka'); navigate('/shloka'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Shloka']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Bhovtya'); navigate('/bhovtya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Bhovtya']}</button>
-                <button className="category-link-btn" onClick={() => { setContentType('Pradakshina'); navigate('/pradakshina'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Pradakshina']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Aartya'); navigate('/collection/aartya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Aartya']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Stotra'); navigate('/collection/stotra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Stotra']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Mantra'); navigate('/collection/mantra'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Mantra']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Shloka'); navigate('/collection/shloka'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Shloka']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Bhovtya'); navigate('/collection/bhovtya'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Bhovtya']}</button>
+                <button className="category-link-btn" onClick={() => { setContentType('Pradakshina'); navigate('/collection/pradakshina'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{tabLabelMap['Pradakshina']}</button>
               </div>
             </div>
           </article>
@@ -1411,7 +1489,7 @@ function App() {
             style={!isFocused ? { animationDelay: `${(index % 20) * 0.05}s` } : {}}
             onClick={() => {
               if (!isFocused && aarti.type !== 'Shloka') {
-                handleFocusAarti(aarti.id);
+                handleFocusAarti(aarti);
               }
             }}
           >
@@ -1490,7 +1568,7 @@ function App() {
              {isFocused || aarti.type === 'Shloka' ? (
                 <span>{highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}</span>
               ) : (
-                <Link to={`/aarti/${aarti.id}`} className="seo-link" onClick={(e) => e.stopPropagation()}>
+                <Link to={(aarti.type === 'Blog' || aarti.type === 'Article') ? `/blog/${aarti.id}` : `/collection/aarti/${aarti.id}`} className="seo-link" onClick={(e) => e.stopPropagation()}>
                   {highlightText(script === 'latin' ? (aarti.titleEng || aarti.title) : aarti.title, searchQuery, querySkeleton)}
                 </Link>
               )}
@@ -1520,17 +1598,17 @@ function App() {
           </article>
           );
         })}
-          {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
+          {!focusedAartiId && visibleCount < filtered.length && !isReorderableList && !["TempleHome", "CollectionHome", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div ref={loadMoreRef} className="load-more-container">
             <div className="loading-spinner load-more-spinner"></div>
           </div>
         )}
-          {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
+          {!focusedAartiId && visibleCount >= filtered.length && filtered.length > 0 && !isReorderableList && !["TempleHome", "CollectionHome", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <div className="end-of-list-message">
             {script === 'latin' ? "~ You have reached the end ~" : "~ तुम्ही यादीच्या शेवटी पोहोचलात ~"}
           </div>
         )}
-          {filtered.length === 0 && !focusedAartiId && !["Home", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
+          {filtered.length === 0 && !focusedAartiId && !["TempleHome", "CollectionHome", "Help", "Contact", "Privacy", "Terms"].includes(contentType) && (
           <p className="no-results">
             {contentType === "Playlists" 
               ? (playlists.length === 0 ? "No playlists yet." : "This playlist is empty. Add Aartya from other tabs!")

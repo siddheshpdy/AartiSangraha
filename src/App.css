@@ -113,6 +113,12 @@ body {
   .sidebar-right-pane.hidden-in-focus-mode {
     display: none;
   }
+  .sidebar-right-pane.empty-pane {
+    display: none;
+  }
+  .aarti-list.expanded-list {
+    grid-column: 2 / span 2;
+  }
   .aarti-list.focused-list {
     grid-column: 2 / span 2;
     grid-row: 1 / span 2;

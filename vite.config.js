@@ -62,9 +62,14 @@ export default defineConfig({
         
         let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
         sitemapContent += `  <url>\n    <loc>${domain}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
+        sitemapContent += `  <url>\n    <loc>${domain}/collection</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
         
         aartyaData.forEach(aarti => {
-            sitemapContent += `  <url>\n    <loc>${domain}/aarti/${aarti.id}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+            if (aarti.type === 'Blog' || aarti.type === 'Article') {
+                sitemapContent += `  <url>\n    <loc>${domain}/blog/${aarti.id}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+            } else {
+                sitemapContent += `  <url>\n    <loc>${domain}/collection/aarti/${aarti.id}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+            }
         });
         
         sitemapContent += `</urlset>`;
