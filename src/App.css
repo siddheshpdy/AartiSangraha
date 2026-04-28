@@ -869,6 +869,56 @@ body {
   white-space: nowrap;
 }
 
+/* Timeline */
+.timeline-container {
+  position: relative;
+  margin: 2rem 0 2rem 10px;
+  padding-left: 20px;
+  border-left: 2px solid var(--drawer-border-color);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-marker {
+  position: absolute;
+  left: -27px; /* Centers the 12px dot perfectly on the 2px border */
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--drawer-bg-color); /* Creates a clean cutout effect */
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s; /* Bouncy pop effect delayed slightly */
+}
+.timeline-item.visible .timeline-marker {
+  transform: scale(1);
+}
+.timeline-date {
+  font-weight: bold;
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+.dark .timeline-date {
+  color: var(--color-primary);
+}
+.timeline-text {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
 /* Back to Top Button */
 .back-to-top-btn {
   position: fixed;
